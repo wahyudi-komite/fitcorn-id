@@ -4,6 +4,7 @@ import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
+import { ModalService } from '../../shared/services/modal.service';
 
 @Component({
   selector: 'app-admin-product-list',
@@ -114,6 +115,7 @@ import { ProductsService } from '../../core/services/products.service';
 export class AdminProductListComponent implements OnInit {
   themeService = inject(ThemeService);
   private productsService = inject(ProductsService);
+  private modalService = inject(ModalService);
   private router = inject(Router);
 
   products = signal<any[]>([]);
@@ -152,12 +154,24 @@ export class AdminProductListComponent implements OnInit {
     this.loadProducts();
   }
 
-  confirmDelete(product: any) {
-    if (confirm(`Delete "${product.name}"? This cannot be undone.`)) {
-      this.productsService.deleteProduct(product.id).subscribe({
-        next: () => this.loadProducts(),
-        error: () => alert('Failed to delete product'),
-      });
-    }
+  async confirmDelete(product: any) {
+    const confirmed = await this.modalService.confirm({
+      title: 'Delete Product',
+      message: `Delete "${product.name}"? This cannot be undone.`,
+      confirmLabel: 'Delete',
+      cancelLabel: 'Cancel',
+    });
+    if (!confirmed) return;
+    this.productsService.deleteProduct(product.id).subscribe({
+      next: () => this.loadProducts(),
+      error: () => {
+        this.modalService.confirm({
+          title: 'Error',
+          message: 'Failed to delete product. Please try again.',
+          confirmLabel: 'OK',
+          cancelLabel: '',
+        });
+      },
+    });
   }
 }

@@ -19,6 +19,12 @@ export class NavbarComponent {
 
   isMobileMenuOpen = signal(false);
 
+  get initial(): string {
+    const user = this.authService.currentUser();
+    if (!user) return '?';
+    return (user.fullName || user.email || '').charAt(0).toUpperCase();
+  }
+
   toggleMobileMenu() {
     this.isMobileMenuOpen.update((v) => !v);
   }

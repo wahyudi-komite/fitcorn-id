@@ -5,6 +5,7 @@ import { ThemeService } from '../../core/services/theme.service';
 import { CartService } from '../../core/services/cart.service';
 import { AuthService } from '../../core/services/auth.service';
 import { CheckoutService } from '../../core/services/checkout.service';
+import { ModalService } from '../../shared/services/modal.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -272,6 +273,7 @@ export class CheckoutComponent implements OnInit {
   themeService = inject(ThemeService);
   cartService = inject(CartService);
   authService = inject(AuthService);
+  private modalService = inject(ModalService);
   private checkoutService = inject(CheckoutService);
   private router = inject(Router);
 
@@ -391,7 +393,12 @@ export class CheckoutComponent implements OnInit {
       },
       error: (err) => {
         console.error('Failed to save address', err);
-        alert('Could not save address. Please check input parameters.');
+        this.modalService.confirm({
+          title: 'Error',
+          message: 'Could not save address. Please check input parameters.',
+          confirmLabel: 'OK',
+          cancelLabel: '',
+        });
         this.addressLoading.set(false);
       }
     });

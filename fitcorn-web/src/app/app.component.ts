@@ -5,6 +5,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { FloatingButtonsComponent } from './shared/components/floating-buttons/floating-buttons.component';
 import { ExitIntentPopupComponent } from './shared/components/exit-intent-popup/exit-intent-popup.component';
+import { ConfirmModalComponent } from './shared/components/confirm-modal/confirm-modal.component';
 import { ThemeService } from './core/services/theme.service';
 
 @Component({
@@ -16,7 +17,8 @@ import { ThemeService } from './core/services/theme.service';
     NavbarComponent,
     FooterComponent,
     FloatingButtonsComponent,
-    ExitIntentPopupComponent
+    ExitIntentPopupComponent,
+    ConfirmModalComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

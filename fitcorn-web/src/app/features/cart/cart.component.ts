@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { CartService } from '../../core/services/cart.service';
+import { ModalService } from '../../shared/services/modal.service';
 
 @Component({
   selector: 'app-cart',
@@ -171,6 +172,7 @@ import { CartService } from '../../core/services/cart.service';
 export class CartComponent implements OnInit {
   themeService = inject(ThemeService);
   cartService = inject(CartService);
+  private modalService = inject(ModalService);
 
   actionLoading = signal<boolean>(false);
 
@@ -195,8 +197,14 @@ export class CartComponent implements OnInit {
     });
   }
 
-  clearCart() {
-    if (!confirm('Are you sure you want to empty your shopping cart?')) return;
+  async clearCart() {
+    const confirmed = await this.modalService.confirm({
+      title: 'Clear Cart',
+      message: 'Are you sure you want to empty your shopping cart?',
+      confirmLabel: 'Clear',
+      cancelLabel: 'Cancel',
+    });
+    if (!confirmed) return;
     this.actionLoading.set(true);
     this.cartService.clearCart().subscribe({
       next: () => this.actionLoading.set(false),

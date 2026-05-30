@@ -27,6 +27,10 @@
              class="text-charcoal-600 dark:text-charcoal-300 hover:text-corn-400 dark:hover:text-corn-400 transition-colors duration-300 flex items-center gap-1">
              <span>My Account</span>
           </a>
+          <a *ngIf="authService.isAdmin()" routerLink="/admin/produk" routerLinkActive="text-corn-500 font-semibold"
+             class="text-corn-500 dark:text-corn-400 hover:text-corn-600 dark:hover:text-corn-300 transition-colors duration-300 font-semibold flex items-center gap-1">
+             <span>Admin</span>
+          </a>
         </ng-container>
         <ng-template #guestCta>
           <a routerLink="/masuk" class="text-charcoal-600 dark:text-charcoal-300 hover:text-corn-400 dark:hover:text-corn-400 transition-colors duration-300">
@@ -35,9 +39,21 @@
         </ng-template>
       </div>
 
-      <!-- Action Buttons (Cart, Theme, Auth CTA) -->
+      <!-- Action Buttons (User, Cart, Theme, Auth CTA) -->
       <div class="hidden md:flex items-center space-x-6">
-        
+
+        <!-- User Avatar (Authenticated) -->
+        <ng-container *ngIf="authService.isAuthenticated()">
+          <a routerLink="/akun" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-charcoal-200 dark:border-charcoal-800 bg-white/50 dark:bg-charcoal-900/50 hover:bg-corn-50 dark:hover:bg-charcoal-800 transition-all duration-300">
+            <div class="w-7 h-7 rounded-full bg-corn-400 flex items-center justify-center font-bold text-xs text-charcoal-900">
+              {{ initial }}
+            </div>
+            <span class="text-xs font-semibold text-charcoal-700 dark:text-charcoal-200 max-w-[100px] truncate">
+              {{ authService.currentUser()?.fullName || authService.currentUser()?.email }}
+            </span>
+          </a>
+        </ng-container>
+
         <!-- Theme Toggle Button -->
         <button (click)="themeService.toggleTheme()" 
                 class="p-2.5 rounded-full bg-charcoal-100 dark:bg-charcoal-800 text-charcoal-600 dark:text-charcoal-300 hover:scale-105 hover:bg-corn-100 dark:hover:bg-charcoal-700 transition-all duration-300 cursor-pointer">
@@ -110,6 +126,18 @@
        [ngClass]="themeService.theme() === 'dark' ? 'bg-charcoal-900 border-t border-charcoal-800' : 'bg-white border-t border-charcoal-100'" 
        class="md:hidden transition-all duration-300 ease-in-out shadow-lg">
     <div class="px-4 pt-4 pb-6 space-y-3 font-sans text-sm font-semibold">
+        <ng-container *ngIf="authService.isAuthenticated()">
+          <a routerLink="/akun" (click)="isMobileMenuOpen.set(false)"
+             class="flex items-center gap-3 px-3 py-3 rounded-xl bg-corn-50 dark:bg-charcoal-800 text-charcoal-700 dark:text-charcoal-200">
+            <div class="w-8 h-8 rounded-full bg-corn-400 flex items-center justify-center font-bold text-sm text-charcoal-900">
+              {{ initial }}
+            </div>
+            <div class="flex flex-col">
+              <span class="text-sm font-bold">{{ authService.currentUser()?.fullName || authService.currentUser()?.email }}</span>
+              <span class="text-[10px] text-charcoal-400 uppercase tracking-wider font-bold">My Account</span>
+            </div>
+          </a>
+        </ng-container>
       <a routerLink="/" (click)="isMobileMenuOpen.set(false)" 
          class="block px-3 py-2 rounded-lg text-charcoal-600 dark:text-charcoal-300 hover:bg-corn-50 hover:text-corn-600 dark:hover:bg-charcoal-800">
         Home
@@ -123,6 +151,10 @@
         <a routerLink="/akun" (click)="isMobileMenuOpen.set(false)" 
            class="block px-3 py-2 rounded-lg text-charcoal-600 dark:text-charcoal-300 hover:bg-corn-50 hover:text-corn-600 dark:hover:bg-charcoal-800">
           My Account
+        </a>
+        <a *ngIf="authService.isAdmin()" routerLink="/admin/produk" (click)="isMobileMenuOpen.set(false)"
+           class="block px-3 py-2 rounded-lg text-corn-500 hover:bg-corn-50 hover:text-corn-600 dark:hover:bg-charcoal-800 font-bold">
+          ⚙️ Admin Panel
         </a>
       </ng-container>
       <ng-template #guestMobileCta>

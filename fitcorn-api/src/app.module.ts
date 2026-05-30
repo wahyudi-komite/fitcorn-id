@@ -21,6 +21,9 @@ import { BannersModule } from './modules/banners/banners.module';
 import { CouponsModule } from './modules/coupons/coupons.module';
 import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 import { ALL_ENTITIES } from './database/all-entities';
+import { BullModule } from '@nestjs/bull';
+import { ScheduleModule } from '@nestjs/schedule';
+import { NotificationsModule } from './modules/notifications/notifications.module';
 
 @Module({
   imports: [
@@ -28,6 +31,18 @@ import { ALL_ENTITIES } from './database/all-entities';
       isGlobal: true,
       load: [databaseConfig, jwtConfig, appConfig],
       envFilePath: '.env',
+    }),
+    ScheduleModule.forRoot(),
+    BullModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        redis: {
+          host: configService.get<string>('REDIS_HOST') || 'localhost',
+          port: configService.get<number>('REDIS_PORT') || 6379,
+          password: configService.get<string>('REDIS_PASSWORD') || undefined,
+        },
+      }),
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -59,6 +74,7 @@ import { ALL_ENTITIES } from './database/all-entities';
     WishlistModule,
     BannersModule,
     CouponsModule,
+    NotificationsModule,
   ],
   controllers: [AppController],
   providers: [

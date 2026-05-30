@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { AuthService } from '../../core/services/auth.service';
 import { CheckoutService } from '../../core/services/checkout.service';
+import { ModalService } from '../../shared/services/modal.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -202,6 +203,7 @@ import { FormsModule } from '@angular/forms';
 export class DashboardComponent implements OnInit {
   themeService = inject(ThemeService);
   authService = inject(AuthService);
+  private modalService = inject(ModalService);
   private checkoutService = inject(CheckoutService);
   private router = inject(Router);
 
@@ -250,8 +252,14 @@ export class DashboardComponent implements OnInit {
     this.activeTab.set(tabName);
   }
 
-  logout() {
-    if (!confirm('Are you sure you want to log out from Fitcorn?')) return;
+  async logout() {
+    const confirmed = await this.modalService.confirm({
+      title: 'Log Out',
+      message: 'Are you sure you want to log out from Fitcorn?',
+      confirmLabel: 'Log Out',
+      cancelLabel: 'Cancel',
+    });
+    if (!confirmed) return;
     this.authService.logout();
     this.router.navigate(['/']);
   }
