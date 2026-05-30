@@ -45,7 +45,7 @@ import { FormsModule } from '@angular/forms';
             
             <button (click)="logout()"
                     class="px-5 py-2.5 rounded-full border border-red-500/30 bg-red-500/5 hover:bg-red-500 text-red-500 hover:text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer text-center">
-              Sign Out
+              Keluar
             </button>
           </div>
 
@@ -54,21 +54,21 @@ import { FormsModule } from '@angular/forms';
             <!-- Navigation Sidebar -->
             <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                  class="p-6 rounded-3xl border flex flex-col gap-2 shadow-premium">
-              <button (click)="setActiveTab('overview')"
-                      [ngClass]="activeTab() === 'overview' ? 'bg-corn-400 text-charcoal-900 font-bold' : 'text-charcoal-500 hover:text-corn-500'"
-                      class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm transition-all duration-300 cursor-pointer">
-                Overview
-              </button>
-              <button (click)="setActiveTab('orders')"
-                      [ngClass]="activeTab() === 'orders' ? 'bg-corn-400 text-charcoal-900 font-bold' : 'text-charcoal-500 hover:text-corn-500'"
-                      class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm transition-all duration-300 cursor-pointer">
-                Orders History
-              </button>
-              <button (click)="setActiveTab('addresses')"
-                      [ngClass]="activeTab() === 'addresses' ? 'bg-corn-400 text-charcoal-900 font-bold' : 'text-charcoal-500 hover:text-corn-500'"
-                      class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm transition-all duration-300 cursor-pointer">
-                Address Book
-              </button>
+                <button (click)="setActiveTab('overview')"
+                        [ngClass]="activeTab() === 'overview' ? 'bg-corn-400 text-charcoal-900 font-bold' : 'text-charcoal-500 hover:text-corn-500'"
+                        class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm transition-all duration-300 cursor-pointer">
+                  Ringkasan
+                </button>
+                <button (click)="setActiveTab('orders')"
+                        [ngClass]="activeTab() === 'orders' ? 'bg-corn-400 text-charcoal-900 font-bold' : 'text-charcoal-500 hover:text-corn-500'"
+                        class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm transition-all duration-300 cursor-pointer">
+                  Riwayat Pesanan
+                </button>
+                <button (click)="setActiveTab('addresses')"
+                        [ngClass]="activeTab() === 'addresses' ? 'bg-corn-400 text-charcoal-900 font-bold' : 'text-charcoal-500 hover:text-corn-500'"
+                        class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm transition-all duration-300 cursor-pointer">
+                  Buku Alamat
+                </button>
             </div>
 
             <!-- Content Area -->
@@ -79,16 +79,16 @@ import { FormsModule } from '@angular/forms';
                 <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                      class="p-8 rounded-3xl border space-y-6 shadow-premium">
                   <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white border-b border-charcoal-150 dark:border-charcoal-900 pb-4">
-                    Account Overview
+                    Ringkasan Akun
                   </h3>
                   
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm font-medium">
                     <div>
-                      <span class="text-[10px] text-charcoal-400 font-semibold block uppercase tracking-widest mb-1">Full Name</span>
+                      <span class="text-[10px] text-charcoal-400 font-semibold block uppercase tracking-widest mb-1">Nama Lengkap</span>
                       <span class="text-charcoal-850 dark:text-white font-bold text-base">{{ authService.currentUser()?.fullName }}</span>
                     </div>
                     <div>
-                      <span class="text-[10px] text-charcoal-400 font-semibold block uppercase tracking-widest mb-1">Email Address</span>
+                      <span class="text-[10px] text-charcoal-400 font-semibold block uppercase tracking-widest mb-1">Alamat Email</span>
                       <span class="text-charcoal-850 dark:text-white font-bold text-base">{{ authService.currentUser()?.email }}</span>
                     </div>
                   </div>
@@ -100,20 +100,20 @@ import { FormsModule } from '@angular/forms';
                 <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                      class="p-8 rounded-3xl border space-y-6 shadow-premium">
                   <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white border-b border-charcoal-150 dark:border-charcoal-900 pb-4">
-                    My Order History
+                    Riwayat Pesanan Saya
                   </h3>
 
                   @if (ordersLoading()) {
                     <div class="flex items-center justify-center py-6 gap-3">
                       <span class="animate-spin text-lg text-corn-500">⌛</span>
-                      <span class="text-xs font-semibold text-charcoal-400">Loading order records...</span>
+                      <span class="text-xs font-semibold text-charcoal-400">Memuat data pesanan...</span>
                     </div>
                   } @else if (myOrders().length === 0) {
                     <div class="text-center py-12 space-y-4">
                       <span class="text-5xl block">🍿</span>
-                      <h4 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">No Orders Found</h4>
-                      <p class="text-xs text-charcoal-400 font-semibold">You have not completed any premium popcorning orders yet.</p>
-                      <a routerLink="/produk" class="inline-block px-5 py-2.5 bg-corn-400 text-charcoal-900 rounded-full font-bold text-xs uppercase tracking-wider">Order Now</a>
+                      <h4 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">Tidak Ada Pesanan</h4>
+                      <p class="text-xs text-charcoal-400 font-semibold">Belum ada pesanan yang terselesaikan.</p>
+                      <a routerLink="/produk" class="inline-block px-5 py-2.5 bg-corn-400 text-charcoal-900 rounded-full font-bold text-xs uppercase tracking-wider">Pesan Sekarang</a>
                     </div>
                   } @else {
                     <div class="space-y-4">
@@ -124,7 +124,7 @@ import { FormsModule } from '@angular/forms';
                               {{ ord.orderNumber }}
                             </span>
                             <span class="block text-[10px] text-charcoal-400">{{ ord.createdAt | date:'dd MMM yyyy, HH:mm' }}</span>
-                            <span class="block text-[10px] text-charcoal-400 mt-1 uppercase">Courier: {{ ord.courierName }} - {{ ord.courierService }}</span>
+                            <span class="block text-[10px] text-charcoal-400 mt-1 uppercase">Kurir: {{ ord.courierName }} - {{ ord.courierService }}</span>
                           </div>
                           
                           <div class="flex items-center justify-between sm:justify-end gap-6 w-full sm:w-auto">
@@ -142,7 +142,7 @@ import { FormsModule } from '@angular/forms';
                             
                             <a [routerLink]="['/pesanan', ord.id]"
                                class="px-4 py-2 bg-charcoal-100 dark:bg-charcoal-900 text-charcoal-700 dark:text-charcoal-350 hover:bg-corn-400 hover:text-charcoal-900 rounded-full text-[10px] font-bold uppercase tracking-wider transition-colors duration-300">
-                              Track
+                               Lacak
                             </a>
                           </div>
                         </div>
@@ -156,9 +156,9 @@ import { FormsModule } from '@angular/forms';
               @if (activeTab() === 'addresses') {
                 <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                      class="p-8 rounded-3xl border space-y-6 shadow-premium">
-                  <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white border-b border-charcoal-150 dark:border-charcoal-900 pb-4">
-                    Address Book
-                  </h3>
+                    <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white border-b border-charcoal-150 dark:border-charcoal-900 pb-4">
+                      Buku Alamat
+                    </h3>
 
                   @if (addressesLoading()) {
                     <div class="flex items-center justify-center py-6 gap-3">
