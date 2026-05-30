@@ -21,31 +21,31 @@ import { FormsModule } from '@angular/forms';
             <img src="/logo.png" alt="FITCORN Logo" class="h-16 mx-auto w-auto object-contain" />
           </a>
           <h1 class="text-3xl font-display font-extrabold text-charcoal-800 dark:text-white mt-2">
-            Create Account
+            Buat Akun
           </h1>
           <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider">
-            Join the Fitcorn organic snacking tribe
+            Bergabunglah dengan komunitas camilan sehat Fitcorn
           </p>
         </div>
 
         <form (submit)="onSubmit()" class="space-y-4 text-sm font-medium">
           <div class="space-y-4">
             <div>
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Full Name</label>
+              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nama Lengkap</label>
               <input type="text" [(ngModel)]="fullName" name="fullName" placeholder="e.g. Wahyudi" required
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                      class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
             </div>
 
             <div>
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Email Address</label>
+              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Alamat Email</label>
               <input type="email" [(ngModel)]="email" name="email" placeholder="e.g. customer@fitcorn.com" required
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                      class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
             </div>
 
             <div class="relative">
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Password</label>
+              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Kata Sandi</label>
               <input [type]="showPassword() ? 'text' : 'password'" [(ngModel)]="password" name="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" required
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                      class="w-full px-5 py-3 pr-12 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
@@ -60,9 +60,9 @@ import { FormsModule } from '@angular/forms';
             <button type="submit" [disabled]="loading()"
                     class="w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
               @if (loading()) {
-                <span class="animate-spin text-sm">&#x231B;</span> Creating Account...
+                <span class="animate-spin text-sm">&#x231B;</span> Membuat Akun...
               } @else {
-                <span>&#x2728;</span> Join Now
+                <span>&#x2728;</span> Daftar Sekarang
               }
             </button>
 
@@ -76,7 +76,7 @@ import { FormsModule } from '@angular/forms';
 
         <div class="relative flex items-center gap-3 py-2">
           <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-700"></div>
-          <span class="text-[10px] font-bold uppercase tracking-widest text-charcoal-400 dark:text-charcoal-300">or sign up with</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-charcoal-400 dark:text-charcoal-300">atau daftar dengan</span>
           <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-700"></div>
         </div>
 
@@ -100,7 +100,7 @@ import { FormsModule } from '@angular/forms';
 
         <div class="relative flex items-center gap-3 py-1">
           <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-700"></div>
-          <span class="text-[10px] font-bold uppercase tracking-widest text-charcoal-400 dark:text-charcoal-300">or via WhatsApp</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-charcoal-400 dark:text-charcoal-300">atau via WhatsApp</span>
           <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-700"></div>
         </div>
 
@@ -113,9 +113,9 @@ import { FormsModule } from '@angular/forms';
           <button type="submit" [disabled]="!phoneRegister || sendingOtpReg()"
                   class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">
             @if (sendingOtpReg()) {
-              Sending OTP...
+              Mengirim OTP...
             } @else {
-              Send OTP via WhatsApp
+              Kirim OTP via WhatsApp
             }
           </button>
           @if (otpMsgReg()) {
@@ -131,8 +131,8 @@ import { FormsModule } from '@angular/forms';
         </form>
 
         <div class="text-center text-xs font-semibold text-charcoal-400 dark:text-charcoal-300 pt-2 border-t border-charcoal-100 dark:border-charcoal-800">
-          Already have an account?
-          <a routerLink="/masuk" class="text-corn-500 hover:underline">Log in here</a>
+          Sudah punya akun?
+          <a routerLink="/masuk" class="text-corn-500 hover:underline">Masuk di sini</a>
         </div>
       </div>
     </div>
@@ -185,7 +185,7 @@ export class RegisterComponent {
       },
       error: (err) => {
         console.error('Registration failed', err);
-        this.errorMsg.set(err.error?.message || 'Failed to create account. Email might already be registered.');
+        this.errorMsg.set(err.error?.message || 'Gagal membuat akun. Email mungkin sudah terdaftar.');
         this.loading.set(false);
       }
     });
@@ -202,14 +202,14 @@ export class RegisterComponent {
     this.authService.sendOtp(this.phoneRegister).subscribe({
       next: () => {
         this.sendingOtpReg.set(false);
-        this.otpMsgReg.set('OTP sent! Check your WhatsApp (check server console in dev mode)');
+        this.otpMsgReg.set('OTP terkirim! Cek WhatsApp Anda (cek server console di mode development)');
 
         // Navigate to login page with phone pre-filled for OTP verification
         this.router.navigate(['/masuk']);
       },
       error: (err) => {
         this.sendingOtpReg.set(false);
-        this.otpErrorReg.set(err.error?.message || 'Failed to send OTP');
+        this.otpErrorReg.set(err.error?.message || 'Gagal mengirim OTP');
       }
     });
   }

@@ -222,7 +222,7 @@ export class LoginComponent {
       },
       error: (err) => {
         this.sendingOtp.set(false);
-        this.otpError.set(err.error?.message || 'Failed to send OTP');
+        this.otpError.set(err.error?.message || 'Gagal mengirim OTP');
       }
     });
   }
@@ -244,7 +244,7 @@ export class LoginComponent {
       },
       error: (err) => {
         this.verifyingOtp.set(false);
-        this.otpError.set(err.error?.message || 'Invalid OTP');
+        this.otpError.set(err.error?.message || 'OTP tidak valid');
       }
     });
   }

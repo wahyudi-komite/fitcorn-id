@@ -22,18 +22,18 @@ import { ThemeService } from '../../../core/services/theme.service';
         @if (errorMsg) {
           <div class="space-y-4">
             <div class="text-6xl">😕</div>
-            <h1 class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white">Login Failed</h1>
+            <h1 class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white">Login Gagal</h1>
             <p class="text-sm text-charcoal-400 dark:text-charcoal-300">{{ errorMsg }}</p>
             <a routerLink="/masuk"
                class="inline-block px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 transition-all duration-300 cursor-pointer">
-              Try Again
+              Coba Lagi
             </a>
           </div>
         } @else {
           <div class="space-y-4">
             <div class="text-6xl animate-pulse">🔄</div>
-            <h1 class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white">Signing you in...</h1>
-            <p class="text-sm text-charcoal-400 dark:text-charcoal-300">Please wait while we complete your authentication</p>
+            <h1 class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white">Memasukkan Anda...</h1>
+            <p class="text-sm text-charcoal-400 dark:text-charcoal-300">Harap tunggu, sedang menyelesaikan autentikasi</p>
           </div>
         }
       </div>
@@ -56,8 +56,8 @@ export class OauthCallbackComponent implements OnInit {
 
       if (err) {
         this.errorMsg = err === 'instagram_not_configured'
-          ? 'Instagram login is not configured yet.'
-          : 'Authentication failed. Please try again.';
+          ? 'Login Instagram belum dikonfigurasi.'
+          : 'Autentikasi gagal. Silakan coba lagi.';
         return;
       }
 
@@ -71,7 +71,7 @@ export class OauthCallbackComponent implements OnInit {
             error: () => this.router.navigate(['/']),
           });
         } catch {
-          this.errorMsg = 'Invalid authentication response.';
+          this.errorMsg = 'Respons autentikasi tidak valid.';
         }
       } else {
         this.errorMsg = 'No authentication data received.';
