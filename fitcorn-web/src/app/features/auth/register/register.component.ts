@@ -16,8 +16,11 @@ import { FormsModule } from '@angular/forms';
         
         <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-corn-300 to-corn-500"></div>
 
-        <div class="text-center space-y-2">
-          <h1 class="text-3xl font-display font-extrabold text-charcoal-800 dark:text-white">
+        <div class="text-center space-y-4">
+          <a routerLink="/" class="inline-block hover:scale-105 transition-transform duration-300">
+            <img src="/logo.png" alt="FITCORN Logo" class="h-16 mx-auto w-auto object-contain" />
+          </a>
+          <h1 class="text-3xl font-display font-extrabold text-charcoal-800 dark:text-white mt-2">
             Create Account
           </h1>
           <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider">
