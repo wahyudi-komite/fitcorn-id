@@ -74,7 +74,7 @@ export class OauthCallbackComponent implements OnInit {
           this.errorMsg = 'Respons autentikasi tidak valid.';
         }
       } else {
-        this.errorMsg = 'No authentication data received.';
+        this.errorMsg = 'Tidak ada data autentikasi yang diterima.';
       }
     });
   }

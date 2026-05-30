@@ -31,11 +31,11 @@ import { ModalService } from '../../services/modal.service';
           <div class="flex gap-3 pt-2">
             <button (click)="modalService.close(false)"
                     class="flex-1 px-6 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-full border border-charcoal-200 dark:border-charcoal-700 text-charcoal-600 dark:text-charcoal-300 hover:bg-charcoal-100 dark:hover:bg-charcoal-800 transition-all duration-300 cursor-pointer">
-              {{ state.config.cancelLabel || 'Cancel' }}
+              {{ state.config.cancelLabel || 'Batal' }}
             </button>
             <button (click)="modalService.close(true)"
                     class="flex-1 px-6 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
-              {{ state.config.confirmLabel || 'Confirm' }}
+              {{ state.config.confirmLabel || 'Konfirmasi' }}
             </button>
           </div>
         </div>
