@@ -19,17 +19,17 @@ import { ModalService } from '../../shared/services/modal.service';
 
         <div class="flex items-center justify-between">
           <div>
-            <h1 class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white">Products</h1>
-            <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-1">Manage your product catalog</p>
+            <h1 class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white">Produk</h1>
+            <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-1">Kelola katalog produk</p>
           </div>
           <a routerLink="/admin/produk/baru"
              class="px-6 py-3 font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
-            + New Product
+            + Produk Baru
           </a>
         </div>
 
         <div class="flex gap-3">
-          <input type="text" [(ngModel)]="search" (input)="onSearch()" placeholder="Search products..."
+          <input type="text" [(ngModel)]="search" (input)="onSearch()" placeholder="Cari produk..."
                  [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                  class="flex-1 px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400 text-sm" />
         </div>

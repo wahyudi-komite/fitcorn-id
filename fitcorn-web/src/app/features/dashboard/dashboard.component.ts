@@ -163,13 +163,13 @@ import { FormsModule } from '@angular/forms';
                   @if (addressesLoading()) {
                     <div class="flex items-center justify-center py-6 gap-3">
                       <span class="animate-spin text-lg text-corn-500">⌛</span>
-                      <span class="text-xs font-semibold text-charcoal-400">Loading addresses...</span>
+                      <span class="text-xs font-semibold text-charcoal-400">Memuat alamat...</span>
                     </div>
                   } @else if (myAddresses().length === 0) {
                     <div class="text-center py-8">
-                      <h4 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white mb-2">No Saved Address</h4>
-                      <p class="text-xs text-charcoal-400 font-semibold mb-4">Please add a shipping destination address for quick checkouts.</p>
-                      <a routerLink="/checkout" class="inline-block px-5 py-2.5 bg-corn-400 text-charcoal-900 rounded-full font-bold text-xs uppercase tracking-wider">Create Checkout Address</a>
+                      <h4 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white mb-2">Belum Ada Alamat</h4>
+                      <p class="text-xs text-charcoal-400 font-semibold mb-4">Silakan tambahkan alamat pengiriman untuk checkout yang lebih cepat.</p>
+                      <a routerLink="/checkout" class="inline-block px-5 py-2.5 bg-corn-400 text-charcoal-900 rounded-full font-bold text-xs uppercase tracking-wider">Buat Alamat Checkout</a>
                     </div>
                   } @else {
                     <div class="space-y-4">
@@ -178,7 +178,7 @@ import { FormsModule } from '@angular/forms';
                           <div class="flex items-center justify-between">
                             <span class="font-bold text-charcoal-800 dark:text-white">{{ addr.fullName }}</span>
                             @if (addr.isDefault) {
-                              <span class="px-2 py-0.5 text-[9px] font-bold rounded bg-charcoal-200 dark:bg-charcoal-800 text-charcoal-600 dark:text-charcoal-400 uppercase">Default</span>
+                              <span class="px-2 py-0.5 text-[9px] font-bold rounded bg-charcoal-200 dark:bg-charcoal-800 text-charcoal-600 dark:text-charcoal-400 uppercase">Utama</span>
                             }
                           </div>
                           <p class="text-charcoal-500 dark:text-charcoal-400 text-xs">{{ addr.phone }}</p>
@@ -254,10 +254,10 @@ export class DashboardComponent implements OnInit {
 
   async logout() {
     const confirmed = await this.modalService.confirm({
-      title: 'Log Out',
-      message: 'Are you sure you want to log out from Fitcorn?',
-      confirmLabel: 'Log Out',
-      cancelLabel: 'Cancel',
+      title: 'Keluar',
+      message: 'Apakah Anda yakin ingin keluar dari Fitcorn?',
+      confirmLabel: 'Keluar',
+      cancelLabel: 'Batal',
     });
     if (!confirmed) return;
     this.authService.logout();
