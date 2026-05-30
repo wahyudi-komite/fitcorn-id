@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, OnModuleInit } from '@nestjs/common';
+import { Injectable, NotFoundException, OnModuleInit, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Like, Between, In } from 'typeorm';
 import { Product } from './entities/product.entity';
@@ -6,6 +6,9 @@ import { ProductCategory } from './entities/product-category.entity';
 import { ProductImage } from './entities/product-image.entity';
 import { ProductVariant } from './entities/product-variant.entity';
 import { Inventory } from './entities/inventory.entity';
+import { CreateProductDto } from './dto/create-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
+import slugify from 'slugify';
 
 @Injectable()
 export class ProductsService implements OnModuleInit {
@@ -177,6 +180,198 @@ export class ProductsService implements OnModuleInit {
     console.log('Seeding premium Fitcorn database completed successfully!');
   }
 
+
+  async create(dto: CreateProductDto): Promise<Product> {
+    const slug = dto.slug || slugify(dto.name, { lower: true, strict: true });
+
+    const existing = await this.productRepository.findOne({ where: { slug } });
+    if (existing) {
+      throw new BadRequestException('Product with this slug already exists');
+    }
+
+    const product = this.productRepository.create({
+      name: dto.name,
+      slug,
+      description: dto.description,
+      shortDescription: dto.shortDescription,
+      price: dto.price,
+      salePrice: dto.salePrice,
+      weight: dto.weight,
+      isFeatured: dto.isFeatured ?? false,
+      isActive: dto.isActive ?? true,
+      sku: dto.sku,
+    });
+
+    if (dto.categoryIds?.length) {
+      const categories = await this.categoryRepository.find({
+        where: { id: In(dto.categoryIds) },
+      });
+      product.categories = categories;
+    }
+
+    const savedProduct = await this.productRepository.save(product);
+
+    if (dto.imageUrl) {
+      const image = this.imageRepository.create({
+        product: savedProduct,
+        url: dto.imageUrl,
+        altText: dto.name,
+        isPrimary: true,
+        sortOrder: 0,
+      });
+      await this.imageRepository.save(image);
+    }
+
+    if (!dto.imageUrl) {
+      const inventory = this.inventoryRepository.create({
+        product: savedProduct,
+        quantity: 0,
+        reserved: 0,
+        lowStockThreshold: 10,
+      });
+      await this.inventoryRepository.save(inventory);
+    }
+
+    if (dto.variants?.length) {
+      for (const vData of dto.variants) {
+        const variant = this.variantRepository.create({
+          product: savedProduct,
+          name: vData.name,
+          price: vData.price,
+          weight: vData.weight,
+          sku: vData.sku,
+        });
+        const savedVariant = await this.variantRepository.save(variant);
+
+        const variantInventory = this.inventoryRepository.create({
+          variant: savedVariant,
+          quantity: 0,
+          reserved: 0,
+          lowStockThreshold: 5,
+        });
+        await this.inventoryRepository.save(variantInventory);
+      }
+    }
+
+    return this.findOneById(savedProduct.id);
+  }
+
+  async update(id: string, dto: UpdateProductDto): Promise<Product> {
+    const product = await this.findOneById(id);
+
+    if (dto.name !== undefined) product.name = dto.name;
+    if (dto.slug !== undefined) product.slug = dto.slug;
+    if (dto.description !== undefined) product.description = dto.description;
+    if (dto.shortDescription !== undefined) product.shortDescription = dto.shortDescription;
+    if (dto.price !== undefined) product.price = dto.price;
+    if (dto.salePrice !== undefined) product.salePrice = dto.salePrice;
+    if (dto.weight !== undefined) product.weight = dto.weight;
+    if (dto.isFeatured !== undefined) product.isFeatured = dto.isFeatured;
+    if (dto.isActive !== undefined) product.isActive = dto.isActive;
+    if (dto.sku !== undefined) product.sku = dto.sku;
+
+    if (dto.categoryIds !== undefined) {
+      const categories = await this.categoryRepository.find({
+        where: { id: In(dto.categoryIds) },
+      });
+      product.categories = categories;
+    }
+
+    const savedProduct = await this.productRepository.save(product);
+
+    if (dto.imageUrl !== undefined) {
+      const existingImage = await this.imageRepository.findOne({
+        where: { product: { id: savedProduct.id }, isPrimary: true },
+      });
+      if (existingImage) {
+        existingImage.url = dto.imageUrl;
+        await this.imageRepository.save(existingImage);
+      } else {
+        const image = this.imageRepository.create({
+          product: savedProduct,
+          url: dto.imageUrl,
+          altText: dto.name || savedProduct.name,
+          isPrimary: true,
+          sortOrder: 0,
+        });
+        await this.imageRepository.save(image);
+      }
+    }
+
+    if (dto.variants !== undefined) {
+      await this.variantRepository.delete({ product: { id: savedProduct.id } });
+
+      for (const vData of dto.variants) {
+        const variant = this.variantRepository.create({
+          product: savedProduct,
+          name: vData.name,
+          price: vData.price,
+          weight: vData.weight,
+          sku: vData.sku,
+        });
+        const savedVariant = await this.variantRepository.save(variant);
+
+        const variantInventory = this.inventoryRepository.create({
+          variant: savedVariant,
+          quantity: 0,
+          reserved: 0,
+          lowStockThreshold: 5,
+        });
+        await this.inventoryRepository.save(variantInventory);
+      }
+    }
+
+    return this.findOneById(savedProduct.id);
+  }
+
+  async delete(id: string): Promise<void> {
+    const product = await this.findOneById(id);
+    await this.productRepository.remove(product);
+  }
+
+  async findAllAdmin(query: {
+    search?: string;
+    page?: number;
+    limit?: number;
+    isActive?: boolean;
+  }) {
+    const page = query.page || 1;
+    const limit = query.limit || 20;
+    const skip = (page - 1) * limit;
+
+    const where: any = {};
+
+    if (query.search) {
+      where.name = Like(`%${query.search}%`);
+    }
+    if (query.isActive !== undefined) {
+      where.isActive = query.isActive;
+    }
+
+    const [data, total] = await this.productRepository.findAndCount({
+      where,
+      relations: { categories: true, images: true, variants: true },
+      order: { createdAt: 'DESC' },
+      take: limit,
+      skip,
+    });
+
+    return {
+      data,
+      meta: { total, page, limit, totalPages: Math.ceil(total / limit) },
+    };
+  }
+
+  async findOneById(id: string): Promise<Product> {
+    const product = await this.productRepository.findOne({
+      where: { id },
+      relations: { categories: true, images: true, variants: true, inventory: true },
+    });
+    if (!product) {
+      throw new NotFoundException('Product not found');
+    }
+    return product;
+  }
 
   async findAll(query: {
     search?: string;

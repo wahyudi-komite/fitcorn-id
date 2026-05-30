@@ -43,4 +43,40 @@ export class ProductsService {
   getRelatedProducts(slug: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${slug}/related`);
   }
+
+  // ============ ADMIN ============
+
+  private adminUrl = 'http://localhost:3000/api/admin/products';
+
+  getAdminProducts(params?: {
+    search?: string;
+    page?: number;
+    limit?: number;
+    isActive?: boolean;
+  }): Observable<any> {
+    let httpParams = new HttpParams();
+    if (params) {
+      if (params.search) httpParams = httpParams.set('search', params.search);
+      if (params.page !== undefined) httpParams = httpParams.set('page', params.page.toString());
+      if (params.limit !== undefined) httpParams = httpParams.set('limit', params.limit.toString());
+      if (params.isActive !== undefined) httpParams = httpParams.set('isActive', params.isActive.toString());
+    }
+    return this.http.get<any>(this.adminUrl, { params: httpParams });
+  }
+
+  getAdminProductById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.adminUrl}/${id}`);
+  }
+
+  createProduct(data: any): Observable<any> {
+    return this.http.post<any>(this.adminUrl, data);
+  }
+
+  updateProduct(id: string, data: any): Observable<any> {
+    return this.http.put<any>(`${this.adminUrl}/${id}`, data);
+  }
+
+  deleteProduct(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.adminUrl}/${id}`);
+  }
 }
