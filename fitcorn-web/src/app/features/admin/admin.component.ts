@@ -87,7 +87,7 @@ import { ModalService } from '../../shared/services/modal.service';
         @if (loading()) {
           <div class="flex items-center justify-center py-24 gap-3 animate-pulse">
             <span class="animate-spin text-xl text-corn-500">⌛</span>
-            <span class="text-sm font-semibold text-charcoal-400">Loading admin panel datasets...</span>
+            <span class="text-sm font-semibold text-charcoal-400">Memuat data panel admin...</span>
           </div>
         } @else {
           
@@ -100,7 +100,7 @@ import { ModalService } from '../../shared/services/modal.service';
                 <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                      class="p-6 rounded-3xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
                   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-corn-400 to-yellow-500"></div>
-                  <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Total Revenue</span>
+                  <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Total Pendapatan</span>
                   <span class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white block">
                     Rp {{ stats()?.summary?.totalRevenue?.toLocaleString('id-ID') || 0 }}
                   </span>
@@ -109,7 +109,7 @@ import { ModalService } from '../../shared/services/modal.service';
                 <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                      class="p-6 rounded-3xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
                   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-indigo-500"></div>
-                  <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Total Orders</span>
+                  <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Total Pesanan</span>
                   <span class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white block">
                     {{ stats()?.summary?.totalOrders || 0 }}
                   </span>
@@ -118,7 +118,7 @@ import { ModalService } from '../../shared/services/modal.service';
                 <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                      class="p-6 rounded-3xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
                   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-emerald-500"></div>
-                  <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Registered Customers</span>
+                  <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Total Pelanggan</span>
                   <span class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white block">
                     {{ stats()?.summary?.totalCustomers || 0 }}
                   </span>
@@ -127,7 +127,7 @@ import { ModalService } from '../../shared/services/modal.service';
                 <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                      class="p-6 rounded-3xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
                   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-400 to-pink-500"></div>
-                  <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Active Popcorn Flavors</span>
+                  <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Total Produk</span>
                   <span class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white block">
                     {{ stats()?.summary?.totalProducts || 0 }}
                   </span>
@@ -137,7 +137,7 @@ import { ModalService } from '../../shared/services/modal.service';
               <!-- CSS Grid Bar Charts Sales Analytics -->
               <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                    class="p-8 rounded-3xl border shadow-premium space-y-6">
-                <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">Daily Sales History (30 Days)</h3>
+                <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">Riwayat Penjualan Harian (30 Hari)</h3>
                 
                 <div class="h-48 flex items-end justify-between gap-1 sm:gap-2 pt-6 border-b border-charcoal-200 dark:border-charcoal-850 px-2 overflow-x-auto">
                   @for (day of stats()?.salesAnalytics; track day.date) {
@@ -154,8 +154,8 @@ import { ModalService } from '../../shared/services/modal.service';
                   }
                 </div>
                 <div class="flex justify-between text-[10px] text-charcoal-455 font-bold uppercase tracking-widest px-2">
-                  <span>30 Days Ago</span>
-                  <span>Today</span>
+                  <span>30 Hari Lalu</span>
+                  <span>Hari Ini</span>
                 </div>
               </div>
 
@@ -164,7 +164,7 @@ import { ModalService } from '../../shared/services/modal.service';
                 <!-- Left: Top Selling -->
                 <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                      class="p-6 rounded-3xl border shadow-premium space-y-6">
-                  <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">Top 5 Selling Products</h3>
+                  <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">5 Produk Terlaris</h3>
                   <div class="space-y-4">
                     @for (prod of stats()?.topProducts; track prod.id) {
                       <div class="flex items-center justify-between text-sm font-medium">
@@ -172,7 +172,7 @@ import { ModalService } from '../../shared/services/modal.service';
                           <img [src]="prod.images?.[0]?.url || '/assets/popcorn.png'" [alt]="prod.name" class="w-10 h-10 object-cover rounded-xl bg-charcoal-150 dark:bg-charcoal-900" />
                           <div>
                             <h4 class="font-bold text-charcoal-800 dark:text-white">{{ prod.name }}</h4>
-                            <span class="text-[10px] text-corn-500 font-bold uppercase tracking-wider">Sold: {{ prod.soldCount }} Packs</span>
+                            <span class="text-[10px] text-corn-500 font-bold uppercase tracking-wider">Terjual: {{ prod.soldCount }} Bungkus</span>
                           </div>
                         </div>
                         <span class="font-extrabold text-charcoal-800 dark:text-white">Rp {{ prod.price.toLocaleString('id-ID') }}</span>
