@@ -904,37 +904,37 @@ import { ModalService } from '../../shared/services/modal.service';
           <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
                class="w-full max-w-md p-8 rounded-3xl border space-y-6 shadow-premium relative my-8">
             <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
-              {{ couponData.id ? 'Edit Coupon' : 'Add New Coupon' }}
+              {{ couponData.id ? 'Edit Kupon' : 'Tambah Kupon Baru' }}
             </h3>
             
             <div class="space-y-4 text-xs font-semibold">
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Coupon Code</label>
+                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Kode Kupon</label>
                   <input type="text" [(ngModel)]="couponData.code" placeholder="FITCORN10"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                          class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400 font-mono uppercase" />
                 </div>
                 <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Discount Type</label>
+                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Tipe Diskon</label>
                   <select [(ngModel)]="couponData.type"
                           [ngClass]="themeService.theme() === 'dark' ? 'bg-charcoal-950 border-charcoal-850 text-white' : 'bg-white border-charcoal-200 text-charcoal-800'"
                           class="w-full px-5 py-3 rounded-full border focus:outline-none focus:border-corn-400 cursor-pointer">
-                    <option value="percentage">Percentage (%)</option>
-                    <option value="fixed">Fixed Amount (Rp)</option>
+                    <option value="percentage">Persentase (%)</option>
+                    <option value="fixed">Nominal Tetap (Rp)</option>
                   </select>
                 </div>
               </div>
 
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Discount Value</label>
+                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nilai Diskon</label>
                   <input type="number" [(ngModel)]="couponData.value" placeholder="10"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                          class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
                 </div>
                 <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Min Purchase (Rp)</label>
+                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Min. Pembelian (Rp)</label>
                   <input type="number" [(ngModel)]="couponData.minPurchase" placeholder="0"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                          class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
@@ -943,14 +943,14 @@ import { ModalService } from '../../shared/services/modal.service';
 
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Max Discount cap (Rp)</label>
-                  <input type="number" [(ngModel)]="couponData.maxDiscount" placeholder="Optional limit cap"
+                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Maks. Diskon (Rp)</label>
+                  <input type="number" [(ngModel)]="couponData.maxDiscount" placeholder="Batas opsional"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                          class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
                 </div>
                 <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Usage Limit Count</label>
-                  <input type="number" [(ngModel)]="couponData.usageLimit" placeholder="Optional max redemptions"
+                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Batas Penggunaan</label>
+                  <input type="number" [(ngModel)]="couponData.usageLimit" placeholder="Maks. penebusan opsional"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                          class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
                 </div>
