@@ -824,7 +824,7 @@ import { ModalService } from '../../shared/services/modal.service';
               </div>
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Sort Order</label>
+                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Urutan</label>
                   <input type="number" [(ngModel)]="bannerData.sortOrder" placeholder="0"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                          class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
@@ -1412,7 +1412,7 @@ export class AdminComponent implements OnInit {
 
   saveInstagramPost() {
     if (!this.instagramData.imageUrl || !this.instagramData.postUrl) {
-      alert('Image URL and Post URL are required.');
+      alert('URL gambar dan URL postingan wajib diisi.');
       return;
     }
 
@@ -1518,7 +1518,7 @@ export class AdminComponent implements OnInit {
   }
 
   deleteCoupon(id: number) {
-    if (!confirm('Are you sure you want to delete this coupon?')) return;
+    if (!confirm('Apakah Anda yakin ingin menghapus kupon ini?')) return;
     this.adminService.deleteCoupon(id).subscribe({
       next: () => this.loadActiveTabDataset(),
       error: (err) => console.error('Failed to delete coupon', err)
