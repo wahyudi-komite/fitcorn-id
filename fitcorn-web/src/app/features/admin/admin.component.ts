@@ -775,8 +775,8 @@ import { ModalService } from '../../shared/services/modal.service';
             </div>
 
             <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeProductModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Cancel</button>
-              <button (click)="saveProduct()" [disabled]="imageUploadProgress()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer disabled:opacity-50">Save</button>
+              <button (click)="closeProductModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
+              <button (click)="saveProduct()" [disabled]="imageUploadProgress()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer disabled:opacity-50">Simpan</button>
             </div>
           </div>
         </div>
@@ -788,37 +788,37 @@ import { ModalService } from '../../shared/services/modal.service';
           <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
                class="w-full max-w-md p-8 rounded-3xl border space-y-6 shadow-premium relative my-8">
             <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
-              {{ bannerData.id ? 'Edit Banner' : 'Add New Banner' }}
+              {{ bannerData.id ? 'Edit Banner' : 'Tambah Banner Baru' }}
             </h3>
             
             <div class="space-y-4 text-xs font-semibold">
               <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Banner Title</label>
-                <input type="text" [(ngModel)]="bannerData.title" placeholder="e.g. Premium Popcorn"
+                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Judul Banner</label>
+                <input type="text" [(ngModel)]="bannerData.title" placeholder="cth. Premium Popcorn"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                        class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Subtitle</label>
-                <input type="text" [(ngModel)]="bannerData.subtitle" placeholder="e.g. Free shipping inside Java!"
+                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Subjudul</label>
+                <input type="text" [(ngModel)]="bannerData.subtitle" placeholder="cth. Gratis ongkir dalam Jawa!"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                        class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Banner Image URL</label>
-                <input type="text" [(ngModel)]="bannerData.imageUrl" placeholder="e.g. https://images.unsplash.com/..."
+                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Gambar Banner</label>
+                <input type="text" [(ngModel)]="bannerData.imageUrl" placeholder="cth. https://images.unsplash.com/..."
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                        class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Mobile Image URL (Optional)</label>
-                <input type="text" [(ngModel)]="bannerData.mobileImageUrl" placeholder="e.g. https://images.unsplash.com/..."
+                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Gambar Mobile (Opsional)</label>
+                <input type="text" [(ngModel)]="bannerData.mobileImageUrl" placeholder="cth. https://images.unsplash.com/..."
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                        class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Target Link URL</label>
-                <input type="text" [(ngModel)]="bannerData.linkUrl" placeholder="e.g. /produk/honey-butter"
+                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Tautan</label>
+                <input type="text" [(ngModel)]="bannerData.linkUrl" placeholder="cth. /produk/honey-butter"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                        class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
