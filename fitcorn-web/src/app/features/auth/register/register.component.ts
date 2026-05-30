@@ -75,40 +75,40 @@ import { FormsModule } from '@angular/forms';
         </form>
 
         <div class="relative flex items-center gap-3 py-2">
-          <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-800"></div>
-          <span class="text-[10px] font-bold uppercase tracking-widest text-charcoal-400">or sign up with</span>
-          <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-800"></div>
+          <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-700"></div>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-charcoal-400 dark:text-charcoal-300">or sign up with</span>
+          <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-700"></div>
         </div>
 
         <div class="grid grid-cols-3 gap-3">
           <button (click)="authService.socialLogin('google')" type="button"
-                  class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-charcoal-200 dark:border-charcoal-800 hover:bg-charcoal-100 dark:hover:bg-charcoal-900 transition-colors cursor-pointer text-sm font-medium text-charcoal-700 dark:text-charcoal-300">
+                  class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-charcoal-200 dark:border-charcoal-600 bg-transparent dark:bg-charcoal-900/40 hover:bg-charcoal-100 dark:hover:bg-charcoal-800/60 transition-colors cursor-pointer text-sm font-medium text-charcoal-700 dark:text-charcoal-200">
             <span class="text-lg">G</span>
             <span class="hidden sm:inline text-xs">Google</span>
           </button>
           <button (click)="authService.socialLogin('facebook')" type="button"
-                  class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-charcoal-200 dark:border-charcoal-800 hover:bg-charcoal-100 dark:hover:bg-charcoal-900 transition-colors cursor-pointer text-sm font-medium text-charcoal-700 dark:text-charcoal-300">
+                  class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-charcoal-200 dark:border-charcoal-600 bg-transparent dark:bg-charcoal-900/40 hover:bg-charcoal-100 dark:hover:bg-charcoal-800/60 transition-colors cursor-pointer text-sm font-medium text-charcoal-700 dark:text-charcoal-200">
             <span class="text-lg">f</span>
             <span class="hidden sm:inline text-xs">Facebook</span>
           </button>
           <button (click)="authService.socialLogin('instagram')" type="button"
-                  class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-charcoal-200 dark:border-charcoal-800 hover:bg-charcoal-100 dark:hover:bg-charcoal-900 transition-colors cursor-pointer text-sm font-medium text-charcoal-700 dark:text-charcoal-300">
+                  class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-charcoal-200 dark:border-charcoal-600 bg-transparent dark:bg-charcoal-900/40 hover:bg-charcoal-100 dark:hover:bg-charcoal-800/60 transition-colors cursor-pointer text-sm font-medium text-charcoal-700 dark:text-charcoal-200">
             <span class="text-lg">IG</span>
             <span class="hidden sm:inline text-xs">Instagram</span>
           </button>
         </div>
 
         <div class="relative flex items-center gap-3 py-1">
-          <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-800"></div>
-          <span class="text-[10px] font-bold uppercase tracking-widest text-charcoal-400">or via WhatsApp</span>
-          <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-800"></div>
+          <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-700"></div>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-charcoal-400 dark:text-charcoal-300">or via WhatsApp</span>
+          <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-700"></div>
         </div>
 
         <form (submit)="onRegisterWithPhone($event)" class="space-y-3">
           <div>
             <input type="tel" [(ngModel)]="phoneRegister" name="phoneRegister" placeholder="e.g. 081234567890" required
-                   [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                   class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400 text-sm" />
+                   [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-600 text-white' : 'border-charcoal-200 text-charcoal-800'"
+                   class="w-full px-5 py-3 rounded-full border bg-transparent dark:bg-charcoal-900/30 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 text-sm" />
           </div>
           <button type="submit" [disabled]="!phoneRegister || sendingOtpReg()"
                   class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">
@@ -119,18 +119,18 @@ import { FormsModule } from '@angular/forms';
             }
           </button>
           @if (otpMsgReg()) {
-            <div class="p-2 text-center text-xs font-semibold text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl">
+            <div class="p-2 text-center text-xs font-semibold text-emerald-500 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/20 dark:border-emerald-500/30 rounded-2xl">
               {{ otpMsgReg() }}
             </div>
           }
           @if (otpErrorReg()) {
-            <div class="p-2 text-center text-xs font-semibold text-red-500 bg-red-500/10 border border-red-500/20 rounded-2xl">
+            <div class="p-2 text-center text-xs font-semibold text-red-500 dark:text-red-400 bg-red-500/10 dark:bg-red-500/15 border border-red-500/20 dark:border-red-500/30 rounded-2xl">
               {{ otpErrorReg() }}
             </div>
           }
         </form>
 
-        <div class="text-center text-xs font-semibold text-charcoal-400 pt-2 border-t border-charcoal-100 dark:border-charcoal-900">
+        <div class="text-center text-xs font-semibold text-charcoal-400 dark:text-charcoal-300 pt-2 border-t border-charcoal-100 dark:border-charcoal-800">
           Already have an account?
           <a routerLink="/masuk" class="text-corn-500 hover:underline">Log in here</a>
         </div>

@@ -23,7 +23,7 @@ import { ThemeService } from '../../../core/services/theme.service';
           <div class="space-y-4">
             <div class="text-6xl">😕</div>
             <h1 class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white">Login Failed</h1>
-            <p class="text-sm text-charcoal-400">{{ errorMsg }}</p>
+            <p class="text-sm text-charcoal-400 dark:text-charcoal-300">{{ errorMsg }}</p>
             <a routerLink="/masuk"
                class="inline-block px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 transition-all duration-300 cursor-pointer">
               Try Again
@@ -33,7 +33,7 @@ import { ThemeService } from '../../../core/services/theme.service';
           <div class="space-y-4">
             <div class="text-6xl animate-pulse">🔄</div>
             <h1 class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white">Signing you in...</h1>
-            <p class="text-sm text-charcoal-400">Please wait while we complete your authentication</p>
+            <p class="text-sm text-charcoal-400 dark:text-charcoal-300">Please wait while we complete your authentication</p>
           </div>
         }
       </div>
