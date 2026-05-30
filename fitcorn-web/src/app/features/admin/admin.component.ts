@@ -386,8 +386,8 @@ import { ModalService } from '../../shared/services/modal.service';
           @if (activeTab() === 'customers') {
             <div class="space-y-6 animate-fade-in">
               <div>
-                <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Customers</h3>
-                <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Customer directories and status blockers</p>
+                <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Pelanggan</h3>
+                <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Direktori pelanggan dan status blokir</p>
               </div>
 
               <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
@@ -396,12 +396,12 @@ import { ModalService } from '../../shared/services/modal.service';
                   <table class="w-full text-sm">
                     <thead>
                       <tr class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest border-b border-charcoal-100 dark:border-charcoal-900 bg-charcoal-50 dark:bg-charcoal-900/50">
-                        <th class="text-left py-4 px-6">Name</th>
+                        <th class="text-left py-4 px-6">Nama</th>
                         <th class="text-left py-4 px-6">Email</th>
-                        <th class="text-left py-4 px-6">Phone Number</th>
-                        <th class="text-left py-4 px-6">Registration Date</th>
-                        <th class="text-left py-4 px-6">Blocker Status</th>
-                        <th class="text-right py-4 px-6">Actions</th>
+                        <th class="text-left py-4 px-6">No. Telepon</th>
+                        <th class="text-left py-4 px-6">Tanggal Daftar</th>
+                        <th class="text-left py-4 px-6">Status</th>
+                        <th class="text-right py-4 px-6">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -415,14 +415,14 @@ import { ModalService } from '../../shared/services/modal.service';
                             <span class="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider"
                                   [class.bg-green-100]="cust.isActive" [class.text-green-700]="cust.isActive"
                                   [class.bg-red-100]="!cust.isActive" [class.text-red-700]="!cust.isActive">
-                              {{ cust.isActive ? 'Active' : 'Blocked' }}
+                              {{ cust.isActive ? 'Aktif' : 'Diblokir' }}
                             </span>
                           </td>
                           <td class="py-4 px-6 text-right">
                             <button (click)="toggleCustomerStatus(cust)"
                                     [ngClass]="cust.isActive ? 'bg-red-500/20 text-red-600 hover:bg-red-500/40' : 'bg-green-500/20 text-green-600 hover:bg-green-500/40'"
                                     class="px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-colors cursor-pointer">
-                              {{ cust.isActive ? 'Block User' : 'Activate User' }}
+                              {{ cust.isActive ? 'Blokir Pengguna' : 'Aktifkan Pengguna' }}
                             </button>
                           </td>
                         </tr>
@@ -438,8 +438,8 @@ import { ModalService } from '../../shared/services/modal.service';
           @if (activeTab() === 'settings') {
             <div class="space-y-6 animate-fade-in max-w-2xl">
               <div>
-                <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Business Settings</h3>
-                <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Configure system parameters globally</p>
+                <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Pengaturan Bisnis</h3>
+                <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Konfigurasi parameter sistem secara global</p>
               </div>
 
               <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
@@ -457,7 +457,7 @@ import { ModalService } from '../../shared/services/modal.service';
 
                   <div class="pt-4 flex justify-end">
                     <button type="submit" class="px-8 py-4 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-sans font-bold text-xs tracking-widest uppercase rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer">
-                      Save All Settings
+                      Simpan Semua Pengaturan
                     </button>
                   </div>
                 </form>
@@ -470,11 +470,11 @@ import { ModalService } from '../../shared/services/modal.service';
             <div class="space-y-6 animate-fade-in">
               <div class="flex items-center justify-between">
                 <div>
-                  <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Marketing Banners</h3>
-                  <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Manage carousel hero banners and slide placements</p>
+                  <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Banner Pemasaran</h3>
+                  <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola banner hero carousel dan penempatan slide</p>
                 </div>
                 <button (click)="openBannerModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-full shadow cursor-pointer">
-                  + Add New Banner
+                  + Tambah Banner Baru
                 </button>
               </div>
 
