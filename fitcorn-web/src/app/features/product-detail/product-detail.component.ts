@@ -4,6 +4,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
 import { CartService } from '../../core/services/cart.service';
+import { AnalyticsService } from '../../core/services/analytics.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -65,7 +66,7 @@ import { CartService } from '../../core/services/cart.service';
               </span>
             }
           </div>
-
+ 
           <!-- Product Details -->
           <div class="space-y-8">
             
@@ -87,7 +88,7 @@ import { CartService } from '../../core/services/cart.service';
                 Rp {{ (selectedVariant()?.price || product().price).toLocaleString('id-ID') }}
               </p>
             </div>
-
+ 
             <!-- Description -->
             <div class="space-y-4">
               <h4 class="text-xs font-semibold text-charcoal-400 uppercase tracking-widest">The Recipe</h4>
@@ -95,7 +96,7 @@ import { CartService } from '../../core/services/cart.service';
                 {{ product().description }}
               </p>
             </div>
-
+ 
             <!-- Variant Selection -->
             @if (product().variants && product().variants.length > 0) {
               <div class="space-y-4">
@@ -114,7 +115,7 @@ import { CartService } from '../../core/services/cart.service';
                 </div>
               </div>
             }
-
+ 
             <!-- Add to Cart Action -->
             <div class="border-t border-charcoal-200 dark:border-charcoal-800 pt-8 space-y-4">
               <div class="flex items-center gap-6">
@@ -133,7 +134,7 @@ import { CartService } from '../../core/services/cart.service';
                     +
                   </button>
                 </div>
-
+ 
                 <!-- Add Button -->
                 <button (click)="addToCart()"
                         [disabled]="addingToCart()"
@@ -145,7 +146,7 @@ import { CartService } from '../../core/services/cart.service';
                   }
                 </button>
               </div>
-
+ 
               <!-- Cart Feedback Msg -->
               @if (feedbackMsg()) {
                 <div class="p-3.5 rounded-2xl text-xs font-semibold text-center border bg-green-500/10 border-green-500/30 text-green-600 dark:text-green-400 animate-pulse-gentle">
@@ -153,7 +154,7 @@ import { CartService } from '../../core/services/cart.service';
                 </div>
               }
             </div>
-
+ 
             <!-- Product details specifications grid -->
             <div class="grid grid-cols-2 gap-4 pt-4 border-t border-charcoal-200 dark:border-charcoal-800">
               <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'" class="p-4 rounded-2xl border">
@@ -167,17 +168,17 @@ import { CartService } from '../../core/services/cart.service';
                 <span class="font-bold text-charcoal-800 dark:text-white">6 Months</span>
               </div>
             </div>
-
+ 
           </div>
         </div>
-
+ 
         <!-- Related Products Showcase -->
         @if (relatedProducts().length > 0) {
           <div class="mt-24 border-t border-charcoal-200 dark:border-charcoal-800 pt-16 space-y-8">
             <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">
               Related Flavors You'll Love
             </h3>
-
+ 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
               @for (item of relatedProducts(); track item.id) {
                 <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark border-charcoal-800' : 'glassmorphism-light border-charcoal-200'"
@@ -216,17 +217,18 @@ export class ProductDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private productsService = inject(ProductsService);
   private cartService = inject(CartService);
-
+  private analyticsService = inject(AnalyticsService);
+ 
   product = signal<any | null>(null);
   relatedProducts = signal<any[]>([]);
   loading = signal<boolean>(true);
   error = signal<string | null>(null);
-
+ 
   selectedVariant = signal<any | null>(null);
   quantity = signal<number>(1);
   addingToCart = signal<boolean>(false);
   feedbackMsg = signal<string>('');
-
+ 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const slug = params.get('slug');
@@ -235,12 +237,12 @@ export class ProductDetailComponent implements OnInit {
       }
     });
   }
-
+ 
   loadProductDetails(slug: string) {
     this.loading.set(true);
     this.error.set(null);
     this.quantity.set(1);
-
+ 
     this.productsService.getProductBySlug(slug).subscribe({
       next: (prod) => {
         this.product.set(prod);
@@ -259,44 +261,47 @@ export class ProductDetailComponent implements OnInit {
       }
     });
   }
-
+ 
   loadRelatedProducts(slug: string) {
     this.productsService.getRelatedProducts(slug).subscribe({
       next: (list) => this.relatedProducts.set(list || []),
       error: () => this.relatedProducts.set([])
     });
   }
-
+ 
   onRelatedClick(slug: string) {
     this.loadProductDetails(slug);
   }
-
+ 
   selectVariant(v: any) {
     this.selectedVariant.set(v);
   }
-
+ 
   incrementQty() {
     this.quantity.update(q => q + 1);
   }
-
+ 
   decrementQty() {
     this.quantity.update(q => q > 1 ? q - 1 : 1);
   }
-
+ 
   addToCart() {
     const prod = this.product();
     if (!prod) return;
-
+ 
     this.addingToCart.set(true);
     this.feedbackMsg.set('');
-
+ 
     const variantId = this.selectedVariant()?.id;
-
+ 
     this.cartService.addItem(prod.id, this.quantity(), variantId).subscribe({
       next: () => {
         this.addingToCart.set(false);
         this.feedbackMsg.set(`Successfully added ${this.quantity()} pack(s) to your cart!`);
         
+        // Track GA4/FB Pixel/TikTok AddToCart event
+        this.analyticsService.trackAddToCart(prod, this.quantity());
+
         // Clear message after 3 seconds
         setTimeout(() => {
           this.feedbackMsg.set('');

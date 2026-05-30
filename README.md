@@ -1,8 +1,8 @@
 # 📖 DOKUMENTASI TEKNIS LENGKAP — FITCORN E-COMMERCE
 **Versi Dokumen:** 1.0.0  
 **Tanggal:** 30 Mei 2026  
-**Dibuat oleh:** Analisis Otomatis via Antigravity AI  
-**Status Proyek:** 🟡 In Development (Backend Complete, Frontend Complete, Integrasi Aktif)
+**Dibuat oleh:** Analisis Otomatis via Antigravity AI + Update Manual  
+**Status Proyek:** 🟢 In Development (Backend Complete, Frontend Complete, Admin Panel Integrasi Aktif)
 
 ---
 
@@ -98,19 +98,39 @@ Admin: Login → Manage Products/Inventory → Process Orders → Update Trackin
 - **Login:** Verifikasi password, generate `accessToken` (JWT, short-lived) + `refreshToken` (JWT, long-lived). Refresh token di-store di database field `users.refresh_token`.
 - **Refresh Session:** Endpoint `/api/auth/refresh` menggunakan `refreshToken` dari HttpOnly Cookie untuk menerbitkan access token baru.
 - **Logout:** Menghapus `refresh_token` dari DB, membersihkan localStorage di frontend.
+- **Password Visibility Toggle:** Input password di halaman login dan register memiliki tombol show/hide (ikon mata) untuk memudahkan pengguna melihat password yang diketik.
 - **Auto-seeding Admin:** Saat aplikasi pertama kali start, `AuthService.onModuleInit()` otomatis membuat akun `admin@fitcorn.com` dan role `admin`/`customer` jika belum ada.
-- **Role-based Access:** Guard `JwtAuthGuard` terpasang secara **global** di `app.module.ts`. Route publik menggunakan decorator `@Public()`.
+
+#### Role-based Access Control (RBAC)
+- Guard `JwtAuthGuard` terpasang secara **global** di `app.module.ts`. Route publik menggunakan decorator `@Public()`.
+- **Social Login (OAuth 2.0):** Login/register via Google, Facebook, dan Instagram — redirect-based flow. Backend menyediakan Passport strategies untuk masing-masing provider. User dibuat otomatis (find-or-create pattern) saat pertama kali login via OAuth.
+- **WhatsApp OTP Login:** Login/register via nomor telepon dengan OTP 6 digit. Dev mode: OTP muncul di console.log. Siap diintegrasikan dengan gateway WhatsApp (Fonnte, dll). OTP memiliki expiry 5 menit.
+- **`@Roles()` Decorator** (`fitcorn-api/src/common/decorators/roles.decorator.ts`) — Menandai endpoint mana yang hanya bisa diakses role tertentu.
+- **`RolesGuard`** (`fitcorn-api/src/common/guards/roles.guard.ts`) — Membaca role dari JWT payload dan mencocokkan dengan `@Roles()` yang ditentukan.
+- **Admin Controllers** dipisah dari public controllers untuk keamanan yang lebih ketat:
+  - `AdminProductsController` — CRUD produk
+  - `AdminBannersController` — Manajemen banner & Instagram gallery
+  - `AdminCouponsController` — CRUD kupon diskon
+  - `AdminOrdersController` — Lihat semua order, update status, input tracking number
+- **Frontend adminGuard** (`fitcorn-web/src/app/core/guards/admin.guard.ts`) — Redirect non-admin user dari route `/admin/*`.
 
 **Frontend Flow:**
 - `AuthService` (Angular) menyimpan `accessToken` ke `localStorage`.
 - `authInterceptor` menyuntikkan `Authorization: Bearer {token}` ke setiap HTTP request.
 - `errorInterceptor` menangkap `401` dan otomatis memanggil `refreshSession()`, lalu retry request asal.
+- `AuthService.isAdmin()` method digunakan komponen dan guard untuk mengecek role user.
+- **User Avatar / Initial** ditampilkan di navbar (kanan atas) untuk semua halaman saat user login — menampilkan inisial nama dan dropdown menu.
+- **Admin Link** otomatis muncul di navbar (desktop & mobile menu) jika `isAdmin()` mengembalikan `true`.
+
+### 3.2 Manajemen Produk & Katalog ✅ SELESAI
 
 ---
 
 ### 3.2 Manajemen Produk & Katalog ✅ SELESAI
 
 - **CRUD Produk (Admin):** Create, Read, Update, Delete produk beserta gambar, varian, dan inventori.
+  - **Backend:** `AdminProductsController` — endpoint REST terpisah untuk admin dengan `@Roles('admin')`.
+  - **Frontend:** `AdminProductListComponent` (tabel daftar produk dengan aksi edit/hapus) + `AdminProductFormComponent` (form create/edit dengan upload gambar, variant manager, inventory fields). Kedua komponen menggunakan `RenderMode.Client` untuk menghindari error SSR.
 - **Pencarian & Filter:** Filter berdasarkan kategori, rentang harga (`minPrice`/`maxPrice`), dan kata kunci (`search LIKE`).
 - **Sorting:** Sort by `price_asc`, `price_desc`, `popular` (berdasarkan `soldCount`), `latest`.
 - **Paginasi:** Response mengikutkan `meta: { total, page, limit, totalPages }`.
@@ -269,18 +289,22 @@ PENDING → WAITING_PAYMENT → PAID → PROCESSING → SHIPPED → DELIVERED
 | `/keranjang` | CartComponent | Prerender | Manajemen cart |
 | `/checkout` | CheckoutComponent | Prerender | Multi-step checkout |
 | `/pesanan/:id` | OrderTrackingComponent | **Server (SSR)** | Status & tracking order |
-| `/masuk` | LoginComponent | Prerender | Halaman login |
-| `/daftar` | RegisterComponent | Prerender | Halaman register |
+| `/masuk` | LoginComponent | Prerender | Halaman login (dengan password visibility toggle) |
+| `/daftar` | RegisterComponent | Prerender | Halaman register (dengan password visibility toggle) |
 | `/akun` | DashboardComponent | **Client** | Dashboard user (auth required) |
+| `/admin/produk` | AdminProductListComponent | **Client** | Daftar produk (admin only) |
+| `/admin/produk/:id` | AdminProductFormComponent | **Client** | Create/Edit produk (admin only) |
+| `/auth/callback` | OauthCallbackComponent | **Client** | Callback handler untuk OAuth login (Google/Facebook/Instagram) |
 
 **Shared Components:**
-- `navbar` — Navigasi utama dengan cart badge (computed signal) dan theme toggle.
+- `navbar` — Navigasi utama dengan cart badge (computed signal), theme toggle, avatar/initial user (saat login), dan link Admin (khusus admin).
 - `footer` — Footer dengan informasi brand.
 - `floating-buttons` — Tombol scroll-to-top, WhatsApp, dll.
 - `exit-intent-popup` — Popup promosi saat user akan meninggalkan halaman.
+- `confirm-modal` — Custom modal pengganti native `alert()` / `confirm()` dengan styling glassmorphism konsisten. Dipanggil via `ModalService` (RxJS Subject-based). Diimplementasikan di 5 tempat: admin product delete, cart item remove, cart clear, checkout cancel, dashboard logout.
 
 **Core Services:**
-- `AuthService` — Manajemen session (Signals), login/logout/register/refresh.
+- `AuthService` — Manajemen session (Signals), login/logout/register/refresh, social login (Google/Facebook/Instagram), WhatsApp OTP.
 - `CartService` — State management cart (Signals + computed), termasuk guest cart.
 - `CheckoutService` — Agregasi API shipping, orders, dan payments.
 - `ProductsService` — Fetch produk, katalog, detail.
@@ -559,18 +583,20 @@ Pivot: `product_category_map` (product_id, category_id)
 
 ```
 fitcorn/
-├── Dokumentasi.md                    # ← Dokumen ini
+├── README.md                    # ← Dokumen ini (this file)
 ├── fitcorn-api/                      # NestJS Backend
 │   └── src/
 │       ├── main.ts                   # Entry point (Helmet, CORS, ValidationPipe)
 │       ├── app.module.ts             # Root module (ThrottlerModule, JwtAuthGuard global)
-│       ├── common/
-│       │   ├── decorators/
-│       │   │   ├── current-user.decorator.ts
-│       │   │   └── public.decorator.ts
-│       │   └── guards/
-│       │       ├── jwt-auth.guard.ts
-│       │       └── jwt-refresh.guard.ts
+│   ├── common/
+│   │   ├── decorators/
+│   │   │   ├── current-user.decorator.ts
+│   │   │   ├── public.decorator.ts
+│   │   │   └── roles.decorator.ts          # @Roles() — batasi akses berdasarkan role
+│   │   └── guards/
+│   │       ├── jwt-auth.guard.ts
+│   │       ├── jwt-refresh.guard.ts
+│   │       └── roles.guard.ts              # Cocokkan role JWT dengan @Roles()
 │       ├── config/
 │       │   ├── app.config.ts
 │       │   ├── database.config.ts
@@ -581,6 +607,8 @@ fitcorn/
 │           ├── auth/                 # Login, register, refresh, logout, seed admin
 │           ├── users/                # Entity: User, Role, Permission
 │           ├── products/             # CRUD produk, kategori, inventori, seed data
+│           │   ├── admin-products.controller.ts  # Admin CRUD (dengan @Roles('admin'))
+│           │   └── products.controller.ts        # Public read-only endpoints
 │           ├── cart/                 # Guest cart, member cart, merge
 │           ├── wishlist/             # Simpan/hapus produk favorit
 │           ├── orders/               # Checkout ACID, tracking, admin order mgmt
@@ -592,8 +620,15 @@ fitcorn/
 │           │   └── providers/
 │           │       ├── rajaongkir.provider.ts
 │           │       └── shipping-provider.interface.ts
+│           ├── orders/               # Checkout ACID, tracking, admin order mgmt
+│           │   ├── admin-orders.controller.ts    # Admin: all orders, status, tracking
+│           │   └── orders.controller.ts          # Public: create order, my orders
 │           ├── coupons/              # CRUD kupon (integrasi ke order belum aktif)
+│           │   ├── admin-coupons.controller.ts   # Admin CRUD dengan @Roles('admin')
+│           │   └── coupons.controller.ts         # Public validate only
 │           ├── banners/              # CMS banner & Instagram gallery
+│           │   ├── admin-banners.controller.ts   # Admin CRUD dengan @Roles('admin')
+│           │   └── banners.controller.ts         # Public read-only
 │           ├── notifications/        # Entity notifikasi (service belum dibuat)
 │           ├── settings/             # Key-value store konfigurasi (entity only)
 │           └── admin/                # Entity audit log (service belum dibuat)
@@ -618,22 +653,28 @@ fitcorn/
         │       ├── seo.service.ts          # Title, meta, OpenGraph, Schema.org
         │       └── theme.service.ts        # Dark/light mode toggle + persistence
         ├── features/
-        │   ├── home/                       # Landing page
-        │   ├── catalog/                    # Product listing + filter/sort
-        │   ├── product-detail/             # Detail produk (SSR mode)
-        │   ├── cart/                       # Keranjang belanja
-        │   ├── checkout/                   # Multi-step checkout flow
-        │   ├── order-tracking/             # Status order (SSR mode)
-        │   ├── dashboard/                  # Akun user (CSR mode)
-        │   └── auth/
-        │       ├── login/
-        │       └── register/
+            │   ├── home/                       # Landing page
+            │   ├── catalog/                    # Product listing + filter/sort
+            │   ├── product-detail/             # Detail produk (SSR mode)
+            │   ├── cart/                       # Keranjang belanja
+            │   ├── checkout/                   # Multi-step checkout flow
+            │   ├── order-tracking/             # Status order (SSR mode)
+            │   ├── dashboard/                  # Akun user (CSR mode)
+            │   ├── admin/                      # Admin panel (CSR mode, RenderMode.Client)
+            │   │   ├── admin-product-list/     # Tabel daftar produk
+            │   │   └── admin-product-form/     # Create/Edit produk
+            │   └── auth/
+            │       ├── login/                  # Password visibility toggle
+            │       └── register/               # Password visibility toggle
         └── shared/
             ├── components/
-            │   ├── navbar/
+            │   ├── navbar/                    # Cart badge, avatar/initial, admin link
             │   ├── footer/
             │   ├── floating-buttons/
-            │   └── exit-intent-popup/
+            │   ├── exit-intent-popup/
+            │   └── confirm-modal/             # Custom modal ganti native alert/confirm
+            ├── services/
+            │   └── modal.service.ts            # RxJS Subject-based modal trigger
             └── pipes/
                 ├── currency-idr.pipe.ts
                 └── truncate.pipe.ts
@@ -651,6 +692,14 @@ fitcorn/
 | POST | `/refresh` | RefreshToken | Refresh access token |
 | POST | `/logout` | JWT | Logout, hapus refresh token |
 | GET | `/me` | JWT | Get profil user aktif |
+| GET | `/google` | Public | Redirect ke Google OAuth consent |
+| GET | `/google/callback` | Public | Callback Google OAuth |
+| GET | `/facebook` | Public | Redirect ke Facebook OAuth consent |
+| GET | `/facebook/callback` | Public | Callback Facebook OAuth |
+| GET | `/instagram` | Public | Redirect ke Instagram OAuth consent |
+| GET | `/instagram/callback` | Public | Callback Instagram OAuth |
+| POST | `/phone/send-otp` | Public | Kirim OTP ke nomor WhatsApp |
+| POST | `/phone/verify-otp` | Public | Verifikasi OTP dan login/register |
 
 ### Products (`/api/products`)
 | Method | Endpoint | Auth | Keterangan |
@@ -734,13 +783,16 @@ fitcorn/
 
 ### TODO Prioritas Tinggi
 - [ ] **Aktifkan validasi kupon di OrdersService** — Inject `CouponsService`, validasi kode, hitung diskon yang benar.
+- [ ] **Daftarkan OAuth app credentials** — Buat Google OAuth Client ID, Facebook App, Instagram App. Isi di `.env`.
 - [ ] **Ubah `synchronize: false` + buat migrations** — Sebelum production deployment.
 - [ ] **Hashing refresh token** — Hash sebelum simpan ke DB, compare saat refresh.
 - [ ] **Pindahkan API URL ke `environment.ts`** — Hapus semua hardcoded `http://localhost:3000`.
 - [ ] **Buat NotificationsModule** — Controller + Service untuk CRUD notifikasi user.
-- [ ] **Buat AdminModule** — Controller + Service untuk dashboard admin.
+- [ ] **Buat Admin CRUD untuk banner, kupon, order di frontend** — Backend admin controllers sudah siap, frontend belum dibuat.
+- [ ] **Integrasikan WhatsApp Gateway nyata** — Ganti console.log OTP dengan panggilan API Fonnte/WABlas.
 - [ ] **PM2 config** — Buat `ecosystem.config.js` untuk production deployment.
 - [ ] **Redis Cache** — Cache hasil query katalog produk dan response RajaOngkir.
+- [ ] **Update environment.ts** — Pindahkan social login client keys ke environment config.
 
 ---
 
@@ -808,6 +860,19 @@ FRONTEND_URL=https://fitcorn.com
 MIDTRANS_SERVER_KEY=<midtrans-prod-key>
 MIDTRANS_CLIENT_KEY=<midtrans-client-key>
 RAJAONGKIR_API_KEY=<rajaongkir-key>
+
+# OAuth Social Login
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+FACEBOOK_CLIENT_ID=your_facebook_app_id
+FACEBOOK_CLIENT_SECRET=your_facebook_app_secret
+INSTAGRAM_CLIENT_ID=your_instagram_app_id
+INSTAGRAM_CLIENT_SECRET=your_instagram_app_secret
+
+# WhatsApp OTP
+WA_GATEWAY_URL=
+WA_GATEWAY_TOKEN=
+OTP_EXPIRY_MINUTES=5
 ```
 
 ### Langkah Deployment Backend
@@ -861,4 +926,33 @@ server {
 
 ---
 
-*Dokumen ini dibuat dari analisis source code aktual. Perbarui dokumen ini setiap kali ada perubahan arsitektur signifikan.*
+## 🔍 13. TOOLING & ANALISIS KODE (KNOWLEDGE GRAPH)
+
+Proyek ini menggunakan **Graphify** — pipeline knowledge graph otomatis untuk memetakan relasi antar modul, file, dan konsep dalam codebase.
+
+### Cara Menjalankan
+```bash
+# Dari root proyek
+/graphify
+
+# Atau via skill (di Claude/open)
+load skill graphify-windows
+```
+
+### Output (`graphify-out/`)
+| File | Deskripsi |
+|---|---|
+| `graph.html` | Visualisasi interaktif force-directed graph (D3.js) — 675 node, 746 edge, 106 komunitas |
+| `graph.json` | Data graph mentah (node + link + hyperedge) |
+| `GRAPH_REPORT.md` | Laporan lengkap: komunitas, hub, koneksi tak terduga |
+
+### Komunitas Utama Discovery
+1. **NestJS Modules** (79 node) — Hub pusat seluruh backend
+2. **Cart Services** (46 node) — State management cart + guest flow
+3. **Checkout Flow** (39 node) — ACID transaction + pessimistic locking
+4. **Admin Panel** (39 node) — CRUD admin + role-based access
+5. **Angular SSR Setup** (30 node) — Server-side rendering + routing
+
+---
+
+*Dokumen ini dibuat dari analisis source code aktual dan diperbarui manual. Perbarui dokumen ini setiap kali ada perubahan arsitektur signifikan.*

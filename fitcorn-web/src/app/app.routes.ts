@@ -35,6 +35,10 @@ export const routes: Routes = [
     loadComponent: () => import('./features/auth/register/register.component').then((m) => m.RegisterComponent),
   },
   {
+    path: 'auth/callback',
+    loadComponent: () => import('./features/auth/callback/oauth-callback.component').then((m) => m.OauthCallbackComponent),
+  },
+  {
     path: 'akun',
     loadComponent: () => import('./features/dashboard/dashboard.component').then((m) => m.DashboardComponent),
   },
@@ -55,6 +59,11 @@ export const routes: Routes = [
         loadComponent: () => import('./features/admin/product-form.component').then((m) => m.AdminProductFormComponent),
       },
     ],
+  },
+  {
+    path: 'admin',
+    canActivate: [adminGuard],
+    loadComponent: () => import('./features/admin/admin.component').then((m) => m.AdminComponent),
   },
   {
     path: '**',

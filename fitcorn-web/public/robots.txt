@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Host & Sitemap Location
+Host: https://fitcorn.id
+Sitemap: https://fitcorn.id/sitemap.xml

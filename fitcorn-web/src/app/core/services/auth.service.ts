@@ -54,6 +54,33 @@ export class AuthService {
     );
   }
 
+  setSession(token: string, user: any) {
+    this.accessToken.set(token);
+    this.currentUser.set(user);
+    if (this.isBrowser) {
+      localStorage.setItem('fitcorn_access_token', token);
+      localStorage.setItem('fitcorn_user', JSON.stringify(user));
+    }
+  }
+
+  socialLogin(provider: string): void {
+    window.location.href = `${this.apiUrl}/${provider}`;
+  }
+
+  sendOtp(phone: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/phone/send-otp`, { phone });
+  }
+
+  verifyOtp(phone: string, otp: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/phone/verify-otp`, { phone, otp }).pipe(
+      tap(res => {
+        if (res && res.accessToken) {
+          this.setSession(res.accessToken, res.user);
+        }
+      }),
+    );
+  }
+
   refreshSession(): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/refresh`, {}, { withCredentials: true }).pipe(
       tap((res) => {

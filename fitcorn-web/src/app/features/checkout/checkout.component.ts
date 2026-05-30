@@ -7,6 +7,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { CheckoutService } from '../../core/services/checkout.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { FormsModule } from '@angular/forms';
+import { AnalyticsService } from '../../core/services/analytics.service';
 
 @Component({
   selector: 'app-checkout',
@@ -276,6 +277,7 @@ export class CheckoutComponent implements OnInit {
   private modalService = inject(ModalService);
   private checkoutService = inject(CheckoutService);
   private router = inject(Router);
+  private analyticsService = inject(AnalyticsService);
 
   savedAddresses = signal<any[]>([]);
   selectedAddress = signal<any | null>(null);
@@ -452,6 +454,9 @@ export class CheckoutComponent implements OnInit {
 
     this.checkoutService.createOrder(payload).subscribe({
       next: (order) => {
+        // Trigger GA4/FB/TikTok Purchase tracking event
+        this.analyticsService.trackPurchase(order);
+
         // Trigger payment generation
         this.checkoutService.createPayment(order.id, 'midtrans').subscribe({
           next: (payment) => {

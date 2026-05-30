@@ -21,11 +21,29 @@ export default registerAs('app', () => ({
     originCityId: process.env.RAJAONGKIR_ORIGIN_CITY_ID || '501',
   },
 
+  // Social Login — OAuth
+  google: {
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackUrl: process.env.GOOGLE_CALLBACK_URL || 'http://localhost:3000/api/auth/google/callback',
+  },
+  facebook: {
+    clientId: process.env.FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    callbackUrl: process.env.FACEBOOK_CALLBACK_URL || 'http://localhost:3000/api/auth/facebook/callback',
+  },
+  instagram: {
+    clientId: process.env.INSTAGRAM_CLIENT_ID,
+    clientSecret: process.env.INSTAGRAM_CLIENT_SECRET,
+    callbackUrl: process.env.INSTAGRAM_CALLBACK_URL || 'http://localhost:3000/api/auth/instagram/callback',
+  },
+
   // WhatsApp
   whatsapp: {
     gatewayUrl: process.env.WA_GATEWAY_URL,
     token: process.env.WA_GATEWAY_TOKEN,
     businessNumber: process.env.WA_BUSINESS_NUMBER,
+    otpExpiryMinutes: parseInt(process.env.OTP_EXPIRY_MINUTES || '5', 10),
   },
 
   // Email

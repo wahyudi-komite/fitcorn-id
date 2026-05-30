@@ -127,9 +127,15 @@ import { CheckoutService } from '../../core/services/checkout.service';
           <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                class="p-8 rounded-3xl border space-y-6 shadow-premium">
             
-            <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white border-b border-charcoal-150 dark:border-charcoal-900 pb-4">
-              Order Details
-            </h3>
+            <div class="flex items-center justify-between border-b border-charcoal-150 dark:border-charcoal-900 pb-4">
+              <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
+                Order Details
+              </h3>
+              <button (click)="printInvoice()" 
+                      class="px-4 py-2 text-xs font-bold bg-charcoal-100 dark:bg-charcoal-800 hover:bg-corn-100 dark:hover:bg-charcoal-700 text-charcoal-600 dark:text-charcoal-350 rounded-full transition-colors cursor-pointer flex items-center gap-1.5 no-print">
+                <span>🖨️</span> Print Invoice
+              </button>
+            </div>
 
             <!-- Item Rows -->
             <div class="space-y-4">
@@ -257,5 +263,9 @@ export class OrderTrackingComponent implements OnInit, OnDestroy {
         }
       }
     });
+  }
+
+  printInvoice() {
+    window.print();
   }
 }

@@ -42,6 +42,18 @@ export class User {
   @Column({ name: 'refresh_token', type: 'varchar', length: 500, nullable: true, select: false })
   refreshToken?: string | null;
 
+  @Column({ name: 'phone_verified', type: 'boolean', default: false })
+  phoneVerified: boolean;
+
+  @Column({ name: 'google_id', type: 'varchar', length: 255, nullable: true, unique: true })
+  googleId?: string;
+
+  @Column({ name: 'facebook_id', type: 'varchar', length: 255, nullable: true, unique: true })
+  facebookId?: string;
+
+  @Column({ name: 'instagram_id', type: 'varchar', length: 255, nullable: true, unique: true })
+  instagramId?: string;
+
   @Column({ name: 'last_login_at', type: 'timestamp', nullable: true })
   lastLoginAt: Date;
 
