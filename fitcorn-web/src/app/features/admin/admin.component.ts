@@ -21,9 +21,9 @@ import { ModalService } from '../../shared/services/modal.service';
         
         <div>
           <h2 class="text-xl font-display font-extrabold text-charcoal-800 dark:text-white flex items-center gap-2">
-            <span>🛡️</span> Admin Panel
+            <span>🛡️</span> Panel Admin
           </h2>
-          <p class="text-[10px] text-charcoal-400 font-semibold uppercase tracking-wider mt-1">FITCORN Cockpit</p>
+          <p class="text-[10px] text-charcoal-400 font-semibold uppercase tracking-wider mt-1">Kokpit FITCORN</p>
         </div>
 
         <nav class="flex-1 flex flex-col gap-2 text-sm font-semibold">

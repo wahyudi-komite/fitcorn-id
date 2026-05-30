@@ -100,12 +100,12 @@ import { ProductsService } from '../../core/services/products.service';
               <label class="flex items-center gap-2 cursor-pointer">
                 <input type="checkbox" [(ngModel)]="form.isFeatured" name="isFeatured"
                        class="w-4 h-4 rounded accent-corn-400" />
-                <span class="text-xs font-bold text-charcoal-500 uppercase tracking-wider">Featured</span>
+                <span class="text-xs font-bold text-charcoal-500 uppercase tracking-wider">Unggulan</span>
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
                 <input type="checkbox" [(ngModel)]="form.isActive" name="isActive"
                        class="w-4 h-4 rounded accent-corn-400" />
-                <span class="text-xs font-bold text-charcoal-500 uppercase tracking-wider">Active</span>
+                <span class="text-xs font-bold text-charcoal-500 uppercase tracking-wider">Aktif</span>
               </label>
             </div>
           </div>
@@ -114,9 +114,9 @@ import { ProductsService } from '../../core/services/products.service';
             <button type="submit" [disabled]="saving()"
                     class="w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
               @if (saving()) {
-                Saving...
+                Menyimpan...
               } @else {
-                {{ isEdit() ? 'Update Product' : 'Create Product' }}
+                {{ isEdit() ? 'Perbarui Produk' : 'Buat Produk' }}
               }
             </button>
 
@@ -184,14 +184,14 @@ export class AdminProductFormComponent implements OnInit {
         };
       },
       error: () => {
-        this.errorMsg.set('Failed to load product');
+        this.errorMsg.set('Gagal memuat produk');
       },
     });
   }
 
   onSubmit() {
     if (!this.form.name || !this.form.description || !this.form.price || !this.form.weight) {
-      this.errorMsg.set('Please fill in all required fields');
+      this.errorMsg.set('Harap isi semua field yang wajib diisi');
       return;
     }
 
@@ -215,7 +215,7 @@ export class AdminProductFormComponent implements OnInit {
         this.router.navigate(['/admin/produk']);
       },
       error: (err) => {
-        this.errorMsg.set(err.error?.message || 'Failed to save product');
+        this.errorMsg.set(err.error?.message || 'Gagal menyimpan produk');
         this.saving.set(false);
       },
     });
