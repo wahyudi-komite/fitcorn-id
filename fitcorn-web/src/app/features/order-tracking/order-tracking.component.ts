@@ -18,11 +18,11 @@ import { CheckoutService } from '../../core/services/checkout.service';
             📦
           </div>
           <h1 class="text-4xl font-display font-extrabold text-charcoal-800 dark:text-white">
-            Order Status Details
+            Detail Status Pesanan
           </h1>
           @if (order()) {
             <p class="text-charcoal-500 dark:text-charcoal-400 font-medium max-w-md mx-auto">
-              Fitcorn E-Commerce order code:
+              Kode pesanan Fitcorn:
               <span class="block font-bold text-charcoal-800 dark:text-white mt-1 text-lg tracking-wider uppercase">
                 {{ order().orderNumber }}
               </span>
@@ -34,7 +34,7 @@ import { CheckoutService } from '../../core/services/checkout.service';
         @if (loading()) {
           <div class="flex items-center justify-center py-12 gap-3 animate-pulse">
             <span class="animate-spin text-xl text-corn-500">⌛</span>
-            <span class="text-sm font-semibold text-charcoal-400">Loading order status details...</span>
+            <span class="text-sm font-semibold text-charcoal-400">Memuat detail status pesanan...</span>
           </div>
         } @else if (error()) {
           <!-- Error State -->
@@ -42,10 +42,10 @@ import { CheckoutService } from '../../core/services/checkout.service';
             <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-red-100 dark:bg-red-950 text-red-500 text-xl mb-4">
               ⚠️
             </div>
-            <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white mb-2">Error Loading Order</h3>
+            <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white mb-2">Gagal Memuat Pesanan</h3>
             <p class="text-charcoal-500 dark:text-charcoal-400 font-medium mb-6">{{ error() }}</p>
             <a routerLink="/produk" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300">
-              Browse Products
+              Jelajahi Produk
             </a>
           </div>
         } @else {
@@ -59,17 +59,17 @@ import { CheckoutService } from '../../core/services/checkout.service';
               
               <div class="space-y-2 text-center md:text-left pl-2">
                 <h4 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white flex items-center justify-center md:justify-start gap-2">
-                  <span>💳</span> Awaiting Payment
+                  <span>💳</span> Menunggu Pembayaran
                 </h4>
                 <p class="text-xs text-charcoal-500 dark:text-charcoal-400 font-medium">
-                  Please complete your payment of <span class="font-bold text-corn-500">Rp {{ order().total.toLocaleString('id-ID') }}</span> to process shipment.
+                  Harap selesaikan pembayaran sebesar <span class="font-bold text-corn-500">Rp {{ order().total.toLocaleString('id-ID') }}</span> untuk memproses pengiriman.
                 </p>
               </div>
 
               @if (payment().paymentUrl) {
                 <a [href]="payment().paymentUrl" target="_blank"
                    class="px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-md hover:shadow-lg transition-all duration-300 shrink-0 transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-2">
-                  Pay with Midtrans
+                  Bayar dengan Midtrans
                 </a>
               }
             </div>
@@ -79,7 +79,7 @@ import { CheckoutService } from '../../core/services/checkout.service';
           <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                class="p-8 rounded-3xl border space-y-8 shadow-premium">
             <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white border-b border-charcoal-150 dark:border-charcoal-900 pb-4">
-              Tracking Progress
+              Lacak Perkembangan
             </h3>
 
             <div class="relative pl-8 border-l border-charcoal-200 dark:border-charcoal-800 space-y-8 text-sm">
@@ -98,7 +98,7 @@ import { CheckoutService } from '../../core/services/checkout.service';
                     </h4>
                     @if (h.done && h.time) {
                       <span class="block text-[10px] text-charcoal-455 dark:text-charcoal-500 font-semibold mt-0.5">
-                        Updated at: {{ h.time | date:'dd MMM yyyy, HH:mm' }}
+                        Diperbarui: {{ h.time | date:'dd MMM yyyy, HH:mm' }}
                       </span>
                     }
                   </div>
@@ -110,13 +110,13 @@ import { CheckoutService } from '../../core/services/checkout.service';
             @if (order().trackingNumber) {
               <div class="p-4 rounded-2xl bg-charcoal-100 dark:bg-charcoal-900/50 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs font-semibold">
                 <div>
-                  <span class="text-charcoal-400 block mb-1">COURIER AIRWAYBILL</span>
+                  <span class="text-charcoal-400 block mb-1">NOMOR RESI KURIR</span>
                   <span class="text-charcoal-800 dark:text-white font-bold uppercase tracking-wider">
                     {{ order().courierName }} - {{ order().courierService }}
                   </span>
                 </div>
                 <div>
-                  <span class="text-charcoal-400 block mb-1">TRACKING CODE</span>
+                  <span class="text-charcoal-400 block mb-1">KODE RESI</span>
                   <span class="text-corn-500 text-sm font-extrabold tracking-wider">{{ order().trackingNumber }}</span>
                 </div>
               </div>
@@ -129,11 +129,11 @@ import { CheckoutService } from '../../core/services/checkout.service';
             
             <div class="flex items-center justify-between border-b border-charcoal-150 dark:border-charcoal-900 pb-4">
               <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
-                Order Details
+                Detail Pesanan
               </h3>
               <button (click)="printInvoice()" 
                       class="px-4 py-2 text-xs font-bold bg-charcoal-100 dark:bg-charcoal-800 hover:bg-corn-100 dark:hover:bg-charcoal-700 text-charcoal-600 dark:text-charcoal-350 rounded-full transition-colors cursor-pointer flex items-center gap-1.5 no-print">
-                <span>🖨️</span> Print Invoice
+                <span>🖨️</span> Cetak Invoice
               </button>
             </div>
 
@@ -152,7 +152,7 @@ import { CheckoutService } from '../../core/services/checkout.service';
                     <div>
                       <h4 class="font-bold text-charcoal-800 dark:text-white">{{ item.productName }}</h4>
                       <span class="text-[10px] text-corn-500 font-bold uppercase tracking-wider">
-                        {{ item.variantName || 'Single Pack (150g)' }} • Qty: {{ item.quantity }}
+                        {{ item.variantName || 'Single Pack (150g)' }} • Jml: {{ item.quantity }}
                       </span>
                     </div>
                   </div>
@@ -166,15 +166,15 @@ import { CheckoutService } from '../../core/services/checkout.service';
             <!-- Price specifications list -->
             <div class="border-t border-charcoal-150 dark:border-charcoal-900 pt-6 space-y-3 text-xs font-semibold text-charcoal-500 dark:text-charcoal-400">
               <div class="flex justify-between">
-                <span>Items Subtotal</span>
+                <span>Subtotal Item</span>
                 <span class="text-charcoal-800 dark:text-white font-bold">Rp {{ order().subtotal.toLocaleString('id-ID') }}</span>
               </div>
               <div class="flex justify-between">
-                <span>Shipping Cost ({{ order().courierName }} - {{ order().courierService }})</span>
+                <span>Biaya Pengiriman ({{ order().courierName }} - {{ order().courierService }})</span>
                 <span class="text-charcoal-800 dark:text-white font-bold">Rp {{ order().shippingCost.toLocaleString('id-ID') }}</span>
               </div>
               <div class="border-t border-charcoal-150 dark:border-charcoal-900 pt-3 flex justify-between text-sm font-display font-extrabold text-charcoal-800 dark:text-white">
-                <span>Total Amount Paid</span>
+                <span>Total Pembayaran</span>
                 <span class="text-corn-500 text-base">Rp {{ order().total.toLocaleString('id-ID') }}</span>
               </div>
             </div>
@@ -243,7 +243,7 @@ export class OrderTrackingComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         console.error('Failed to load tracking details', err);
-        this.error.set('Order details could not be retrieved. Please check the order link.');
+        this.error.set('Detail pesanan tidak dapat diambil. Periksa tautan pesanan.');
         this.loading.set(false);
       }
     });

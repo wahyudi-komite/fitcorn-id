@@ -19,7 +19,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
         
         <!-- Header -->
         <h1 class="text-4xl font-display font-extrabold text-charcoal-800 dark:text-white mb-8">
-          Checkout Order
+Checkout Pesanan
         </h1>
 
         @if (!authService.isAuthenticated()) {
@@ -27,18 +27,18 @@ import { AnalyticsService } from '../../core/services/analytics.service';
           <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                class="p-12 rounded-3xl border text-center space-y-6 shadow-premium max-w-xl mx-auto">
             <span class="text-6xl block">🔒</span>
-            <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Secure Checkout Required</h3>
+            <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Diperlukan Checkout Aman</h3>
             <p class="text-charcoal-500 dark:text-charcoal-400 font-medium max-w-sm mx-auto">
-              Please sign in or register to complete your premium popcorn order and track shipping.
+              Silakan masuk atau daftar untuk menyelesaikan pesanan popcorn premium Anda dan melacak pengiriman.
             </p>
             <div class="flex flex-wrap gap-4 justify-center pt-2">
               <a routerLink="/masuk" 
                  class="px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-md hover:shadow-lg transition-all duration-300">
-                Log In
+                Masuk
               </a>
               <a routerLink="/daftar" 
                  class="px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full border border-charcoal-200 dark:border-charcoal-850 text-charcoal-600 dark:text-charcoal-300 hover:bg-charcoal-100 dark:hover:bg-charcoal-800 transition-all duration-300">
-                Register
+                Daftar
               </a>
             </div>
           </div>
@@ -46,12 +46,12 @@ import { AnalyticsService } from '../../core/services/analytics.service';
           <!-- Empty Cart Redirect -->
           <div class="text-center py-16">
             <span class="text-6xl block mb-6">🍿</span>
-            <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2">No items to checkout</h3>
+            <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2">Tidak ada item untuk checkout</h3>
             <p class="text-charcoal-500 dark:text-charcoal-400 font-medium max-w-sm mx-auto mb-6">
-              Your shopping cart is currently empty. Add some gourmet popcorn before checking out.
+              Keranjang belanja Anda saat ini kosong. Tambahkan popcorn premium sebelum checkout.
             </p>
             <a routerLink="/produk" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300">
-              Go to Catalog
+              Ke Katalog
             </a>
           </div>
         } @else {
@@ -67,12 +67,12 @@ import { AnalyticsService } from '../../core/services/analytics.service';
                 
                 <div class="flex items-center justify-between">
                   <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
-                    Shipping Address
+                    Alamat Pengiriman
                   </h3>
                   @if (savedAddresses().length > 0 && !addNewAddressMode()) {
                     <button (click)="toggleNewAddress(true)" 
                             class="text-xs font-bold text-corn-500 hover:underline uppercase tracking-wider cursor-pointer">
-                      + Add New Address
+                      + Tambah Alamat Baru
                     </button>
                   }
                 </div>
@@ -89,7 +89,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
                         <div class="flex items-center justify-between">
                           <span class="font-bold text-charcoal-800 dark:text-white">{{ addr.fullName }}</span>
                           @if (addr.isDefault) {
-                            <span class="px-2 py-0.5 text-[9px] font-bold rounded bg-charcoal-200 dark:bg-charcoal-800 text-charcoal-600 dark:text-charcoal-400 uppercase">Default</span>
+                            <span class="px-2 py-0.5 text-[9px] font-bold rounded bg-charcoal-200 dark:bg-charcoal-800 text-charcoal-600 dark:text-charcoal-400 uppercase">Utama</span>
                           }
                         </div>
                         <p class="text-charcoal-500 dark:text-charcoal-400 text-xs">{{ addr.phone }}</p>
@@ -101,11 +101,11 @@ import { AnalyticsService } from '../../core/services/analytics.service';
                   <!-- Add New Address Form -->
                   <form (submit)="saveAddress()" class="space-y-4 text-sm font-medium">
                     <div class="grid grid-cols-2 gap-4">
-                      <input type="text" [(ngModel)]="newAddress.fullName" name="fullName" placeholder="Recipient Full Name" required
+                      <input type="text" [(ngModel)]="newAddress.fullName" name="fullName" placeholder="Nama Lengkap Penerima" required
                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                              class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
                       
-                      <input type="text" [(ngModel)]="newAddress.phone" name="phone" placeholder="Phone Number" required
+                      <input type="text" [(ngModel)]="newAddress.phone" name="phone" placeholder="Nomor Telepon" required
                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                              class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
                     </div>
@@ -115,7 +115,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
                       <select (change)="onProvinceChange($event)" [(ngModel)]="selectedProvinceId" name="provinceSelect" required
                               [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white bg-charcoal-950' : 'border-charcoal-200 text-charcoal-800 bg-white'"
                               class="w-full px-5 py-3 rounded-full border focus:outline-none focus:border-corn-400 cursor-pointer">
-                        <option value="">Select Province</option>
+                        <option value="">Pilih Provinsi</option>
                         @for (p of provinces(); track p.province_id) {
                           <option [value]="p.province_id">{{ p.province }}</option>
                         }
@@ -125,7 +125,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
                       <select (change)="onCityChange($event)" [(ngModel)]="selectedCityId" name="citySelect" required [disabled]="!selectedProvinceId"
                               [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white bg-charcoal-950' : 'border-charcoal-200 text-charcoal-800 bg-white'"
                               class="w-full px-5 py-3 rounded-full border focus:outline-none focus:border-corn-400 cursor-pointer disabled:opacity-50">
-                        <option value="">Select City</option>
+                        <option value="">Pilih Kota</option>
                         @for (c of cities(); track c.city_id) {
                           <option [value]="c.city_id">{{ c.type }} {{ c.city_name }}</option>
                         }
@@ -133,18 +133,18 @@ import { AnalyticsService } from '../../core/services/analytics.service';
                     </div>
 
                     <div class="grid grid-cols-3 gap-4">
-                      <input type="text" [(ngModel)]="newAddress.district" name="district" placeholder="District (Kecamatan)" required
+                      <input type="text" [(ngModel)]="newAddress.district" name="district" placeholder="Kecamatan" required
                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                              class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
-                      <input type="text" [(ngModel)]="newAddress.village" name="village" placeholder="Village (Kelurahan)" required
+                      <input type="text" [(ngModel)]="newAddress.village" name="village" placeholder="Kelurahan" required
                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                              class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
-                      <input type="text" [(ngModel)]="newAddress.postalCode" name="postalCode" placeholder="Postal Code" required
+                      <input type="text" [(ngModel)]="newAddress.postalCode" name="postalCode" placeholder="Kode Pos" required
                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                              class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
                     </div>
 
-                    <textarea [(ngModel)]="newAddress.fullAddress" name="fullAddress" placeholder="Street Address Details (RT/RW, House Number)" rows="3" required
+                    <textarea [(ngModel)]="newAddress.fullAddress" name="fullAddress" placeholder="Detail Alamat Jalan (RT/RW, Nomor Rumah)" rows="3" required
                               [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                               class="w-full px-5 py-3 rounded-2xl border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400"></textarea>
 
@@ -152,12 +152,12 @@ import { AnalyticsService } from '../../core/services/analytics.service';
                       @if (savedAddresses().length > 0) {
                         <button type="button" (click)="toggleNewAddress(false)" 
                                 class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">
-                          Cancel
+                          Batal
                         </button>
                       }
                       <button type="submit" [disabled]="addressLoading()"
                               class="px-8 py-3 rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow-md transition-all duration-300 cursor-pointer disabled:opacity-50">
-                        @if (addressLoading()) { ⌛ Saving... } @else { Save Address }
+                        @if (addressLoading()) { ⌛ Menyimpan... } @else { Simpan Alamat }
                       </button>
                     </div>
                   </form>
@@ -171,17 +171,17 @@ import { AnalyticsService } from '../../core/services/analytics.service';
                      class="p-8 rounded-3xl border space-y-6 shadow-premium">
                   
                   <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
-                    Delivery Courier Options
+                    Pilihan Kurir Pengiriman
                   </h3>
 
                   @if (shippingLoading()) {
                     <div class="flex items-center justify-center py-8 gap-3 animate-pulse">
                       <span class="animate-spin text-xl text-corn-500">⌛</span>
-                      <span class="text-sm font-semibold text-charcoal-400">Computing shipping rates matrix...</span>
+                      <span class="text-sm font-semibold text-charcoal-400">Menghitung tarif pengiriman...</span>
                     </div>
                   } @else if (courierOptions().length === 0) {
                     <div class="text-center py-6 text-sm text-charcoal-400 font-semibold">
-                      Could not fetch shipping rates. Please ensure destination address is correct.
+                      Tidak dapat mengambil tarif pengiriman. Pastikan alamat tujuan benar.
                     </div>
                   } @else {
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -193,8 +193,8 @@ import { AnalyticsService } from '../../core/services/analytics.service';
                                 class="p-5 rounded-2xl border text-left text-sm transition-all duration-300 cursor-pointer flex items-center justify-between h-20">
                           <div>
                             <span class="block font-bold text-xs text-corn-500 uppercase tracking-widest">{{ c.name }}</span>
-                            <span class="block font-extrabold text-charcoal-800 dark:text-white mt-1">{{ c.service }} Service</span>
-                            <span class="block text-[10px] text-charcoal-400 font-semibold mt-0.5">Est. Arrival: {{ c.etd }} Days</span>
+                            <span class="block font-extrabold text-charcoal-800 dark:text-white mt-1">{{ c.service }} Layanan</span>
+                            <span class="block text-[10px] text-charcoal-400 font-semibold mt-0.5">Estimasi Tiba: {{ c.etd }} Hari</span>
                           </div>
                           <span class="text-base font-display font-extrabold text-charcoal-850 dark:text-white">
                             Rp {{ c.cost.toLocaleString('id-ID') }}
@@ -213,32 +213,32 @@ import { AnalyticsService } from '../../core/services/analytics.service';
             <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
                  class="p-8 rounded-3xl border space-y-6 lg:sticky lg:top-28">
               <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
-                Payment Summary
+                Ringkasan Pembayaran
               </h3>
 
               <div class="space-y-4 text-sm font-medium">
                 <div class="flex justify-between text-charcoal-500 dark:text-charcoal-400">
-                  <span>Cart Items</span>
-                  <span>{{ cartService.itemsCount() }} Packs</span>
+                  <span>Item Keranjang</span>
+                  <span>{{ cartService.itemsCount() }} Kemasan</span>
                 </div>
                 <div class="flex justify-between text-charcoal-500 dark:text-charcoal-400">
-                  <span>Cart Subtotal</span>
+                  <span>Subtotal Keranjang</span>
                   <span>Rp {{ cartService.subtotal().toLocaleString('id-ID') }}</span>
                 </div>
                 <div class="flex justify-between text-charcoal-500 dark:text-charcoal-400">
-                  <span>Shipping Cost</span>
+                  <span>Biaya Pengiriman</span>
                   <span>Rp {{ (selectedCourier()?.cost || 0).toLocaleString('id-ID') }}</span>
                 </div>
                 <div class="border-t border-charcoal-200 dark:border-charcoal-800 pt-4 flex justify-between text-lg font-display font-extrabold text-charcoal-800 dark:text-white">
-                  <span>Grand Total</span>
+                  <span>Total Keseluruhan</span>
                   <span>Rp {{ (cartService.subtotal() + (selectedCourier()?.cost || 0)).toLocaleString('id-ID') }}</span>
                 </div>
               </div>
 
               <!-- Notes -->
               <div class="space-y-2 pt-2">
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block">Delivery Notes</label>
-                <input type="text" [(ngModel)]="orderNotes" name="orderNotes" placeholder="e.g. Drop at lobby, gate color"
+                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block">Catatan Pengiriman</label>
+                <input type="text" [(ngModel)]="orderNotes" name="orderNotes" placeholder="cth. Titip di lobi, warna pagar"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                        class="w-full px-4 py-2.5 text-xs rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
               </div>
@@ -248,9 +248,9 @@ import { AnalyticsService } from '../../core/services/analytics.service';
                         [disabled]="orderLoading() || !selectedAddress() || !selectedCourier()"
                         class="w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
                   @if (orderLoading()) {
-                    <span class="animate-spin text-sm">⌛</span> Placing Order...
+                    <span class="animate-spin text-sm">⌛</span> Memesan...
                   } @else {
-                    <span>💳</span> Place Order & Pay
+                    <span>💳</span> Pesan & Bayar
                   }
                 </button>
                 
@@ -396,8 +396,8 @@ export class CheckoutComponent implements OnInit {
       error: (err) => {
         console.error('Failed to save address', err);
         this.modalService.confirm({
-          title: 'Error',
-          message: 'Could not save address. Please check input parameters.',
+          title: 'Kesalahan',
+          message: 'Tidak dapat menyimpan alamat. Periksa input parameter.',
           confirmLabel: 'OK',
           cancelLabel: '',
         });
@@ -477,7 +477,7 @@ export class CheckoutComponent implements OnInit {
       },
       error: (err) => {
         console.error('Failed to place order', err);
-        this.errorMsg.set(err.error?.message || 'Failed to place order. Check catalog stock quantities.');
+        this.errorMsg.set(err.error?.message || 'Gagal memesan. Periksa stok katalog.');
         this.orderLoading.set(false);
       }
     });

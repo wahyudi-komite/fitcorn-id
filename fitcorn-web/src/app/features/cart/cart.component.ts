@@ -16,13 +16,13 @@ import { ModalService } from '../../shared/services/modal.service';
         <!-- Header -->
         <div class="flex items-center justify-between mb-12">
           <h1 class="text-4xl font-display font-extrabold text-charcoal-800 dark:text-white">
-            Shopping Cart
+            Keranjang Belanja
           </h1>
           @if (cartService.cart()?.items?.length > 0) {
             <button (click)="clearCart()" 
                     [disabled]="actionLoading()"
                     class="text-xs font-bold text-red-500 hover:text-red-600 disabled:opacity-50 hover:underline uppercase tracking-wider cursor-pointer">
-              Clear All Items
+              Kosongkan Semua Item
             </button>
           }
         </div>
@@ -32,13 +32,13 @@ import { ModalService } from '../../shared/services/modal.service';
           <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                class="rounded-3xl border p-16 text-center space-y-6 shadow-premium">
             <div class="text-7xl">🍿</div>
-            <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Your cart is empty</h3>
+            <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Keranjang Anda kosong</h3>
             <p class="text-charcoal-500 dark:text-charcoal-400 font-medium max-w-sm mx-auto">
-              Looks like you haven't added any delicious premium popcorn flavors to your cart yet. Let's find some!
+              Sepertinya Anda belum menambahkan rasa popcorn premium favorit ke keranjang. Ayo cari beberapa!
             </p>
             <a routerLink="/produk" 
                class="inline-block px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
-              Explore Flavors
+              Jelajahi Rasa
             </a>
           </div>
         } @else {
@@ -87,7 +87,7 @@ import { ModalService } from '../../shared/services/modal.service';
                           Rp {{ ((item.variant ? item.variant.price : item.product?.price) * item.quantity).toLocaleString('id-ID') }}
                         </span>
                         <span class="block text-[10px] font-semibold text-charcoal-400 mt-0.5">
-                          Rp {{ (item.variant ? item.variant.price : item.product?.price).toLocaleString('id-ID') }} each
+                          Rp {{ (item.variant ? item.variant.price : item.product?.price).toLocaleString('id-ID') }} /item
                         </span>
                       </div>
                     </div>
@@ -110,7 +110,7 @@ import { ModalService } from '../../shared/services/modal.service';
                         </button>
                       </div>
                       <span class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest">
-                        Weight: {{ ((item.variant ? item.variant.weight : item.product?.weight) * item.quantity) }}g
+                        Berat: {{ ((item.variant ? item.variant.weight : item.product?.weight) * item.quantity) }}g
                       </span>
                     </div>
 
@@ -123,16 +123,16 @@ import { ModalService } from '../../shared/services/modal.service';
             <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
                  class="p-8 rounded-3xl border space-y-6 lg:sticky lg:top-28">
               <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
-                Order Summary
+                Ringkasan Pesanan
               </h3>
               
               <div class="space-y-4 text-sm font-medium">
                 <div class="flex justify-between text-charcoal-500 dark:text-charcoal-400">
-                  <span>Total Items</span>
-                  <span>{{ cartService.itemsCount() }} Packs</span>
+                  <span>Total Item</span>
+                  <span>{{ cartService.itemsCount() }} Kemasan</span>
                 </div>
                 <div class="flex justify-between text-charcoal-500 dark:text-charcoal-400">
-                  <span>Total Weight</span>
+                  <span>Total Berat</span>
                   <span>{{ (cartService.totalWeight() / 1000).toFixed(2) }} kg</span>
                 </div>
                 <div class="flex justify-between text-charcoal-500 dark:text-charcoal-400">
@@ -140,8 +140,8 @@ import { ModalService } from '../../shared/services/modal.service';
                   <span>Rp {{ cartService.subtotal().toLocaleString('id-ID') }}</span>
                 </div>
                 <div class="flex justify-between text-charcoal-500 dark:text-charcoal-400">
-                  <span>Estimated Shipping</span>
-                  <span class="text-xs text-charcoal-400 font-bold uppercase tracking-wider">Calculated next</span>
+                  <span>Estimasi Pengiriman</span>
+                  <span class="text-xs text-charcoal-400 font-bold uppercase tracking-wider">Dihitung nanti</span>
                 </div>
                 <div class="border-t border-charcoal-200 dark:border-charcoal-800 pt-4 flex justify-between text-lg font-display font-extrabold text-charcoal-800 dark:text-white">
                   <span>Subtotal</span>
@@ -152,11 +152,11 @@ import { ModalService } from '../../shared/services/modal.service';
               <div class="pt-4 space-y-3">
                 <a routerLink="/checkout" 
                    class="block text-center w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer">
-                  Proceed to Checkout
+                  Lanjut ke Checkout
                 </a>
                 <a routerLink="/produk" 
                    class="block text-center w-full px-8 py-3.5 font-sans font-bold text-xs tracking-widest uppercase rounded-full border border-charcoal-200 dark:border-charcoal-850 hover:bg-charcoal-100 dark:hover:bg-charcoal-900 text-charcoal-600 dark:text-charcoal-300 transition-all duration-300 cursor-pointer">
-                  Continue Shopping
+                  Lanjutkan Belanja
                 </a>
               </div>
             </div>
@@ -199,10 +199,10 @@ export class CartComponent implements OnInit {
 
   async clearCart() {
     const confirmed = await this.modalService.confirm({
-      title: 'Clear Cart',
-      message: 'Are you sure you want to empty your shopping cart?',
-      confirmLabel: 'Clear',
-      cancelLabel: 'Cancel',
+      title: 'Kosongkan Keranjang',
+      message: 'Apakah Anda yakin ingin mengosongkan keranjang belanja?',
+      confirmLabel: 'Kosongkan',
+      cancelLabel: 'Batal',
     });
     if (!confirmed) return;
     this.actionLoading.set(true);

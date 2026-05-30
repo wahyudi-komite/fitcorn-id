@@ -14,13 +14,13 @@ import { ProductsService } from '../../core/services/products.service';
       <!-- Header Section -->
       <div class="text-center max-w-xl mx-auto mb-16 space-y-4">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-corn-300 bg-corn-50 dark:bg-corn-400/10 text-corn-700 dark:text-corn-400 font-sans font-semibold text-xs tracking-wider uppercase">
-          🍿 Premium Collections
+          🍿 Koleksi Premium
         </div>
         <h1 class="text-4xl sm:text-5xl font-display font-extrabold text-charcoal-800 dark:text-white leading-tight">
-          Hand-Popped Premium Popcorn
+          Popcorn Premium Buatan Tangan
         </h1>
         <p class="text-charcoal-500 dark:text-charcoal-400 font-medium">
-          Snacking elevated to an art form. Made in small batches using non-GMO corn, clean organic spices, and natural sugars.
+          Camilan yang ditingkatkan menjadi karya seni. Dibuat dalam batch kecil menggunakan jagung non-GMO, bumbu organik bersih, dan gula alami.
         </p>
       </div>
 
@@ -44,14 +44,14 @@ import { ProductsService } from '../../core/services/products.service';
 
         <!-- Sort Select -->
         <div class="flex items-center gap-3 w-full md:w-auto justify-end">
-          <span class="text-xs font-semibold text-charcoal-400 uppercase tracking-widest">Sort By:</span>
+          <span class="text-xs font-semibold text-charcoal-400 uppercase tracking-widest">Urutkan:</span>
           <select (change)="onSortChange($event)"
                   [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark border-charcoal-800 text-white' : 'glassmorphism-light border-charcoal-200 text-charcoal-800'"
                   class="px-4 py-2.5 rounded-full border text-xs font-bold uppercase tracking-wider focus:outline-none focus:border-corn-400 cursor-pointer">
-            <option value="latest">Latest Addition</option>
-            <option value="popular">Most Popular</option>
-            <option value="price_asc">Price: Low to High</option>
-            <option value="price_desc">Price: High to Low</option>
+            <option value="latest">Terbaru</option>
+            <option value="popular">Terpopuler</option>
+            <option value="price_asc">Harga: Rendah ke Tinggi</option>
+            <option value="price_desc">Harga: Tinggi ke Rendah</option>
           </select>
         </div>
 
@@ -81,19 +81,19 @@ import { ProductsService } from '../../core/services/products.service';
           <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 dark:bg-red-950 text-red-500 text-2xl mb-4">
             ⚠️
           </div>
-          <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2">Failed to load catalog</h3>
+          <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2">Gagal memuat katalog</h3>
           <p class="text-charcoal-500 dark:text-charcoal-400 font-medium mb-6">{{ error() }}</p>
           <button (click)="loadProducts()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300">
-            Try Again
+            Coba Lagi
           </button>
         </div>
       } @else if (products().length === 0) {
         <!-- Empty State -->
         <div class="text-center py-16">
           <div class="text-6xl mb-6">🍿</div>
-          <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2">No flavors found</h3>
+          <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2">Rasa tidak ditemukan</h3>
           <p class="text-charcoal-500 dark:text-charcoal-400 font-medium max-w-sm mx-auto">
-            We couldn't find any products in this category. Try adjusting your filters.
+            Kami tidak dapat menemukan produk dalam kategori ini. Coba sesuaikan filter Anda.
           </p>
         </div>
       } @else {
@@ -115,17 +115,17 @@ import { ProductsService } from '../../core/services/products.service';
                   
                   @if (item.isFeatured) {
                     <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-corn-400 text-charcoal-900 text-[10px] font-sans font-bold uppercase tracking-wider">
-                      Featured
+                      Unggulan
                     </span>
                   }
                 </div>
 
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="text-[10px] font-bold text-corn-500 uppercase tracking-widest">
-                    {{ item.categories?.[0]?.name || 'Classic Flavor' }}
+                    {{ item.categories?.[0]?.name || 'Rasa Klasik' }}
                   </span>
                   <span class="text-[10px] font-semibold text-charcoal-400">
-                    {{ item.weight }}g
+                    {{ item.weight }} gram
                   </span>
                 </div>
 
@@ -140,14 +140,14 @@ import { ProductsService } from '../../core/services/products.service';
               
               <div class="flex items-center justify-between mt-auto pt-4 border-t border-charcoal-100 dark:border-charcoal-900">
                 <div class="flex flex-col">
-                  <span class="text-xs font-semibold text-charcoal-400 uppercase tracking-wider">Price</span>
+                  <span class="text-xs font-semibold text-charcoal-400 uppercase tracking-wider">Harga</span>
                   <span class="text-lg font-display font-extrabold text-corn-500">
                     Rp {{ item.price.toLocaleString('id-ID') }}
                   </span>
                 </div>
                 <a [routerLink]="['/produk', item.slug]" 
                    class="px-5 py-3 font-sans font-bold text-xs uppercase tracking-widest rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
-                  View Detail
+                  Lihat Detail
                 </a>
               </div>
 
@@ -172,10 +172,10 @@ export class CatalogComponent implements OnInit {
   activeSort = signal<'price_asc' | 'price_desc' | 'popular' | 'latest'>('latest');
 
   categories = [
-    { slug: 'all', name: 'All Flavors' },
-    { slug: 'sweet-creamy', name: 'Sweet & Creamy' },
-    { slug: 'salty-savory', name: 'Salty & Savory' },
-    { slug: 'spicy-lava', name: 'Spicy' }
+    { slug: 'all', name: 'Semua Rasa' },
+    { slug: 'sweet-creamy', name: 'Manis & Lembut' },
+    { slug: 'salty-savory', name: 'Asin & Gurih' },
+    { slug: 'spicy-lava', name: 'Pedas' }
   ];
 
   ngOnInit() {
@@ -201,7 +201,7 @@ export class CatalogComponent implements OnInit {
       },
       error: (err) => {
         console.error('Failed to load products', err);
-        this.error.set('Could not fetch flavors from server. Check your connection.');
+        this.error.set('Tidak dapat mengambil rasa dari server. Periksa koneksi Anda.');
         this.loading.set(false);
       }
     });

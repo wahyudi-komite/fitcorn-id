@@ -19,13 +19,13 @@ import { FormsModule } from '@angular/forms';
         <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
              class="p-12 rounded-3xl border text-center space-y-6 shadow-premium max-w-xl mx-auto">
           <span class="text-6xl block">🔒</span>
-          <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Access Denied</h3>
+          <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Akses Ditolak</h3>
           <p class="text-charcoal-500 dark:text-charcoal-400 font-medium max-w-sm mx-auto">
-            Please log in to access your personal dashboard, track historic orders, and manage addresses.
+            Silakan masuk untuk mengakses dashboard pribadi, melihat riwayat pesanan, dan mengelola alamat.
           </p>
           <a routerLink="/masuk" 
              class="inline-block px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-md hover:shadow-lg transition-all duration-300">
-            Sign In
+            Masuk
           </a>
         </div>
       } @else {
@@ -36,10 +36,10 @@ import { FormsModule } from '@angular/forms';
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-charcoal-150 dark:border-charcoal-850 pb-6">
             <div>
               <h1 class="text-4xl font-display font-extrabold text-charcoal-800 dark:text-white leading-tight">
-                My Account
+                Akun Saya
               </h1>
               <p class="text-sm font-semibold text-charcoal-400 mt-1">
-                Welcome back, {{ authService.currentUser()?.fullName }}
+                Selamat datang kembali, {{ authService.currentUser()?.fullName }}
               </p>
             </div>
             

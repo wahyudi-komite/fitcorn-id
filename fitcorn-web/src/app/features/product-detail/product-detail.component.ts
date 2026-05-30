@@ -16,7 +16,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
       <!-- Back Link -->
       <div class="mb-8">
         <a routerLink="/produk" class="inline-flex items-center gap-2 text-sm font-semibold text-charcoal-400 hover:text-corn-500 transition-colors">
-          ← Back to Catalog
+          ← Kembali ke Katalog
         </a>
       </div>
 
@@ -38,10 +38,10 @@ import { AnalyticsService } from '../../core/services/analytics.service';
           <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 dark:bg-red-950 text-red-500 text-2xl mb-4">
             ⚠️
           </div>
-          <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2">Product Not Found</h3>
+          <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2">Produk Tidak Ditemukan</h3>
           <p class="text-charcoal-500 dark:text-charcoal-400 font-medium mb-6">{{ error() }}</p>
           <a routerLink="/produk" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300">
-            Back to Catalog
+            Kembali ke Katalog
           </a>
         </div>
       } @else if (product()) {
@@ -62,7 +62,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
             
             @if (product().isFeatured) {
               <span class="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-corn-400 text-charcoal-900 text-xs font-sans font-bold uppercase tracking-wider shadow-md">
-                Best Seller
+                Terlaris
               </span>
             }
           </div>
@@ -74,7 +74,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
             <div class="space-y-4">
               <div class="flex items-center gap-2">
                 <span class="text-xs font-bold text-corn-500 uppercase tracking-widest">
-                  {{ product().categories?.[0]?.name || 'Premium Popcorn' }}
+                   {{ product().categories?.[0]?.name || 'Popcorn Premium' }}
                 </span>
                 <span class="text-xs text-charcoal-300 font-semibold">•</span>
                 <span class="text-xs font-bold text-charcoal-400 uppercase tracking-widest">
@@ -91,7 +91,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
  
             <!-- Description -->
             <div class="space-y-4">
-              <h4 class="text-xs font-semibold text-charcoal-400 uppercase tracking-widest">The Recipe</h4>
+              <h4 class="text-xs font-semibold text-charcoal-400 uppercase tracking-widest">Resep</h4>
               <p class="text-base text-charcoal-500 dark:text-charcoal-400 leading-relaxed font-medium">
                 {{ product().description }}
               </p>
@@ -100,7 +100,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
             <!-- Variant Selection -->
             @if (product().variants && product().variants.length > 0) {
               <div class="space-y-4">
-                <h4 class="text-xs font-semibold text-charcoal-400 uppercase tracking-widest">Select Pack Size</h4>
+                <h4 class="text-xs font-semibold text-charcoal-400 uppercase tracking-widest">Pilih Ukuran Kemasan</h4>
                 <div class="grid grid-cols-2 gap-4">
                   @for (v of product().variants; track v.id) {
                     <button (click)="selectVariant(v)"
@@ -140,9 +140,9 @@ import { AnalyticsService } from '../../core/services/analytics.service';
                         [disabled]="addingToCart()"
                         class="flex-1 px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
                   @if (addingToCart()) {
-                    <span class="animate-spin text-sm">⌛</span> Adding...
+                    <span class="animate-spin text-sm">⌛</span> Menambahkan...
                   } @else {
-                    <span>🛒</span> Add to Cart
+                    <span>🛒</span> Tambah ke Keranjang
                   }
                 </button>
               </div>
@@ -158,14 +158,14 @@ import { AnalyticsService } from '../../core/services/analytics.service';
             <!-- Product details specifications grid -->
             <div class="grid grid-cols-2 gap-4 pt-4 border-t border-charcoal-200 dark:border-charcoal-800">
               <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'" class="p-4 rounded-2xl border">
-                <span class="text-[10px] text-charcoal-400 font-semibold block mb-1 uppercase tracking-widest">Net Weight</span>
+                <span class="text-[10px] text-charcoal-400 font-semibold block mb-1 uppercase tracking-widest">Berat Bersih</span>
                 <span class="font-bold text-charcoal-800 dark:text-white">
-                  {{ selectedVariant()?.weight || product().weight }}g
+                  {{ selectedVariant()?.weight || product().weight }} gram
                 </span>
               </div>
               <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'" class="p-4 rounded-2xl border">
-                <span class="text-[10px] text-charcoal-400 font-semibold block mb-1 uppercase tracking-widest">Shelf Life</span>
-                <span class="font-bold text-charcoal-800 dark:text-white">6 Months</span>
+                <span class="text-[10px] text-charcoal-400 font-semibold block mb-1 uppercase tracking-widest">Masa Simpan</span>
+                <span class="font-bold text-charcoal-800 dark:text-white">6 Bulan</span>
               </div>
             </div>
  
@@ -176,7 +176,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
         @if (relatedProducts().length > 0) {
           <div class="mt-24 border-t border-charcoal-200 dark:border-charcoal-800 pt-16 space-y-8">
             <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">
-              Related Flavors You'll Love
+              Rasa Terkait yang Anda Suka
             </h3>
  
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
@@ -200,7 +200,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
                   </div>
                   <a [routerLink]="['/produk', item.slug]" (click)="onRelatedClick(item.slug)"
                      class="mt-4 text-center py-2 text-xs font-bold bg-charcoal-100 dark:bg-charcoal-900 text-charcoal-700 dark:text-charcoal-300 rounded-full hover:bg-corn-400 hover:text-charcoal-900 transition-colors">
-                    View detail
+                    Lihat detail
                   </a>
                 </div>
               }
@@ -256,7 +256,7 @@ export class ProductDetailComponent implements OnInit {
       },
       error: (err) => {
         console.error('Failed to load product details', err);
-        this.error.set('Flavor details not found or failed to load.');
+        this.error.set('Detail rasa tidak ditemukan atau gagal dimuat.');
         this.loading.set(false);
       }
     });
@@ -297,7 +297,7 @@ export class ProductDetailComponent implements OnInit {
     this.cartService.addItem(prod.id, this.quantity(), variantId).subscribe({
       next: () => {
         this.addingToCart.set(false);
-        this.feedbackMsg.set(`Successfully added ${this.quantity()} pack(s) to your cart!`);
+        this.feedbackMsg.set(`Berhasil menambahkan ${this.quantity()} bungkus ke keranjang Anda!`);
         
         // Track GA4/FB Pixel/TikTok AddToCart event
         this.analyticsService.trackAddToCart(prod, this.quantity());
@@ -310,7 +310,7 @@ export class ProductDetailComponent implements OnInit {
       error: (err) => {
         console.error('Failed to add to cart', err);
         this.addingToCart.set(false);
-        this.feedbackMsg.set('Failed to add. Please try again.');
+        this.feedbackMsg.set('Gagal menambahkan. Silakan coba lagi.');
       }
     });
   }
