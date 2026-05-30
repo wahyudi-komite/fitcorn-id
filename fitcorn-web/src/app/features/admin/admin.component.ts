@@ -484,12 +484,12 @@ import { ModalService } from '../../shared/services/modal.service';
                   <table class="w-full text-sm">
                     <thead>
                       <tr class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest border-b border-charcoal-100 dark:border-charcoal-900 bg-charcoal-50 dark:bg-charcoal-900/50">
-                        <th class="text-left py-4 px-6">Image</th>
-                        <th class="text-left py-4 px-6">Title & Subtitle</th>
-                        <th class="text-left py-4 px-6">Link URL</th>
-                        <th class="text-left py-4 px-6">Sort Order</th>
+                        <th class="text-left py-4 px-6">Gambar</th>
+                        <th class="text-left py-4 px-6">Judul & Subjudul</th>
+                        <th class="text-left py-4 px-6">URL Tautan</th>
+                        <th class="text-left py-4 px-6">Urutan</th>
                         <th class="text-left py-4 px-6">Status</th>
-                        <th class="text-right py-4 px-6">Actions</th>
+                        <th class="text-right py-4 px-6">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -508,12 +508,12 @@ import { ModalService } from '../../shared/services/modal.service';
                             <span class="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider"
                                   [class.bg-green-100]="b.isActive" [class.text-green-700]="b.isActive"
                                   [class.bg-red-100]="!b.isActive" [class.text-red-700]="!b.isActive">
-                              {{ b.isActive ? 'Active' : 'Inactive' }}
+                              {{ b.isActive ? 'Aktif' : 'Nonaktif' }}
                             </span>
                           </td>
                           <td class="py-4 px-6 text-right space-x-2">
                             <button (click)="openBannerModal(b)" class="px-3.5 py-1.5 rounded-full bg-corn-400/20 text-corn-700 dark:text-corn-300 text-xs font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Edit</button>
-                            <button (click)="deleteBanner(b.id)" class="px-3.5 py-1.5 rounded-full bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Delete</button>
+                            <button (click)="deleteBanner(b.id)" class="px-3.5 py-1.5 rounded-full bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Hapus</button>
                           </td>
                         </tr>
                       }
@@ -529,11 +529,11 @@ import { ModalService } from '../../shared/services/modal.service';
             <div class="space-y-6 animate-fade-in">
               <div class="flex items-center justify-between">
                 <div>
-                  <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Instagram Feed Gallery</h3>
-                  <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Manage custom brand Instagram gallery cards without APIs</p>
+                  <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Galeri Feed Instagram</h3>
+                  <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola kartu galeri Instagram kustom tanpa API</p>
                 </div>
                 <button (click)="openInstagramModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-full shadow cursor-pointer">
-                  + Add Instagram Card
+                  + Tambah Kartu Instagram
                 </button>
               </div>
 
@@ -552,9 +552,9 @@ import { ModalService } from '../../shared/services/modal.service';
 
                     <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
                       <div class="space-y-1">
-                        <div class="text-[10px] text-corn-500 font-extrabold uppercase tracking-widest">Caption & Details</div>
+                        <div class="text-[10px] text-corn-500 font-extrabold uppercase tracking-widest">Keterangan & Detail</div>
                         <p class="text-xs text-charcoal-600 dark:text-charcoal-350 line-clamp-3 font-medium leading-relaxed">
-                          {{ post.caption || 'No caption entered' }}
+                          {{ post.caption || 'Tidak ada keterangan' }}
                         </p>
                         <a [href]="post.postUrl || post.post_url" target="_blank" class="block text-[10px] font-mono text-blue-500 hover:underline truncate mt-1">
                           🔗 Link: {{ post.postUrl || post.post_url }}
@@ -565,7 +565,7 @@ import { ModalService } from '../../shared/services/modal.service';
                         <span class="px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider"
                               [class.bg-green-100]="post.isActive" [class.text-green-700]="post.isActive"
                               [class.bg-red-100]="!post.isActive" [class.text-red-700]="!post.isActive">
-                          {{ post.isActive ? 'Active' : 'Hidden' }}
+                          {{ post.isActive ? 'Aktif' : 'Tersembunyi' }}
                         </span>
                         
                         <div class="flex gap-2">
