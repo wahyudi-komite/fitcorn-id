@@ -1,0 +1,473 @@
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
+import { ThemeService } from '../../core/services/theme.service';
+import { CartService } from '../../core/services/cart.service';
+import { AuthService } from '../../core/services/auth.service';
+import { CheckoutService } from '../../core/services/checkout.service';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-checkout',
+  standalone: true,
+  imports: [CommonModule, RouterModule, FormsModule],
+  template: `
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Header -->
+        <h1 class="text-4xl font-display font-extrabold text-charcoal-800 dark:text-white mb-8">
+          Checkout Order
+        </h1>
+
+        @if (!authService.isAuthenticated()) {
+          <!-- Authentication Guard UI -->
+          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+               class="p-12 rounded-3xl border text-center space-y-6 shadow-premium max-w-xl mx-auto">
+            <span class="text-6xl block">🔒</span>
+            <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Secure Checkout Required</h3>
+            <p class="text-charcoal-500 dark:text-charcoal-400 font-medium max-w-sm mx-auto">
+              Please sign in or register to complete your premium popcorn order and track shipping.
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center pt-2">
+              <a routerLink="/masuk" 
+                 class="px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-md hover:shadow-lg transition-all duration-300">
+                Log In
+              </a>
+              <a routerLink="/daftar" 
+                 class="px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full border border-charcoal-200 dark:border-charcoal-850 text-charcoal-600 dark:text-charcoal-300 hover:bg-charcoal-100 dark:hover:bg-charcoal-800 transition-all duration-300">
+                Register
+              </a>
+            </div>
+          </div>
+        } @else if (cartService.itemsCount() === 0 && !checkoutSuccess()) {
+          <!-- Empty Cart Redirect -->
+          <div class="text-center py-16">
+            <span class="text-6xl block mb-6">🍿</span>
+            <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2">No items to checkout</h3>
+            <p class="text-charcoal-500 dark:text-charcoal-400 font-medium max-w-sm mx-auto mb-6">
+              Your shopping cart is currently empty. Add some gourmet popcorn before checking out.
+            </p>
+            <a routerLink="/produk" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300">
+              Go to Catalog
+            </a>
+          </div>
+        } @else {
+          <!-- Checkout Process -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+            
+            <!-- Forms Details -->
+            <div class="lg:col-span-2 space-y-8">
+              
+              <!-- Address Section -->
+              <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+                   class="p-8 rounded-3xl border space-y-6 shadow-premium">
+                
+                <div class="flex items-center justify-between">
+                  <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
+                    Shipping Address
+                  </h3>
+                  @if (savedAddresses().length > 0 && !addNewAddressMode()) {
+                    <button (click)="toggleNewAddress(true)" 
+                            class="text-xs font-bold text-corn-500 hover:underline uppercase tracking-wider cursor-pointer">
+                      + Add New Address
+                    </button>
+                  }
+                </div>
+
+                @if (savedAddresses().length > 0 && !addNewAddressMode()) {
+                  <!-- Address List -->
+                  <div class="space-y-4">
+                    @for (addr of savedAddresses(); track addr.id) {
+                      <div (click)="selectAddress(addr)"
+                           [ngClass]="selectedAddress()?.id === addr.id
+                             ? 'border-corn-400 bg-corn-400/5'
+                             : (themeService.theme() === 'dark' ? 'border-charcoal-850 hover:border-charcoal-700' : 'border-charcoal-200 hover:border-charcoal-350')"
+                           class="p-5 rounded-2xl border transition-all duration-300 cursor-pointer text-sm font-medium space-y-2">
+                        <div class="flex items-center justify-between">
+                          <span class="font-bold text-charcoal-800 dark:text-white">{{ addr.fullName }}</span>
+                          @if (addr.isDefault) {
+                            <span class="px-2 py-0.5 text-[9px] font-bold rounded bg-charcoal-200 dark:bg-charcoal-800 text-charcoal-600 dark:text-charcoal-400 uppercase">Default</span>
+                          }
+                        </div>
+                        <p class="text-charcoal-500 dark:text-charcoal-400 text-xs">{{ addr.phone }}</p>
+                        <p class="text-charcoal-500 dark:text-charcoal-400 leading-relaxed text-xs">{{ addr.fullAddress }}, {{ addr.city }}, {{ addr.province }} - {{ addr.postalCode }}</p>
+                      </div>
+                    }
+                  </div>
+                } @else {
+                  <!-- Add New Address Form -->
+                  <form (submit)="saveAddress()" class="space-y-4 text-sm font-medium">
+                    <div class="grid grid-cols-2 gap-4">
+                      <input type="text" [(ngModel)]="newAddress.fullName" name="fullName" placeholder="Recipient Full Name" required
+                             [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
+                             class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                      
+                      <input type="text" [(ngModel)]="newAddress.phone" name="phone" placeholder="Phone Number" required
+                             [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
+                             class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                      <!-- Province -->
+                      <select (change)="onProvinceChange($event)" [(ngModel)]="selectedProvinceId" name="provinceSelect" required
+                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white bg-charcoal-950' : 'border-charcoal-200 text-charcoal-800 bg-white'"
+                              class="w-full px-5 py-3 rounded-full border focus:outline-none focus:border-corn-400 cursor-pointer">
+                        <option value="">Select Province</option>
+                        @for (p of provinces(); track p.province_id) {
+                          <option [value]="p.province_id">{{ p.province }}</option>
+                        }
+                      </select>
+
+                      <!-- City -->
+                      <select (change)="onCityChange($event)" [(ngModel)]="selectedCityId" name="citySelect" required [disabled]="!selectedProvinceId"
+                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white bg-charcoal-950' : 'border-charcoal-200 text-charcoal-800 bg-white'"
+                              class="w-full px-5 py-3 rounded-full border focus:outline-none focus:border-corn-400 cursor-pointer disabled:opacity-50">
+                        <option value="">Select City</option>
+                        @for (c of cities(); track c.city_id) {
+                          <option [value]="c.city_id">{{ c.type }} {{ c.city_name }}</option>
+                        }
+                      </select>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4">
+                      <input type="text" [(ngModel)]="newAddress.district" name="district" placeholder="District (Kecamatan)" required
+                             [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
+                             class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                      <input type="text" [(ngModel)]="newAddress.village" name="village" placeholder="Village (Kelurahan)" required
+                             [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
+                             class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                      <input type="text" [(ngModel)]="newAddress.postalCode" name="postalCode" placeholder="Postal Code" required
+                             [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
+                             class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                    </div>
+
+                    <textarea [(ngModel)]="newAddress.fullAddress" name="fullAddress" placeholder="Street Address Details (RT/RW, House Number)" rows="3" required
+                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
+                              class="w-full px-5 py-3 rounded-2xl border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400"></textarea>
+
+                    <div class="flex items-center gap-4 justify-between pt-2">
+                      @if (savedAddresses().length > 0) {
+                        <button type="button" (click)="toggleNewAddress(false)" 
+                                class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">
+                          Cancel
+                        </button>
+                      }
+                      <button type="submit" [disabled]="addressLoading()"
+                              class="px-8 py-3 rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow-md transition-all duration-300 cursor-pointer disabled:opacity-50">
+                        @if (addressLoading()) { ⌛ Saving... } @else { Save Address }
+                      </button>
+                    </div>
+                  </form>
+                }
+
+              </div>
+
+              <!-- Courier Section -->
+              @if (selectedAddress()) {
+                <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+                     class="p-8 rounded-3xl border space-y-6 shadow-premium">
+                  
+                  <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
+                    Delivery Courier Options
+                  </h3>
+
+                  @if (shippingLoading()) {
+                    <div class="flex items-center justify-center py-8 gap-3 animate-pulse">
+                      <span class="animate-spin text-xl text-corn-500">⌛</span>
+                      <span class="text-sm font-semibold text-charcoal-400">Computing shipping rates matrix...</span>
+                    </div>
+                  } @else if (courierOptions().length === 0) {
+                    <div class="text-center py-6 text-sm text-charcoal-400 font-semibold">
+                      Could not fetch shipping rates. Please ensure destination address is correct.
+                    </div>
+                  } @else {
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      @for (c of courierOptions(); track c.name + c.service) {
+                        <button (click)="selectCourier(c)"
+                                [ngClass]="selectedCourier()?.name === c.name && selectedCourier()?.service === c.service
+                                  ? 'border-corn-400 bg-corn-400/5 text-charcoal-800 dark:text-white font-bold'
+                                  : (themeService.theme() === 'dark' ? 'border-charcoal-850 hover:border-charcoal-700 text-charcoal-300' : 'border-charcoal-200 hover:border-charcoal-350 text-charcoal-600')"
+                                class="p-5 rounded-2xl border text-left text-sm transition-all duration-300 cursor-pointer flex items-center justify-between h-20">
+                          <div>
+                            <span class="block font-bold text-xs text-corn-500 uppercase tracking-widest">{{ c.name }}</span>
+                            <span class="block font-extrabold text-charcoal-800 dark:text-white mt-1">{{ c.service }} Service</span>
+                            <span class="block text-[10px] text-charcoal-400 font-semibold mt-0.5">Est. Arrival: {{ c.etd }} Days</span>
+                          </div>
+                          <span class="text-base font-display font-extrabold text-charcoal-850 dark:text-white">
+                            Rp {{ c.cost.toLocaleString('id-ID') }}
+                          </span>
+                        </button>
+                      }
+                    </div>
+                  }
+
+                </div>
+              }
+
+            </div>
+
+            <!-- Checkout Order Summary -->
+            <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
+                 class="p-8 rounded-3xl border space-y-6 lg:sticky lg:top-28">
+              <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
+                Payment Summary
+              </h3>
+
+              <div class="space-y-4 text-sm font-medium">
+                <div class="flex justify-between text-charcoal-500 dark:text-charcoal-400">
+                  <span>Cart Items</span>
+                  <span>{{ cartService.itemsCount() }} Packs</span>
+                </div>
+                <div class="flex justify-between text-charcoal-500 dark:text-charcoal-400">
+                  <span>Cart Subtotal</span>
+                  <span>Rp {{ cartService.subtotal().toLocaleString('id-ID') }}</span>
+                </div>
+                <div class="flex justify-between text-charcoal-500 dark:text-charcoal-400">
+                  <span>Shipping Cost</span>
+                  <span>Rp {{ (selectedCourier()?.cost || 0).toLocaleString('id-ID') }}</span>
+                </div>
+                <div class="border-t border-charcoal-200 dark:border-charcoal-800 pt-4 flex justify-between text-lg font-display font-extrabold text-charcoal-800 dark:text-white">
+                  <span>Grand Total</span>
+                  <span>Rp {{ (cartService.subtotal() + (selectedCourier()?.cost || 0)).toLocaleString('id-ID') }}</span>
+                </div>
+              </div>
+
+              <!-- Notes -->
+              <div class="space-y-2 pt-2">
+                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block">Delivery Notes</label>
+                <input type="text" [(ngModel)]="orderNotes" name="orderNotes" placeholder="e.g. Drop at lobby, gate color"
+                       [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
+                       class="w-full px-4 py-2.5 text-xs rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+              </div>
+
+              <div class="pt-4 space-y-3">
+                <button (click)="placeOrder()"
+                        [disabled]="orderLoading() || !selectedAddress() || !selectedCourier()"
+                        class="w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
+                  @if (orderLoading()) {
+                    <span class="animate-spin text-sm">⌛</span> Placing Order...
+                  } @else {
+                    <span>💳</span> Place Order & Pay
+                  }
+                </button>
+                
+                @if (errorMsg()) {
+                  <div class="p-3 text-center text-xs font-semibold text-red-500 bg-red-500/10 border border-red-500/20 rounded-2xl">
+                    {{ errorMsg() }}
+                  </div>
+                }
+              </div>
+            </div>
+
+          </div>
+        }
+
+      </div>
+    </div>
+  `,
+  styles: []
+})
+export class CheckoutComponent implements OnInit {
+  themeService = inject(ThemeService);
+  cartService = inject(CartService);
+  authService = inject(AuthService);
+  private checkoutService = inject(CheckoutService);
+  private router = inject(Router);
+
+  savedAddresses = signal<any[]>([]);
+  selectedAddress = signal<any | null>(null);
+  addNewAddressMode = signal<boolean>(false);
+  addressLoading = signal<boolean>(false);
+
+  // Provinces & Cities Loading
+  provinces = signal<any[]>([]);
+  cities = signal<any[]>([]);
+  selectedProvinceId = '';
+  selectedCityId = '';
+
+  newAddress = {
+    fullName: '',
+    phone: '',
+    province: '',
+    provinceId: '',
+    city: '',
+    cityId: '',
+    district: '',
+    village: '',
+    postalCode: '',
+    fullAddress: '',
+    isDefault: true
+  };
+
+  // Shipping Couriers calculation
+  shippingLoading = signal<boolean>(false);
+  courierOptions = signal<any[]>([]);
+  selectedCourier = signal<any | null>(null);
+
+  orderNotes = '';
+  orderLoading = signal<boolean>(false);
+  checkoutSuccess = signal<boolean>(false);
+  errorMsg = signal<string>('');
+
+  ngOnInit() {
+    if (this.authService.isAuthenticated()) {
+      this.loadAddresses();
+      this.loadProvinces();
+    }
+  }
+
+  loadAddresses() {
+    this.checkoutService.getSavedAddresses().subscribe({
+      next: (list) => {
+        this.savedAddresses.set(list || []);
+        if (list && list.length > 0) {
+          const defaultAddr = list.find((a: any) => a.isDefault) || list[0];
+          this.selectAddress(defaultAddr);
+          this.addNewAddressMode.set(false);
+        } else {
+          this.addNewAddressMode.set(true);
+        }
+      },
+      error: () => this.savedAddresses.set([])
+    });
+  }
+
+  loadProvinces() {
+    this.checkoutService.getProvinces().subscribe({
+      next: (res) => this.provinces.set(res || []),
+      error: () => this.provinces.set([])
+    });
+  }
+
+  onProvinceChange(event: Event) {
+    const provinceId = (event.target as HTMLSelectElement).value;
+    this.selectedProvinceId = provinceId;
+    this.selectedCityId = '';
+    this.cities.set([]);
+
+    if (provinceId) {
+      const provObj = this.provinces().find(p => p.province_id === provinceId);
+      this.newAddress.province = provObj?.province || '';
+      this.newAddress.provinceId = provinceId;
+
+      this.checkoutService.getCities(provinceId).subscribe({
+        next: (res) => this.cities.set(res || []),
+        error: () => this.cities.set([])
+      });
+    }
+  }
+
+  onCityChange(event: Event) {
+    const cityId = (event.target as HTMLSelectElement).value;
+    this.selectedCityId = cityId;
+
+    if (cityId) {
+      const cityObj = this.cities().find(c => c.city_id === cityId);
+      this.newAddress.city = `${cityObj?.type} ${cityObj?.city_name}` || '';
+      this.newAddress.cityId = cityId;
+    }
+  }
+
+  toggleNewAddress(mode: boolean) {
+    this.addNewAddressMode.set(mode);
+    if (mode) {
+      this.selectedAddress.set(null);
+      this.selectedCourier.set(null);
+      this.courierOptions.set([]);
+    } else {
+      if (this.savedAddresses().length > 0) {
+        this.selectAddress(this.savedAddresses()[0]);
+      }
+    }
+  }
+
+  saveAddress() {
+    this.addressLoading.set(true);
+    this.checkoutService.saveAddress(this.newAddress).subscribe({
+      next: (saved) => {
+        this.addressLoading.set(false);
+        this.loadAddresses(); // Reload addresses which will auto-select the newly added address
+      },
+      error: (err) => {
+        console.error('Failed to save address', err);
+        alert('Could not save address. Please check input parameters.');
+        this.addressLoading.set(false);
+      }
+    });
+  }
+
+  selectAddress(addr: any) {
+    this.selectedAddress.set(addr);
+    this.selectedCourier.set(null);
+    this.courierOptions.set([]);
+    this.calculateShipping(addr.cityId);
+  }
+
+  calculateShipping(cityId: string) {
+    this.shippingLoading.set(true);
+    const weight = this.cartService.totalWeight() || 150; // default weight snapshot
+
+    this.checkoutService.calculateRates(cityId, weight).subscribe({
+      next: (rates) => {
+        this.courierOptions.set(rates || []);
+        if (rates && rates.length > 0) {
+          this.selectCourier(rates[0]); // auto select first option
+        }
+        this.shippingLoading.set(false);
+      },
+      error: (err) => {
+        console.error('Failed to calculate shipping rates', err);
+        this.shippingLoading.set(false);
+      }
+    });
+  }
+
+  selectCourier(c: any) {
+    this.selectedCourier.set(c);
+  }
+
+  placeOrder() {
+    const address = this.selectedAddress();
+    const courier = this.selectedCourier();
+    if (!address || !courier) return;
+
+    this.orderLoading.set(true);
+    this.errorMsg.set('');
+
+    const payload = {
+      addressId: address.id,
+      courierName: courier.name,
+      courierService: courier.service,
+      shippingCost: courier.cost,
+      notes: this.orderNotes
+    };
+
+    this.checkoutService.createOrder(payload).subscribe({
+      next: (order) => {
+        // Trigger payment generation
+        this.checkoutService.createPayment(order.id, 'midtrans').subscribe({
+          next: (payment) => {
+            this.orderLoading.set(false);
+            this.checkoutSuccess.set(true);
+            this.cartService.clearCart().subscribe(); // clear frontend cart cache
+            
+            // Redirect to order details where they can pay or track
+            this.router.navigate(['/pesanan', order.id]);
+          },
+          error: (err) => {
+            console.error('Failed to initialize payment', err);
+            // Even if payment generation fails, order is placed successfully
+            this.orderLoading.set(false);
+            this.router.navigate(['/pesanan', order.id]);
+          }
+        });
+      },
+      error: (err) => {
+        console.error('Failed to place order', err);
+        this.errorMsg.set(err.error?.message || 'Failed to place order. Check catalog stock quantities.');
+        this.orderLoading.set(false);
+      }
+    });
+  }
+}

@@ -1,0 +1,50 @@
+<div class="fixed bottom-6 right-6 z-40 flex flex-col space-y-3 font-sans">
+
+  <!-- Floating WhatsApp Button with pulsing micro-animation -->
+  <a href="https://wa.me/6281234567890?text=Hi%20Fitcorn!%20Saya%20tertarik%20dengan%20popcorn%20premiumnya." 
+     target="_blank"
+     class="relative group w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300 transform cursor-pointer">
+    
+    <!-- Pulse ring indicating active chat -->
+    <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-35 animate-ping group-hover:hidden"></span>
+    
+    <!-- SVG WhatsApp Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+    </svg>
+
+    <!-- Hover tooltip -->
+    <span class="absolute right-16 bg-charcoal-800 text-white font-sans text-xs font-semibold px-3.5 py-2 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-sm">
+      Chat WhatsApp
+    </span>
+  </a>
+
+  <!-- Floating Instagram Button -->
+  <a href="https://instagram.com/fitcorn" 
+     target="_blank"
+     class="relative group w-14 h-14 rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300 transform cursor-pointer">
+    
+    <!-- Instagram Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+    </svg>
+
+    <!-- Hover tooltip -->
+    <span class="absolute right-16 bg-charcoal-800 text-white font-sans text-xs font-semibold px-3.5 py-2 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-sm">
+      Follow Instagram
+    </span>
+  </a>
+
+  <!-- Scroll-To-Top Button -->
+  <button *ngIf="showScrollTop()"
+          (click)="scrollToTop()"
+          class="w-14 h-14 rounded-full bg-charcoal-800 dark:bg-charcoal-700 text-white dark:text-corn-400 flex items-center justify-center shadow-lg hover:scale-110 hover:bg-corn-400 dark:hover:bg-corn-400 hover:text-charcoal-900 transition-all duration-300 transform cursor-pointer">
+    <!-- Up Arrow -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+  </button>
+
+</div>

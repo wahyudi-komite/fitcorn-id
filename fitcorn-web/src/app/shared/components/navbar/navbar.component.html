@@ -1,0 +1,144 @@
+<nav [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'" 
+     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-20 items-center">
+      
+      <!-- Brand Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <a routerLink="/" class="text-2xl font-display font-extrabold tracking-wider text-charcoal-800 dark:text-white flex items-center gap-1.5">
+          <span class="text-corn-400">FIT</span><span>CORN</span>
+          <span class="w-2.5 h-2.5 rounded-full bg-corn-400 animate-pulse-gentle"></span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation Menu Links -->
+      <div class="hidden md:flex space-x-8 items-center font-sans font-medium text-sm">
+        <a routerLink="/" routerLinkActive="text-corn-500 font-semibold" [routerLinkActiveOptions]="{exact: true}" 
+           class="text-charcoal-600 dark:text-charcoal-300 hover:text-corn-400 dark:hover:text-corn-400 transition-colors duration-300">
+          Home
+        </a>
+        <a routerLink="/produk" routerLinkActive="text-corn-500 font-semibold" 
+           class="text-charcoal-600 dark:text-charcoal-300 hover:text-corn-400 dark:hover:text-corn-400 transition-colors duration-300">
+          Popcorn Catalog
+        </a>
+        
+        <!-- Authenticated Dashboard link -->
+        <ng-container *ngIf="authService.isAuthenticated(); else guestCta">
+          <a routerLink="/akun" routerLinkActive="text-corn-500 font-semibold" 
+             class="text-charcoal-600 dark:text-charcoal-300 hover:text-corn-400 dark:hover:text-corn-400 transition-colors duration-300 flex items-center gap-1">
+             <span>My Account</span>
+          </a>
+        </ng-container>
+        <ng-template #guestCta>
+          <a routerLink="/masuk" class="text-charcoal-600 dark:text-charcoal-300 hover:text-corn-400 dark:hover:text-corn-400 transition-colors duration-300">
+            Sign In
+          </a>
+        </ng-template>
+      </div>
+
+      <!-- Action Buttons (Cart, Theme, Auth CTA) -->
+      <div class="hidden md:flex items-center space-x-6">
+        
+        <!-- Theme Toggle Button -->
+        <button (click)="themeService.toggleTheme()" 
+                class="p-2.5 rounded-full bg-charcoal-100 dark:bg-charcoal-800 text-charcoal-600 dark:text-charcoal-300 hover:scale-105 hover:bg-corn-100 dark:hover:bg-charcoal-700 transition-all duration-300 cursor-pointer">
+          <ng-container *ngIf="themeService.theme() === 'light'; else moonIcon">
+            <!-- Sun Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-corn-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707m12.728 12.728A9 9 0 115.552 5.552a9 9 0 0112.728 12.728z" />
+            </svg>
+          </ng-container>
+          <ng-template #moonIcon>
+            <!-- Moon Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-corn-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </ng-template>
+        </button>
+
+        <!-- Shopping Cart Icon -->
+        <a routerLink="/keranjang" class="relative p-2.5 rounded-full bg-charcoal-100 dark:bg-charcoal-800 text-charcoal-600 dark:text-charcoal-300 hover:scale-105 transition-all duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <!-- Reactive Cart Item Indicator -->
+          <span *ngIf="cartService.itemsCount() > 0" 
+                class="absolute -top-1 -right-1 bg-corn-400 text-charcoal-900 font-display font-extrabold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white dark:border-charcoal-800 animate-pulse">
+            {{ cartService.itemsCount() }}
+          </span>
+        </a>
+
+        <!-- Premium CTA Button -->
+        <a routerLink="/produk" 
+           class="px-6 py-3 font-sans font-semibold text-xs tracking-wider uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-sm hover:shadow transition-all duration-300 transform hover:-translate-y-0.5">
+          Order Now
+        </a>
+      </div>
+
+      <!-- Mobile Menu Hamburger Button -->
+      <div class="md:hidden flex items-center space-x-4">
+        <!-- Theme Toggle -->
+        <button (click)="themeService.toggleTheme()" class="p-2 rounded-full bg-charcoal-100 dark:bg-charcoal-800">
+          <span *ngIf="themeService.theme() === 'light'">☀️</span>
+          <span *ngIf="themeService.theme() === 'dark'">🌙</span>
+        </button>
+
+        <!-- Cart -->
+        <a routerLink="/keranjang" class="relative p-2 rounded-full bg-charcoal-100 dark:bg-charcoal-800 text-charcoal-600 dark:text-charcoal-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span *ngIf="cartService.itemsCount() > 0" 
+                class="absolute -top-1 -right-1 bg-corn-400 text-charcoal-900 font-extrabold text-[9px] w-4.5 h-4.5 rounded-full flex items-center justify-center">
+            {{ cartService.itemsCount() }}
+          </span>
+        </a>
+
+        <!-- Hamburger -->
+        <button (click)="toggleMobileMenu()" 
+                class="text-charcoal-800 dark:text-white hover:text-corn-400 focus:outline-none transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Dropdown Menu -->
+  <div *ngIf="isMobileMenuOpen()" 
+       [ngClass]="themeService.theme() === 'dark' ? 'bg-charcoal-900 border-t border-charcoal-800' : 'bg-white border-t border-charcoal-100'" 
+       class="md:hidden transition-all duration-300 ease-in-out shadow-lg">
+    <div class="px-4 pt-4 pb-6 space-y-3 font-sans text-sm font-semibold">
+      <a routerLink="/" (click)="isMobileMenuOpen.set(false)" 
+         class="block px-3 py-2 rounded-lg text-charcoal-600 dark:text-charcoal-300 hover:bg-corn-50 hover:text-corn-600 dark:hover:bg-charcoal-800">
+        Home
+      </a>
+      <a routerLink="/produk" (click)="isMobileMenuOpen.set(false)" 
+         class="block px-3 py-2 rounded-lg text-charcoal-600 dark:text-charcoal-300 hover:bg-corn-50 hover:text-corn-600 dark:hover:bg-charcoal-800">
+        Popcorn Catalog
+      </a>
+      
+      <ng-container *ngIf="authService.isAuthenticated(); else guestMobileCta">
+        <a routerLink="/akun" (click)="isMobileMenuOpen.set(false)" 
+           class="block px-3 py-2 rounded-lg text-charcoal-600 dark:text-charcoal-300 hover:bg-corn-50 hover:text-corn-600 dark:hover:bg-charcoal-800">
+          My Account
+        </a>
+      </ng-container>
+      <ng-template #guestMobileCta>
+        <a routerLink="/masuk" (click)="isMobileMenuOpen.set(false)" 
+           class="block px-3 py-2 rounded-lg text-charcoal-600 dark:text-charcoal-300 hover:bg-corn-50 hover:text-corn-600 dark:hover:bg-charcoal-800">
+          Sign In
+        </a>
+      </ng-template>
+
+      <div class="pt-4 border-t border-charcoal-100 dark:border-charcoal-800">
+        <a routerLink="/produk" (click)="isMobileMenuOpen.set(false)" 
+           class="block w-full py-3 text-center rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 transition-colors duration-300">
+          Order Now
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
