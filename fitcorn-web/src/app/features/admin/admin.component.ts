@@ -570,7 +570,7 @@ import { ModalService } from '../../shared/services/modal.service';
                         
                         <div class="flex gap-2">
                           <button (click)="openInstagramModal(post)" class="text-xs font-bold text-corn-500 hover:underline cursor-pointer uppercase">Edit</button>
-                          <button (click)="deleteInstagramPost(post.id)" class="text-xs font-bold text-red-500 hover:underline cursor-pointer uppercase">Delete</button>
+                          <button (click)="deleteInstagramPost(post.id)" class="text-xs font-bold text-red-500 hover:underline cursor-pointer uppercase">Hapus</button>
                         </div>
                       </div>
                     </div>
@@ -585,11 +585,11 @@ import { ModalService } from '../../shared/services/modal.service';
             <div class="space-y-6 animate-fade-in">
               <div class="flex items-center justify-between">
                 <div>
-                  <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Discount Coupons</h3>
-                  <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Manage promotional codes, limits, and coupon limits</p>
+                  <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Kupon Diskon</h3>
+                  <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola kode promosi, batas, dan limit kupon</p>
                 </div>
                 <button (click)="openCouponModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-full shadow cursor-pointer">
-                  + Add New Coupon
+                  + Tambah Kupon Baru
                 </button>
               </div>
 
@@ -599,13 +599,13 @@ import { ModalService } from '../../shared/services/modal.service';
                   <table class="w-full text-sm">
                     <thead>
                       <tr class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest border-b border-charcoal-100 dark:border-charcoal-900 bg-charcoal-50 dark:bg-charcoal-900/50">
-                        <th class="text-left py-4 px-6">Coupon Code</th>
-                        <th class="text-left py-4 px-6">Type</th>
-                        <th class="text-left py-4 px-6">Discount Value</th>
-                        <th class="text-left py-4 px-6">Min Purchase</th>
-                        <th class="text-left py-4 px-6">Usage Count / Limit</th>
+                        <th class="text-left py-4 px-6">Kode Kupon</th>
+                        <th class="text-left py-4 px-6">Tipe</th>
+                        <th class="text-left py-4 px-6">Nilai Diskon</th>
+                        <th class="text-left py-4 px-6">Min. Pembelian</th>
+                        <th class="text-left py-4 px-6">Penggunaan / Batas</th>
                         <th class="text-left py-4 px-6">Status</th>
-                        <th class="text-right py-4 px-6">Actions</th>
+                        <th class="text-right py-4 px-6">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -624,12 +624,12 @@ import { ModalService } from '../../shared/services/modal.service';
                             <span class="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider"
                                   [class.bg-green-100]="c.isActive" [class.text-green-700]="c.isActive"
                                   [class.bg-red-100]="!c.isActive" [class.text-red-700]="!c.isActive">
-                              {{ c.isActive ? 'Active' : 'Inactive' }}
+                              {{ c.isActive ? 'Aktif' : 'Nonaktif' }}
                             </span>
                           </td>
                           <td class="py-4 px-6 text-right space-x-2">
                             <button (click)="openCouponModal(c)" class="px-3.5 py-1.5 rounded-full bg-corn-400/20 text-corn-700 dark:text-corn-300 text-xs font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Edit</button>
-                            <button (click)="deleteCoupon(c.id)" class="px-3.5 py-1.5 rounded-full bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Delete</button>
+                            <button (click)="deleteCoupon(c.id)" class="px-3.5 py-1.5 rounded-full bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Hapus</button>
                           </td>
                         </tr>
                       }
