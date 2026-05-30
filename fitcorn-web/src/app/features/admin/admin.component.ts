@@ -884,15 +884,15 @@ import { ModalService } from '../../shared/services/modal.service';
                 <div class="flex items-center gap-2 pt-8 select-none">
                   <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer">
                     <input type="checkbox" [(ngModel)]="instagramData.isActive" class="w-4 h-4 accent-corn-400" />
-                    Visible in Feed
+                    Tampil di Feed
                   </label>
                 </div>
               </div>
             </div>
 
             <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeInstagramModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Cancel</button>
-              <button (click)="saveInstagramPost()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Save</button>
+              <button (click)="closeInstagramModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
+              <button (click)="saveInstagramPost()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Simpan</button>
             </div>
           </div>
         </div>
