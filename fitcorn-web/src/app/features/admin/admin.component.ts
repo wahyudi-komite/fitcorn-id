@@ -648,32 +648,32 @@ import { ModalService } from '../../shared/services/modal.service';
         <div class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm">
           <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
                class="w-full max-w-md p-8 rounded-3xl border space-y-6 shadow-premium relative">
-            <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">Input Airwaybill Resi</h3>
+            <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">Input Resi</h3>
             
             <div class="space-y-4 text-sm font-medium">
               <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Courier Name</label>
-                <input type="text" [(ngModel)]="resiData.courierName" placeholder="e.g. JNE"
+                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nama Kurir</label>
+                <input type="text" [(ngModel)]="resiData.courierName" placeholder="cth. JNE"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                        class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Courier Service</label>
-                <input type="text" [(ngModel)]="resiData.courierService" placeholder="e.g. REG"
+                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Layanan Kurir</label>
+                <input type="text" [(ngModel)]="resiData.courierService" placeholder="cth. REG"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                        class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Resi Tracking Number</label>
-                <input type="text" [(ngModel)]="resiData.trackingNumber" placeholder="e.g. JT123456789"
+                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">No. Resi</label>
+                <input type="text" [(ngModel)]="resiData.trackingNumber" placeholder="cth. JT123456789"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                        class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
             </div>
 
             <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeResiModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Cancel</button>
-              <button (click)="saveResi()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Save Resi</button>
+              <button (click)="closeResiModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
+              <button (click)="saveResi()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Simpan Resi</button>
             </div>
           </div>
         </div>
@@ -685,19 +685,19 @@ import { ModalService } from '../../shared/services/modal.service';
           <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
                class="w-full max-w-md p-8 rounded-3xl border space-y-6 shadow-premium relative">
             <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
-              {{ categoryData.id ? 'Edit Category' : 'Add New Category' }}
+              {{ categoryData.id ? 'Edit Kategori' : 'Tambah Kategori Baru' }}
             </h3>
             
             <div class="space-y-4 text-sm font-medium">
               <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Category Name</label>
-                <input type="text" [(ngModel)]="categoryData.name" placeholder="e.g. Spicy Lava"
+                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nama Kategori</label>
+                <input type="text" [(ngModel)]="categoryData.name" placeholder="cth. Spicy Lava"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                        class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Description</label>
-                <textarea [(ngModel)]="categoryData.description" placeholder="Short description..." rows="2"
+                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Deskripsi</label>
+                <textarea [(ngModel)]="categoryData.description" placeholder="Deskripsi singkat..." rows="2"
                           [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                           class="w-full px-5 py-3 rounded-2xl border bg-transparent focus:outline-none focus:border-corn-400"></textarea>
               </div>
