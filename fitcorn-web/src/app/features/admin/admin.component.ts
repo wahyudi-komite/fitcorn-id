@@ -281,11 +281,11 @@ import { ModalService } from '../../shared/services/modal.service';
             <div class="space-y-6 animate-fade-in">
               <div class="flex items-center justify-between">
                 <div>
-                  <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Product Categories</h3>
-                  <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Manage collections and groupings</p>
+                  <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Kategori Produk</h3>
+                  <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola koleksi dan pengelompokan</p>
                 </div>
                 <button (click)="openCategoryModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-full shadow cursor-pointer">
-                  + Add New Category
+                  + Tambah Kategori Baru
                 </button>
               </div>
 
@@ -298,11 +298,11 @@ import { ModalService } from '../../shared/services/modal.service';
                     <div class="space-y-2">
                       <h4 class="text-lg font-display font-extrabold text-charcoal-800 dark:text-white">{{ c.name }}</h4>
                       <span class="block text-[10px] text-corn-500 font-extrabold uppercase tracking-widest">slug: {{ c.slug }}</span>
-                      <p class="text-xs text-charcoal-400 font-medium leading-relaxed mt-1">{{ c.description || 'No description provided' }}</p>
+                      <p class="text-xs text-charcoal-400 font-medium leading-relaxed mt-1">{{ c.description || 'Tidak ada deskripsi' }}</p>
                     </div>
                     <div class="flex justify-end gap-3 pt-4 border-t border-charcoal-100 dark:border-charcoal-900">
                       <button (click)="openCategoryModal(c)" class="text-xs font-bold text-corn-500 hover:underline cursor-pointer uppercase">Edit</button>
-                      <button (click)="deleteCategory(c.id)" class="text-xs font-bold text-red-500 hover:underline cursor-pointer uppercase">Delete</button>
+                      <button (click)="deleteCategory(c.id)" class="text-xs font-bold text-red-500 hover:underline cursor-pointer uppercase">Hapus</button>
                     </div>
                   </div>
                 }
@@ -314,8 +314,8 @@ import { ModalService } from '../../shared/services/modal.service';
           @if (activeTab() === 'orders') {
             <div class="space-y-6 animate-fade-in">
               <div>
-                <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Orders Cockpit</h3>
-                <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Track transactions, update status, and write airwaybill (resi)</p>
+                <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Kokpit Pesanan</h3>
+                <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Lacak transaksi, perbarui status, dan input resi</p>
               </div>
 
               <!-- Orders Cockpit Grid -->
@@ -325,12 +325,12 @@ import { ModalService } from '../../shared/services/modal.service';
                   <table class="w-full text-sm">
                     <thead>
                       <tr class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest border-b border-charcoal-100 dark:border-charcoal-900 bg-charcoal-50 dark:bg-charcoal-900/50">
-                        <th class="text-left py-4 px-6">Invoice Number</th>
-                        <th class="text-left py-4 px-6">Customer</th>
-                        <th class="text-left py-4 px-6">Order Total</th>
-                        <th class="text-left py-4 px-6">Resi / Courier</th>
-                        <th class="text-left py-4 px-6">Order Status</th>
-                        <th class="text-right py-4 px-6">Cockpit Actions</th>
+                        <th class="text-left py-4 px-6">No. Invoice</th>
+                        <th class="text-left py-4 px-6">Pelanggan</th>
+                        <th class="text-left py-4 px-6">Total Pesanan</th>
+                        <th class="text-left py-4 px-6">Resi / Kurir</th>
+                        <th class="text-left py-4 px-6">Status Pesanan</th>
+                        <th class="text-right py-4 px-6">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -345,7 +345,7 @@ import { ModalService } from '../../shared/services/modal.service';
                                 {{ o.courierName }} - {{ o.trackingNumber }}
                               </span>
                             } @else {
-                              <span class="text-xs text-charcoal-400 italic">No airwaybill resi</span>
+                              <span class="text-xs text-charcoal-400 italic">Belum ada resi</span>
                             }
                           </td>
                           <td class="py-4 px-6">
@@ -362,13 +362,13 @@ import { ModalService } from '../../shared/services/modal.service';
                             <select (change)="updateOrderStatus(o.id, $event)" [value]="o.status"
                                     [ngClass]="themeService.theme() === 'dark' ? 'bg-charcoal-950 border-charcoal-850 text-white' : 'bg-white border-charcoal-200 text-charcoal-800'"
                                     class="px-2 py-1 rounded border text-xs focus:outline-none cursor-pointer inline-block w-28 mr-2">
-                              <option value="pending">Pending</option>
-                              <option value="waiting_payment">Waiting Payment</option>
-                              <option value="paid">Paid</option>
-                              <option value="processing">Processing</option>
-                              <option value="shipped">Shipped</option>
-                              <option value="delivered">Delivered</option>
-                              <option value="cancelled">Cancelled</option>
+                              <option value="pending">Menunggu</option>
+                              <option value="waiting_payment">Menunggu Pembayaran</option>
+                              <option value="paid">Dibayar</option>
+                              <option value="processing">Diproses</option>
+                              <option value="shipped">Dikirim</option>
+                              <option value="delivered">Terkirim</option>
+                              <option value="cancelled">Dibatalkan</option>
                             </select>
 
                             <button (click)="openResiModal(o)" class="px-3.5 py-1.5 rounded-full bg-corn-400/20 text-corn-700 dark:text-corn-300 text-[10px] font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Resi</button>
