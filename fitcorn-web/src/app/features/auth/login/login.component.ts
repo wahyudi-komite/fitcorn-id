@@ -22,24 +22,24 @@ import { FormsModule } from '@angular/forms';
             <img src="/logo.png" alt="FITCORN Logo" class="h-16 mx-auto w-auto object-contain" />
           </a>
           <h1 class="text-3xl font-display font-extrabold text-charcoal-800 dark:text-white mt-2">
-            Welcome Back
+            Selamat Datang Kembali
           </h1>
           <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider">
-            Sign in to your premium Fitcorn account
+            Masuk ke akun Fitcorn premium Anda
           </p>
         </div>
 
         <form (submit)="onSubmit()" class="space-y-4 text-sm font-medium">
           <div class="space-y-4">
             <div>
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Email Address</label>
+              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Alamat Email</label>
               <input type="email" [(ngModel)]="email" name="email" placeholder="e.g. customer@fitcorn.com" required
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                      class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
             </div>
 
             <div class="relative">
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Password</label>
+              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Kata Sandi</label>
               <input [type]="showPassword() ? 'text' : 'password'" [(ngModel)]="password" name="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" required
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                      class="w-full px-5 py-3 pr-12 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
@@ -54,9 +54,9 @@ import { FormsModule } from '@angular/forms';
             <button type="submit" [disabled]="loading()"
                     class="w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
               @if (loading()) {
-                <span class="animate-spin text-sm">&#x231B;</span> Authenticating...
+                <span class="animate-spin text-sm">&#x231B;</span> Memverifikasi...
               } @else {
-                <span>&#x1F511;</span> Sign In
+                <span>&#x1F511;</span> Masuk
               }
             </button>
 
@@ -70,7 +70,7 @@ import { FormsModule } from '@angular/forms';
 
         <div class="relative flex items-center gap-3 py-2">
           <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-700"></div>
-          <span class="text-[10px] font-bold uppercase tracking-widest text-charcoal-400 dark:text-charcoal-300">or continue with</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-charcoal-400 dark:text-charcoal-300">atau lanjutkan dengan</span>
           <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-700"></div>
         </div>
 
@@ -94,7 +94,7 @@ import { FormsModule } from '@angular/forms';
 
         <div class="relative flex items-center gap-3 py-1">
           <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-700"></div>
-          <span class="text-[10px] font-bold uppercase tracking-widest text-charcoal-400 dark:text-charcoal-300">or via WhatsApp</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-charcoal-400 dark:text-charcoal-300">atau via WhatsApp</span>
           <div class="flex-1 h-px bg-charcoal-200 dark:bg-charcoal-700"></div>
         </div>
 
@@ -108,9 +108,9 @@ import { FormsModule } from '@angular/forms';
             <button type="submit" [disabled]="!phone || sendingOtp()"
                     class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">
               @if (sendingOtp()) {
-                Sending OTP...
+                Mengirim OTP...
               } @else {
-                Send OTP via WhatsApp
+                Kirim OTP via WhatsApp
               }
             </button>
             @if (otpMsg()) {
@@ -122,21 +122,21 @@ import { FormsModule } from '@angular/forms';
         } @else {
           <form (submit)="onVerifyOtp($event)" class="space-y-3">
             <div>
-              <input type="text" [(ngModel)]="otp" name="otp" placeholder="Enter 6-digit OTP" required maxlength="6"
+              <input type="text" [(ngModel)]="otp" name="otp" placeholder="Masukkan 6 digit OTP" required maxlength="6"
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-600 text-white' : 'border-charcoal-200 text-charcoal-800'"
                      class="w-full px-5 py-3 rounded-full border bg-transparent dark:bg-charcoal-900/30 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 text-sm text-center tracking-[8px]" />
             </div>
             <button type="submit" [disabled]="!otp || otp.length < 6 || verifyingOtp()"
                     class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">
               @if (verifyingOtp()) {
-                Verifying...
+                Memverifikasi...
               } @else {
-                Verify & Sign In
+                Verifikasi & Masuk
               }
             </button>
             <button type="button" (click)="resetOtp()"
                     class="w-full text-xs text-charcoal-400 dark:text-charcoal-300 hover:text-corn-500 transition-colors cursor-pointer">
-              Use a different number
+              Gunakan nomor lain
             </button>
             @if (otpError()) {
               <div class="p-2 text-center text-xs font-semibold text-red-500 dark:text-red-400 bg-red-500/10 dark:bg-red-500/15 border border-red-500/20 dark:border-red-500/30 rounded-2xl">
@@ -147,8 +147,8 @@ import { FormsModule } from '@angular/forms';
         }
 
         <div class="text-center text-xs font-semibold text-charcoal-400 dark:text-charcoal-300 pt-2 border-t border-charcoal-100 dark:border-charcoal-800">
-          Don't have an account?
-          <a routerLink="/daftar" class="text-corn-500 hover:underline">Register here</a>
+          Belum punya akun?
+          <a routerLink="/daftar" class="text-corn-500 hover:underline">Daftar di sini</a>
         </div>
       </div>
     </div>
@@ -200,7 +200,7 @@ export class LoginComponent {
       },
       error: (err) => {
         console.error('Login failed', err);
-        this.errorMsg.set(err.error?.message || 'Invalid email or password. Please try again.');
+        this.errorMsg.set(err.error?.message || 'Email atau kata sandi salah. Silakan coba lagi.');
         this.loading.set(false);
       }
     });
@@ -218,7 +218,7 @@ export class LoginComponent {
       next: () => {
         this.sendingOtp.set(false);
         this.otpSent.set(true);
-        this.otpMsg.set('OTP sent! Check your WhatsApp (check server console in dev mode)');
+        this.otpMsg.set('OTP terkirim! Cek WhatsApp Anda (cek server console di mode development)');
       },
       error: (err) => {
         this.sendingOtp.set(false);
