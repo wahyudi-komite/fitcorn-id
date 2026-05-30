@@ -35,20 +35,20 @@ import { ModalService } from '../../shared/services/modal.service';
         </div>
 
         @if (loading()) {
-          <div class="text-center py-12 text-charcoal-400">Loading...</div>
+          <div class="text-center py-12 text-charcoal-400">Memuat...</div>
         } @else if (products().length === 0) {
-          <div class="text-center py-12 text-charcoal-400">No products found</div>
+          <div class="text-center py-12 text-charcoal-400">Tidak ada produk ditemukan</div>
         } @else {
           <div class="overflow-x-auto">
             <table class="w-full text-sm">
               <thead>
                 <tr class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest border-b border-charcoal-100 dark:border-charcoal-900">
-                  <th class="text-left py-3 px-2">Image</th>
-                  <th class="text-left py-3 px-2">Name</th>
-                  <th class="text-left py-3 px-2">Price</th>
-                  <th class="text-left py-3 px-2">Stock</th>
+                  <th class="text-left py-3 px-2">Gambar</th>
+                  <th class="text-left py-3 px-2">Nama</th>
+                  <th class="text-left py-3 px-2">Harga</th>
+                  <th class="text-left py-3 px-2">Stok</th>
                   <th class="text-left py-3 px-2">Status</th>
-                  <th class="text-right py-3 px-2">Actions</th>
+                  <th class="text-right py-3 px-2">Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -72,17 +72,17 @@ import { ModalService } from '../../shared/services/modal.service';
                             [class.text-green-700]="product.isActive && product.isActive !== false"
                             [class.bg-red-100]="!product.isActive"
                             [class.text-red-700]="!product.isActive">
-                        {{ product.isActive && product.isActive !== false ? 'Active' : 'Inactive' }}
+                        {{ product.isActive && product.isActive !== false ? 'Aktif' : 'Nonaktif' }}
                       </span>
                     </td>
                     <td class="py-3 px-2 text-right">
                       <a [routerLink]="['/admin/produk', product.id]"
                          class="px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-full bg-corn-400/20 text-corn-700 dark:text-corn-300 hover:bg-corn-400/40 transition-colors cursor-pointer">
                         Edit
-                      </a>
-                      <button (click)="confirmDelete(product)"
-                              class="ml-2 px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-full bg-red-500/20 text-red-600 hover:bg-red-500/40 transition-colors cursor-pointer">
-                        Delete
+                       </a>
+                       <button (click)="confirmDelete(product)"
+                               class="ml-2 px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-full bg-red-500/20 text-red-600 hover:bg-red-500/40 transition-colors cursor-pointer">
+                         Hapus
                       </button>
                     </td>
                   </tr>
@@ -156,18 +156,18 @@ export class AdminProductListComponent implements OnInit {
 
   async confirmDelete(product: any) {
     const confirmed = await this.modalService.confirm({
-      title: 'Delete Product',
-      message: `Delete "${product.name}"? This cannot be undone.`,
-      confirmLabel: 'Delete',
-      cancelLabel: 'Cancel',
+      title: 'Hapus Produk',
+      message: `Hapus "${product.name}"? Tindakan ini tidak dapat dibatalkan.`,
+      confirmLabel: 'Hapus',
+      cancelLabel: 'Batal',
     });
     if (!confirmed) return;
     this.productsService.deleteProduct(product.id).subscribe({
       next: () => this.loadProducts(),
       error: () => {
         this.modalService.confirm({
-          title: 'Error',
-          message: 'Failed to delete product. Please try again.',
+          title: 'Gagal',
+          message: 'Gagal menghapus produk. Silakan coba lagi.',
           confirmLabel: 'OK',
           cancelLabel: '',
         });
