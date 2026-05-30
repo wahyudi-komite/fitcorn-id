@@ -35,49 +35,49 @@ import { ModalService } from '../../shared/services/modal.service';
           <button (click)="setTab('products')"
                   [ngClass]="activeTab() === 'products' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
                   class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>🍿</span> Products CRUD
+            <span>🍿</span> Produk
           </button>
           <button (click)="setTab('categories')"
                   [ngClass]="activeTab() === 'categories' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
                   class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>🏷️</span> Categories
+            <span>🏷️</span> Kategori
           </button>
           <button (click)="setTab('orders')"
                   [ngClass]="activeTab() === 'orders' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
                   class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>📦</span> Orders Management
+            <span>📦</span> Pesanan
           </button>
           <button (click)="setTab('customers')"
                   [ngClass]="activeTab() === 'customers' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
                   class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>👥</span> Customers
+            <span>👥</span> Pelanggan
           </button>
           <button (click)="setTab('settings')"
                   [ngClass]="activeTab() === 'settings' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
                   class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>⚙️</span> Settings
+            <span>⚙️</span> Pengaturan
           </button>
           <button (click)="setTab('banners')"
                   [ngClass]="activeTab() === 'banners' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
                   class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>🖼️</span> Banners
+            <span>🖼️</span> Banner
           </button>
           <button (click)="setTab('instagram')"
                   [ngClass]="activeTab() === 'instagram' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
                   class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>📸</span> Instagram Feed
+            <span>📸</span> Feed Instagram
           </button>
           <button (click)="setTab('coupons')"
                   [ngClass]="activeTab() === 'coupons' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
                   class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>🎫</span> Coupons
+            <span>🎫</span> Kupon
           </button>
         </nav>
 
         <!-- Sidebar Footer Admin Info -->
         <div class="pt-6 border-t border-charcoal-200 dark:border-charcoal-800 flex items-center justify-between text-xs text-charcoal-400 font-bold uppercase tracking-wider">
           <span>Admin</span>
-          <button (click)="authService.logout()" class="text-red-500 hover:underline cursor-pointer">Log Out</button>
+          <button (click)="authService.logout()" class="text-red-500 hover:underline cursor-pointer">Keluar</button>
         </div>
       </aside>
 
