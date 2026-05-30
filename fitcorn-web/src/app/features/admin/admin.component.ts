@@ -184,7 +184,7 @@ import { ModalService } from '../../shared/services/modal.service';
                 <!-- Right: Recent Orders -->
                 <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                      class="p-6 rounded-3xl border shadow-premium space-y-6">
-                  <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">Recent Orders</h3>
+                  <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">Pesanan Terbaru</h3>
                   <div class="space-y-4">
                     @for (ord of stats()?.recentOrders; track ord.id) {
                       <div class="flex items-center justify-between text-sm font-medium border-b border-charcoal-100 dark:border-charcoal-900 pb-3 last:border-none">
@@ -215,11 +215,11 @@ import { ModalService } from '../../shared/services/modal.service';
             <div class="space-y-6 animate-fade-in">
               <div class="flex items-center justify-between">
                 <div>
-                  <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Product Catalog</h3>
-                  <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">CRUD popcorn listings, variants, stock, and upload images</p>
+                  <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Katalog Produk</h3>
+                  <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola daftar produk, varian, stok, dan unggah gambar</p>
                 </div>
                 <button (click)="openProductModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-full shadow cursor-pointer">
-                  + Add New Popcorn
+                  + Tambah Produk Baru
                 </button>
               </div>
 
@@ -230,13 +230,13 @@ import { ModalService } from '../../shared/services/modal.service';
                   <table class="w-full text-sm">
                     <thead>
                       <tr class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest border-b border-charcoal-100 dark:border-charcoal-900 bg-charcoal-50 dark:bg-charcoal-900/50">
-                        <th class="text-left py-4 px-6">Image</th>
-                        <th class="text-left py-4 px-6">Flavor Name</th>
-                        <th class="text-left py-4 px-6">Primary Price</th>
-                        <th class="text-left py-4 px-6">Inventory Stock</th>
-                        <th class="text-left py-4 px-6">Featured</th>
+                        <th class="text-left py-4 px-6">Gambar</th>
+                        <th class="text-left py-4 px-6">Nama Produk</th>
+                        <th class="text-left py-4 px-6">Harga</th>
+                        <th class="text-left py-4 px-6">Stok</th>
+                        <th class="text-left py-4 px-6">Unggulan</th>
                         <th class="text-left py-4 px-6">Status</th>
-                        <th class="text-right py-4 px-6">Actions</th>
+                        <th class="text-right py-4 px-6">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -260,12 +260,12 @@ import { ModalService } from '../../shared/services/modal.service';
                             <span class="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider"
                                   [class.bg-green-100]="p.isActive" [class.text-green-700]="p.isActive"
                                   [class.bg-red-100]="!p.isActive" [class.text-red-700]="!p.isActive">
-                              {{ p.isActive ? 'Active' : 'Inactive' }}
+                              {{ p.isActive ? 'Aktif' : 'Nonaktif' }}
                             </span>
                           </td>
                           <td class="py-4 px-6 text-right space-x-2">
                             <button (click)="openProductModal(p)" class="px-3.5 py-1.5 rounded-full bg-corn-400/20 text-corn-700 dark:text-corn-300 text-xs font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Edit</button>
-                            <button (click)="deleteProduct(p)" class="px-3.5 py-1.5 rounded-full bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Delete</button>
+                            <button (click)="deleteProduct(p)" class="px-3.5 py-1.5 rounded-full bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Hapus</button>
                           </td>
                         </tr>
                       }
