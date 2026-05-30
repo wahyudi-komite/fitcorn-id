@@ -959,14 +959,14 @@ import { ModalService } from '../../shared/services/modal.service';
               <div class="flex items-center gap-2 pt-4 select-none">
                 <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer">
                   <input type="checkbox" [(ngModel)]="couponData.isActive" class="w-4 h-4 accent-corn-400" />
-                  Active Coupon
+                  Kupon Aktif
                 </label>
               </div>
             </div>
 
             <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeCouponModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Cancel</button>
-              <button (click)="saveCoupon()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Save</button>
+              <button (click)="closeCouponModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
+              <button (click)="saveCoupon()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Simpan</button>
             </div>
           </div>
         </div>
@@ -1143,7 +1143,7 @@ export class AdminComponent implements OnInit {
 
   saveResi() {
     if (!this.resiData.courierName || !this.resiData.trackingNumber) {
-      alert('Courier Name and Airwaybill tracking number are required.');
+      alert('Nama kurir dan nomor resi wajib diisi.');
       return;
     }
 
@@ -1199,7 +1199,7 @@ export class AdminComponent implements OnInit {
   }
 
   deleteCategory(id: number) {
-    if (!confirm('Are you sure you want to delete this category?')) return;
+    if (!confirm('Apakah Anda yakin ingin menghapus kategori ini?')) return;
     this.adminService.deleteCategory(id).subscribe({
       next: () => this.loadActiveTabDataset()
     });
@@ -1217,7 +1217,7 @@ export class AdminComponent implements OnInit {
   // ============ SYSTEM SETTINGS BULK SAVE ============
   saveSettings() {
     this.adminService.updateSettings(this.settingsPayload).subscribe({
-      next: () => alert('All system settings saved successfully!'),
+      next: () => alert('Semua pengaturan berhasil disimpan!'),
       error: (err) => console.error('Failed to bulk save settings', err)
     });
   }
@@ -1312,7 +1312,7 @@ export class AdminComponent implements OnInit {
   }
 
   deleteProduct(prod: any) {
-    if (!confirm(`Are you sure you want to delete product "${prod.name}"?`)) return;
+    if (!confirm(`Apakah Anda yakin ingin menghapus produk "${prod.name}"?`)) return;
     this.productsService.deleteProduct(prod.id).subscribe({
       next: () => this.loadActiveTabDataset()
     });
@@ -1343,7 +1343,7 @@ export class AdminComponent implements OnInit {
 
   saveBanner() {
     if (!this.bannerData.title || !this.bannerData.imageUrl) {
-      alert('Title and Image URL are required.');
+      alert('Judul dan URL gambar wajib diisi.');
       return;
     }
 
@@ -1382,7 +1382,7 @@ export class AdminComponent implements OnInit {
   }
 
   deleteBanner(id: number) {
-    if (!confirm('Are you sure you want to delete this banner?')) return;
+    if (!confirm('Apakah Anda yakin ingin menghapus banner ini?')) return;
     this.adminService.deleteBanner(id).subscribe({
       next: () => this.loadActiveTabDataset(),
       error: (err) => console.error('Failed to delete banner', err)
@@ -1448,7 +1448,7 @@ export class AdminComponent implements OnInit {
   }
 
   deleteInstagramPost(id: number) {
-    if (!confirm('Are you sure you want to delete this Instagram post?')) return;
+    if (!confirm('Apakah Anda yakin ingin menghapus postingan Instagram ini?')) return;
     this.adminService.deleteInstagramPost(id).subscribe({
       next: () => this.loadActiveTabDataset(),
       error: (err) => console.error('Failed to delete Instagram post', err)
@@ -1480,7 +1480,7 @@ export class AdminComponent implements OnInit {
 
   saveCoupon() {
     if (!this.couponData.code || !this.couponData.value) {
-      alert('Coupon Code and Discount Value are required.');
+      alert('Kode kupon dan nilai diskon wajib diisi.');
       return;
     }
 
