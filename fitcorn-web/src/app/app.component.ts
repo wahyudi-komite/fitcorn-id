@@ -6,6 +6,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { FloatingButtonsComponent } from './shared/components/floating-buttons/floating-buttons.component';
 import { ExitIntentPopupComponent } from './shared/components/exit-intent-popup/exit-intent-popup.component';
 import { ConfirmModalComponent } from './shared/components/confirm-modal/confirm-modal.component';
+import { PromoBannerComponent } from './shared/components/promo-banner/promo-banner.component';
 import { ThemeService } from './core/services/theme.service';
 
 @Component({
@@ -18,7 +19,8 @@ import { ThemeService } from './core/services/theme.service';
     FooterComponent,
     FloatingButtonsComponent,
     ExitIntentPopupComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    PromoBannerComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
