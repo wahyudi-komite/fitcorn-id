@@ -546,4 +546,24 @@ export class ProductsService implements OnModuleInit {
       .take(4)
       .getMany();
   }
+
+  async addImage(productId: string, imageUrl: string, isPrimary = false): Promise<ProductImage> {
+    const product = await this.findOneById(productId);
+
+    if (isPrimary) {
+      await this.imageRepository.update(
+        { product: { id: productId } },
+        { isPrimary: false }
+      );
+    }
+
+    const image = this.imageRepository.create({
+      product,
+      url: imageUrl,
+      isPrimary,
+      altText: product.name,
+    });
+
+    return this.imageRepository.save(image);
+  }
 }

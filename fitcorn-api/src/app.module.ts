@@ -24,6 +24,9 @@ import { ALL_ENTITIES } from './database/all-entities';
 import { BullModule } from '@nestjs/bull';
 import { ScheduleModule } from '@nestjs/schedule';
 import { NotificationsModule } from './modules/notifications/notifications.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { UsersModule } from './modules/users/users.module';
+import { SettingsModule } from './modules/settings/settings.module';
 
 @Module({
   imports: [
@@ -75,6 +78,9 @@ import { NotificationsModule } from './modules/notifications/notifications.modul
     BannersModule,
     CouponsModule,
     NotificationsModule,
+    AdminModule,
+    UsersModule,
+    SettingsModule,
   ],
   controllers: [AppController],
   providers: [
