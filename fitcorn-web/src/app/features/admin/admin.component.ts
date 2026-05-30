@@ -704,8 +704,8 @@ import { ModalService } from '../../shared/services/modal.service';
             </div>
 
             <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeCategoryModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Cancel</button>
-              <button (click)="saveCategory()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Save</button>
+              <button (click)="closeCategoryModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
+              <button (click)="saveCategory()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Simpan</button>
             </div>
           </div>
         </div>
@@ -717,19 +717,19 @@ import { ModalService } from '../../shared/services/modal.service';
           <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
                class="w-full max-w-lg p-8 rounded-3xl border space-y-6 shadow-premium relative my-8">
             <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
-              {{ productData.id ? 'Edit Popcorn Flavor' : 'Add New Popcorn Flavor' }}
+              {{ productData.id ? 'Edit Produk' : 'Tambah Produk Baru' }}
             </h3>
             
             <div class="space-y-4 text-xs font-semibold">
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Flavor Name</label>
-                  <input type="text" [(ngModel)]="productData.name" placeholder="e.g. Honey Butter"
+                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nama Produk</label>
+                  <input type="text" [(ngModel)]="productData.name" placeholder="cth. Honey Butter"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                          class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
                 </div>
                 <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Price (Rp)</label>
+                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Harga (Rp)</label>
                   <input type="number" [(ngModel)]="productData.price" placeholder="25000"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                          class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
@@ -738,7 +738,7 @@ import { ModalService } from '../../shared/services/modal.service';
 
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Inventory Quantity</label>
+                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Jumlah Stok</label>
                   <input type="number" [(ngModel)]="productData.quantity" placeholder="100"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                          class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
@@ -746,30 +746,30 @@ import { ModalService } from '../../shared/services/modal.service';
                 <div class="flex items-center gap-4 pt-8">
                   <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer select-none">
                     <input type="checkbox" [(ngModel)]="productData.isFeatured" class="w-4 h-4 accent-corn-400" />
-                    Featured Flavor
+                    Unggulan
                   </label>
                   <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer select-none">
                     <input type="checkbox" [(ngModel)]="productData.isActive" class="w-4 h-4 accent-corn-400" />
-                    Active Catalog
+                    Aktif
                   </label>
                 </div>
               </div>
 
               <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Description</label>
-                <textarea [(ngModel)]="productData.description" placeholder="Flavor details, notes, organic seed properties..." rows="3"
+                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Deskripsi</label>
+                <textarea [(ngModel)]="productData.description" placeholder="Detail produk, catatan, properti bahan..." rows="3"
                           [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                           class="w-full px-5 py-3 rounded-2xl border bg-transparent focus:outline-none focus:border-corn-400"></textarea>
               </div>
 
               <!-- Image File Upload section -->
               <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Upload Flavor Image</label>
+                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Unggah Gambar Produk</label>
                 <input type="file" (change)="onImageFileSelected($event)" accept="image/*"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                        class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400 file:mr-4 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-corn-400 file:text-charcoal-900 hover:file:bg-corn-500 cursor-pointer" />
                 @if (imageUploadProgress()) {
-                  <span class="block text-[10px] text-corn-500 font-bold mt-2 animate-pulse">⌛ Image upload in progress...</span>
+                  <span class="block text-[10px] text-corn-500 font-bold mt-2 animate-pulse">⌛ Sedang mengunggah gambar...</span>
                 }
               </div>
             </div>
