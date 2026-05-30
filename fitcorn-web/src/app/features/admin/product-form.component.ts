@@ -19,22 +19,22 @@ import { ProductsService } from '../../core/services/products.service';
         <div class="flex items-center justify-between">
           <div>
             <h1 class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white">
-              {{ isEdit() ? 'Edit Product' : 'New Product' }}
+              {{ isEdit() ? 'Edit Produk' : 'Produk Baru' }}
             </h1>
             <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-1">
-              {{ isEdit() ? 'Update product details' : 'Add a new product to the catalog' }}
+              {{ isEdit() ? 'Perbarui detail produk' : 'Tambah produk baru ke katalog' }}
             </p>
           </div>
           <a routerLink="/admin/produk"
              class="px-5 py-2 font-bold text-xs tracking-widest uppercase rounded-full bg-charcoal-100 dark:bg-charcoal-800 hover:bg-charcoal-200 dark:hover:bg-charcoal-700 text-charcoal-600 dark:text-charcoal-300 transition-colors cursor-pointer">
-            Back
+            Kembali
           </a>
         </div>
 
         <form (submit)="onSubmit()" class="space-y-5 text-sm font-medium" #productForm="ngForm">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div class="md:col-span-2">
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Name *</label>
+              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nama *</label>
               <input type="text" [(ngModel)]="form.name" name="name" required
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                      class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
@@ -55,28 +55,28 @@ import { ProductsService } from '../../core/services/products.service';
             </div>
 
             <div class="md:col-span-2">
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Description *</label>
+              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Deskripsi *</label>
               <textarea [(ngModel)]="form.description" name="description" required rows="4"
                         [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                         class="w-full px-5 py-3 rounded-2xl border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400"></textarea>
             </div>
 
             <div class="md:col-span-2">
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Short Description</label>
+              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Deskripsi Singkat</label>
               <textarea [(ngModel)]="form.shortDescription" name="shortDescription" rows="2"
                         [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                         class="w-full px-5 py-3 rounded-2xl border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400"></textarea>
             </div>
 
             <div>
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Price *</label>
+              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Harga *</label>
               <input type="number" [(ngModel)]="form.price" name="price" required min="0"
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                      class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
             </div>
 
             <div>
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Sale Price</label>
+              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Harga Diskon</label>
               <input type="number" [(ngModel)]="form.salePrice" name="salePrice" min="0"
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                      class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
@@ -90,7 +90,7 @@ import { ProductsService } from '../../core/services/products.service';
             </div>
 
             <div>
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Image URL</label>
+              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Gambar</label>
               <input type="url" [(ngModel)]="form.imageUrl" name="imageUrl"
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                      class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
