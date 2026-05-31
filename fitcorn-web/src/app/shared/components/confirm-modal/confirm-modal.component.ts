@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalService } from '../../services/modal.service';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { GlassmorphismDirective } from '../../directives/glassmorphism.directive';
 
 @Component({
   selector: 'app-confirm-modal',
   standalone: true,
-  imports: [CommonModule, ButtonComponent],
+  imports: [CommonModule, ButtonComponent, GlassmorphismDirective],
   template: `
     @if (modalService.confirmState(); as state) {
       <div class="fixed inset-0 z-[100] flex items-center justify-center p-6">

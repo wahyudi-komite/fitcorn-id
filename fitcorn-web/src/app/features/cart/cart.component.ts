@@ -4,13 +4,13 @@ import { RouterModule } from '@angular/router';
 import { CartService } from '../../core/services/cart.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { ThemeService } from '../../core/services/theme.service';
-import { ButtonComponent } from '../../shared/ui';
+import { ButtonComponent, QuantitySelectorComponent } from '../../shared/ui';
 import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.directive';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonComponent, GlassmorphismDirective],
+  imports: [CommonModule, RouterModule, ButtonComponent, GlassmorphismDirective, QuantitySelectorComponent],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div class="max-w-4xl mx-auto">
@@ -38,10 +38,9 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
             <p class="text-charcoal-500 dark:text-charcoal-400 font-medium max-w-sm mx-auto">
               Sepertinya Anda belum menambahkan rasa popcorn premium favorit ke keranjang. Ayo cari beberapa!
             </p>
-            <a routerLink="/produk" 
-               class="inline-block px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
-              Jelajaji Rasa
-            </a>
+            <app-button route="/produk">
+              Jelajahi Rasa
+            </app-button>
           </div>
         } @else {
           <!-- Cart Items Layout -->
@@ -98,21 +97,12 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
 
                     <!-- Quantity Control -->
                     <div class="flex items-center justify-center sm:justify-start gap-4 mt-4 pt-4 border-t border-charcoal-100 dark:border-charcoal-900/50">
-                      <div class="flex items-center border border-charcoal-200 dark:border-charcoal-800 rounded-md overflow-hidden shrink-0 bg-transparent">
-                        <app-button (onClick)="updateQuantity(item.id, item.quantity - 1)" 
-                                    [disabled]="actionLoading() || item.quantity <= 1"
-                                    variant="ghost" size="sm">
-                          -
-                        </app-button>
-                        <span class="px-3 py-1.5 font-semibold text-charcoal-800 dark:text-white w-10 text-center select-none text-xs">
-                          {{ item.quantity }}
-                        </span>
-                        <app-button (onClick)="updateQuantity(item.id, item.quantity + 1)" 
-                                    [disabled]="actionLoading()"
-                                    variant="ghost" size="sm">
-                          +
-                        </app-button>
-                      </div>
+                      <app-quantity-selector
+                        [quantity]="item.quantity"
+                        [min]="actionLoading() ? item.quantity : 1"
+                        [max]="actionLoading() ? item.quantity : 99"
+                        (onChange)="updateQuantity(item.id, $event)"
+                      />
                       <span class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest">
                         Berat: {{ ((item.variant ? item.variant.weight : item.product?.weight) * item.quantity) }}g
                       </span>
@@ -154,14 +144,12 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
               </div>
 
               <div class="pt-4 space-y-3">
-                <a routerLink="/checkout" 
-                   class="block text-center w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer">
+                <app-button route="/checkout" [fullWidth]="true" customClass="justify-center">
                   Lanjut ke Checkout
-                </a>
-                <a routerLink="/produk" 
-                   class="block text-center w-full px-8 py-3.5 font-sans font-bold text-xs tracking-widest uppercase rounded-full border border-charcoal-200 dark:border-charcoal-850 hover:bg-charcoal-100 dark:hover:bg-charcoal-900 text-charcoal-600 dark:text-charcoal-300 transition-all duration-300 cursor-pointer">
+                </app-button>
+                <app-button route="/produk" variant="outline" [fullWidth]="true" customClass="justify-center">
                   Lanjutkan Belanja
-                </a>
+                </app-button>
               </div>
             </div>
 

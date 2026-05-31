@@ -5,11 +5,12 @@ import { AuthService } from '../../../core/services/auth.service';
 import { CartService } from '../../../core/services/cart.service';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
 import { LoadingStateComponent } from '../../../shared/ui';
+import { GlassmorphismDirective } from '../../../shared/directives/glassmorphism.directive';
 
 @Component({
   selector: 'app-oauth-callback',
   standalone: true,
-  imports: [CommonModule, RouterModule, LoadingStateComponent],
+  imports: [CommonModule, RouterModule, LoadingStateComponent, GlassmorphismDirective],
   template: `
     <div class="max-w-md mx-auto px-6 py-32 font-sans transition-colors duration-300">
       <div appGlassmorphism
