@@ -1,10 +1,9 @@
 import { Component, input, output, HostListener } from '@angular/core';
-import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-dropdown',
   standalone: true,
-  imports: [NgClass],
+  imports: [],
   template: `
     <div class="relative inline-block">
       <div (click)="toggleOpen()" class="cursor-pointer">

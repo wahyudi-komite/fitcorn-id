@@ -8,7 +8,6 @@ import { ProductsService } from '../../core/services/products.service';
 import { AdminService } from './admin.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { ButtonComponent } from '../../shared/ui/button/button.component';
-import { BadgeComponent } from '../../shared/ui/badge/badge.component';
 import { DialogComponent } from '../../shared/ui/dialog/dialog.component';
 import { InputComponent } from '../../shared/ui/input/input.component';
 import { SelectComponent } from '../../shared/ui/select/select.component';
@@ -19,7 +18,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, BadgeComponent, DialogComponent, InputComponent, SelectComponent, TextareaComponent, LoadingStateComponent, GlassmorphismDirective],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, DialogComponent, InputComponent, SelectComponent, TextareaComponent, LoadingStateComponent, GlassmorphismDirective],
   template: `
     <div class="min-h-screen font-sans flex flex-col md:flex-row transition-colors duration-300 bg-white dark:bg-charcoal-950">
       

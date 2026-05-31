@@ -1,5 +1,4 @@
 import { Component, input, output } from '@angular/core';
-import { NgClass } from '@angular/common';
 
 export interface TableColumn {
   key: string;
@@ -12,7 +11,7 @@ export interface TableColumn {
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [NgClass],
+  imports: [],
   template: `
     <div class="overflow-x-auto rounded-xl border border-charcoal-100 dark:border-charcoal-800">
       <table class="w-full text-sm">

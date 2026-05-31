@@ -1,8 +1,6 @@
 import { Component, input, output, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NgClass } from '@angular/common';
 import { PriceTagComponent } from '../price-tag/price-tag.component';
-import { BadgeComponent } from '../badge/badge.component';
 
 export interface ProductCardData {
   id: number | string;
@@ -20,7 +18,7 @@ export interface ProductCardData {
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [RouterLink, NgClass, PriceTagComponent, BadgeComponent],
+  imports: [RouterLink, PriceTagComponent],
   template: `
     <a [routerLink]="['/produk', product().slug]" class="group block rounded-xl border border-charcoal-100 dark:border-charcoal-800 bg-white dark:bg-charcoal-900 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
       <!-- Image Container -->

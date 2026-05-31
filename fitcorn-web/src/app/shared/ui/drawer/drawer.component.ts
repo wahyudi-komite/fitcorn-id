@@ -1,12 +1,11 @@
 import { Component, input, output } from '@angular/core';
-import { NgClass } from '@angular/common';
 
 export type DrawerSide = 'left' | 'right';
 
 @Component({
   selector: 'app-drawer',
   standalone: true,
-  imports: [NgClass],
+  imports: [],
   template: `
     @if (open()) {
       <div class="fixed inset-0 z-50 flex" [class.justify-end]="side() === 'right'">
