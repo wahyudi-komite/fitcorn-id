@@ -6,11 +6,12 @@ import { CartService } from '../../../core/services/cart.service';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
 import { InputComponent } from '../../../shared/ui/input/input.component';
+import { PasswordInputComponent } from '../../../shared/ui/password-input/password-input.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, InputComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, InputComponent, PasswordInputComponent],
   template: `
     <div class="max-w-md mx-auto px-6 py-16 sm:py-24 font-sans transition-colors duration-300">
       <div appGlassmorphism
@@ -33,15 +34,7 @@ import { InputComponent } from '../../../shared/ui/input/input.component';
         <form (submit)="onSubmit()" class="space-y-4 text-sm font-medium">
           <div class="space-y-4">
             <app-input [(ngModel)]="email" type="email" label="Alamat Email" placeholder="e.g. customer@fitcorn.com" [required]="true" name="email"></app-input>
-            <div class="relative">
-              <label class="block text-[10px] font-bold text-charcoal-400 dark:text-charcoal-500 uppercase tracking-widest mb-2">Kata Sandi</label>
-              <input [type]="showPassword() ? 'text' : 'password'" [(ngModel)]="password" name="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" required
-                     class="w-full px-4 py-3 pr-12 rounded-md border bg-transparent text-charcoal-800 dark:text-white border-charcoal-200 dark:border-charcoal-700 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 transition-all duration-200 text-sm" />
-              <button type="button" (click)="togglePassword()" tabindex="-1"
-                      class="absolute right-3 top-1/2 -translate-y-1/2 text-charcoal-400 hover:text-corn-500 cursor-pointer text-lg leading-none">
-                {{ showPassword() ? '🙈' : '👁️' }}
-              </button>
-            </div>
+            <app-password-input [(ngModel)]="password" label="Kata Sandi" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" [required]="true" name="password"></app-password-input>
           </div>
 
           <div class="pt-4 space-y-3">
@@ -127,8 +120,6 @@ export class LoginComponent {
   password = '';
   loading = signal<boolean>(false);
   errorMsg = signal<string>('');
-  showPassword = signal<boolean>(false);
-
   phone = '';
   otp = '';
   sendingOtp = signal<boolean>(false);
@@ -136,10 +127,6 @@ export class LoginComponent {
   otpSent = signal<boolean>(false);
   otpMsg = signal<string>('');
   otpError = signal<string>('');
-
-  togglePassword() {
-    this.showPassword.update(v => !v);
-  }
 
   onSubmit() {
     if (!this.email || !this.password) return;

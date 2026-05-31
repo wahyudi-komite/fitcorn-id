@@ -7,6 +7,7 @@ import { FloatingButtonsComponent } from './shared/components/floating-buttons/f
 import { ExitIntentPopupComponent } from './shared/components/exit-intent-popup/exit-intent-popup.component';
 import { ConfirmModalComponent } from './shared/components/confirm-modal/confirm-modal.component';
 import { PromoBannerComponent } from './shared/components/promo-banner/promo-banner.component';
+import { ToastContainerComponent } from './shared/ui/toast-container/toast-container.component';
 import { ThemeService } from './core/services/theme.service';
 import { AnalyticsService } from './core/services/analytics.service';
 import { filter } from 'rxjs';
@@ -22,7 +23,8 @@ import { filter } from 'rxjs';
     FloatingButtonsComponent,
     ExitIntentPopupComponent,
     ConfirmModalComponent,
-    PromoBannerComponent
+    PromoBannerComponent,
+    ToastContainerComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
