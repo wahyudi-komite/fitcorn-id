@@ -31,6 +31,14 @@ import { ProductsService } from '../../core/services/products.service';
           </a>
         </div>
 
+        @if (loading()) {
+          <div class="space-y-5 py-12">
+            <div class="flex justify-center">
+              <div class="w-10 h-10 border-[3px] border-corn-400 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+            <p class="text-center text-xs font-semibold text-charcoal-400 dark:text-charcoal-300">Memuat data produk...</p>
+          </div>
+        } @else {
         <form (submit)="onSubmit()" class="space-y-5 text-sm font-medium" #productForm="ngForm">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div class="md:col-span-2">
@@ -127,6 +135,7 @@ import { ProductsService } from '../../core/services/products.service';
             }
           </div>
         </form>
+        }
       </div>
     </div>
   `,
@@ -140,6 +149,7 @@ export class AdminProductFormComponent implements OnInit {
 
   isEdit = signal(false);
   productId = signal<string | null>(null);
+  loading = signal(false);
   saving = signal(false);
   errorMsg = signal('');
 
@@ -191,8 +201,10 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   loadProduct(id: string) {
+    this.loading.set(true);
     this.productsService.getAdminProductById(id).subscribe({
       next: (product) => {
+        this.loading.set(false);
         this.form = {
           name: product.name,
           slug: product.slug,
@@ -208,6 +220,7 @@ export class AdminProductFormComponent implements OnInit {
         };
       },
       error: () => {
+        this.loading.set(false);
         this.errorMsg.set('Gagal memuat produk');
       },
     });
