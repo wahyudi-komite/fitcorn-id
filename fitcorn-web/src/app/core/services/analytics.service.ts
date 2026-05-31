@@ -9,73 +9,34 @@ export class AnalyticsService {
   private isBrowser = isPlatformBrowser(this.platformId);
 
   constructor() {
-    this.initScripts();
+    if (this.isBrowser) {
+      if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(() => this.initScripts(), { timeout: 3000 });
+      } else {
+        setTimeout(() => this.initScripts(), 2000);
+      }
+    }
   }
 
   private initScripts() {
-    if (!this.isBrowser) return;
-
-    // Check if scripts are already initialized
     if ((window as any).analyticsInitialized) return;
     (window as any).analyticsInitialized = true;
 
     try {
-      // 1. Google Analytics 4 (gtag.js) setup
       (window as any).dataLayer = (window as any).dataLayer || [];
       const gtagFn = function() {
         (window as any).dataLayer.push(arguments);
       };
       (window as any).gtag = (window as any).gtag || gtagFn;
       (window as any).gtag('js', new Date());
-      (window as any).gtag('config', 'G-PLACEHOLDER-GA4'); // Replace with live GA4 Measurement ID
+      (window as any).gtag('config', 'G-PLACEHOLDER-GA4');
 
-      // 2. Google Tag Manager (gtm.js) script load
       const gtmScript = document.createElement('script');
       gtmScript.async = true;
       gtmScript.src = `https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER-GA4`;
       document.head.appendChild(gtmScript);
-
-      // 3. Facebook Pixel setup
-      (window as any).fbq = function() {
-        if ((window as any).fbq.callMethod) {
-          (window as any).fbq.callMethod.apply((window as any).fbq, arguments);
-        } else {
-          (window as any).fbq.queue.push(arguments);
-        }
-      };
-      (window as any).fbq.push = (window as any).fbq;
-      (window as any).fbq.loaded = true;
-      (window as any).fbq.version = '2.0';
-      (window as any).fbq.queue = [];
-      (window as any).fbq('init', 'PIXEL-PLACEHOLDER'); // Replace with live Pixel ID
-      (window as any).fbq('track', 'PageView');
-
-      const fbScript = document.createElement('script');
-      fbScript.async = true;
-      fbScript.src = 'https://connect.facebook.net/en_US/fbevents.js';
-      document.head.appendChild(fbScript);
-
-      // 4. TikTok Pixel setup
-      const ttqArray = (window as any).ttq = (window as any).ttq || [];
-      ttqArray.methods = ['track', 'once', 'page', 'on', 'off', 'instance', 'info', 'set', 'compare', 'identify', 'user', 'dispatch', 'addTarget', 'clearUniqueId'];
-      ttqArray.setAndDefer = function(t: any, e: any) {
-        t[e] = function() {
-          t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
-        };
-      };
-      for (let i = 0; i < ttqArray.methods.length; i++) {
-        ttqArray.setAndDefer(ttqArray, ttqArray.methods[i]);
-      }
-      ttqArray('load', 'TIKTOK-PLACEHOLDER'); // Replace with live TikTok Pixel Code
-      ttqArray('page');
-
-      const ttScript = document.createElement('script');
-      ttScript.async = true;
-      ttScript.src = 'https://analytics.tiktok.com/i18n/pixel/events.js';
-      document.head.appendChild(ttScript);
-
     } catch (e) {
-      console.warn('Analytics tracking services failed to initialize.', e);
+      console.warn('Analytics failed to initialize.', e);
     }
   }
 
