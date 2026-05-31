@@ -12,13 +12,14 @@ import { DialogComponent } from '../../shared/ui/dialog/dialog.component';
 import { InputComponent } from '../../shared/ui/input/input.component';
 import { SelectComponent } from '../../shared/ui/select/select.component';
 import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
-import { LoadingStateComponent } from '../../shared/ui';
+import { LoadingStateComponent, TableComponent } from '../../shared/ui';
+import type { TableColumn } from '../../shared/ui';
 import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.directive';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, DialogComponent, InputComponent, SelectComponent, TextareaComponent, LoadingStateComponent, GlassmorphismDirective],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, DialogComponent, InputComponent, SelectComponent, TextareaComponent, LoadingStateComponent, TableComponent, GlassmorphismDirective],
   template: `
     <div class="min-h-screen font-sans flex flex-col md:flex-row transition-colors duration-300 bg-white dark:bg-charcoal-950">
       
@@ -34,57 +35,87 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
         </div>
 
         <nav class="flex-1 flex flex-col gap-2 text-sm font-semibold">
-          <button (click)="setTab('dashboard')"
-                  [ngClass]="activeTab() === 'dashboard' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
-                  class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>📊</span> Dashboard
-          </button>
-          <button (click)="setTab('products')"
-                  [ngClass]="activeTab() === 'products' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
-                  class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>🍿</span> Produk
-          </button>
-          <button (click)="setTab('categories')"
-                  [ngClass]="activeTab() === 'categories' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
-                  class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>🏷️</span> Kategori
-          </button>
-          <button (click)="setTab('orders')"
-                  [ngClass]="activeTab() === 'orders' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
-                  class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>📦</span> Pesanan
-          </button>
-          <button (click)="setTab('customers')"
-                  [ngClass]="activeTab() === 'customers' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
-                  class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>👥</span> Pelanggan
-          </button>
-          <button (click)="setTab('settings')"
-                  [ngClass]="activeTab() === 'settings' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
-                  class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>⚙️</span> Pengaturan
-          </button>
-          <button (click)="setTab('banners')"
-                  [ngClass]="activeTab() === 'banners' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
-                  class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>🖼️</span> Banner
-          </button>
-          <button (click)="setTab('instagram')"
-                  [ngClass]="activeTab() === 'instagram' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
-                  class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>📸</span> Feed Instagram
-          </button>
-          <button (click)="setTab('coupons')"
-                  [ngClass]="activeTab() === 'coupons' ? 'bg-corn-400 text-charcoal-900 shadow-sm' : 'text-charcoal-500 hover:text-corn-500 hover:bg-corn-50 dark:hover:bg-charcoal-800'"
-                  class="flex items-center gap-3 px-4 py-3 rounded-2xl w-full text-left transition-all duration-200 cursor-pointer">
-            <span>🎫</span> Kupon
-          </button>
+          <app-button variant="ghost" customClass="w-full justify-start px-4 py-3 rounded-xl gap-3"
+            [class.bg-corn-400/20]="activeTab() === 'dashboard'"
+            [class.text-corn-600]="activeTab() === 'dashboard'"
+            [class.dark:text-corn-400]="activeTab() === 'dashboard'"
+            (onClick)="setTab('dashboard')">
+            <span class="text-lg">📊</span>
+            <span class="text-xs font-bold uppercase tracking-wider">Dashboard</span>
+          </app-button>
+          <app-button variant="ghost" customClass="w-full justify-start px-4 py-3 rounded-xl gap-3"
+            [class.bg-corn-400/20]="activeTab() === 'products'"
+            [class.text-corn-600]="activeTab() === 'products'"
+            [class.dark:text-corn-400]="activeTab() === 'products'"
+            (onClick)="setTab('products')">
+            <span class="text-lg">🛒</span>
+            <span class="text-xs font-bold uppercase tracking-wider">Produk</span>
+          </app-button>
+          <app-button variant="ghost" customClass="w-full justify-start px-4 py-3 rounded-xl gap-3"
+            [class.bg-corn-400/20]="activeTab() === 'categories'"
+            [class.text-corn-600]="activeTab() === 'categories'"
+            [class.dark:text-corn-400]="activeTab() === 'categories'"
+            (onClick)="setTab('categories')">
+            <span class="text-lg">📁</span>
+            <span class="text-xs font-bold uppercase tracking-wider">Kategori</span>
+          </app-button>
+          <app-button variant="ghost" customClass="w-full justify-start px-4 py-3 rounded-xl gap-3"
+            [class.bg-corn-400/20]="activeTab() === 'orders'"
+            [class.text-corn-600]="activeTab() === 'orders'"
+            [class.dark:text-corn-400]="activeTab() === 'orders'"
+            (onClick)="setTab('orders')">
+            <span class="text-lg">📦</span>
+            <span class="text-xs font-bold uppercase tracking-wider">Pesanan</span>
+          </app-button>
+          <app-button variant="ghost" customClass="w-full justify-start px-4 py-3 rounded-xl gap-3"
+            [class.bg-corn-400/20]="activeTab() === 'customers'"
+            [class.text-corn-600]="activeTab() === 'customers'"
+            [class.dark:text-corn-400]="activeTab() === 'customers'"
+            (onClick)="setTab('customers')">
+            <span class="text-lg">👥</span>
+            <span class="text-xs font-bold uppercase tracking-wider">Pelanggan</span>
+          </app-button>
+          <app-button variant="ghost" customClass="w-full justify-start px-4 py-3 rounded-xl gap-3"
+            [class.bg-corn-400/20]="activeTab() === 'settings'"
+            [class.text-corn-600]="activeTab() === 'settings'"
+            [class.dark:text-corn-400]="activeTab() === 'settings'"
+            (onClick)="setTab('settings')">
+            <span class="text-lg">⚙️</span>
+            <span class="text-xs font-bold uppercase tracking-wider">Pengaturan</span>
+          </app-button>
+          <app-button variant="ghost" customClass="w-full justify-start px-4 py-3 rounded-xl gap-3"
+            [class.bg-corn-400/20]="activeTab() === 'banners'"
+            [class.text-corn-600]="activeTab() === 'banners'"
+            [class.dark:text-corn-400]="activeTab() === 'banners'"
+            (onClick)="setTab('banners')">
+            <span class="text-lg">🖼</span>
+            <span class="text-xs font-bold uppercase tracking-wider">Banner</span>
+          </app-button>
+          <app-button variant="ghost" customClass="w-full justify-start px-4 py-3 rounded-xl gap-3"
+            [class.bg-corn-400/20]="activeTab() === 'instagram'"
+            [class.text-corn-600]="activeTab() === 'instagram'"
+            [class.dark:text-corn-400]="activeTab() === 'instagram'"
+            (onClick)="setTab('instagram')">
+            <span class="text-lg">📸</span>
+            <span class="text-xs font-bold uppercase tracking-wider">Instagram</span>
+          </app-button>
+          <app-button variant="ghost" customClass="w-full justify-start px-4 py-3 rounded-xl gap-3"
+            [class.bg-corn-400/20]="activeTab() === 'coupons'"
+            [class.text-corn-600]="activeTab() === 'coupons'"
+            [class.dark:text-corn-400]="activeTab() === 'coupons'"
+            (onClick)="setTab('coupons')">
+            <span class="text-lg">🎫</span>
+            <span class="text-xs font-bold uppercase tracking-wider">Kupon</span>
+          </app-button>
         </nav>
 
         <!-- Sidebar Footer Admin Info -->
         <div class="pt-6 border-t border-charcoal-200 dark:border-charcoal-800 flex items-center justify-between text-xs text-charcoal-400 font-bold uppercase tracking-wider">
           <span>Admin</span>
-          <app-button variant="ghost" (onClick)="authService.logout()">Keluar</app-button>
+          <app-button variant="ghost" customClass="w-full justify-start" (onClick)="authService.logout()">
+            <span class="text-lg">🚪</span>
+            <span class="text-xs font-bold uppercase tracking-wider">Keluar</span>
+          </app-button>
         </div>
       </aside>
 
@@ -102,7 +133,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Revenue Card -->
                 <div appGlassmorphism [appGlassmorphismShadow]="false"
-                     class="p-6 rounded-3xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
+                     class="p-6 rounded-xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
                   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-corn-400 to-yellow-500"></div>
                   <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Total Pendapatan</span>
                   <span class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white block">
@@ -111,7 +142,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
                 </div>
                 <!-- Orders Card -->
                 <div appGlassmorphism [appGlassmorphismShadow]="false"
-                     class="p-6 rounded-3xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
+                     class="p-6 rounded-xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
                   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-indigo-500"></div>
                   <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Total Pesanan</span>
                   <span class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white block">
@@ -120,7 +151,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
                 </div>
                 <!-- Customers Card -->
                 <div appGlassmorphism [appGlassmorphismShadow]="false"
-                     class="p-6 rounded-3xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
+                     class="p-6 rounded-xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
                   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-emerald-500"></div>
                   <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Total Pelanggan</span>
                   <span class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white block">
@@ -129,7 +160,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
                 </div>
                 <!-- Products Card -->
                 <div appGlassmorphism [appGlassmorphismShadow]="false"
-                     class="p-6 rounded-3xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
+                     class="p-6 rounded-xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
                   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-400 to-pink-500"></div>
                   <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Total Produk</span>
                   <span class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white block">
@@ -140,7 +171,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
 
               <!-- CSS Grid Bar Charts Sales Analytics -->
               <div appGlassmorphism [appGlassmorphismShadow]="false"
-                   class="p-8 rounded-3xl border shadow-premium space-y-6">
+                   class="p-8 rounded-xl border shadow-premium space-y-6">
                 <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">Riwayat Penjualan Harian (30 Hari)</h3>
                 
                 <div class="h-48 flex items-end justify-between gap-1 sm:gap-2 pt-6 border-b border-charcoal-200 dark:border-charcoal-850 px-2 overflow-x-auto">
@@ -167,7 +198,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Left: Top Selling -->
                 <div appGlassmorphism [appGlassmorphismShadow]="false"
-                     class="p-6 rounded-3xl border shadow-premium space-y-6">
+                     class="p-6 rounded-xl border shadow-premium space-y-6">
                   <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">5 Produk Terlaris</h3>
                   <div class="space-y-4">
                     @for (prod of stats()?.topProducts; track prod.id) {
@@ -187,7 +218,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
 
                 <!-- Right: Recent Orders -->
                 <div appGlassmorphism [appGlassmorphismShadow]="false"
-                     class="p-6 rounded-3xl border shadow-premium space-y-6">
+                     class="p-6 rounded-xl border shadow-premium space-y-6">
                   <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">Pesanan Terbaru</h3>
                   <div class="space-y-4">
                     @for (ord of stats()?.recentOrders; track ord.id) {
@@ -227,7 +258,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
 
               <!-- Product List View -->
               <div appGlassmorphism [appGlassmorphismShadow]="false"
-                   class="rounded-3xl border shadow-premium overflow-hidden">
+                   class="rounded-xl border shadow-premium overflow-hidden">
                 <div class="overflow-x-auto">
                   <table class="w-full text-sm">
                     <thead>
@@ -293,7 +324,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
               <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 @for (c of categories(); track c.id) {
                   <div appGlassmorphism [appGlassmorphismShadow]="false"
-                       class="p-6 rounded-3xl border shadow-premium flex flex-col justify-between h-48 relative overflow-hidden">
+                       class="p-6 rounded-xl border shadow-premium flex flex-col justify-between h-48 relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-corn-400"></div>
                     <div class="space-y-2">
                       <h4 class="text-lg font-display font-extrabold text-charcoal-800 dark:text-white">{{ c.name }}</h4>
@@ -320,7 +351,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
 
               <!-- Orders Cockpit Grid -->
               <div appGlassmorphism [appGlassmorphismShadow]="false"
-                   class="rounded-3xl border shadow-premium overflow-hidden">
+                   class="rounded-xl border shadow-premium overflow-hidden">
                 <div class="overflow-x-auto">
                   <table class="w-full text-sm">
                     <thead>
@@ -389,7 +420,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
               </div>
 
               <div appGlassmorphism [appGlassmorphismShadow]="false"
-                   class="rounded-3xl border shadow-premium overflow-hidden">
+                   class="rounded-xl border shadow-premium overflow-hidden">
                 <div class="overflow-x-auto">
                   <table class="w-full text-sm">
                     <thead>
@@ -439,7 +470,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
               </div>
 
               <div appGlassmorphism [appGlassmorphismShadow]="false"
-                   class="p-8 rounded-3xl border shadow-premium space-y-6">
+                   class="p-8 rounded-xl border shadow-premium space-y-6">
                 
                 <form (submit)="saveSettings()" class="space-y-6 text-sm font-medium">
                   @for (s of settings(); track s.id) {
@@ -466,7 +497,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
               </div>
 
               <div appGlassmorphism [appGlassmorphismShadow]="false"
-                   class="rounded-3xl border shadow-premium overflow-hidden">
+                   class="rounded-xl border shadow-premium overflow-hidden">
                 <div class="overflow-x-auto">
                   <table class="w-full text-sm">
                     <thead>
@@ -527,11 +558,11 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
                 @for (post of instagramPosts(); track post.id) {
                   <div [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850' : 'border-charcoal-150'"
                        appGlassmorphism [appGlassmorphismShadow]="false"
-                       class="rounded-3xl border shadow-premium overflow-hidden flex flex-col justify-between h-96 relative group">
+                       class="rounded-xl border shadow-premium overflow-hidden flex flex-col justify-between h-96 relative group">
                     
                     <div class="relative overflow-hidden aspect-square h-48 bg-charcoal-100 dark:bg-charcoal-900">
                       <img [src]="post.imageUrl || post.image_url" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <span class="absolute top-3 right-3 px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-black/60 text-white backdrop-blur-sm">
+                      <span class="absolute top-3 right-3 px-2.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-black/60 text-white backdrop-blur-sm">
                         #{{ post.sortOrder || post.sort_order || 0 }}
                       </span>
                     </div>
@@ -578,7 +609,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
               </div>
 
               <div appGlassmorphism [appGlassmorphismShadow]="false"
-                   class="rounded-3xl border shadow-premium overflow-hidden">
+                   class="rounded-xl border shadow-premium overflow-hidden">
                 <div class="overflow-x-auto">
                   <table class="w-full text-sm">
                     <thead>
@@ -825,6 +856,53 @@ export class AdminComponent implements OnInit {
 
   // Bulk Settings Save Payload
   settingsPayload: { [key: string]: string } = {};
+
+  // Table column configs (for reference when using <app-table>)
+  protected productColumns: TableColumn[] = [
+    { key: 'name', label: 'Nama Produk', sortable: true },
+    { key: 'category', label: 'Kategori' },
+    { key: 'price', label: 'Harga', align: 'right' },
+    { key: 'stock', label: 'Stok', align: 'center' },
+    { key: 'status', label: 'Status' },
+    { key: 'actions', label: 'Aksi', align: 'center' },
+  ];
+
+  protected orderColumns: TableColumn[] = [
+    { key: 'orderNumber', label: 'Invoice', sortable: true },
+    { key: 'customer', label: 'Pelanggan' },
+    { key: 'total', label: 'Total', align: 'right' },
+    { key: 'status', label: 'Status' },
+    { key: 'resi', label: 'Resi' },
+    { key: 'date', label: 'Tanggal', sortable: true },
+    { key: 'actions', label: 'Aksi', align: 'center' },
+  ];
+
+  protected customerColumns: TableColumn[] = [
+    { key: 'fullName', label: 'Nama', sortable: true },
+    { key: 'email', label: 'Email' },
+    { key: 'phone', label: 'Telepon' },
+    { key: 'status', label: 'Status' },
+    { key: 'registered', label: 'Terdaftar', sortable: true },
+    { key: 'actions', label: 'Aksi', align: 'center' },
+  ];
+
+  protected bannerColumns: TableColumn[] = [
+    { key: 'image', label: 'Gambar' },
+    { key: 'title', label: 'Judul' },
+    { key: 'link', label: 'Tautan' },
+    { key: 'status', label: 'Status' },
+    { key: 'actions', label: 'Aksi', align: 'center' },
+  ];
+
+  protected couponColumns: TableColumn[] = [
+    { key: 'code', label: 'Kode', sortable: true },
+    { key: 'discount', label: 'Diskon', align: 'right' },
+    { key: 'minPurchase', label: 'Min. Pembelian', align: 'right' },
+    { key: 'usage', label: 'Penggunaan', align: 'center' },
+    { key: 'expires', label: 'Berakhir', sortable: true },
+    { key: 'status', label: 'Status' },
+    { key: 'actions', label: 'Aksi', align: 'center' },
+  ];
 
   ngOnInit() {
     this.loadActiveTabDataset();
