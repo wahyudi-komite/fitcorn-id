@@ -5,12 +5,12 @@ import { AuthService } from '../../core/services/auth.service';
 import { CheckoutService } from '../../core/services/checkout.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { FormsModule } from '@angular/forms';
-import { ButtonComponent } from '../../shared/ui';
+import { ButtonComponent, LoadingStateComponent, EmptyStateComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, LoadingStateComponent, EmptyStateComponent],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       
@@ -107,17 +107,9 @@ import { ButtonComponent } from '../../shared/ui';
                   </h3>
 
                   @if (ordersLoading()) {
-                    <div class="flex items-center justify-center py-6 gap-3">
-                      <span class="animate-spin text-lg text-corn-500">⌛</span>
-                      <span class="text-xs font-semibold text-charcoal-400">Memuat data pesanan...</span>
-                    </div>
+                    <app-loading-state message="Memuat data pesanan..." />
                   } @else if (myOrders().length === 0) {
-                    <div class="text-center py-12 space-y-4">
-                      <span class="text-5xl block">🍿</span>
-                      <h4 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">Tidak Ada Pesanan</h4>
-                      <p class="text-xs text-charcoal-400 font-semibold">Belum ada pesanan yang terselesaikan.</p>
-                      <a routerLink="/produk" class="inline-block px-5 py-2.5 bg-corn-400 text-charcoal-900 rounded-full font-bold text-xs uppercase tracking-wider">Pesan Sekarang</a>
-                    </div>
+                    <app-empty-state icon="🍿" title="Tidak Ada Pesanan" message="Belum ada pesanan yang terselesaikan." actionLabel="Pesan Sekarang" />
                   } @else {
                     <div class="space-y-4">
                       @for (ord of myOrders(); track ord.id) {
@@ -164,16 +156,9 @@ import { ButtonComponent } from '../../shared/ui';
                     </h3>
 
                   @if (addressesLoading()) {
-                    <div class="flex items-center justify-center py-6 gap-3">
-                      <span class="animate-spin text-lg text-corn-500">⌛</span>
-                      <span class="text-xs font-semibold text-charcoal-400">Memuat alamat...</span>
-                    </div>
+                    <app-loading-state message="Memuat alamat..." />
                   } @else if (myAddresses().length === 0) {
-                    <div class="text-center py-8">
-                      <h4 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white mb-2">Belum Ada Alamat</h4>
-                      <p class="text-xs text-charcoal-400 font-semibold mb-4">Silakan tambahkan alamat pengiriman untuk checkout yang lebih cepat.</p>
-                      <a routerLink="/checkout" class="inline-block px-5 py-2.5 bg-corn-400 text-charcoal-900 rounded-full font-bold text-xs uppercase tracking-wider">Buat Alamat Checkout</a>
-                    </div>
+                    <app-empty-state title="Belum Ada Alamat" message="Silakan tambahkan alamat pengiriman untuk checkout yang lebih cepat." actionLabel="Buat Alamat Checkout" />
                   } @else {
                     <div class="space-y-4">
                       @for (addr of myAddresses(); track addr.id) {

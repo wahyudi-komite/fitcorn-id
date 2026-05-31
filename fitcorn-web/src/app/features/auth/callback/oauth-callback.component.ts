@@ -4,11 +4,12 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { CartService } from '../../../core/services/cart.service';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { LoadingStateComponent } from '../../../shared/ui';
 
 @Component({
   selector: 'app-oauth-callback',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, LoadingStateComponent],
   template: `
     <div class="max-w-md mx-auto px-6 py-32 font-sans transition-colors duration-300">
       <div appGlassmorphism
@@ -30,11 +31,7 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
             </a>
           </div>
         } @else {
-          <div class="space-y-4">
-            <div class="text-6xl animate-pulse">🔄</div>
-            <h1 class="text-2xl font-display font-extrabold text-charcoal-800 dark:text-white">Memasukkan Anda...</h1>
-            <p class="text-sm text-charcoal-400 dark:text-charcoal-300">Harap tunggu, sedang menyelesaikan autentikasi</p>
-          </div>
+          <app-loading-state message="Memverifikasi autentikasi..." />
         }
       </div>
     </div>

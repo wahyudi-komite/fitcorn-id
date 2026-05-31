@@ -4,12 +4,12 @@ import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
-import { ButtonComponent } from '../../shared/ui';
+import { ButtonComponent, LoadingStateComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-admin-product-form',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, LoadingStateComponent],
   template: `
     <div class="max-w-3xl mx-auto px-6 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div appGlassmorphism
@@ -33,12 +33,7 @@ import { ButtonComponent } from '../../shared/ui';
         </div>
 
         @if (loading()) {
-          <div class="space-y-5 py-12">
-            <div class="flex justify-center">
-              <div class="w-10 h-10 border-[3px] border-corn-400 border-t-transparent rounded-full animate-spin"></div>
-            </div>
-            <p class="text-center text-xs font-semibold text-charcoal-400 dark:text-charcoal-300">Memuat data produk...</p>
-          </div>
+          <app-loading-state message="Memuat data produk..." />
         } @else {
         <form (submit)="onSubmit()" class="space-y-5 text-sm font-medium" #productForm="ngForm">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">

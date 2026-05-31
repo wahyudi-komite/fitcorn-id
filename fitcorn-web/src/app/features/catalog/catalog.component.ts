@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
-import { ButtonComponent, ProductCardComponent, ProductCardData } from '../../shared/ui';
+import { ButtonComponent, ProductCardComponent, ProductCardData, SkeletonComponent, EmptyStateComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonComponent, ProductCardComponent],
+  imports: [CommonModule, RouterModule, ButtonComponent, ProductCardComponent, SkeletonComponent, EmptyStateComponent],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       
@@ -63,44 +63,15 @@ import { ButtonComponent, ProductCardComponent, ProductCardData } from '../../sh
 
       <!-- Loading Skeleton Grid -->
       @if (loading()) {
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 animate-pulse">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           @for (i of [1, 2, 3]; track i) {
-            <div [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-800' : 'border-charcoal-200'"
-                 appGlassmorphism [appGlassmorphismShadow]="false"
-                 class="rounded-3xl p-6 border h-[420px] flex flex-col justify-between">
-              <div class="space-y-6">
-                <div class="aspect-square rounded-2xl bg-charcoal-200 dark:bg-charcoal-800 w-full"></div>
-                <div class="h-6 bg-charcoal-200 dark:bg-charcoal-800 rounded w-2/3"></div>
-                <div class="h-4 bg-charcoal-200 dark:bg-charcoal-800 rounded w-1/2"></div>
-              </div>
-              <div class="flex justify-between items-center mt-6">
-                <div class="h-6 bg-charcoal-200 dark:bg-charcoal-800 rounded w-1/3"></div>
-                <div class="h-10 bg-charcoal-200 dark:bg-charcoal-800 rounded-full w-24"></div>
-              </div>
-            </div>
+            <app-skeleton variant="card" />
           }
         </div>
       } @else if (error()) {
-        <!-- Error State -->
-        <div class="text-center py-16">
-          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 dark:bg-red-950 text-red-500 text-2xl mb-4">
-            ⚠️
-          </div>
-          <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2">Gagal memuat katalog</h3>
-          <p class="text-charcoal-500 dark:text-charcoal-400 font-medium mb-6">{{ error() }}</p>
-          <app-button (onClick)="loadProducts()">
-            Coba Lagi
-          </app-button>
-        </div>
+        <app-empty-state icon="⚠️" title="Gagal memuat katalog" [message]="error()" actionLabel="Coba Lagi" />
       } @else if (products().length === 0) {
-        <!-- Empty State -->
-        <div class="text-center py-16">
-          <div class="text-6xl mb-6">🍿</div>
-          <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2">Rasa tidak ditemukan</h3>
-          <p class="text-charcoal-500 dark:text-charcoal-400 font-medium max-w-sm mx-auto">
-            Kami tidak dapat menemukan produk dalam kategori ini. Coba sesuaikan filter Anda.
-          </p>
-        </div>
+        <app-empty-state icon="🍿" title="Rasa tidak ditemukan" message="Kami tidak dapat menemukan produk dalam kategori ini. Coba sesuaikan filter Anda." />
       } @else {
         <!-- Real Product Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">

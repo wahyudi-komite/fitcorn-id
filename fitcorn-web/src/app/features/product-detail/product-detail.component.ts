@@ -5,12 +5,12 @@ import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
 import { CartService } from '../../core/services/cart.service';
 import { AnalyticsService } from '../../core/services/analytics.service';
-import { ButtonComponent, ProductCardComponent, ProductCardData } from '../../shared/ui';
+import { ButtonComponent, ProductCardComponent, ProductCardData, SkeletonComponent, EmptyStateComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonComponent, ProductCardComponent],
+  imports: [CommonModule, RouterModule, ButtonComponent, ProductCardComponent, SkeletonComponent, EmptyStateComponent],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       
@@ -23,28 +23,14 @@ import { ButtonComponent, ProductCardComponent, ProductCardData } from '../../sh
 
       <!-- Loading State -->
       @if (loading()) {
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start animate-pulse">
-          <div class="aspect-square rounded-3xl bg-charcoal-200 dark:bg-charcoal-800"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <app-skeleton variant="image" />
           <div class="space-y-6">
-            <div class="h-6 bg-charcoal-200 dark:bg-charcoal-800 rounded w-1/4"></div>
-            <div class="h-10 bg-charcoal-200 dark:bg-charcoal-800 rounded w-3/4"></div>
-            <div class="h-6 bg-charcoal-200 dark:bg-charcoal-800 rounded w-1/3"></div>
-            <div class="h-32 bg-charcoal-200 dark:bg-charcoal-800 rounded"></div>
-            <div class="h-12 bg-charcoal-200 dark:bg-charcoal-800 rounded-full w-full"></div>
+            <app-skeleton variant="text" />
           </div>
         </div>
       } @else if (error()) {
-        <!-- Error State -->
-        <div class="text-center py-16">
-          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 dark:bg-red-950 text-red-500 text-2xl mb-4">
-            ⚠️
-          </div>
-          <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2">Produk Tidak Ditemukan</h3>
-          <p class="text-charcoal-500 dark:text-charcoal-400 font-medium mb-6">{{ error() }}</p>
-          <a routerLink="/produk" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300">
-            Kembali ke Katalog
-          </a>
-        </div>
+        <app-empty-state icon="⚠️" title="Produk Tidak Ditemukan" [message]="error()" actionLabel="Kembali ke Katalog" />
       } @else if (product()) {
         <!-- Content State -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">

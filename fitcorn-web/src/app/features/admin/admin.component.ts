@@ -13,11 +13,12 @@ import { DialogComponent } from '../../shared/ui/dialog/dialog.component';
 import { InputComponent } from '../../shared/ui/input/input.component';
 import { SelectComponent } from '../../shared/ui/select/select.component';
 import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
+import { LoadingStateComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, BadgeComponent, DialogComponent, InputComponent, SelectComponent, TextareaComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, BadgeComponent, DialogComponent, InputComponent, SelectComponent, TextareaComponent, LoadingStateComponent],
   template: `
     <div class="min-h-screen font-sans flex flex-col md:flex-row transition-colors duration-300 bg-white dark:bg-charcoal-950">
       
@@ -91,10 +92,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
       <main class="flex-1 p-6 md:p-10 pt-24 md:pt-28 overflow-y-auto">
         
         @if (loading()) {
-          <div class="flex items-center justify-center py-24 gap-3 animate-pulse">
-            <span class="animate-spin text-xl text-corn-500">⌛</span>
-            <span class="text-sm font-semibold text-charcoal-400">Memuat data panel admin...</span>
-          </div>
+          <app-loading-state message="Memuat data panel admin..." />
         } @else {
           
           <!-- TAB 1: DASHBOARD -->

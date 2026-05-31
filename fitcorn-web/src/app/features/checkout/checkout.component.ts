@@ -8,12 +8,12 @@ import { CheckoutService } from '../../core/services/checkout.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { FormsModule } from '@angular/forms';
 import { AnalyticsService } from '../../core/services/analytics.service';
-import { ButtonComponent } from '../../shared/ui';
+import { ButtonComponent, LoadingStateComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, LoadingStateComponent],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div class="max-w-4xl mx-auto">
@@ -175,10 +175,7 @@ Checkout Pesanan
                   </h3>
 
                   @if (shippingLoading()) {
-                    <div class="flex items-center justify-center py-8 gap-3 animate-pulse">
-                      <span class="animate-spin text-xl text-corn-500">⌛</span>
-                      <span class="text-sm font-semibold text-charcoal-400">Menghitung tarif pengiriman...</span>
-                    </div>
+                    <app-loading-state message="Menghitung tarif pengiriman..." />
                   } @else if (courierOptions().length === 0) {
                     <div class="text-center py-6 text-sm text-charcoal-400 font-semibold">
                       Tidak dapat mengambil tarif pengiriman. Pastikan alamat tujuan benar.

@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { CheckoutService } from '../../core/services/checkout.service';
-import { ButtonComponent } from '../../shared/ui';
+import { ButtonComponent, LoadingStateComponent, EmptyStateComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-order-tracking',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonComponent],
+  imports: [CommonModule, RouterModule, ButtonComponent, LoadingStateComponent, EmptyStateComponent],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div class="max-w-3xl mx-auto space-y-12">
@@ -33,22 +33,9 @@ import { ButtonComponent } from '../../shared/ui';
 
         <!-- Loading State -->
         @if (loading()) {
-          <div class="flex items-center justify-center py-12 gap-3 animate-pulse">
-            <span class="animate-spin text-xl text-corn-500">⌛</span>
-            <span class="text-sm font-semibold text-charcoal-400">Memuat detail status pesanan...</span>
-          </div>
+          <app-loading-state message="Memuat detail status pesanan..." />
         } @else if (error()) {
-          <!-- Error State -->
-          <div class="text-center py-8">
-            <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-red-100 dark:bg-red-950 text-red-500 text-xl mb-4">
-              ⚠️
-            </div>
-            <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white mb-2">Gagal Memuat Pesanan</h3>
-            <p class="text-charcoal-500 dark:text-charcoal-400 font-medium mb-6">{{ error() }}</p>
-            <a routerLink="/produk" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300">
-              Jelajahi Produk
-            </a>
-          </div>
+          <app-empty-state icon="⚠️" title="Gagal Memuat Pesanan" [message]="error()" actionLabel="Jelajahi Produk" />
         } @else {
           <!-- Main Content -->
           

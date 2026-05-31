@@ -5,12 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
 import { ModalService } from '../../shared/services/modal.service';
-import { ButtonComponent } from '../../shared/ui';
+import { ButtonComponent, LoadingStateComponent, EmptyStateComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-admin-product-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, LoadingStateComponent, EmptyStateComponent],
   template: `
     <div class="max-w-6xl mx-auto px-6 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div appGlassmorphism
@@ -36,9 +36,9 @@ import { ButtonComponent } from '../../shared/ui';
         </div>
 
         @if (loading()) {
-          <div class="text-center py-12 text-charcoal-400">Memuat...</div>
+          <app-loading-state message="Memuat..." />
         } @else if (products().length === 0) {
-          <div class="text-center py-12 text-charcoal-400">Tidak ada produk ditemukan</div>
+          <app-empty-state icon="🍿" title="Tidak Ada Produk" message="Tidak ada produk ditemukan" />
         } @else {
           <div class="overflow-x-auto">
             <table class="w-full text-sm">
