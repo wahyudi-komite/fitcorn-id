@@ -5,15 +5,17 @@ import { ThemeService } from '../../../core/services/theme.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { CartService } from '../../../core/services/cart.service';
 import { FormsModule } from '@angular/forms';
+import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { InputComponent } from '../../../shared/ui/input/input.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, InputComponent],
   template: `
     <div class="max-w-md mx-auto px-6 py-16 sm:py-24 font-sans transition-colors duration-300">
       <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
-           class="p-8 rounded-3xl border space-y-6 shadow-premium relative overflow-hidden">
+           class="p-8 rounded-xl border space-y-6 shadow-premium relative overflow-hidden">
 
         <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-corn-300 to-corn-500"></div>
 
@@ -31,34 +33,20 @@ import { FormsModule } from '@angular/forms';
 
         <form (submit)="onSubmit()" class="space-y-4 text-sm font-medium">
           <div class="space-y-4">
-            <div>
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Alamat Email</label>
-              <input type="email" [(ngModel)]="email" name="email" placeholder="e.g. customer@fitcorn.com" required
-                     [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
-            </div>
-
+            <app-input [(ngModel)]="email" type="email" label="Alamat Email" placeholder="e.g. customer@fitcorn.com" [required]="true" name="email"></app-input>
             <div class="relative">
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Kata Sandi</label>
+              <label class="block text-[10px] font-bold text-charcoal-400 dark:text-charcoal-500 uppercase tracking-widest mb-2">Kata Sandi</label>
               <input [type]="showPassword() ? 'text' : 'password'" [(ngModel)]="password" name="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" required
-                     [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 pr-12 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                     class="w-full px-4 py-3 pr-12 rounded-md border bg-transparent text-charcoal-800 dark:text-white border-charcoal-200 dark:border-charcoal-700 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 transition-all duration-200 text-sm" />
               <button type="button" (click)="togglePassword()" tabindex="-1"
-                      class="absolute right-4 top-1/2 translate-y-1 text-charcoal-400 hover:text-corn-500 cursor-pointer text-lg leading-none">
+                      class="absolute right-3 top-1/2 -translate-y-1/2 text-charcoal-400 hover:text-corn-500 cursor-pointer text-lg leading-none">
                 {{ showPassword() ? '🙈' : '👁️' }}
               </button>
             </div>
           </div>
 
           <div class="pt-4 space-y-3">
-            <button type="submit" [disabled]="loading()"
-                    class="w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-md bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
-              @if (loading()) {
-                <span class="animate-spin text-sm">&#x231B;</span> Memverifikasi...
-              } @else {
-                <span>&#x1F511;</span> Masuk
-              }
-            </button>
+            <app-button type="submit" [loading]="loading()" [fullWidth]="true" size="lg">&#x1F511; Masuk</app-button>
 
             @if (errorMsg()) {
               <div class="p-3 text-center text-xs font-semibold text-red-500 bg-red-500/10 border border-red-500/20 rounded-md">
@@ -100,19 +88,8 @@ import { FormsModule } from '@angular/forms';
 
         @if (!otpSent()) {
           <form (submit)="onSendOtp($event)" class="space-y-3">
-            <div>
-              <input type="tel" [(ngModel)]="phone" name="phone" placeholder="e.g. 082132976457" required
-                     [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-600 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-md border bg-transparent dark:bg-charcoal-900/30 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 text-sm" />
-            </div>
-            <button type="submit" [disabled]="!phone || sendingOtp()"
-                    class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-md bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">
-              @if (sendingOtp()) {
-                Mengirim OTP...
-              } @else {
-                Kirim OTP via WhatsApp
-              }
-            </button>
+            <app-input [(ngModel)]="phone" type="tel" label="Nomor WhatsApp" placeholder="e.g. 082132976457" [required]="true" name="phone"></app-input>
+            <app-button type="submit" [disabled]="!phone || sendingOtp()" [loading]="sendingOtp()" [fullWidth]="true">Kirim OTP via WhatsApp</app-button>
             @if (otpMsg()) {
               <div class="p-2 text-center text-xs font-semibold text-emerald-500 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/20 dark:border-emerald-500/30 rounded-md">
                 {{ otpMsg() }}
@@ -122,22 +99,12 @@ import { FormsModule } from '@angular/forms';
         } @else {
           <form (submit)="onVerifyOtp($event)" class="space-y-3">
             <div>
-              <input type="text" [(ngModel)]="otp" name="otp" placeholder="Masukkan 6 digit OTP" required maxlength="6"
-                     [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-600 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-md border bg-transparent dark:bg-charcoal-900/30 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 text-sm text-center tracking-[8px]" />
+              <label class="block text-[10px] font-bold text-charcoal-400 dark:text-charcoal-500 uppercase tracking-widest mb-2">Kode OTP</label>
+              <input [(ngModel)]="otp" name="otp" type="text" placeholder="Masukkan 6 digit OTP" required maxlength="6"
+                     class="w-full px-4 py-3 rounded-md border bg-transparent text-charcoal-800 dark:text-white border-charcoal-200 dark:border-charcoal-700 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 transition-all duration-200 text-sm text-center tracking-[8px]" />
             </div>
-            <button type="submit" [disabled]="!otp || otp.length < 6 || verifyingOtp()"
-                    class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-md bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">
-              @if (verifyingOtp()) {
-                Memverifikasi...
-              } @else {
-                Verifikasi & Masuk
-              }
-            </button>
-            <button type="button" (click)="resetOtp()"
-                    class="w-full text-xs text-charcoal-400 dark:text-charcoal-300 hover:text-corn-500 transition-colors cursor-pointer">
-              Gunakan nomor lain
-            </button>
+            <app-button type="submit" [disabled]="!otp || otp.length < 6 || verifyingOtp()" [loading]="verifyingOtp()" [fullWidth]="true">Verifikasi & Masuk</app-button>
+            <app-button variant="ghost" type="button" (onClick)="resetOtp()" [fullWidth]="true">Gunakan nomor lain</app-button>
             @if (otpError()) {
               <div class="p-2 text-center text-xs font-semibold text-red-500 dark:text-red-400 bg-red-500/10 dark:bg-red-500/15 border border-red-500/20 dark:border-red-500/30 rounded-md">
                 {{ otpError() }}
