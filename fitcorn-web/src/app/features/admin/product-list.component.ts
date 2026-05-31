@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
 import { ModalService } from '../../shared/services/modal.service';
+import { ButtonComponent } from '../../../shared/ui/button/button.component';
 
 @Component({
   selector: 'app-admin-product-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent],
   template: `
     <div class="max-w-6xl mx-auto px-6 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
@@ -80,10 +81,11 @@ import { ModalService } from '../../shared/services/modal.service';
                          class="px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-full bg-corn-400/20 text-corn-700 dark:text-corn-300 hover:bg-corn-400/40 transition-colors cursor-pointer">
                         Edit
                        </a>
-                       <button (click)="confirmDelete(product)"
-                               class="ml-2 px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-full bg-red-500/20 text-red-600 hover:bg-red-500/40 transition-colors cursor-pointer">
+                       <app-button (onClick)="confirmDelete(product)"
+                                   variant="danger" size="sm"
+                                   class="ml-2">
                          Hapus
-                      </button>
+                      </app-button>
                     </td>
                   </tr>
                 }
@@ -94,15 +96,16 @@ import { ModalService } from '../../shared/services/modal.service';
           @if (meta().totalPages > 1) {
             <div class="flex justify-center gap-2 pt-4">
               @for (p of pages(); track p) {
-                <button (click)="goToPage(p)"
-                        class="px-4 py-2 rounded-full text-xs font-bold transition-colors cursor-pointer"
-                        [class.bg-corn-400]="p === meta().page"
-                        [class.text-charcoal-900]="p === meta().page"
-                        [class.bg-charcoal-100]="p !== meta().page"
-                        [class.dark:bg-charcoal-800]="p !== meta().page"
-                        [class.dark:text-white]="p !== meta().page">
+                <app-button (onClick)="goToPage(p)"
+                            variant="outline"
+                            size="sm"
+                            [class.bg-corn-400]="p === meta().page"
+                            [class.text-charcoal-900]="p === meta().page"
+                            [class.bg-charcoal-100]="p !== meta().page"
+                            [class.dark:bg-charcoal-800]="p !== meta().page"
+                            [class.dark:text-white]="p !== meta().page">
                   {{ p }}
-                </button>
+                </app-button>
               }
             </div>
           }

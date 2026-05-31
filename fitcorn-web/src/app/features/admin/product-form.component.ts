@@ -4,11 +4,12 @@ import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
+import { ButtonComponent } from '../../../shared/ui/button/button.component';
 
 @Component({
   selector: 'app-admin-product-form',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent],
   template: `
     <div class="max-w-3xl mx-auto px-6 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
@@ -119,14 +120,10 @@ import { ProductsService } from '../../core/services/products.service';
           </div>
 
           <div class="pt-4 space-y-3">
-            <button type="submit" [disabled]="saving()"
-                    class="w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
-              @if (saving()) {
-                Menyimpan...
-              } @else {
-                {{ isEdit() ? 'Perbarui Produk' : 'Buat Produk' }}
-              }
-            </button>
+            <app-button type="submit" [disabled]="saving()"
+                        size="lg" [fullWidth]="true" [loading]="saving()">
+              {{ isEdit() ? 'Perbarui Produk' : 'Buat Produk' }}
+            </app-button>
 
             @if (errorMsg()) {
               <div class="p-3 text-center text-xs font-semibold text-red-500 bg-red-500/10 border border-red-500/20 rounded-2xl">

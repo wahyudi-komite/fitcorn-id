@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { CartService } from '../../core/services/cart.service';
 import { ModalService } from '../../shared/services/modal.service';
+import { ButtonComponent } from '../../../shared/ui/button/button.component';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ButtonComponent],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div class="max-w-4xl mx-auto">
@@ -19,11 +20,11 @@ import { ModalService } from '../../shared/services/modal.service';
             Keranjang Belanja
           </h1>
           @if (cartService.cart()?.items?.length > 0) {
-            <button (click)="clearCart()" 
-                    [disabled]="actionLoading()"
-                    class="text-xs font-bold text-red-500 hover:text-red-600 disabled:opacity-50 hover:underline uppercase tracking-wider cursor-pointer">
+            <app-button (onClick)="clearCart()" 
+                        [disabled]="actionLoading()"
+                        variant="danger" size="sm">
               Kosongkan Semua Item
-            </button>
+            </app-button>
           }
         </div>
 
@@ -52,13 +53,14 @@ import { ModalService } from '../../shared/services/modal.service';
                      class="p-6 rounded-3xl border flex flex-col sm:flex-row items-center gap-6 shadow-premium hover:shadow-md transition-all duration-300 relative group">
                   
                   <!-- Delete Button Top Right -->
-                  <button (click)="removeItem(item.id)" 
-                          [disabled]="actionLoading()"
-                          class="absolute top-4 right-4 text-charcoal-400 hover:text-red-500 disabled:opacity-50 transition-colors p-1.5 rounded-full hover:bg-red-500/10 cursor-pointer">
+                  <app-button (onClick)="removeItem(item.id)" 
+                              [disabled]="actionLoading()"
+                              variant="ghost" size="sm"
+                              class="absolute top-4 right-4 p-1.5">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
-                  </button>
+                  </app-button>
 
                   <!-- Image -->
                   <div class="w-24 h-24 sm:w-20 sm:h-20 rounded-2xl bg-charcoal-100 dark:bg-charcoal-900 flex items-center justify-center text-4xl overflow-hidden shrink-0">
@@ -95,19 +97,19 @@ import { ModalService } from '../../shared/services/modal.service';
                     <!-- Quantity Control -->
                     <div class="flex items-center justify-center sm:justify-start gap-4 mt-4 pt-4 border-t border-charcoal-100 dark:border-charcoal-900/50">
                       <div class="flex items-center border border-charcoal-200 dark:border-charcoal-800 rounded-md overflow-hidden shrink-0 bg-transparent">
-                        <button (click)="updateQuantity(item.id, item.quantity - 1)" 
-                                [disabled]="actionLoading() || item.quantity <= 1"
-                                class="px-3.5 py-1.5 hover:bg-charcoal-100 dark:hover:bg-charcoal-900 text-charcoal-500 dark:text-charcoal-400 font-bold transition-colors cursor-pointer select-none">
+                        <app-button (onClick)="updateQuantity(item.id, item.quantity - 1)" 
+                                    [disabled]="actionLoading() || item.quantity <= 1"
+                                    variant="ghost" size="sm">
                           -
-                        </button>
+                        </app-button>
                         <span class="px-3 py-1.5 font-semibold text-charcoal-800 dark:text-white w-10 text-center select-none text-xs">
                           {{ item.quantity }}
                         </span>
-                        <button (click)="updateQuantity(item.id, item.quantity + 1)" 
-                                [disabled]="actionLoading()"
-                                class="px-3.5 py-1.5 hover:bg-charcoal-100 dark:hover:bg-charcoal-900 text-charcoal-500 dark:text-charcoal-400 font-bold transition-colors cursor-pointer select-none">
+                        <app-button (onClick)="updateQuantity(item.id, item.quantity + 1)" 
+                                    [disabled]="actionLoading()"
+                                    variant="ghost" size="sm">
                           +
-                        </button>
+                        </app-button>
                       </div>
                       <span class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest">
                         Berat: {{ ((item.variant ? item.variant.weight : item.product?.weight) * item.quantity) }}g

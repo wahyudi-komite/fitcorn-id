@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { CheckoutService } from '../../core/services/checkout.service';
+import { ButtonComponent } from '../../../shared/ui/button/button.component';
 
 @Component({
   selector: 'app-order-tracking',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ButtonComponent],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div class="max-w-3xl mx-auto space-y-12">
@@ -131,10 +132,11 @@ import { CheckoutService } from '../../core/services/checkout.service';
               <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
                 Detail Pesanan
               </h3>
-              <button (click)="printInvoice()" 
-                      class="px-4 py-2 text-xs font-bold bg-charcoal-100 dark:bg-charcoal-800 hover:bg-corn-100 dark:hover:bg-charcoal-700 text-charcoal-600 dark:text-charcoal-350 rounded-full transition-colors cursor-pointer flex items-center gap-1.5 no-print">
+              <app-button (onClick)="printInvoice()" 
+                          variant="secondary" size="sm"
+                          class="no-print">
                 <span>🖨️</span> Cetak Invoice
-              </button>
+              </app-button>
             </div>
 
             <!-- Item Rows -->

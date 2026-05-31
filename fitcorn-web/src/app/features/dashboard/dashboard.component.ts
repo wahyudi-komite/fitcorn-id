@@ -6,11 +6,12 @@ import { AuthService } from '../../core/services/auth.service';
 import { CheckoutService } from '../../core/services/checkout.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { FormsModule } from '@angular/forms';
+import { ButtonComponent } from '../../../shared/ui/button/button.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       
@@ -43,10 +44,10 @@ import { FormsModule } from '@angular/forms';
               </p>
             </div>
             
-            <button (click)="logout()"
-                    class="px-5 py-2.5 rounded-full border border-red-500/30 bg-red-500/5 hover:bg-red-500 text-red-500 hover:text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer text-center">
+            <app-button (onClick)="logout()"
+                        variant="danger" size="sm">
               Keluar
-            </button>
+            </app-button>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
@@ -54,21 +55,24 @@ import { FormsModule } from '@angular/forms';
             <!-- Navigation Sidebar -->
             <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
                  class="p-6 rounded-3xl border flex flex-col gap-2 shadow-premium">
-                <button (click)="setActiveTab('overview')"
-                        [ngClass]="activeTab() === 'overview' ? 'bg-corn-400 text-charcoal-900 font-bold' : 'text-charcoal-500 hover:text-corn-500'"
-                        class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm transition-all duration-300 cursor-pointer">
+                <app-button (onClick)="setActiveTab('overview')"
+                            variant="ghost"
+                            [ngClass]="activeTab() === 'overview' ? 'bg-corn-400 text-charcoal-900 font-bold' : 'text-charcoal-500 hover:text-corn-500'"
+                            class="w-full text-left px-4 py-3">
                   Ringkasan
-                </button>
-                <button (click)="setActiveTab('orders')"
-                        [ngClass]="activeTab() === 'orders' ? 'bg-corn-400 text-charcoal-900 font-bold' : 'text-charcoal-500 hover:text-corn-500'"
-                        class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm transition-all duration-300 cursor-pointer">
+                </app-button>
+                <app-button (onClick)="setActiveTab('orders')"
+                            variant="ghost"
+                            [ngClass]="activeTab() === 'orders' ? 'bg-corn-400 text-charcoal-900 font-bold' : 'text-charcoal-500 hover:text-corn-500'"
+                            class="w-full text-left px-4 py-3">
                   Riwayat Pesanan
-                </button>
-                <button (click)="setActiveTab('addresses')"
-                        [ngClass]="activeTab() === 'addresses' ? 'bg-corn-400 text-charcoal-900 font-bold' : 'text-charcoal-500 hover:text-corn-500'"
-                        class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm transition-all duration-300 cursor-pointer">
+                </app-button>
+                <app-button (onClick)="setActiveTab('addresses')"
+                            variant="ghost"
+                            [ngClass]="activeTab() === 'addresses' ? 'bg-corn-400 text-charcoal-900 font-bold' : 'text-charcoal-500 hover:text-corn-500'"
+                            class="w-full text-left px-4 py-3">
                   Buku Alamat
-                </button>
+                </app-button>
             </div>
 
             <!-- Content Area -->

@@ -8,11 +8,12 @@ import { CheckoutService } from '../../core/services/checkout.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { FormsModule } from '@angular/forms';
 import { AnalyticsService } from '../../core/services/analytics.service';
+import { ButtonComponent } from '../../../shared/ui/button/button.component';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div class="max-w-4xl mx-auto">
@@ -70,10 +71,10 @@ Checkout Pesanan
                     Alamat Pengiriman
                   </h3>
                   @if (savedAddresses().length > 0 && !addNewAddressMode()) {
-                    <button (click)="toggleNewAddress(true)" 
-                            class="text-xs font-bold text-corn-500 hover:underline uppercase tracking-wider cursor-pointer">
+                    <app-button (onClick)="toggleNewAddress(true)" 
+                                variant="ghost" size="sm">
                       + Tambah Alamat Baru
-                    </button>
+                    </app-button>
                   }
                 </div>
 
@@ -150,15 +151,14 @@ Checkout Pesanan
 
                     <div class="flex items-center gap-4 justify-between pt-2">
                       @if (savedAddresses().length > 0) {
-                        <button type="button" (click)="toggleNewAddress(false)" 
-                                class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">
+                        <app-button (onClick)="toggleNewAddress(false)" 
+                                    variant="outline" size="sm">
                           Batal
-                        </button>
+                        </app-button>
                       }
-                      <button type="submit" [disabled]="addressLoading()"
-                              class="px-8 py-3 rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow-md transition-all duration-300 cursor-pointer disabled:opacity-50">
-                        @if (addressLoading()) { ⌛ Menyimpan... } @else { Simpan Alamat }
-                      </button>
+                      <app-button type="submit" [disabled]="addressLoading()" size="lg" [loading]="addressLoading()">
+                        Simpan Alamat
+                      </app-button>
                     </div>
                   </form>
                 }
@@ -186,11 +186,12 @@ Checkout Pesanan
                   } @else {
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                       @for (c of courierOptions(); track c.name + c.service) {
-                        <button (click)="selectCourier(c)"
-                                [ngClass]="selectedCourier()?.name === c.name && selectedCourier()?.service === c.service
-                                  ? 'border-corn-400 bg-corn-400/5 text-charcoal-800 dark:text-white font-bold'
-                                  : (themeService.theme() === 'dark' ? 'border-charcoal-850 hover:border-charcoal-700 text-charcoal-300' : 'border-charcoal-200 hover:border-charcoal-350 text-charcoal-600')"
-                                class="p-5 rounded-2xl border text-left text-sm transition-all duration-300 cursor-pointer flex items-center justify-between h-20">
+                        <app-button (onClick)="selectCourier(c)"
+                                    variant="outline"
+                                    [ngClass]="selectedCourier()?.name === c.name && selectedCourier()?.service === c.service
+                                      ? 'border-corn-400 bg-corn-400/5 text-charcoal-800 dark:text-white font-bold'
+                                      : (themeService.theme() === 'dark' ? 'border-charcoal-850 hover:border-charcoal-700 text-charcoal-300' : 'border-charcoal-200 hover:border-charcoal-350 text-charcoal-600')"
+                                    class="p-5 text-left flex items-center justify-between h-20 w-full">
                           <div>
                             <span class="block font-bold text-xs text-corn-500 uppercase tracking-widest">{{ c.name }}</span>
                             <span class="block font-extrabold text-charcoal-800 dark:text-white mt-1">{{ c.service }} Layanan</span>
@@ -199,7 +200,7 @@ Checkout Pesanan
                           <span class="text-base font-display font-extrabold text-charcoal-850 dark:text-white">
                             Rp {{ c.cost.toLocaleString('id-ID') }}
                           </span>
-                        </button>
+                        </app-button>
                       }
                     </div>
                   }
@@ -244,15 +245,11 @@ Checkout Pesanan
               </div>
 
               <div class="pt-4 space-y-3">
-                <button (click)="placeOrder()"
-                        [disabled]="orderLoading() || !selectedAddress() || !selectedCourier()"
-                        class="w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
-                  @if (orderLoading()) {
-                    <span class="animate-spin text-sm">⌛</span> Memesan...
-                  } @else {
-                    <span>💳</span> Pesan & Bayar
-                  }
-                </button>
+                <app-button (onClick)="placeOrder()"
+                            [disabled]="orderLoading() || !selectedAddress() || !selectedCourier()"
+                            [fullWidth]="true" size="lg" [loading]="orderLoading()">
+                  <span>💳</span> Pesan & Bayar
+                </app-button>
                 
                 @if (errorMsg()) {
                   <div class="p-3 text-center text-xs font-semibold text-red-500 bg-red-500/10 border border-red-500/20 rounded-2xl">

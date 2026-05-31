@@ -5,11 +5,12 @@ import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
 import { CartService } from '../../core/services/cart.service';
 import { AnalyticsService } from '../../core/services/analytics.service';
+import { ButtonComponent } from '../../../shared/ui/button/button.component';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ButtonComponent],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       
@@ -103,14 +104,15 @@ import { AnalyticsService } from '../../core/services/analytics.service';
                 <h4 class="text-xs font-semibold text-charcoal-400 uppercase tracking-widest">Pilih Ukuran Kemasan</h4>
                 <div class="grid grid-cols-2 gap-4">
                   @for (v of product().variants; track v.id) {
-                    <button (click)="selectVariant(v)"
-                            [ngClass]="selectedVariant()?.id === v.id
-                              ? 'border-corn-400 bg-corn-400/5 text-charcoal-800 dark:text-white font-bold'
-                              : (themeService.theme() === 'dark' ? 'border-charcoal-850 hover:border-charcoal-700 text-charcoal-300' : 'border-charcoal-200 hover:border-charcoal-350 text-charcoal-600')"
-                            class="px-5 py-4 rounded-2xl border text-left text-sm transition-all duration-300 cursor-pointer flex flex-col justify-between h-20">
+                    <app-button (onClick)="selectVariant(v)"
+                                variant="outline"
+                                [ngClass]="selectedVariant()?.id === v.id
+                                  ? 'border-corn-400 bg-corn-400/5 text-charcoal-800 dark:text-white font-bold'
+                                  : (themeService.theme() === 'dark' ? 'border-charcoal-850 hover:border-charcoal-700 text-charcoal-300' : 'border-charcoal-200 hover:border-charcoal-350 text-charcoal-600')"
+                                class="px-5 py-4 text-left flex flex-col justify-between h-20 w-full">
                       <span class="block truncate font-semibold">{{ v.name }}</span>
                       <span class="text-corn-500 font-extrabold mt-1">Rp {{ v.price.toLocaleString('id-ID') }}</span>
-                    </button>
+                    </app-button>
                   }
                 </div>
               </div>
@@ -122,29 +124,26 @@ import { AnalyticsService } from '../../core/services/analytics.service';
                 
                 <!-- Quantity Selector -->
                 <div class="flex items-center border border-charcoal-200 dark:border-charcoal-800 rounded-md overflow-hidden bg-transparent">
-                  <button (click)="decrementQty()" 
-                          class="px-5 py-3 hover:bg-charcoal-100 dark:hover:bg-charcoal-900 text-charcoal-500 dark:text-charcoal-400 font-bold transition-colors cursor-pointer select-none">
+                  <app-button (onClick)="decrementQty()" 
+                              variant="ghost">
                     -
-                  </button>
+                  </app-button>
                   <span class="px-5 py-3 font-semibold text-charcoal-800 dark:text-white w-12 text-center select-none">
                     {{ quantity() }}
                   </span>
-                  <button (click)="incrementQty()" 
-                          class="px-5 py-3 hover:bg-charcoal-100 dark:hover:bg-charcoal-900 text-charcoal-500 dark:text-charcoal-400 font-bold transition-colors cursor-pointer select-none">
+                  <app-button (onClick)="incrementQty()" 
+                              variant="ghost">
                     +
-                  </button>
+                  </app-button>
                 </div>
  
                 <!-- Add Button -->
-                <button (click)="addToCart()"
-                        [disabled]="addingToCart()"
-                        class="flex-1 px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
-                  @if (addingToCart()) {
-                    <span class="animate-spin text-sm">⌛</span> Menambahkan...
-                  } @else {
-                    <span>🛒</span> Tambah ke Keranjang
-                  }
-                </button>
+                <app-button (onClick)="addToCart()"
+                            [disabled]="addingToCart()"
+                            size="lg" [loading]="addingToCart()"
+                            class="flex-1">
+                  <span>🛒</span> Tambah ke Keranjang
+                </app-button>
               </div>
  
               <!-- Cart Feedback Msg -->

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
+import { ButtonComponent } from '../../../shared/ui/button/button.component';
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ButtonComponent],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       
@@ -30,15 +31,16 @@ import { ProductsService } from '../../core/services/products.service';
         <!-- Category Toggles -->
         <div class="flex flex-wrap gap-3 w-full md:w-auto">
           @for (cat of categories; track cat.slug) {
-            <button (click)="selectCategory(cat.slug)"
-                    [ngClass]="activeCategory() === cat.slug 
-                      ? 'bg-corn-400 text-charcoal-900 shadow-md font-bold' 
-                      : (themeService.theme() === 'dark' 
-                        ? 'glassmorphism-dark text-charcoal-300 hover:text-white border-charcoal-800' 
-                        : 'glassmorphism-light text-charcoal-600 hover:text-charcoal-900 border-charcoal-200')"
-                    class="px-5 py-2.5 rounded-full border text-xs uppercase tracking-wider font-sans transition-all duration-300 cursor-pointer">
+            <app-button (onClick)="selectCategory(cat.slug)"
+                        variant="outline"
+                        [ngClass]="activeCategory() === cat.slug 
+                          ? 'bg-corn-400 text-charcoal-900 shadow-md font-bold' 
+                          : (themeService.theme() === 'dark' 
+                            ? 'glassmorphism-dark text-charcoal-300 hover:text-white' 
+                            : 'glassmorphism-light text-charcoal-600 hover:text-charcoal-900')"
+                        class="px-5 py-2.5 text-xs">
               {{ cat.name }}
-            </button>
+            </app-button>
           }
         </div>
 
@@ -83,9 +85,9 @@ import { ProductsService } from '../../core/services/products.service';
           </div>
           <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2">Gagal memuat katalog</h3>
           <p class="text-charcoal-500 dark:text-charcoal-400 font-medium mb-6">{{ error() }}</p>
-          <button (click)="loadProducts()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 rounded-md font-bold text-xs uppercase tracking-wider transition-all duration-300">
+          <app-button (onClick)="loadProducts()">
             Coba Lagi
-          </button>
+          </app-button>
         </div>
       } @else if (products().length === 0) {
         <!-- Empty State -->
