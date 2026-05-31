@@ -44,6 +44,14 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
             <span class="text-xs font-bold uppercase tracking-wider">Dashboard</span>
           </app-button>
           <app-button variant="ghost" customClass="w-full justify-start px-4 py-3 rounded-xl gap-3"
+            [class.bg-corn-400/20]="activeTab() === 'whatsapp'"
+            [class.text-corn-600]="activeTab() === 'whatsapp'"
+            [class.dark:text-corn-400]="activeTab() === 'whatsapp'"
+            (onClick)="setTab('whatsapp')">
+            <span class="text-lg">💬</span>
+            <span class="text-xs font-bold uppercase tracking-wider">WhatsApp</span>
+          </app-button>
+          <app-button variant="ghost" customClass="w-full justify-start px-4 py-3 rounded-xl gap-3"
             [class.bg-corn-400/20]="activeTab() === 'products'"
             [class.text-corn-600]="activeTab() === 'products'"
             [class.dark:text-corn-400]="activeTab() === 'products'"
@@ -819,7 +827,7 @@ export class AdminComponent implements OnInit {
   private productsService = inject(ProductsService);
   private modalService = inject(ModalService);
 
-  activeTab = signal<'dashboard' | 'products' | 'categories' | 'orders' | 'customers' | 'settings' | 'banners' | 'instagram' | 'coupons'>('dashboard');
+  activeTab = signal<'dashboard' | 'products' | 'categories' | 'orders' | 'customers' | 'settings' | 'banners' | 'instagram' | 'coupons' | 'whatsapp'>('dashboard');
   loading = signal<boolean>(true);
 
   // States Datasets
@@ -908,7 +916,7 @@ export class AdminComponent implements OnInit {
     this.loadActiveTabDataset();
   }
 
-  setTab(tab: 'dashboard' | 'products' | 'categories' | 'orders' | 'customers' | 'settings' | 'banners' | 'instagram' | 'coupons') {
+  setTab(tab: 'dashboard' | 'products' | 'categories' | 'orders' | 'customers' | 'settings' | 'banners' | 'instagram' | 'coupons' | 'whatsapp') {
     this.activeTab.set(tab);
     this.loadActiveTabDataset();
   }
