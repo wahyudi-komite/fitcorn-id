@@ -27,7 +27,7 @@ export const routes: Routes = [
     loadComponent: () => import('./features/order-tracking/order-tracking.component').then((m) => m.OrderTrackingComponent),
   },
   {
-    path: 'masuk',
+    path: 'login',
     loadComponent: () => import('./features/auth/login/login.component').then((m) => m.LoginComponent),
   },
   {

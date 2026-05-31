@@ -23,9 +23,9 @@ import { FormsModule } from '@angular/forms';
           <p class="text-charcoal-500 dark:text-charcoal-400 font-medium max-w-sm mx-auto">
             Silakan masuk untuk mengakses dashboard pribadi, melihat riwayat pesanan, dan mengelola alamat.
           </p>
-          <a routerLink="/masuk" 
+          <a routerLink="/login" 
              class="inline-block px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-md hover:shadow-lg transition-all duration-300">
-            Masuk
+            Login
           </a>
         </div>
       } @else {

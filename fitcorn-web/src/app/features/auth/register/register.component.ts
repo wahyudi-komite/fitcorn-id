@@ -132,7 +132,7 @@ import { FormsModule } from '@angular/forms';
 
         <div class="text-center text-xs font-semibold text-charcoal-400 dark:text-charcoal-300 pt-2 border-t border-charcoal-100 dark:border-charcoal-800">
           Sudah punya akun?
-          <a routerLink="/masuk" class="text-corn-500 hover:underline">Masuk di sini</a>
+          <a routerLink="/login" class="text-corn-500 hover:underline">Login di sini</a>
         </div>
       </div>
     </div>
@@ -179,7 +179,7 @@ export class RegisterComponent {
           },
           error: () => {
             this.loading.set(false);
-            this.router.navigate(['/masuk']);
+            this.router.navigate(['/login']);
           }
         });
       },
@@ -205,7 +205,7 @@ export class RegisterComponent {
         this.otpMsgReg.set('OTP terkirim! Cek WhatsApp Anda (cek server console di mode development)');
 
         // Navigate to login page with phone pre-filled for OTP verification
-        this.router.navigate(['/masuk']);
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         this.sendingOtpReg.set(false);

@@ -32,9 +32,9 @@ Checkout Pesanan
               Silakan masuk atau daftar untuk menyelesaikan pesanan popcorn premium Anda dan melacak pengiriman.
             </p>
             <div class="flex flex-wrap gap-4 justify-center pt-2">
-              <a routerLink="/masuk" 
+              <a routerLink="/login" 
                  class="px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-md hover:shadow-lg transition-all duration-300">
-                Masuk
+                Login
               </a>
               <a routerLink="/daftar" 
                  class="px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full border border-charcoal-200 dark:border-charcoal-850 text-charcoal-600 dark:text-charcoal-300 hover:bg-charcoal-100 dark:hover:bg-charcoal-800 transition-all duration-300">
