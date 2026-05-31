@@ -158,12 +158,36 @@ export class AdminProductFormComponent implements OnInit {
   };
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id && id !== 'baru') {
-      this.isEdit.set(true);
-      this.productId.set(id);
-      this.loadProduct(id);
-    }
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id && id !== 'baru') {
+        this.isEdit.set(true);
+        this.productId.set(id);
+        this.resetForm();
+        this.loadProduct(id);
+      } else {
+        this.isEdit.set(false);
+        this.productId.set(null);
+        this.resetForm();
+      }
+    });
+  }
+
+  private resetForm() {
+    this.form = {
+      name: '',
+      slug: '',
+      sku: '',
+      description: '',
+      shortDescription: '',
+      price: 0,
+      salePrice: null,
+      weight: 0,
+      imageUrl: '',
+      isFeatured: false,
+      isActive: true,
+    };
+    this.errorMsg.set('');
   }
 
   loadProduct(id: string) {
