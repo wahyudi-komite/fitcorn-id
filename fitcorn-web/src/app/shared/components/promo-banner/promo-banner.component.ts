@@ -28,10 +28,7 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
       </button>
 
       <!-- Close Button -->
-      <button (click)="closeBanner()" 
-              class="absolute right-4 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center hover:bg-black/10 transition-colors cursor-pointer text-sm font-bold select-none">
-        ✕
-      </button>
+      <app-button variant="ghost" customClass="w-6 h-6 p-0 absolute right-4 top-1/2 -translate-y-1/2" (onClick)="closeBanner()">✕</app-button>
     </div>
   `,
   styles: []
