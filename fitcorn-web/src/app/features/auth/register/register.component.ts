@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   template: `
     <div class="max-w-md mx-auto px-6 py-16 sm:py-24 font-sans transition-colors duration-300">
       <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
-           class="p-8 rounded-3xl border space-y-6 shadow-premium relative overflow-hidden">
+           class="p-8 rounded-md border space-y-6 shadow-premium relative overflow-hidden">
 
         <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-corn-300 to-corn-500"></div>
 
@@ -58,7 +58,7 @@ import { FormsModule } from '@angular/forms';
 
           <div class="pt-4 space-y-3">
             <button type="submit" [disabled]="loading()"
-                    class="w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
+                    class="w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-md bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
               @if (loading()) {
                 <span class="animate-spin text-sm">&#x231B;</span> Membuat Akun...
               } @else {
@@ -67,7 +67,7 @@ import { FormsModule } from '@angular/forms';
             </button>
 
             @if (errorMsg()) {
-              <div class="p-3 text-center text-xs font-semibold text-red-500 bg-red-500/10 border border-red-500/20 rounded-2xl">
+              <div class="p-3 text-center text-xs font-semibold text-red-500 bg-red-500/10 border border-red-500/20 rounded-md">
                 {{ errorMsg() }}
               </div>
             }
@@ -111,7 +111,7 @@ import { FormsModule } from '@angular/forms';
                    class="w-full px-5 py-3 rounded-md border bg-transparent dark:bg-charcoal-900/30 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 text-sm" />
           </div>
           <button type="submit" [disabled]="!phoneRegister || sendingOtpReg()"
-                  class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">
+                  class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-md bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">
             @if (sendingOtpReg()) {
               Mengirim OTP...
             } @else {
@@ -119,12 +119,12 @@ import { FormsModule } from '@angular/forms';
             }
           </button>
           @if (otpMsgReg()) {
-            <div class="p-2 text-center text-xs font-semibold text-emerald-500 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/20 dark:border-emerald-500/30 rounded-2xl">
+            <div class="p-2 text-center text-xs font-semibold text-emerald-500 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/20 dark:border-emerald-500/30 rounded-md">
               {{ otpMsgReg() }}
             </div>
           }
           @if (otpErrorReg()) {
-            <div class="p-2 text-center text-xs font-semibold text-red-500 dark:text-red-400 bg-red-500/10 dark:bg-red-500/15 border border-red-500/20 dark:border-red-500/30 rounded-2xl">
+            <div class="p-2 text-center text-xs font-semibold text-red-500 dark:text-red-400 bg-red-500/10 dark:bg-red-500/15 border border-red-500/20 dark:border-red-500/30 rounded-md">
               {{ otpErrorReg() }}
             </div>
           }
