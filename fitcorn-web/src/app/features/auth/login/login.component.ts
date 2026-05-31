@@ -52,7 +52,7 @@ import { FormsModule } from '@angular/forms';
 
           <div class="pt-4 space-y-3">
             <button type="submit" [disabled]="loading()"
-                    class="w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
+                    class="w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-md bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
               @if (loading()) {
                 <span class="animate-spin text-sm">&#x231B;</span> Memverifikasi...
               } @else {
@@ -61,7 +61,7 @@ import { FormsModule } from '@angular/forms';
             </button>
 
             @if (errorMsg()) {
-              <div class="p-3 text-center text-xs font-semibold text-red-500 bg-red-500/10 border border-red-500/20 rounded-2xl">
+              <div class="p-3 text-center text-xs font-semibold text-red-500 bg-red-500/10 border border-red-500/20 rounded-md">
                 {{ errorMsg() }}
               </div>
             }
@@ -106,7 +106,7 @@ import { FormsModule } from '@angular/forms';
                      class="w-full px-5 py-3 rounded-md border bg-transparent dark:bg-charcoal-900/30 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 text-sm" />
             </div>
             <button type="submit" [disabled]="!phone || sendingOtp()"
-                    class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">
+                    class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-md bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">
               @if (sendingOtp()) {
                 Mengirim OTP...
               } @else {
@@ -114,7 +114,7 @@ import { FormsModule } from '@angular/forms';
               }
             </button>
             @if (otpMsg()) {
-              <div class="p-2 text-center text-xs font-semibold text-emerald-500 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/20 dark:border-emerald-500/30 rounded-2xl">
+              <div class="p-2 text-center text-xs font-semibold text-emerald-500 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/20 dark:border-emerald-500/30 rounded-md">
                 {{ otpMsg() }}
               </div>
             }
@@ -127,7 +127,7 @@ import { FormsModule } from '@angular/forms';
                      class="w-full px-5 py-3 rounded-md border bg-transparent dark:bg-charcoal-900/30 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 text-sm text-center tracking-[8px]" />
             </div>
             <button type="submit" [disabled]="!otp || otp.length < 6 || verifyingOtp()"
-                    class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">
+                    class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-md bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">
               @if (verifyingOtp()) {
                 Memverifikasi...
               } @else {
@@ -139,7 +139,7 @@ import { FormsModule } from '@angular/forms';
               Gunakan nomor lain
             </button>
             @if (otpError()) {
-              <div class="p-2 text-center text-xs font-semibold text-red-500 dark:text-red-400 bg-red-500/10 dark:bg-red-500/15 border border-red-500/20 dark:border-red-500/30 rounded-2xl">
+              <div class="p-2 text-center text-xs font-semibold text-red-500 dark:text-red-400 bg-red-500/10 dark:bg-red-500/15 border border-red-500/20 dark:border-red-500/30 rounded-md">
                 {{ otpError() }}
               </div>
             }

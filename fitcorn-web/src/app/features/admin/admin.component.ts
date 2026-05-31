@@ -767,7 +767,7 @@ import { ModalService } from '../../shared/services/modal.service';
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Unggah Gambar Produk</label>
                 <input type="file" (change)="onImageFileSelected($event)" accept="image/*"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400 file:mr-4 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-corn-400 file:text-charcoal-900 hover:file:bg-corn-500 cursor-pointer" />
+                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400 file:mr-4 file:py-1 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-corn-400 file:text-charcoal-900 hover:file:bg-corn-500 cursor-pointer" />
                 @if (imageUploadProgress()) {
                   <span class="block text-[10px] text-corn-500 font-bold mt-2 animate-pulse">⌛ Sedang mengunggah gambar...</span>
                 }
