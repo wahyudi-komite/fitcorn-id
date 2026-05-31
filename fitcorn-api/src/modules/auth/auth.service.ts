@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import * as bcrypt from 'bcryptjs';
+import { randomBytes } from 'crypto';
 import { User } from '../users/entities/user.entity';
 import { Role } from '../users/entities/role.entity';
 import { RegisterDto } from './dto/register.dto';
@@ -43,10 +44,12 @@ export class AuthService implements OnModuleInit {
     if (!adminUser) {
       console.log('Seeding default administrator credentials in database...');
       
-      const hashedPassword = await bcrypt.hash('AdminFitcorn2026!', 10);
+      const adminSalt = randomBytes(32).toString('hex');
+      const hashedPassword = await bcrypt.hash('AdminFitcorn2026!' + adminSalt, 10);
       const newAdmin = this.userRepository.create({
         email: 'admin@fitcorn.com',
         password: hashedPassword,
+        salt: adminSalt,
         fullName: 'Fitcorn Administrator',
         phone: '081234567890',
         isActive: true,
@@ -67,7 +70,8 @@ export class AuthService implements OnModuleInit {
       throw new BadRequestException('Email already registered');
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const salt = randomBytes(32).toString('hex');
+    const hashedPassword = await bcrypt.hash(password + salt, 10);
 
     // Find customer role or create one if not exists (for seeding purposes)
     let customerRole = await this.roleRepository.findOne({ where: { name: 'customer' } });
@@ -79,6 +83,7 @@ export class AuthService implements OnModuleInit {
     const user = this.userRepository.create({
       email,
       password: hashedPassword,
+      salt,
       fullName,
       phone,
       roles: [customerRole],
@@ -96,6 +101,7 @@ export class AuthService implements OnModuleInit {
         id: true,
         email: true,
         password: true,
+        salt: true,
         fullName: true,
         phone: true,
         avatar: true,
@@ -112,7 +118,7 @@ export class AuthService implements OnModuleInit {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password!);
+    const isPasswordValid = await bcrypt.compare(password + user.salt!, user.password!);
     if (!isPasswordValid) {
       throw new UnauthorizedException('Invalid credentials');
     }

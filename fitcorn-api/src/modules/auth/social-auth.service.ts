@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import * as bcrypt from 'bcryptjs';
+import { randomBytes } from 'crypto';
 import { User } from '../users/entities/user.entity';
 import { Role } from '../users/entities/role.entity';
 
@@ -58,10 +59,12 @@ export class SocialAuthService {
         await this.roleRepository.save(customerRole);
       }
 
-      const randomPassword = await bcrypt.hash(Math.random().toString(36), 10);
+      const oauthSalt = randomBytes(32).toString('hex');
+      const randomPassword = await bcrypt.hash(Math.random().toString(36) + oauthSalt, 10);
       user = this.userRepository.create({
         email: profile.email || `${profile.providerId}@${profile.provider}.fitcorn`,
         password: randomPassword,
+        salt: oauthSalt,
         fullName: profile.fullName,
         avatar: profile.avatar,
         roles: [customerRole],
@@ -136,10 +139,12 @@ export class SocialAuthService {
         await this.roleRepository.save(customerRole);
       }
 
-      const randomPassword = await bcrypt.hash(Math.random().toString(36), 10);
+      const otpSalt = randomBytes(32).toString('hex');
+      const randomPassword = await bcrypt.hash(Math.random().toString(36) + otpSalt, 10);
       user = this.userRepository.create({
         email: `${normalized}@phone.fitcorn`,
         password: randomPassword,
+        salt: otpSalt,
         fullName: `User ${normalized.slice(-4)}`,
         phone: normalized,
         phoneVerified: true,

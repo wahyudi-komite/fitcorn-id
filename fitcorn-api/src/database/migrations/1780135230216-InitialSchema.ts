@@ -10,6 +10,7 @@ export class InitialSchema1780135230216 implements MigrationInterface {
         id VARCHAR(36) NOT NULL PRIMARY KEY,
         email VARCHAR(255) NOT NULL UNIQUE,
         password VARCHAR(255) NOT NULL,
+        salt VARCHAR(64) NULL,
         full_name VARCHAR(255) NOT NULL,
         phone VARCHAR(20) NULL,
         avatar VARCHAR(255) NULL,
