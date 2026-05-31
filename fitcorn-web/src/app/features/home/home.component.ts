@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
 import { ButtonComponent } from '../../shared/ui/button/button.component';
+import { ProductCardComponent, ProductCardData } from '../../shared/ui/product-card/product-card.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonComponent],
+  imports: [CommonModule, RouterModule, ButtonComponent, ProductCardComponent],
   template: `
     <div class="relative overflow-hidden font-sans transition-colors duration-300">
       
@@ -129,32 +130,7 @@ import { ButtonComponent } from '../../shared/ui/button/button.component';
 
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             @for (item of featuredProducts(); track item.id) {
-              <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
-                   class="rounded-3xl p-5 border flex flex-col justify-between transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1">
-                <div>
-                  <div class="aspect-square rounded-2xl bg-charcoal-100 dark:bg-charcoal-900 overflow-hidden flex items-center justify-center mb-4 relative">
-                    @if (item.images && item.images.length > 0) {
-                      <img [src]="item.images[0].url" [alt]="item.images[0].altText || item.name" class="w-full h-full object-cover" />
-                    } @else {
-                      <span class="text-4xl">🍿</span>
-                    }
-                  </div>
-                  <span class="text-[9px] font-bold text-corn-500 uppercase tracking-widest block mb-1">
-                    {{ item.categories?.[0]?.name || 'Rasa Signature' }}
-                  </span>
-                  <h4 class="font-display font-extrabold text-base text-charcoal-800 dark:text-white line-clamp-1">
-                    <a [routerLink]="['/produk', item.slug]">{{ item.name }}</a>
-                  </h4>
-                  <p class="text-xs text-charcoal-400 font-semibold mt-1">Berat: {{ item.weight }}g</p>
-                </div>
-                
-                <div class="mt-4 pt-3 border-t border-charcoal-100 dark:border-charcoal-900/50 flex items-center justify-between">
-                  <span class="text-sm font-display font-extrabold text-corn-500">
-                    Rp {{ item.price.toLocaleString('id-ID') }}
-                  </span>
-                  <app-button [routerLink]="['/produk', item.slug]" size="sm" variant="secondary">Pesan</app-button>
-                </div>
-              </div>
+              <app-product-card [product]="mapProduct(item)" />
             }
           </div>
         </div>
@@ -324,6 +300,21 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.loadFeaturedProducts();
+  }
+
+  protected mapProduct(p: any): ProductCardData {
+    return {
+      id: p.id,
+      name: p.name,
+      slug: p.slug,
+      price: Number(p.price),
+      originalPrice: p.originalPrice ? Number(p.originalPrice) : undefined,
+      image: p.images?.[0]?.url || '/assets/popcorn.png',
+      category: p.categories?.[0]?.name,
+      rating: p.rating,
+      soldCount: p.soldCount,
+      stock: p.stock,
+    };
   }
 
   loadFeaturedProducts() {

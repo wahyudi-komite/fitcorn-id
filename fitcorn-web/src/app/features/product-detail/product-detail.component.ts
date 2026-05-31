@@ -5,12 +5,12 @@ import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
 import { CartService } from '../../core/services/cart.service';
 import { AnalyticsService } from '../../core/services/analytics.service';
-import { ButtonComponent } from '../../shared/ui';
+import { ButtonComponent, ProductCardComponent, ProductCardData } from '../../shared/ui';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonComponent],
+  imports: [CommonModule, RouterModule, ButtonComponent, ProductCardComponent],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       
@@ -180,28 +180,7 @@ import { ButtonComponent } from '../../shared/ui';
  
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
               @for (item of relatedProducts(); track item.id) {
-                <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark border-charcoal-800' : 'glassmorphism-light border-charcoal-200'"
-                     class="rounded-3xl p-5 border flex flex-col justify-between transition-all duration-300 hover:shadow-lg">
-                  <div>
-                    <div class="aspect-square rounded-2xl bg-charcoal-100 dark:bg-charcoal-900 overflow-hidden flex items-center justify-center mb-4 relative">
-                      @if (item.images && item.images.length > 0) {
-                        <img [src]="item.images[0].url" [alt]="item.images[0].altText || item.name" class="w-full h-full object-cover" />
-                      } @else {
-                        <span class="text-4xl">🍿</span>
-                      }
-                    </div>
-                    <h4 class="font-display font-extrabold text-base text-charcoal-800 dark:text-white line-clamp-1">
-                      <a [routerLink]="['/produk', item.slug]" (click)="onRelatedClick(item.slug)">{{ item.name }}</a>
-                    </h4>
-                    <p class="text-xs text-corn-500 font-bold mt-1">
-                      Rp {{ item.price.toLocaleString('id-ID') }}
-                    </p>
-                  </div>
-                  <a [routerLink]="['/produk', item.slug]" (click)="onRelatedClick(item.slug)"
-                     class="mt-4 text-center py-2 text-xs font-bold bg-charcoal-100 dark:bg-charcoal-900 text-charcoal-700 dark:text-charcoal-300 rounded-full hover:bg-corn-400 hover:text-charcoal-900 transition-colors">
-                    Lihat detail
-                  </a>
-                </div>
+                <app-product-card [product]="mapProduct(item)" />
               }
             </div>
           </div>
@@ -268,6 +247,21 @@ export class ProductDetailComponent implements OnInit {
     });
   }
  
+  protected mapProduct(p: any): ProductCardData {
+    return {
+      id: p.id,
+      name: p.name,
+      slug: p.slug,
+      price: Number(p.price),
+      originalPrice: p.originalPrice ? Number(p.originalPrice) : undefined,
+      image: p.images?.[0]?.url || '/assets/popcorn.png',
+      category: p.categories?.[0]?.name,
+      rating: p.rating,
+      soldCount: p.soldCount,
+      stock: p.stock,
+    };
+  }
+
   onRelatedClick(slug: string) {
     this.loadProductDetails(slug);
   }

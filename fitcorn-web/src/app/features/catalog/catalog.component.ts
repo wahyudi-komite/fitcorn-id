@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
-import { ButtonComponent } from '../../shared/ui';
+import { ButtonComponent, ProductCardComponent, ProductCardData } from '../../shared/ui';
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonComponent],
+  imports: [CommonModule, RouterModule, ButtonComponent, ProductCardComponent],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       
@@ -102,58 +102,7 @@ import { ButtonComponent } from '../../shared/ui';
         <!-- Real Product Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           @for (item of products(); track item.id) {
-            <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark border-charcoal-800 hover:border-corn-500/50' : 'glassmorphism-light border-charcoal-200 hover:border-corn-400/50'"
-                 class="rounded-3xl p-6 border transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between shadow-premium hover:shadow-2xl">
-              
-              <div>
-                <!-- Image Wrapper -->
-                <div class="aspect-square rounded-2xl bg-charcoal-100 dark:bg-charcoal-900 overflow-hidden flex items-center justify-center mb-6 relative group">
-                  @if (item.images && item.images.length > 0) {
-                    <img [src]="item.images[0].url" [alt]="item.images[0].altText || item.name" 
-                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  } @else {
-                    <span class="text-6xl">🍿</span>
-                  }
-                  
-                  @if (item.isFeatured) {
-                    <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-corn-400 text-charcoal-900 text-[10px] font-sans font-bold uppercase tracking-wider">
-                      Unggulan
-                    </span>
-                  }
-                </div>
-
-                <div class="flex items-center justify-between gap-2 mb-2">
-                  <span class="text-[10px] font-bold text-corn-500 uppercase tracking-widest">
-                    {{ item.categories?.[0]?.name || 'Rasa Klasik' }}
-                  </span>
-                  <span class="text-[10px] font-semibold text-charcoal-400">
-                    {{ item.weight }} gram
-                  </span>
-                </div>
-
-                <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2 hover:text-corn-500 transition-colors">
-                  <a [routerLink]="['/produk', item.slug]">{{ item.name }}</a>
-                </h3>
-
-                <p class="text-sm text-charcoal-500 dark:text-charcoal-400 mb-6 font-medium line-clamp-2 leading-relaxed">
-                  {{ item.shortDescription || item.description }}
-                </p>
-              </div>
-              
-              <div class="flex items-center justify-between mt-auto pt-4 border-t border-charcoal-100 dark:border-charcoal-900">
-                <div class="flex flex-col">
-                  <span class="text-xs font-semibold text-charcoal-400 uppercase tracking-wider">Harga</span>
-                  <span class="text-lg font-display font-extrabold text-corn-500">
-                    Rp {{ item.price.toLocaleString('id-ID') }}
-                  </span>
-                </div>
-                <a [routerLink]="['/produk', item.slug]" 
-                   class="px-5 py-3 font-sans font-bold text-xs uppercase tracking-widest rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
-                  Lihat Detail
-                </a>
-              </div>
-
-            </div>
+            <app-product-card [product]="mapProduct(item)" />
           }
         </div>
       }
@@ -182,6 +131,21 @@ export class CatalogComponent implements OnInit {
 
   ngOnInit() {
     this.loadProducts();
+  }
+
+  protected mapProduct(p: any): ProductCardData {
+    return {
+      id: p.id,
+      name: p.name,
+      slug: p.slug,
+      price: Number(p.price),
+      originalPrice: p.originalPrice ? Number(p.originalPrice) : undefined,
+      image: p.images?.[0]?.url || '/assets/popcorn.png',
+      category: p.categories?.[0]?.name,
+      rating: p.rating,
+      soldCount: p.soldCount,
+      stock: p.stock,
+    };
   }
 
   loadProducts() {
