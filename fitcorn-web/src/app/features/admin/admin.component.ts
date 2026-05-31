@@ -7,11 +7,17 @@ import { AuthService } from '../../core/services/auth.service';
 import { ProductsService } from '../../core/services/products.service';
 import { AdminService } from './admin.service';
 import { ModalService } from '../../shared/services/modal.service';
+import { ButtonComponent } from '../../shared/ui/button/button.component';
+import { BadgeComponent } from '../../shared/ui/badge/badge.component';
+import { DialogComponent } from '../../shared/ui/dialog/dialog.component';
+import { InputComponent } from '../../shared/ui/input/input.component';
+import { SelectComponent } from '../../shared/ui/select/select.component';
+import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, BadgeComponent, DialogComponent, InputComponent, SelectComponent, TextareaComponent],
   template: `
     <div class="min-h-screen font-sans flex flex-col md:flex-row transition-colors duration-300 bg-white dark:bg-charcoal-950">
       
@@ -77,7 +83,7 @@ import { ModalService } from '../../shared/services/modal.service';
         <!-- Sidebar Footer Admin Info -->
         <div class="pt-6 border-t border-charcoal-200 dark:border-charcoal-800 flex items-center justify-between text-xs text-charcoal-400 font-bold uppercase tracking-wider">
           <span>Admin</span>
-          <button (click)="authService.logout()" class="text-red-500 hover:underline cursor-pointer">Keluar</button>
+          <app-button variant="ghost" (onClick)="authService.logout()">Keluar</app-button>
         </div>
       </aside>
 
@@ -218,9 +224,7 @@ import { ModalService } from '../../shared/services/modal.service';
                   <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Katalog Produk</h3>
                   <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola daftar produk, varian, stok, dan unggah gambar</p>
                 </div>
-                <button (click)="openProductModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-md shadow cursor-pointer">
-                  + Tambah Produk Baru
-                </button>
+                <app-button (onClick)="openProductModal()">+ Tambah Produk Baru</app-button>
               </div>
 
               <!-- Product List View -->
@@ -257,15 +261,15 @@ import { ModalService } from '../../shared/services/modal.service';
                             <span *ngIf="!p.isFeatured" class="text-charcoal-300 dark:text-charcoal-700">-</span>
                           </td>
                           <td class="py-4 px-6">
-                            <span class="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider"
+                            <span class="px-2.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider"
                                   [class.bg-green-100]="p.isActive" [class.text-green-700]="p.isActive"
                                   [class.bg-red-100]="!p.isActive" [class.text-red-700]="!p.isActive">
                               {{ p.isActive ? 'Aktif' : 'Nonaktif' }}
                             </span>
                           </td>
                           <td class="py-4 px-6 text-right space-x-2">
-                            <button (click)="openProductModal(p)" class="px-3.5 py-1.5 rounded-md bg-corn-400/20 text-corn-700 dark:text-corn-300 text-xs font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Edit</button>
-                            <button (click)="deleteProduct(p)" class="px-3.5 py-1.5 rounded-md bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Hapus</button>
+                            <app-button variant="ghost" (onClick)="openProductModal(p)">Edit</app-button>
+                            <app-button variant="danger" (onClick)="deleteProduct(p)">Hapus</app-button>
                           </td>
                         </tr>
                       }
@@ -284,9 +288,7 @@ import { ModalService } from '../../shared/services/modal.service';
                   <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Kategori Produk</h3>
                   <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola koleksi dan pengelompokan</p>
                 </div>
-                <button (click)="openCategoryModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-md shadow cursor-pointer">
-                  + Tambah Kategori Baru
-                </button>
+                <app-button (onClick)="openCategoryModal()">+ Tambah Kategori Baru</app-button>
               </div>
 
               <!-- Categories Listing Grid -->
@@ -301,8 +303,8 @@ import { ModalService } from '../../shared/services/modal.service';
                       <p class="text-xs text-charcoal-400 font-medium leading-relaxed mt-1">{{ c.description || 'Tidak ada deskripsi' }}</p>
                     </div>
                     <div class="flex justify-end gap-3 pt-4 border-t border-charcoal-100 dark:border-charcoal-900">
-                      <button (click)="openCategoryModal(c)" class="text-xs font-bold text-corn-500 hover:underline cursor-pointer uppercase">Edit</button>
-                      <button (click)="deleteCategory(c.id)" class="text-xs font-bold text-red-500 hover:underline cursor-pointer uppercase">Hapus</button>
+                      <app-button variant="ghost" (onClick)="openCategoryModal(c)">Edit</app-button>
+                      <app-button variant="danger" (onClick)="deleteCategory(c.id)">Hapus</app-button>
                     </div>
                   </div>
                 }
@@ -349,7 +351,7 @@ import { ModalService } from '../../shared/services/modal.service';
                             }
                           </td>
                           <td class="py-4 px-6">
-                            <span class="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider"
+                            <span class="px-2.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider"
                                   [class.bg-green-100]="o.status === 'paid' || o.status === 'delivered'"
                                   [class.text-green-700]="o.status === 'paid' || o.status === 'delivered'"
                                   [class.bg-yellow-100]="o.status === 'pending' || o.status === 'waiting_payment'"
@@ -359,9 +361,7 @@ import { ModalService } from '../../shared/services/modal.service';
                           </td>
                           <td class="py-4 px-6 text-right space-x-2 shrink-0">
                             <!-- Update Status Trigger -->
-                            <select (change)="updateOrderStatus(o.id, $event)" [value]="o.status"
-                                    [ngClass]="themeService.theme() === 'dark' ? 'bg-charcoal-950 border-charcoal-850 text-white' : 'bg-white border-charcoal-200 text-charcoal-800'"
-                                    class="px-2 py-1 rounded border text-xs focus:outline-none cursor-pointer inline-block w-28 mr-2">
+                            <app-select [(ngModel)]="o.status" (ngModelChange)="updateOrderStatus(o.id, $event)">
                               <option value="pending">Menunggu</option>
                               <option value="waiting_payment">Menunggu Pembayaran</option>
                               <option value="paid">Dibayar</option>
@@ -369,9 +369,9 @@ import { ModalService } from '../../shared/services/modal.service';
                               <option value="shipped">Dikirim</option>
                               <option value="delivered">Terkirim</option>
                               <option value="cancelled">Dibatalkan</option>
-                            </select>
+                            </app-select>
 
-                            <button (click)="openResiModal(o)" class="px-3.5 py-1.5 rounded-md bg-corn-400/20 text-corn-700 dark:text-corn-300 text-[10px] font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Resi</button>
+                            <app-button variant="ghost" (onClick)="openResiModal(o)">Resi</app-button>
                           </td>
                         </tr>
                       }
@@ -412,18 +412,16 @@ import { ModalService } from '../../shared/services/modal.service';
                           <td class="py-4 px-6 text-charcoal-500">{{ cust.phone || '-' }}</td>
                           <td class="py-4 px-6">{{ cust.createdAt | date:'dd MMM yyyy, HH:mm' }}</td>
                           <td class="py-4 px-6">
-                            <span class="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider"
+                            <span class="px-2.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider"
                                   [class.bg-green-100]="cust.isActive" [class.text-green-700]="cust.isActive"
                                   [class.bg-red-100]="!cust.isActive" [class.text-red-700]="!cust.isActive">
                               {{ cust.isActive ? 'Aktif' : 'Diblokir' }}
                             </span>
                           </td>
                           <td class="py-4 px-6 text-right">
-                            <button (click)="toggleCustomerStatus(cust)"
-                                    [ngClass]="cust.isActive ? 'bg-red-500/20 text-red-600 hover:bg-red-500/40' : 'bg-green-500/20 text-green-600 hover:bg-green-500/40'"
-                                    class="px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-colors cursor-pointer">
+                            <app-button [variant]="cust.isActive ? 'danger' : 'primary'" (onClick)="toggleCustomerStatus(cust)">
                               {{ cust.isActive ? 'Blokir Pengguna' : 'Aktifkan Pengguna' }}
-                            </button>
+                            </app-button>
                           </td>
                         </tr>
                       }
@@ -447,18 +445,11 @@ import { ModalService } from '../../shared/services/modal.service';
                 
                 <form (submit)="saveSettings()" class="space-y-6 text-sm font-medium">
                   @for (s of settings(); track s.id) {
-                    <div>
-                      <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">{{ s.key }}</label>
-                      <input type="text" [(ngModel)]="settingsPayload[s.key]" [name]="s.key" required
-                             [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                             class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
-                    </div>
+                    <app-input [label]="s.key" type="text" [(ngModel)]="settingsPayload[s.key]" [name]="s.key" required />
                   }
 
                   <div class="pt-4 flex justify-end">
-                    <button type="submit" class="px-8 py-4 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-sans font-bold text-xs tracking-widest uppercase rounded-md shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer">
-                      Simpan Semua Pengaturan
-                    </button>
+                    <app-button type="submit">Simpan Semua Pengaturan</app-button>
                   </div>
                 </form>
               </div>
@@ -473,9 +464,7 @@ import { ModalService } from '../../shared/services/modal.service';
                   <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Banner Pemasaran</h3>
                   <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola banner hero carousel dan penempatan slide</p>
                 </div>
-                <button (click)="openBannerModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-md shadow cursor-pointer">
-                  + Tambah Banner Baru
-                </button>
+                <app-button (onClick)="openBannerModal()">+ Tambah Banner Baru</app-button>
               </div>
 
               <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
@@ -505,15 +494,15 @@ import { ModalService } from '../../shared/services/modal.service';
                           <td class="py-4 px-6 text-charcoal-500 font-mono text-xs">{{ b.linkUrl || b.link_url || '-' }}</td>
                           <td class="py-4 px-6">{{ b.sortOrder || b.sort_order || 0 }}</td>
                           <td class="py-4 px-6">
-                            <span class="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider"
+                            <span class="px-2.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider"
                                   [class.bg-green-100]="b.isActive" [class.text-green-700]="b.isActive"
                                   [class.bg-red-100]="!b.isActive" [class.text-red-700]="!b.isActive">
                               {{ b.isActive ? 'Aktif' : 'Nonaktif' }}
                             </span>
                           </td>
                           <td class="py-4 px-6 text-right space-x-2">
-                            <button (click)="openBannerModal(b)" class="px-3.5 py-1.5 rounded-md bg-corn-400/20 text-corn-700 dark:text-corn-300 text-xs font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Edit</button>
-                            <button (click)="deleteBanner(b.id)" class="px-3.5 py-1.5 rounded-md bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Hapus</button>
+                            <app-button variant="ghost" (onClick)="openBannerModal(b)">Edit</app-button>
+                            <app-button variant="danger" (onClick)="deleteBanner(b.id)">Hapus</app-button>
                           </td>
                         </tr>
                       }
@@ -532,9 +521,7 @@ import { ModalService } from '../../shared/services/modal.service';
                   <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Galeri Feed Instagram</h3>
                   <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola kartu galeri Instagram kustom tanpa API</p>
                 </div>
-                <button (click)="openInstagramModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-md shadow cursor-pointer">
-                  + Tambah Kartu Instagram
-                </button>
+                <app-button (onClick)="openInstagramModal()">+ Tambah Kartu Instagram</app-button>
               </div>
 
               <!-- Instagram Cards responsive modern grid -->
@@ -569,8 +556,8 @@ import { ModalService } from '../../shared/services/modal.service';
                         </span>
                         
                         <div class="flex gap-2">
-                          <button (click)="openInstagramModal(post)" class="text-xs font-bold text-corn-500 hover:underline cursor-pointer uppercase">Edit</button>
-                          <button (click)="deleteInstagramPost(post.id)" class="text-xs font-bold text-red-500 hover:underline cursor-pointer uppercase">Hapus</button>
+                          <app-button variant="ghost" (onClick)="openInstagramModal(post)">Edit</app-button>
+                          <app-button variant="danger" (onClick)="deleteInstagramPost(post.id)">Hapus</app-button>
                         </div>
                       </div>
                     </div>
@@ -588,9 +575,7 @@ import { ModalService } from '../../shared/services/modal.service';
                   <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Kupon Diskon</h3>
                   <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola kode promosi, batas, dan limit kupon</p>
                 </div>
-                <button (click)="openCouponModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-md shadow cursor-pointer">
-                  + Tambah Kupon Baru
-                </button>
+                <app-button (onClick)="openCouponModal()">+ Tambah Kupon Baru</app-button>
               </div>
 
               <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
@@ -621,15 +606,15 @@ import { ModalService } from '../../shared/services/modal.service';
                             {{ c.usedCount || c.used_count || 0 }} / {{ c.usageLimit || c.usage_limit || '∞' }}
                           </td>
                           <td class="py-4 px-6">
-                            <span class="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider"
+                            <span class="px-2.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider"
                                   [class.bg-green-100]="c.isActive" [class.text-green-700]="c.isActive"
                                   [class.bg-red-100]="!c.isActive" [class.text-red-700]="!c.isActive">
                               {{ c.isActive ? 'Aktif' : 'Nonaktif' }}
                             </span>
                           </td>
                           <td class="py-4 px-6 text-right space-x-2">
-                            <button (click)="openCouponModal(c)" class="px-3.5 py-1.5 rounded-md bg-corn-400/20 text-corn-700 dark:text-corn-300 text-xs font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Edit</button>
-                            <button (click)="deleteCoupon(c.id)" class="px-3.5 py-1.5 rounded-md bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Hapus</button>
+                            <app-button variant="ghost" (onClick)="openCouponModal(c)">Edit</app-button>
+                            <app-button variant="danger" (onClick)="deleteCoupon(c.id)">Hapus</app-button>
                           </td>
                         </tr>
                       }
@@ -644,333 +629,154 @@ import { ModalService } from '../../shared/services/modal.service';
       </main>
 
       <!-- Resi Airwaybill Input Modal -->
-      @if (resiModalVisible()) {
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm">
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
-               class="w-full max-w-md p-8 rounded-3xl border space-y-6 shadow-premium relative">
-            <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">Input Resi</h3>
-            
-            <div class="space-y-4 text-sm font-medium">
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nama Kurir</label>
-                <input type="text" [(ngModel)]="resiData.courierName" placeholder="cth. JNE"
-                       [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-              </div>
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Layanan Kurir</label>
-                <input type="text" [(ngModel)]="resiData.courierService" placeholder="cth. REG"
-                       [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-              </div>
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">No. Resi</label>
-                <input type="text" [(ngModel)]="resiData.trackingNumber" placeholder="cth. JT123456789"
-                       [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeResiModal()" class="px-6 py-2.5 rounded-md border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
-              <button (click)="saveResi()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Simpan Resi</button>
-            </div>
-          </div>
+      <app-dialog [open]="resiModalVisible()" title="Input Resi" (onClose)="closeResiModal()">
+        <div class="space-y-4 text-sm font-medium">
+          <app-input label="Nama Kurir" placeholder="cth. JNE" [(ngModel)]="resiData.courierName" />
+          <app-input label="Layanan Kurir" placeholder="cth. REG" [(ngModel)]="resiData.courierService" />
+          <app-input label="No. Resi" placeholder="cth. JT123456789" [(ngModel)]="resiData.trackingNumber" />
         </div>
-      }
+        <div class="flex items-center gap-4 justify-between pt-2">
+          <app-button variant="outline" (onClick)="closeResiModal()">Batal</app-button>
+          <app-button (onClick)="saveResi()">Simpan Resi</app-button>
+        </div>
+      </app-dialog>
 
       <!-- CATEGORY ADD/EDIT MODAL -->
-      @if (categoryModalVisible()) {
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm">
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
-               class="w-full max-w-md p-8 rounded-3xl border space-y-6 shadow-premium relative">
-            <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
-              {{ categoryData.id ? 'Edit Kategori' : 'Tambah Kategori Baru' }}
-            </h3>
-            
-            <div class="space-y-4 text-sm font-medium">
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nama Kategori</label>
-                <input type="text" [(ngModel)]="categoryData.name" placeholder="cth. Spicy Lava"
-                       [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-              </div>
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Deskripsi</label>
-                <textarea [(ngModel)]="categoryData.description" placeholder="Deskripsi singkat..." rows="2"
-                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                          class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400"></textarea>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeCategoryModal()" class="px-6 py-2.5 rounded-md border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
-              <button (click)="saveCategory()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Simpan</button>
-            </div>
-          </div>
+      <app-dialog [open]="categoryModalVisible()" [title]="categoryData.id ? 'Edit Kategori' : 'Tambah Kategori Baru'" (onClose)="closeCategoryModal()">
+        <div class="space-y-4 text-sm font-medium">
+          <app-input label="Nama Kategori" placeholder="cth. Spicy Lava" [(ngModel)]="categoryData.name" />
+          <app-textarea label="Deskripsi" placeholder="Deskripsi singkat..." [(ngModel)]="categoryData.description" [rows]="2" />
         </div>
-      }
+        <div class="flex items-center gap-4 justify-between pt-2">
+          <app-button variant="outline" (onClick)="closeCategoryModal()">Batal</app-button>
+          <app-button (onClick)="saveCategory()">Simpan</app-button>
+        </div>
+      </app-dialog>
 
       <!-- PRODUCT ADD/EDIT MODAL -->
-      @if (productModalVisible()) {
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm overflow-y-auto">
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
-               class="w-full max-w-lg p-8 rounded-3xl border space-y-6 shadow-premium relative my-8">
-            <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
-              {{ productData.id ? 'Edit Produk' : 'Tambah Produk Baru' }}
-            </h3>
-            
-            <div class="space-y-4 text-xs font-semibold">
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nama Produk</label>
-                  <input type="text" [(ngModel)]="productData.name" placeholder="cth. Honey Butter"
-                         [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-                </div>
-                <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Harga (Rp)</label>
-                  <input type="number" [(ngModel)]="productData.price" placeholder="25000"
-                         [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-                </div>
-              </div>
+      <app-dialog [open]="productModalVisible()" [title]="productData.id ? 'Edit Produk' : 'Tambah Produk Baru'" size="lg" (onClose)="closeProductModal()">
+        <div class="space-y-4 text-xs font-semibold">
+          <div class="grid grid-cols-2 gap-4">
+            <app-input label="Nama Produk" placeholder="cth. Honey Butter" [(ngModel)]="productData.name" />
+            <app-input label="Harga (Rp)" type="number" placeholder="25000" [(ngModel)]="productData.price" />
+          </div>
 
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Jumlah Stok</label>
-                  <input type="number" [(ngModel)]="productData.quantity" placeholder="100"
-                         [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-                </div>
-                <div class="flex items-center gap-4 pt-8">
-                  <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer select-none">
-                    <input type="checkbox" [(ngModel)]="productData.isFeatured" class="w-4 h-4 accent-corn-400" />
-                    Unggulan
-                  </label>
-                  <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer select-none">
-                    <input type="checkbox" [(ngModel)]="productData.isActive" class="w-4 h-4 accent-corn-400" />
-                    Aktif
-                  </label>
-                </div>
-              </div>
-
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Deskripsi</label>
-                <textarea [(ngModel)]="productData.description" placeholder="Detail produk, catatan, properti bahan..." rows="3"
-                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                          class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400"></textarea>
-              </div>
-
-              <!-- Image File Upload section -->
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Unggah Gambar Produk</label>
-                <input type="file" (change)="onImageFileSelected($event)" accept="image/*"
-                       [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400 file:mr-4 file:py-1 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-corn-400 file:text-charcoal-900 hover:file:bg-corn-500 cursor-pointer" />
-                @if (imageUploadProgress()) {
-                  <span class="block text-[10px] text-corn-500 font-bold mt-2 animate-pulse">⌛ Sedang mengunggah gambar...</span>
-                }
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeProductModal()" class="px-6 py-2.5 rounded-md border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
-              <button (click)="saveProduct()" [disabled]="imageUploadProgress()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer disabled:opacity-50">Simpan</button>
+          <div class="grid grid-cols-2 gap-4">
+            <app-input label="Jumlah Stok" type="number" placeholder="100" [(ngModel)]="productData.quantity" />
+            <div class="flex items-center gap-4 pt-8">
+              <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer select-none">
+                <input type="checkbox" [(ngModel)]="productData.isFeatured" class="w-4 h-4 accent-corn-400" />
+                Unggulan
+              </label>
+              <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer select-none">
+                <input type="checkbox" [(ngModel)]="productData.isActive" class="w-4 h-4 accent-corn-400" />
+                Aktif
+              </label>
             </div>
           </div>
+
+          <app-textarea label="Deskripsi" placeholder="Detail produk, catatan, properti bahan..." [(ngModel)]="productData.description" [rows]="3" />
+
+          <!-- Image File Upload section -->
+          <div>
+            <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Unggah Gambar Produk</label>
+            <input type="file" (change)="onImageFileSelected($event)" accept="image/*"
+                   [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
+                   class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400 file:mr-4 file:py-1 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-corn-400 file:text-charcoal-900 hover:file:bg-corn-500 cursor-pointer" />
+            @if (imageUploadProgress()) {
+              <span class="block text-[10px] text-corn-500 font-bold mt-2 animate-pulse">⌛ Sedang mengunggah gambar...</span>
+            }
+          </div>
         </div>
-      }
+
+        <div class="flex items-center gap-4 justify-between pt-2">
+          <app-button variant="outline" (onClick)="closeProductModal()">Batal</app-button>
+          <app-button (onClick)="saveProduct()" [disabled]="imageUploadProgress()">Simpan</app-button>
+        </div>
+      </app-dialog>
 
       <!-- BANNER ADD/EDIT MODAL -->
-      @if (bannerModalVisible()) {
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm overflow-y-auto">
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
-               class="w-full max-w-md p-8 rounded-3xl border space-y-6 shadow-premium relative my-8">
-            <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
-              {{ bannerData.id ? 'Edit Banner' : 'Tambah Banner Baru' }}
-            </h3>
-            
-            <div class="space-y-4 text-xs font-semibold">
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Judul Banner</label>
-                <input type="text" [(ngModel)]="bannerData.title" placeholder="cth. Premium Popcorn"
-                       [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-              </div>
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Subjudul</label>
-                <input type="text" [(ngModel)]="bannerData.subtitle" placeholder="cth. Gratis ongkir dalam Jawa!"
-                       [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-              </div>
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Gambar Banner</label>
-                <input type="text" [(ngModel)]="bannerData.imageUrl" placeholder="cth. https://images.unsplash.com/..."
-                       [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-              </div>
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Gambar Mobile (Opsional)</label>
-                <input type="text" [(ngModel)]="bannerData.mobileImageUrl" placeholder="cth. https://images.unsplash.com/..."
-                       [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-              </div>
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Tautan</label>
-                <input type="text" [(ngModel)]="bannerData.linkUrl" placeholder="cth. /produk/honey-butter"
-                       [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-              </div>
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Urutan</label>
-                  <input type="number" [(ngModel)]="bannerData.sortOrder" placeholder="0"
-                         [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-                </div>
-                <div class="flex items-center gap-2 pt-8 select-none">
-                  <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer">
-                    <input type="checkbox" [(ngModel)]="bannerData.isActive" class="w-4 h-4 accent-corn-400" />
-                    Banner Aktif
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeBannerModal()" class="px-6 py-2.5 rounded-md border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
-              <button (click)="saveBanner()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Simpan</button>
+      <app-dialog [open]="bannerModalVisible()" [title]="bannerData.id ? 'Edit Banner' : 'Tambah Banner Baru'" (onClose)="closeBannerModal()">
+        <div class="space-y-4 text-xs font-semibold">
+          <app-input label="Judul Banner" placeholder="cth. Premium Popcorn" [(ngModel)]="bannerData.title" />
+          <app-input label="Subjudul" placeholder="cth. Gratis ongkir dalam Jawa!" [(ngModel)]="bannerData.subtitle" />
+          <app-input label="URL Gambar Banner" placeholder="cth. https://images.unsplash.com/..." [(ngModel)]="bannerData.imageUrl" />
+          <app-input label="URL Gambar Mobile (Opsional)" placeholder="cth. https://images.unsplash.com/..." [(ngModel)]="bannerData.mobileImageUrl" />
+          <app-input label="URL Tautan" placeholder="cth. /produk/honey-butter" [(ngModel)]="bannerData.linkUrl" />
+          <div class="grid grid-cols-2 gap-4">
+            <app-input label="Urutan" type="number" placeholder="0" [(ngModel)]="bannerData.sortOrder" />
+            <div class="flex items-center gap-2 pt-8 select-none">
+              <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer">
+                <input type="checkbox" [(ngModel)]="bannerData.isActive" class="w-4 h-4 accent-corn-400" />
+                Banner Aktif
+              </label>
             </div>
           </div>
         </div>
-      }
+
+        <div class="flex items-center gap-4 justify-between pt-2">
+          <app-button variant="outline" (onClick)="closeBannerModal()">Batal</app-button>
+          <app-button (onClick)="saveBanner()">Simpan</app-button>
+        </div>
+      </app-dialog>
 
       <!-- INSTAGRAM CARD ADD/EDIT MODAL -->
-      @if (instagramModalVisible()) {
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm overflow-y-auto">
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
-               class="w-full max-w-md p-8 rounded-3xl border space-y-6 shadow-premium relative my-8">
-            <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
-              {{ instagramData.id ? 'Edit Kartu Instagram' : 'Tambah Kartu Instagram' }}
-            </h3>
-            
-            <div class="space-y-4 text-xs font-semibold">
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Foto Instagram</label>
-                <input type="text" [(ngModel)]="instagramData.imageUrl" placeholder="cth. https://images.unsplash.com/..."
-                       [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-              </div>
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Postingan Instagram (Redirect)</label>
-                <input type="text" [(ngModel)]="instagramData.postUrl" placeholder="cth. https://www.instagram.com/p/..."
-                       [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-              </div>
-              <div>
-                <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Caption Text</label>
-                <textarea [(ngModel)]="instagramData.caption" placeholder="Detail, tag merek..." rows="3"
-                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                          class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400"></textarea>
-              </div>
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Urutan</label>
-                  <input type="number" [(ngModel)]="instagramData.sortOrder" placeholder="0"
-                         [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-                </div>
-                <div class="flex items-center gap-2 pt-8 select-none">
-                  <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer">
-                    <input type="checkbox" [(ngModel)]="instagramData.isActive" class="w-4 h-4 accent-corn-400" />
-                    Tampil di Feed
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeInstagramModal()" class="px-6 py-2.5 rounded-md border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
-              <button (click)="saveInstagramPost()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Simpan</button>
+      <app-dialog [open]="instagramModalVisible()" [title]="instagramData.id ? 'Edit Kartu Instagram' : 'Tambah Kartu Instagram'" (onClose)="closeInstagramModal()">
+        <div class="space-y-4 text-xs font-semibold">
+          <app-input label="URL Foto Instagram" placeholder="cth. https://images.unsplash.com/..." [(ngModel)]="instagramData.imageUrl" />
+          <app-input label="URL Postingan Instagram (Redirect)" placeholder="cth. https://www.instagram.com/p/..." [(ngModel)]="instagramData.postUrl" />
+          <app-textarea label="Caption Text" placeholder="Detail, tag merek..." [(ngModel)]="instagramData.caption" [rows]="3" />
+          <div class="grid grid-cols-2 gap-4">
+            <app-input label="Urutan" type="number" placeholder="0" [(ngModel)]="instagramData.sortOrder" />
+            <div class="flex items-center gap-2 pt-8 select-none">
+              <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer">
+                <input type="checkbox" [(ngModel)]="instagramData.isActive" class="w-4 h-4 accent-corn-400" />
+                Tampil di Feed
+              </label>
             </div>
           </div>
         </div>
-      }
+
+        <div class="flex items-center gap-4 justify-between pt-2">
+          <app-button variant="outline" (onClick)="closeInstagramModal()">Batal</app-button>
+          <app-button (onClick)="saveInstagramPost()">Simpan</app-button>
+        </div>
+      </app-dialog>
 
       <!-- COUPON ADD/EDIT MODAL -->
-      @if (couponModalVisible()) {
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm overflow-y-auto">
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
-               class="w-full max-w-md p-8 rounded-3xl border space-y-6 shadow-premium relative my-8">
-            <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
-              {{ couponData.id ? 'Edit Kupon' : 'Tambah Kupon Baru' }}
-            </h3>
-            
-            <div class="space-y-4 text-xs font-semibold">
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Kode Kupon</label>
-                  <input type="text" [(ngModel)]="couponData.code" placeholder="FITCORN10"
-                         [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400 font-mono uppercase" />
-                </div>
-                <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Tipe Diskon</label>
-                  <select [(ngModel)]="couponData.type"
-                          [ngClass]="themeService.theme() === 'dark' ? 'bg-charcoal-950 border-charcoal-850 text-white' : 'bg-white border-charcoal-200 text-charcoal-800'"
-                          class="w-full px-5 py-3 rounded-md border focus:outline-none focus:border-corn-400 cursor-pointer">
-                    <option value="percentage">Persentase (%)</option>
-                    <option value="fixed">Nominal Tetap (Rp)</option>
-                  </select>
-                </div>
-              </div>
+      <app-dialog [open]="couponModalVisible()" [title]="couponData.id ? 'Edit Kupon' : 'Tambah Kupon Baru'" (onClose)="closeCouponModal()">
+        <div class="space-y-4 text-xs font-semibold">
+          <div class="grid grid-cols-2 gap-4">
+            <app-input label="Kode Kupon" placeholder="FITCORN10" [(ngModel)]="couponData.code" />
+            <app-select label="Tipe Diskon" [(ngModel)]="couponData.type">
+              <option value="percentage">Persentase (%)</option>
+              <option value="fixed">Nominal Tetap (Rp)</option>
+            </app-select>
+          </div>
 
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nilai Diskon</label>
-                  <input type="number" [(ngModel)]="couponData.value" placeholder="10"
-                         [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-                </div>
-                <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Min. Pembelian (Rp)</label>
-                  <input type="number" [(ngModel)]="couponData.minPurchase" placeholder="0"
-                         [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-                </div>
-              </div>
+          <div class="grid grid-cols-2 gap-4">
+            <app-input label="Nilai Diskon" type="number" placeholder="10" [(ngModel)]="couponData.value" />
+            <app-input label="Min. Pembelian (Rp)" type="number" placeholder="0" [(ngModel)]="couponData.minPurchase" />
+          </div>
 
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Maks. Diskon (Rp)</label>
-                  <input type="number" [(ngModel)]="couponData.maxDiscount" placeholder="Batas opsional"
-                         [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-                </div>
-                <div>
-                  <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Batas Penggunaan</label>
-                  <input type="number" [(ngModel)]="couponData.usageLimit" placeholder="Maks. penebusan opsional"
-                         [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
-                </div>
-              </div>
+          <div class="grid grid-cols-2 gap-4">
+            <app-input label="Maks. Diskon (Rp)" type="number" placeholder="Batas opsional" [(ngModel)]="couponData.maxDiscount" />
+            <app-input label="Batas Penggunaan" type="number" placeholder="Maks. penebusan opsional" [(ngModel)]="couponData.usageLimit" />
+          </div>
 
-              <div class="flex items-center gap-2 pt-4 select-none">
-                <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer">
-                  <input type="checkbox" [(ngModel)]="couponData.isActive" class="w-4 h-4 accent-corn-400" />
-                  Kupon Aktif
-                </label>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeCouponModal()" class="px-6 py-2.5 rounded-md border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
-              <button (click)="saveCoupon()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Simpan</button>
-            </div>
+          <div class="flex items-center gap-2 pt-4 select-none">
+            <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer">
+              <input type="checkbox" [(ngModel)]="couponData.isActive" class="w-4 h-4 accent-corn-400" />
+              Kupon Aktif
+            </label>
           </div>
         </div>
-      }
+
+        <div class="flex items-center gap-4 justify-between pt-2">
+          <app-button variant="outline" (onClick)="closeCouponModal()">Batal</app-button>
+          <app-button (onClick)="saveCoupon()">Simpan</app-button>
+        </div>
+      </app-dialog>
 
     </div>
   `,
@@ -1156,8 +962,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  updateOrderStatus(orderId: string, event: Event) {
-    const status = (event.target as HTMLSelectElement).value;
+  updateOrderStatus(orderId: string, status: string) {
     this.adminService.updateOrderStatus(orderId, status).subscribe({
       next: () => this.loadActiveTabDataset(),
       error: (err) => console.error('Failed to update status', err)
