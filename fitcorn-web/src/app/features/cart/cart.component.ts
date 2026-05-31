@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CartService } from '../../core/services/cart.service';
 import { ModalService } from '../../shared/services/modal.service';
+import { ThemeService } from '../../core/services/theme.service';
 import { ButtonComponent } from '../../shared/ui';
+import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.directive';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonComponent],
+  imports: [CommonModule, RouterModule, ButtonComponent, GlassmorphismDirective],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div class="max-w-4xl mx-auto">
@@ -38,7 +40,7 @@ import { ButtonComponent } from '../../shared/ui';
             </p>
             <a routerLink="/produk" 
                class="inline-block px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
-              Jelajahi Rasa
+              Jelajaji Rasa
             </a>
           </div>
         } @else {
@@ -173,6 +175,7 @@ import { ButtonComponent } from '../../shared/ui';
 })
 export class CartComponent implements OnInit {
   cartService = inject(CartService);
+  themeService = inject(ThemeService);
   private modalService = inject(ModalService);
 
   actionLoading = signal<boolean>(false);

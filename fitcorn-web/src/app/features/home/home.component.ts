@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
-import { ButtonComponent } from '../../shared/ui/button/button.component';
-import { ProductCardComponent, ProductCardData } from '../../shared/ui/product-card/product-card.component';
+import { ButtonComponent, ProductCardComponent, ProductCardData } from '../../shared/ui';
+import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonComponent, ProductCardComponent],
+  imports: [CommonModule, RouterModule, ButtonComponent, ProductCardComponent, GlassmorphismDirective],
   template: `
     <div class="relative overflow-hidden font-sans transition-colors duration-300">
       

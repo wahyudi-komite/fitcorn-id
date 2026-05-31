@@ -14,11 +14,12 @@ import { InputComponent } from '../../shared/ui/input/input.component';
 import { SelectComponent } from '../../shared/ui/select/select.component';
 import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
 import { LoadingStateComponent } from '../../shared/ui';
+import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.directive';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, BadgeComponent, DialogComponent, InputComponent, SelectComponent, TextareaComponent, LoadingStateComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, BadgeComponent, DialogComponent, InputComponent, SelectComponent, TextareaComponent, LoadingStateComponent, GlassmorphismDirective],
   template: `
     <div class="min-h-screen font-sans flex flex-col md:flex-row transition-colors duration-300 bg-white dark:bg-charcoal-950">
       

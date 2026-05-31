@@ -4,11 +4,12 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { CheckoutService } from '../../core/services/checkout.service';
 import { ButtonComponent, LoadingStateComponent, EmptyStateComponent } from '../../shared/ui';
+import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.directive';
 
 @Component({
   selector: 'app-order-tracking',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonComponent, LoadingStateComponent, EmptyStateComponent],
+  imports: [CommonModule, RouterModule, ButtonComponent, LoadingStateComponent, EmptyStateComponent, GlassmorphismDirective],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div class="max-w-3xl mx-auto space-y-12">
@@ -35,7 +36,7 @@ import { ButtonComponent, LoadingStateComponent, EmptyStateComponent } from '../
         @if (loading()) {
           <app-loading-state message="Memuat detail status pesanan..." />
         } @else if (error()) {
-          <app-empty-state icon="⚠️" title="Gagal Memuat Pesanan" [message]="error()" actionLabel="Jelajahi Produk" />
+          <app-empty-state icon="⚠️" title="Gagal Memuat Pesanan" [message]="error() || ''" actionLabel="Jelajahi Produk" />
         } @else {
           <!-- Main Content -->
           

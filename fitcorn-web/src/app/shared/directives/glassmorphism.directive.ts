@@ -10,8 +10,8 @@ export class GlassmorphismDirective {
   private el = inject(ElementRef);
   private renderer = inject(Renderer2);
 
-  variant = input<'glass' | 'card'>('glass');
-  shadow = input<boolean>(true);
+  variant = input<'glass' | 'card'>('glass', { alias: 'appGlassmorphismVariant' });
+  shadow = input<boolean>(true, { alias: 'appGlassmorphismShadow' });
 
   constructor() {
     effect(() => {

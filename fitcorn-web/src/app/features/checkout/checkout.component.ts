@@ -9,11 +9,12 @@ import { ModalService } from '../../shared/services/modal.service';
 import { FormsModule } from '@angular/forms';
 import { AnalyticsService } from '../../core/services/analytics.service';
 import { ButtonComponent, LoadingStateComponent } from '../../shared/ui';
+import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.directive';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, LoadingStateComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, LoadingStateComponent, GlassmorphismDirective],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div class="max-w-4xl mx-auto">

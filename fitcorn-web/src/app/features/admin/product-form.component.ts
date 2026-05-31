@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
 import { ButtonComponent, LoadingStateComponent } from '../../shared/ui';
+import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.directive';
 
 @Component({
   selector: 'app-admin-product-form',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, LoadingStateComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, LoadingStateComponent, GlassmorphismDirective],
   template: `
     <div class="max-w-3xl mx-auto px-6 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div appGlassmorphism

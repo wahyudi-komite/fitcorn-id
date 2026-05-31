@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
 import { ButtonComponent, ProductCardComponent, ProductCardData, SkeletonComponent, EmptyStateComponent } from '../../shared/ui';
+import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.directive';
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonComponent, ProductCardComponent, SkeletonComponent, EmptyStateComponent],
+  imports: [CommonModule, RouterModule, ButtonComponent, ProductCardComponent, SkeletonComponent, EmptyStateComponent, GlassmorphismDirective],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       
@@ -69,7 +70,7 @@ import { ButtonComponent, ProductCardComponent, ProductCardData, SkeletonCompone
           }
         </div>
       } @else if (error()) {
-        <app-empty-state icon="⚠️" title="Gagal memuat katalog" [message]="error()" actionLabel="Coba Lagi" />
+        <app-empty-state icon="⚠️" title="Gagal memuat katalog" [message]="error() || ''" actionLabel="Coba Lagi" />
       } @else if (products().length === 0) {
         <app-empty-state icon="🍿" title="Rasa tidak ditemukan" message="Kami tidak dapat menemukan produk dalam kategori ini. Coba sesuaikan filter Anda." />
       } @else {

@@ -6,11 +6,12 @@ import { ProductsService } from '../../core/services/products.service';
 import { CartService } from '../../core/services/cart.service';
 import { AnalyticsService } from '../../core/services/analytics.service';
 import { ButtonComponent, ProductCardComponent, ProductCardData, SkeletonComponent, EmptyStateComponent } from '../../shared/ui';
+import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.directive';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonComponent, ProductCardComponent, SkeletonComponent, EmptyStateComponent],
+  imports: [CommonModule, RouterModule, ButtonComponent, ProductCardComponent, SkeletonComponent, EmptyStateComponent, GlassmorphismDirective],
   template: `
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 font-sans transition-colors duration-300">
       
@@ -30,7 +31,7 @@ import { ButtonComponent, ProductCardComponent, ProductCardData, SkeletonCompone
           </div>
         </div>
       } @else if (error()) {
-        <app-empty-state icon="⚠️" title="Produk Tidak Ditemukan" [message]="error()" actionLabel="Kembali ke Katalog" />
+        <app-empty-state icon="⚠️" title="Produk Tidak Ditemukan" [message]="error() || ''" actionLabel="Kembali ke Katalog" />
       } @else if (product()) {
         <!-- Content State -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">

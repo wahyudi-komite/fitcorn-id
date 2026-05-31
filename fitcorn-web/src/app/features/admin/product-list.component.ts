@@ -6,11 +6,12 @@ import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { ButtonComponent, LoadingStateComponent, EmptyStateComponent } from '../../shared/ui';
+import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.directive';
 
 @Component({
   selector: 'app-admin-product-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, LoadingStateComponent, EmptyStateComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, LoadingStateComponent, EmptyStateComponent, GlassmorphismDirective],
   template: `
     <div class="max-w-6xl mx-auto px-6 py-24 sm:py-32 font-sans transition-colors duration-300">
       <div appGlassmorphism
