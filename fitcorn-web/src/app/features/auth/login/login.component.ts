@@ -189,7 +189,7 @@ type TrustPoint = {
               </div>
 
               @if (!otpSent()) {
-                <form (submit)="onSendOtp($event)" class="space-y-4 rounded-2xl border border-charcoal-100 bg-charcoal-50/50 p-5 dark:border-white/5 dark:bg-white/3">
+                <form (submit)="onSendOtp($event)" class="space-y-6 rounded-2xl border border-charcoal-100 bg-charcoal-50/50 p-5 dark:border-white/5 dark:bg-white/3">
                   <div class="space-y-1">
                     <p class="text-xs font-bold text-charcoal-800 dark:text-white">Login Tanpa Kata Sandi</p>
                     <p class="text-xs leading-relaxed text-charcoal-500 dark:text-charcoal-400">Kirim OTP instan ke nomor WhatsApp aktif Anda.</p>
@@ -202,6 +202,7 @@ type TrustPoint = {
                     placeholder="0821xxxxxxxx"
                     [required]="true"
                     name="phone"
+                    class="block"
                   ></app-input>
 
                   <app-button
@@ -228,7 +229,7 @@ type TrustPoint = {
                   }
                 </form>
               } @else {
-                <form (submit)="onVerifyOtp($event)" class="space-y-4 rounded-2xl border border-charcoal-100 bg-charcoal-50/50 p-5 dark:border-white/5 dark:bg-white/3">
+                <form (submit)="onVerifyOtp($event)" class="space-y-6 rounded-2xl border border-charcoal-100 bg-charcoal-50/50 p-5 dark:border-white/5 dark:bg-white/3">
                   <div class="space-y-1">
                     <p class="text-xs font-bold text-charcoal-800 dark:text-white">Verifikasi OTP WhatsApp</p>
                     <p class="text-xs leading-relaxed text-charcoal-500 dark:text-charcoal-400">Masukkan kode 6 digit yang dikirim ke nomor WhatsApp Anda.</p>

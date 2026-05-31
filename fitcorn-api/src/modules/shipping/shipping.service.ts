@@ -28,6 +28,14 @@ export class ShippingService {
     return this.rajaOngkirProvider.getCities(provinceId);
   }
 
+  async getDistricts(cityId: string) {
+    return this.rajaOngkirProvider.getDistricts(cityId);
+  }
+
+  async getVillages(districtId: string) {
+    return this.rajaOngkirProvider.getVillages(districtId);
+  }
+
   async calculateRates(destinationCityId: string, totalWeightGrams: number) {
     // Get all active couriers in DB
     const activeCouriers = await this.courierRepository.find({

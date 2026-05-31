@@ -110,7 +110,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
                   @if (ordersLoading()) {
                     <app-loading-state message="Memuat data pesanan..." />
                   } @else if (myOrders().length === 0) {
-                    <app-empty-state icon="🍿" title="Tidak Ada Pesanan" message="Belum ada pesanan yang terselesaikan." actionLabel="Pesan Sekarang" />
+                    <app-empty-state icon="🍿" title="Tidak Ada Pesanan" message="Belum ada pesanan yang terselesaikan." actionLabel="Pesan Sekarang" (action)="goToCatalog()" />
                   } @else {
                     <div class="space-y-4">
                       @for (ord of myOrders(); track ord.id) {
@@ -159,7 +159,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
                   @if (addressesLoading()) {
                     <app-loading-state message="Memuat alamat..." />
                   } @else if (myAddresses().length === 0) {
-                    <app-empty-state title="Belum Ada Alamat" message="Silakan tambahkan alamat pengiriman untuk checkout yang lebih cepat." actionLabel="Buat Alamat Checkout" />
+                    <app-empty-state title="Belum Ada Alamat" message="Silakan tambahkan alamat pengiriman untuk checkout yang lebih cepat." actionLabel="Buat Alamat Checkout" (action)="goToCheckout()" />
                   } @else {
                     <div class="space-y-4">
                       @for (addr of myAddresses(); track addr.id) {
@@ -250,5 +250,13 @@ export class DashboardComponent implements OnInit {
     if (!confirmed) return;
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  goToCheckout() {
+    this.router.navigate(['/checkout']);
+  }
+
+  goToCatalog() {
+    this.router.navigate(['/produk']);
   }
 }

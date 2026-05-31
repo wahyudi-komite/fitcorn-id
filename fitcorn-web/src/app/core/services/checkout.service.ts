@@ -22,6 +22,14 @@ export class CheckoutService {
     return this.http.get<any>(`${this.shippingUrl}/cities/${provinceId}`);
   }
 
+  getDistricts(cityId: string): Observable<any> {
+    return this.http.get<any>(`${this.shippingUrl}/districts/${cityId}`);
+  }
+
+  getVillages(districtId: string): Observable<any> {
+    return this.http.get<any>(`${this.shippingUrl}/villages/${districtId}`);
+  }
+
   calculateRates(cityId: string, weight: number): Observable<any> {
     return this.http.post<any>(`${this.shippingUrl}/calculate`, { cityId, weight });
   }

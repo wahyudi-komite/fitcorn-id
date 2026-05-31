@@ -135,15 +135,27 @@ Checkout Pesanan
                     </div>
 
                     <div class="grid grid-cols-3 gap-4">
-                      <input type="text" [(ngModel)]="newAddress.district" name="district" placeholder="Kecamatan" required
+                      <!-- District (Kecamatan) -->
+                      <select (change)="onDistrictChange($event)" [(ngModel)]="selectedDistrictId" name="districtSelect" required [disabled]="!selectedCityId"
+                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white bg-charcoal-950' : 'border-charcoal-200 text-charcoal-800 bg-white'"
+                              class="w-full px-5 py-3 rounded-md border focus:outline-none focus:border-corn-400 cursor-pointer disabled:opacity-50">
+                        <option value="">Pilih Kecamatan</option>
+                        @for (d of districts(); track d.subdistrict_id) {
+                          <option [value]="d.subdistrict_id">{{ d.subdistrict_name }}</option>
+                        }
+                      </select>
+                      <!-- Village (Kelurahan) -->
+                      <select (change)="onVillageChange($event)" [(ngModel)]="selectedVillageId" name="villageSelect" required [disabled]="!selectedDistrictId"
+                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white bg-charcoal-950' : 'border-charcoal-200 text-charcoal-800 bg-white'"
+                              class="w-full px-5 py-3 rounded-md border focus:outline-none focus:border-corn-400 cursor-pointer disabled:opacity-50">
+                        <option value="">Pilih Kelurahan</option>
+                        @for (v of villages(); track v.village_id) {
+                          <option [value]="v.village_id">{{ v.village_name }}</option>
+                        }
+                      </select>
+                      <input type="text" [(ngModel)]="newAddress.postalCode" name="postalCode" placeholder="Kode Pos" required readonly
                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                             class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
-                      <input type="text" [(ngModel)]="newAddress.village" name="village" placeholder="Kelurahan" required
-                             [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                             class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
-                      <input type="text" [(ngModel)]="newAddress.postalCode" name="postalCode" placeholder="Kode Pos" required
-                             [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                             class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                             class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400 cursor-not-allowed" />
                     </div>
 
                     <textarea [(ngModel)]="newAddress.fullAddress" name="fullAddress" placeholder="Detail Alamat Jalan (RT/RW, Nomor Rumah)" rows="3" required
@@ -279,11 +291,15 @@ export class CheckoutComponent implements OnInit {
   addNewAddressMode = signal<boolean>(false);
   addressLoading = signal<boolean>(false);
 
-  // Provinces & Cities Loading
+  // Provinces, Cities, Districts & Villages Loading
   provinces = signal<any[]>([]);
   cities = signal<any[]>([]);
+  districts = signal<any[]>([]);
+  villages = signal<any[]>([]);
   selectedProvinceId = '';
   selectedCityId = '';
+  selectedDistrictId = '';
+  selectedVillageId = '';
 
   newAddress = {
     fullName: '',
@@ -360,11 +376,46 @@ export class CheckoutComponent implements OnInit {
   onCityChange(event: Event) {
     const cityId = (event.target as HTMLSelectElement).value;
     this.selectedCityId = cityId;
+    this.selectedDistrictId = '';
+    this.districts.set([]);
 
     if (cityId) {
       const cityObj = this.cities().find(c => c.city_id === cityId);
       this.newAddress.city = `${cityObj?.type} ${cityObj?.city_name}` || '';
       this.newAddress.cityId = cityId;
+
+      this.checkoutService.getDistricts(cityId).subscribe({
+        next: (res) => this.districts.set(res || []),
+        error: () => this.districts.set([])
+      });
+    }
+  }
+
+  onDistrictChange(event: Event) {
+    const districtId = (event.target as HTMLSelectElement).value;
+    this.selectedDistrictId = districtId;
+    this.selectedVillageId = '';
+    this.villages.set([]);
+
+    if (districtId) {
+      const distObj = this.districts().find(d => d.subdistrict_id === districtId);
+      this.newAddress.district = distObj?.subdistrict_name || '';
+
+      this.checkoutService.getVillages(districtId).subscribe({
+        next: (res) => this.villages.set(res || []),
+        error: () => this.villages.set([])
+      });
+    }
+  }
+
+  onVillageChange(event: Event) {
+    const villageId = (event.target as HTMLSelectElement).value;
+    this.selectedVillageId = villageId;
+
+    if (villageId) {
+      const villObj = this.villages().find(v => v.village_id === villageId);
+      this.newAddress.village = villObj?.village_name || '';
+      this.newAddress.postalCode = villObj?.postal_code || '';
     }
   }
 
@@ -413,10 +464,26 @@ export class CheckoutComponent implements OnInit {
     const weight = this.cartService.totalWeight() || 150; // default weight snapshot
 
     this.checkoutService.calculateRates(cityId, weight).subscribe({
-      next: (rates) => {
-        this.courierOptions.set(rates || []);
-        if (rates && rates.length > 0) {
-          this.selectCourier(rates[0]); // auto select first option
+      next: (couriers) => {
+        const flatOptions: any[] = [];
+        if (couriers && Array.isArray(couriers)) {
+          couriers.forEach((courier: any) => {
+            if (courier.rates && Array.isArray(courier.rates)) {
+              courier.rates.forEach((rate: any) => {
+                flatOptions.push({
+                  name: courier.courierName,
+                  service: rate.service,
+                  cost: rate.cost,
+                  etd: rate.etd
+                });
+              });
+            }
+          });
+        }
+
+        this.courierOptions.set(flatOptions);
+        if (flatOptions.length > 0) {
+          this.selectCourier(flatOptions[0]); // auto select first option
         }
         this.shippingLoading.set(false);
       },

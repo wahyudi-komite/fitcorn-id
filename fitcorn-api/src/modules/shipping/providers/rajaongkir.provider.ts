@@ -11,7 +11,11 @@ export class RajaOngkirProvider implements IShippingProvider {
 
   constructor(private configService: ConfigService) {
     this.apiKey = this.configService.get<string>('app.rajaOngkir.apiKey') || '';
-    this.baseUrl = this.configService.get<string>('app.rajaOngkir.baseUrl') || 'https://api.rajaongkir.com/starter';
+    let url = this.configService.get<string>('app.rajaOngkir.baseUrl') || 'https://api.rajaongkir.com/starter';
+    if (url.endsWith('/')) {
+      url = url.slice(0, -1);
+    }
+    this.baseUrl = url;
   }
 
   async calculateRates(
@@ -27,8 +31,11 @@ export class RajaOngkirProvider implements IShippingProvider {
     }
 
     try {
+      const isKomerce = this.baseUrl.includes('komerce.id');
+      const costUrl = isKomerce ? `${this.baseUrl}/calculate/domestic-cost` : `${this.baseUrl}/cost`;
+
       const response = await axios.post(
-        `${this.baseUrl}/cost`,
+        costUrl,
         {
           origin,
           destination,
@@ -42,6 +49,11 @@ export class RajaOngkirProvider implements IShippingProvider {
           },
         },
       );
+
+      const status = response.data?.rajaongkir?.status;
+      if (status && status.code !== 200) {
+        throw new Error(status.description || 'RajaOngkir API Error');
+      }
 
       const results = response.data?.rajaongkir?.results?.[0];
       if (!results || !results.costs) {
@@ -166,37 +178,193 @@ export class RajaOngkirProvider implements IShippingProvider {
     }
   }
 
-  // Fetch province list from RajaOngkir
   async getProvinces(): Promise<any[]> {
     if (!this.apiKey || this.apiKey === 'your_rajaongkir_api_key' || this.apiKey.includes('XXXX')) {
-      return this.getSimulatedProvinces();
+      return this.getSimulatedProvinces().sort((a, b) => a.province.localeCompare(b.province));
     }
     try {
-      const response = await axios.get(`${this.baseUrl}/province`, {
+      const isKomerce = this.baseUrl.includes('komerce.id');
+      const provincesUrl = isKomerce ? `${this.baseUrl}/destination/province` : `${this.baseUrl}/province`;
+
+      const response = await axios.get(provincesUrl, {
         headers: { key: this.apiKey },
       });
-      return response.data?.rajaongkir?.results || [];
+
+      if (isKomerce) {
+        const meta = response.data?.meta;
+        if (meta && meta.code !== 200) {
+          throw new Error(meta.message || 'Komerce API Error');
+        }
+        const results = response.data?.data || [];
+        const list = results.map((p: any) => ({
+          province_id: String(p.id),
+          province: p.name,
+        }));
+        return list.sort((a, b) => a.province.localeCompare(b.province));
+      }
+
+      const status = response.data?.rajaongkir?.status;
+      if (status && status.code !== 200) {
+        throw new Error(status.description || 'RajaOngkir API Error');
+      }
+      const list = response.data?.rajaongkir?.results || [];
+      return list.sort((a, b) => a.province.localeCompare(b.province));
     } catch (error) {
       this.logger.error(`RajaOngkir Fetch Province failed: ${error.message}`);
-      return this.getSimulatedProvinces();
+      return this.getSimulatedProvinces().sort((a, b) => a.province.localeCompare(b.province));
     }
   }
 
-  // Fetch city list by province id from RajaOngkir
   async getCities(provinceId: string): Promise<any[]> {
     if (!this.apiKey || this.apiKey === 'your_rajaongkir_api_key' || this.apiKey.includes('XXXX')) {
-      return this.getSimulatedCities(provinceId);
+      return this.getSimulatedCities(provinceId).sort((a, b) => a.city_name.localeCompare(b.city_name));
     }
     try {
-      const response = await axios.get(`${this.baseUrl}/city?province=${provinceId}`, {
+      const isKomerce = this.baseUrl.includes('komerce.id');
+      const citiesUrl = isKomerce 
+        ? `${this.baseUrl}/destination/city/${provinceId}` 
+        : `${this.baseUrl}/city?province=${provinceId}`;
+
+      const response = await axios.get(citiesUrl, {
         headers: { key: this.apiKey },
       });
-      return response.data?.rajaongkir?.results || [];
+
+      if (isKomerce) {
+        const meta = response.data?.meta;
+        if (meta && meta.code !== 200) {
+          throw new Error(meta.message || 'Komerce API Error');
+        }
+        const results = response.data?.data || [];
+        const list = results.map((c: any) => {
+          const isKab = c.name.toLowerCase().includes('kabupaten') || c.name.toLowerCase().includes('kab.');
+          const cleanName = c.name.replace(/kabupaten|kota|kab\./gi, '').trim();
+          return {
+            city_id: String(c.id),
+            city_name: cleanName,
+            type: isKab ? 'Kabupaten' : 'Kota',
+            postal_code: c.postal_code || '00000',
+          };
+        });
+        return list.sort((a, b) => a.city_name.localeCompare(b.city_name));
+      }
+
+      const status = response.data?.rajaongkir?.status;
+      if (status && status.code !== 200) {
+        throw new Error(status.description || 'RajaOngkir API Error');
+      }
+      const list = response.data?.rajaongkir?.results || [];
+      return list.sort((a, b) => a.city_name.localeCompare(b.city_name));
     } catch (error) {
       this.logger.error(`RajaOngkir Fetch Cities failed: ${error.message}`);
-      return this.getSimulatedCities(provinceId);
+      return this.getSimulatedCities(provinceId).sort((a, b) => a.city_name.localeCompare(b.city_name));
     }
   }
+
+  async getDistricts(cityId: string): Promise<any[]> {
+    if (!this.apiKey || this.apiKey === 'your_rajaongkir_api_key' || this.apiKey.includes('XXXX')) {
+      return this.getSimulatedDistricts(cityId).sort((a, b) => a.subdistrict_name.localeCompare(b.subdistrict_name));
+    }
+    try {
+      const isKomerce = this.baseUrl.includes('komerce.id');
+      if (isKomerce) {
+        const districtsUrl = `${this.baseUrl}/destination/district/${cityId}`;
+        const response = await axios.get(districtsUrl, {
+          headers: { key: this.apiKey },
+        });
+        const meta = response.data?.meta;
+        if (meta && meta.code !== 200) {
+          throw new Error(meta.message || 'Komerce API Error');
+        }
+        const results = response.data?.data || [];
+        const list = results.map((d: any) => ({
+          subdistrict_id: String(d.id),
+          subdistrict_name: d.name,
+        }));
+        return list.sort((a, b) => a.subdistrict_name.localeCompare(b.subdistrict_name));
+      } else {
+        const response = await axios.get(`${this.baseUrl}/subdistrict?city=${cityId}`, {
+          headers: { key: this.apiKey },
+        });
+        const status = response.data?.rajaongkir?.status;
+        if (status && status.code !== 200) {
+          throw new Error(status.description || 'RajaOngkir API Error');
+        }
+        const list = response.data?.rajaongkir?.results || [];
+        return list.sort((a, b) => a.subdistrict_name.localeCompare(b.subdistrict_name));
+      }
+    } catch (error) {
+      this.logger.error(`RajaOngkir Fetch Districts failed: ${error.message}`);
+      return this.getSimulatedDistricts(cityId).sort((a, b) => a.subdistrict_name.localeCompare(b.subdistrict_name));
+    }
+  }
+
+  private getSimulatedDistricts(cityId: string): any[] {
+    const districtsMap: Record<string, any[]> = {
+      '183': [
+        { subdistrict_id: '1', subdistrict_name: 'Karawang Barat' },
+        { subdistrict_id: '2', subdistrict_name: 'Karawang Timur' },
+        { subdistrict_id: '3', subdistrict_name: 'Telukjambe Timur' },
+        { subdistrict_id: '4', subdistrict_name: 'Telukjambe Barat' },
+      ]
+    };
+    return districtsMap[cityId] || [
+      { subdistrict_id: '991', subdistrict_name: 'Kecamatan Simulasi X' },
+      { subdistrict_id: '992', subdistrict_name: 'Kecamatan Simulasi Y' },
+    ];
+  }
+
+  async getVillages(districtId: string): Promise<any[]> {
+    if (!this.apiKey || this.apiKey === 'your_rajaongkir_api_key' || this.apiKey.includes('XXXX')) {
+      return this.getSimulatedVillages(districtId).sort((a, b) => a.village_name.localeCompare(b.village_name));
+    }
+    try {
+      const isKomerce = this.baseUrl.includes('komerce.id');
+      if (isKomerce) {
+        const subdistrictsUrl = `${this.baseUrl}/destination/sub-district/${districtId}`;
+        const response = await axios.get(subdistrictsUrl, {
+          headers: { key: this.apiKey },
+        });
+        const meta = response.data?.meta;
+        if (meta && meta.code !== 200) {
+          throw new Error(meta.message || 'Komerce API Error');
+        }
+        const results = response.data?.data || [];
+        const list = results.map((v: any) => ({
+          village_id: String(v.id),
+          village_name: v.name,
+          postal_code: v.zip_code || '00000',
+        }));
+        return list.sort((a, b) => a.village_name.localeCompare(b.village_name));
+      } else {
+        // Standard RajaOngkir doesn't support kelurahan directly, so we fallback
+        return this.getSimulatedVillages(districtId).sort((a, b) => a.village_name.localeCompare(b.village_name));
+      }
+    } catch (error) {
+      this.logger.error(`RajaOngkir Fetch Villages failed: ${error.message}`);
+      return this.getSimulatedVillages(districtId).sort((a, b) => a.village_name.localeCompare(b.village_name));
+    }
+  }
+
+  private getSimulatedVillages(districtId: string): any[] {
+    const villagesMap: Record<string, any[]> = {
+      '1': [ // Karawang Barat
+        { village_id: '101', village_name: 'Tanjungmekar', postal_code: '41316' },
+        { village_id: '102', village_name: 'Tanjungpura', postal_code: '41315' },
+        { village_id: '103', village_name: 'Tunggulgandrung', postal_code: '41311' },
+      ],
+      '3': [ // Telukjambe Timur
+        { village_id: '301', village_name: 'Sukaluyu', postal_code: '41361' },
+        { village_id: '302', village_name: 'Sirnabakti', postal_code: '41361' },
+        { village_id: '303', village_name: 'Wadas', postal_code: '41361' },
+      ]
+    };
+    return villagesMap[districtId] || [
+      { village_id: '9991', village_name: 'Kelurahan Simulasi A', postal_code: '12345' },
+      { village_id: '9992', village_name: 'Kelurahan Simulasi B', postal_code: '54321' },
+    ];
+  }
+
+
 
   private getSimulatedProvinces(): any[] {
     return [
@@ -232,6 +400,7 @@ export class RajaOngkirProvider implements IShippingProvider {
         { city_id: '54', city_name: 'Bekasi', type: 'Kota', postal_code: '17111' },
         { city_id: '78', city_name: 'Bogor', type: 'Kota', postal_code: '16111' },
         { city_id: '115', city_name: 'Depok', type: 'Kota', postal_code: '16411' },
+        { city_id: '183', city_name: 'Karawang', type: 'Kota', postal_code: '41311' },
       ],
       '11': [
         { city_id: '256', city_name: 'Malang', type: 'Kota', postal_code: '65111' },

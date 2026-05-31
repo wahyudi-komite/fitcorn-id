@@ -23,6 +23,18 @@ export class ShippingController {
   }
 
   @Public()
+  @Get('districts/:cityId')
+  async getDistricts(@Param('cityId') cityId: string) {
+    return this.shippingService.getDistricts(cityId);
+  }
+
+  @Public()
+  @Get('villages/:districtId')
+  async getVillages(@Param('districtId') districtId: string) {
+    return this.shippingService.getVillages(districtId);
+  }
+
+  @Public()
   @Post('calculate')
   @HttpCode(HttpStatus.OK)
   async calculateRates(@Body() body: { cityId: string; weight: number }) {

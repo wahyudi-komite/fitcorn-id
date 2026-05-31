@@ -23,7 +23,7 @@
              class="flex items-center gap-1 text-charcoal-600 transition-colors duration-300 hover:text-corn-400 dark:text-charcoal-300 dark:hover:text-corn-400">
             <span>Akun Saya</span>
           </a>
-          <a *ngIf="authService.isAdmin()" routerLink="/admin/produk" routerLinkActive="text-corn-500 font-semibold"
+          <a *ngIf="authService.isAdmin()" routerLink="/admin" routerLinkActive="text-corn-500 font-semibold"
              class="flex items-center gap-1 font-semibold text-corn-500 transition-colors duration-300 hover:text-corn-600 dark:text-corn-400 dark:hover:text-corn-300">
             <span>Admin</span>
           </a>
@@ -130,7 +130,7 @@
            class="block rounded-lg px-3 py-2 text-charcoal-600 hover:bg-corn-50 hover:text-corn-600 dark:text-charcoal-300 dark:hover:bg-charcoal-800">
           Akun Saya
         </a>
-        <a *ngIf="authService.isAdmin()" routerLink="/admin/produk" (click)="isMobileMenuOpen.set(false)"
+        <a *ngIf="authService.isAdmin()" routerLink="/admin" (click)="isMobileMenuOpen.set(false)"
            class="block rounded-lg px-3 py-2 font-bold text-corn-500 hover:bg-corn-50 hover:text-corn-600 dark:hover:bg-charcoal-800">
           Panel Admin
         </a>
