@@ -83,7 +83,7 @@ import { ProductsService } from '../../core/services/products.service';
           </div>
           <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white mb-2">Gagal memuat katalog</h3>
           <p class="text-charcoal-500 dark:text-charcoal-400 font-medium mb-6">{{ error() }}</p>
-          <button (click)="loadProducts()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300">
+          <button (click)="loadProducts()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 rounded-md font-bold text-xs uppercase tracking-wider transition-all duration-300">
             Coba Lagi
           </button>
         </div>

@@ -218,7 +218,7 @@ import { ModalService } from '../../shared/services/modal.service';
                   <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Katalog Produk</h3>
                   <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola daftar produk, varian, stok, dan unggah gambar</p>
                 </div>
-                <button (click)="openProductModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-full shadow cursor-pointer">
+                <button (click)="openProductModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-md shadow cursor-pointer">
                   + Tambah Produk Baru
                 </button>
               </div>
@@ -264,8 +264,8 @@ import { ModalService } from '../../shared/services/modal.service';
                             </span>
                           </td>
                           <td class="py-4 px-6 text-right space-x-2">
-                            <button (click)="openProductModal(p)" class="px-3.5 py-1.5 rounded-full bg-corn-400/20 text-corn-700 dark:text-corn-300 text-xs font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Edit</button>
-                            <button (click)="deleteProduct(p)" class="px-3.5 py-1.5 rounded-full bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Hapus</button>
+                            <button (click)="openProductModal(p)" class="px-3.5 py-1.5 rounded-md bg-corn-400/20 text-corn-700 dark:text-corn-300 text-xs font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Edit</button>
+                            <button (click)="deleteProduct(p)" class="px-3.5 py-1.5 rounded-md bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Hapus</button>
                           </td>
                         </tr>
                       }
@@ -284,7 +284,7 @@ import { ModalService } from '../../shared/services/modal.service';
                   <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Kategori Produk</h3>
                   <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola koleksi dan pengelompokan</p>
                 </div>
-                <button (click)="openCategoryModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-full shadow cursor-pointer">
+                <button (click)="openCategoryModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-md shadow cursor-pointer">
                   + Tambah Kategori Baru
                 </button>
               </div>
@@ -371,7 +371,7 @@ import { ModalService } from '../../shared/services/modal.service';
                               <option value="cancelled">Dibatalkan</option>
                             </select>
 
-                            <button (click)="openResiModal(o)" class="px-3.5 py-1.5 rounded-full bg-corn-400/20 text-corn-700 dark:text-corn-300 text-[10px] font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Resi</button>
+                            <button (click)="openResiModal(o)" class="px-3.5 py-1.5 rounded-md bg-corn-400/20 text-corn-700 dark:text-corn-300 text-[10px] font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Resi</button>
                           </td>
                         </tr>
                       }
@@ -456,7 +456,7 @@ import { ModalService } from '../../shared/services/modal.service';
                   }
 
                   <div class="pt-4 flex justify-end">
-                    <button type="submit" class="px-8 py-4 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-sans font-bold text-xs tracking-widest uppercase rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer">
+                    <button type="submit" class="px-8 py-4 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-sans font-bold text-xs tracking-widest uppercase rounded-md shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer">
                       Simpan Semua Pengaturan
                     </button>
                   </div>
@@ -473,7 +473,7 @@ import { ModalService } from '../../shared/services/modal.service';
                   <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Banner Pemasaran</h3>
                   <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola banner hero carousel dan penempatan slide</p>
                 </div>
-                <button (click)="openBannerModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-full shadow cursor-pointer">
+                <button (click)="openBannerModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-md shadow cursor-pointer">
                   + Tambah Banner Baru
                 </button>
               </div>
@@ -512,8 +512,8 @@ import { ModalService } from '../../shared/services/modal.service';
                             </span>
                           </td>
                           <td class="py-4 px-6 text-right space-x-2">
-                            <button (click)="openBannerModal(b)" class="px-3.5 py-1.5 rounded-full bg-corn-400/20 text-corn-700 dark:text-corn-300 text-xs font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Edit</button>
-                            <button (click)="deleteBanner(b.id)" class="px-3.5 py-1.5 rounded-full bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Hapus</button>
+                            <button (click)="openBannerModal(b)" class="px-3.5 py-1.5 rounded-md bg-corn-400/20 text-corn-700 dark:text-corn-300 text-xs font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Edit</button>
+                            <button (click)="deleteBanner(b.id)" class="px-3.5 py-1.5 rounded-md bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Hapus</button>
                           </td>
                         </tr>
                       }
@@ -532,7 +532,7 @@ import { ModalService } from '../../shared/services/modal.service';
                   <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Galeri Feed Instagram</h3>
                   <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola kartu galeri Instagram kustom tanpa API</p>
                 </div>
-                <button (click)="openInstagramModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-full shadow cursor-pointer">
+                <button (click)="openInstagramModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-md shadow cursor-pointer">
                   + Tambah Kartu Instagram
                 </button>
               </div>
@@ -588,7 +588,7 @@ import { ModalService } from '../../shared/services/modal.service';
                   <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Kupon Diskon</h3>
                   <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Kelola kode promosi, batas, dan limit kupon</p>
                 </div>
-                <button (click)="openCouponModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-full shadow cursor-pointer">
+                <button (click)="openCouponModal()" class="px-6 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider rounded-md shadow cursor-pointer">
                   + Tambah Kupon Baru
                 </button>
               </div>
@@ -628,8 +628,8 @@ import { ModalService } from '../../shared/services/modal.service';
                             </span>
                           </td>
                           <td class="py-4 px-6 text-right space-x-2">
-                            <button (click)="openCouponModal(c)" class="px-3.5 py-1.5 rounded-full bg-corn-400/20 text-corn-700 dark:text-corn-300 text-xs font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Edit</button>
-                            <button (click)="deleteCoupon(c.id)" class="px-3.5 py-1.5 rounded-full bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Hapus</button>
+                            <button (click)="openCouponModal(c)" class="px-3.5 py-1.5 rounded-md bg-corn-400/20 text-corn-700 dark:text-corn-300 text-xs font-bold uppercase tracking-wider hover:bg-corn-400/40 cursor-pointer">Edit</button>
+                            <button (click)="deleteCoupon(c.id)" class="px-3.5 py-1.5 rounded-md bg-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider hover:bg-red-500/40 cursor-pointer">Hapus</button>
                           </td>
                         </tr>
                       }
@@ -672,7 +672,7 @@ import { ModalService } from '../../shared/services/modal.service';
             </div>
 
             <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeResiModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
+              <button (click)="closeResiModal()" class="px-6 py-2.5 rounded-md border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
               <button (click)="saveResi()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Simpan Resi</button>
             </div>
           </div>
@@ -704,7 +704,7 @@ import { ModalService } from '../../shared/services/modal.service';
             </div>
 
             <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeCategoryModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
+              <button (click)="closeCategoryModal()" class="px-6 py-2.5 rounded-md border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
               <button (click)="saveCategory()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Simpan</button>
             </div>
           </div>
@@ -775,7 +775,7 @@ import { ModalService } from '../../shared/services/modal.service';
             </div>
 
             <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeProductModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
+              <button (click)="closeProductModal()" class="px-6 py-2.5 rounded-md border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
               <button (click)="saveProduct()" [disabled]="imageUploadProgress()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer disabled:opacity-50">Simpan</button>
             </div>
           </div>
@@ -839,7 +839,7 @@ import { ModalService } from '../../shared/services/modal.service';
             </div>
 
             <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeBannerModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
+              <button (click)="closeBannerModal()" class="px-6 py-2.5 rounded-md border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
               <button (click)="saveBanner()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Simpan</button>
             </div>
           </div>
@@ -891,7 +891,7 @@ import { ModalService } from '../../shared/services/modal.service';
             </div>
 
             <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeInstagramModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
+              <button (click)="closeInstagramModal()" class="px-6 py-2.5 rounded-md border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
               <button (click)="saveInstagramPost()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Simpan</button>
             </div>
           </div>
@@ -965,7 +965,7 @@ import { ModalService } from '../../shared/services/modal.service';
             </div>
 
             <div class="flex items-center gap-4 justify-between pt-2">
-              <button (click)="closeCouponModal()" class="px-6 py-2.5 rounded-full border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
+              <button (click)="closeCouponModal()" class="px-6 py-2.5 rounded-md border border-charcoal-200 text-charcoal-500 hover:text-charcoal-800 font-bold transition-all text-xs uppercase tracking-wider cursor-pointer">Batal</button>
               <button (click)="saveCoupon()" class="px-8 py-3 bg-corn-400 hover:bg-corn-500 text-charcoal-900 font-bold text-xs uppercase tracking-wider shadow transition-all cursor-pointer">Simpan</button>
             </div>
           </div>
