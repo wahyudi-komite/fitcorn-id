@@ -39,13 +39,18 @@ export class AuthService implements OnModuleInit {
       await this.roleRepository.save(customerRole);
     }
 
-    // 2. Seed Admin User
-    const adminUser = await this.userRepository.findOne({ where: { email: 'admin@fitcorn.com' } });
+    // 2. Seed/Upsert Admin Password
+    const adminSalt = randomBytes(32).toString('hex');
+    const hashedPassword = await bcrypt.hash('12345679' + adminSalt, 10);
+
+    const adminUser = await this.userRepository.findOne({
+      where: { email: 'admin@fitcorn.com' },
+      select: { id: true, password: true, salt: true },
+    });
+
     if (!adminUser) {
-      console.log('Seeding default administrator credentials in database...');
-      
-      const adminSalt = randomBytes(32).toString('hex');
-      const hashedPassword = await bcrypt.hash('AdminFitcorn2026!' + adminSalt, 10);
+      console.log('Seeding default administrator...');
+
       const newAdmin = this.userRepository.create({
         email: 'admin@fitcorn.com',
         password: hashedPassword,
@@ -57,7 +62,13 @@ export class AuthService implements OnModuleInit {
       });
 
       await this.userRepository.save(newAdmin);
-      console.log('Administrator seed credentials saved successfully: admin@fitcorn.com / AdminFitcorn2026!');
+      console.log('Admin created: admin@fitcorn.com / 12345679');
+    } else {
+      await this.userRepository.update(adminUser.id, {
+        password: hashedPassword,
+        salt: adminSalt,
+      });
+      console.log('Admin password updated: admin@fitcorn.com / 12345679');
     }
   }
 
