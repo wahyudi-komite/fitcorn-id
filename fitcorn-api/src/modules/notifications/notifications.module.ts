@@ -8,6 +8,7 @@ import { Notification } from './entities/notification.entity';
 import { User } from '../users/entities/user.entity';
 import { Cart } from '../cart/entities/cart.entity';
 import { Order } from '../orders/entities/order.entity';
+import { WhatsAppService } from '../whatsapp/whatsapp.service';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { Order } from '../orders/entities/order.entity';
       name: 'notifications',
     }),
   ],
-  providers: [NotificationsService, NotificationsProcessor, AbandonedCartScheduler],
+  providers: [NotificationsService, NotificationsProcessor, AbandonedCartScheduler, WhatsAppService],
   exports: [NotificationsService],
 })
 export class NotificationsModule {}
