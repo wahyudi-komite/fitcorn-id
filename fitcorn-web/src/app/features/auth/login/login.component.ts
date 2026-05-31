@@ -138,8 +138,8 @@ type TrustPoint = {
               </div>
 
               <!-- Email Form -->
-              <form (submit)="onSubmit()" class="space-y-4">
-                <div class="space-y-3.5">
+              <form (submit)="onSubmit()" class="space-y-5">
+                <div class="space-y-6">
                   <app-input
                     [(ngModel)]="email"
                     type="email"
@@ -147,6 +147,7 @@ type TrustPoint = {
                     placeholder="customer@fitcorn.com"
                     [required]="true"
                     name="email"
+                    class="block"
                     (ngModelChange)="clearEmailError()"
                     [error]="emailError()"
                   ></app-input>
@@ -156,6 +157,7 @@ type TrustPoint = {
                     placeholder="Masukkan kata sandi Anda"
                     [required]="true"
                     name="password"
+                    class="block"
                     (ngModelChange)="clearPasswordError()"
                     [error]="passwordError()"
                   ></app-password-input>

@@ -40,22 +40,24 @@ type FaqItem = {
   standalone: true,
   imports: [CommonModule, RouterModule, ButtonComponent, ProductCardComponent, GlassmorphismDirective],
   template: `
-    <div class="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(252,211,77,0.24),_transparent_32%),linear-gradient(180deg,_var(--color-charcoal-50)_0%,_#fffdf6_38%,_white_100%)] text-charcoal-800 transition-colors duration-300 dark:bg-[radial-gradient(circle_at_top_left,_rgba(251,191,36,0.16),_transparent_28%),radial-gradient(circle_at_top_right,_rgba(251,191,36,0.08),_transparent_26%),linear-gradient(180deg,_var(--color-charcoal-950)_0%,_var(--color-charcoal-900)_100%)] dark:text-white">
-      <div class="hero-noise absolute inset-0 opacity-40 pointer-events-none"></div>
+    <div class="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(252,211,77,0.26),_transparent_35%),radial-gradient(circle_at_top_right,_rgba(245,158,11,0.06),_transparent_30%),linear-gradient(180deg,_var(--color-charcoal-50)_0%,_#fffdf6_38%,_white_100%)] text-charcoal-800 transition-colors duration-300 dark:bg-[radial-gradient(circle_at_top_left,_rgba(251,191,36,0.18),_transparent_32%),radial-gradient(circle_at_top_right,_rgba(245,158,11,0.08),_transparent_28%),linear-gradient(180deg,_var(--color-charcoal-950)_0%,_var(--color-charcoal-900)_100%)] dark:text-white">
+      <div class="hero-noise absolute inset-0 opacity-45 pointer-events-none"></div>
       <div class="hero-orb hero-orb-left pointer-events-none"></div>
       <div class="hero-orb hero-orb-right pointer-events-none"></div>
 
-      <section class="relative max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-20 sm:pt-24 sm:pb-24 lg:pt-28 lg:pb-32">
-        <div class="grid items-center gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-          <div class="space-y-8">
-            <div class="inline-flex items-center gap-3 rounded-full border border-corn-200/80 bg-white/80 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.28em] text-corn-700 shadow-sm backdrop-blur dark:border-corn-400/20 dark:bg-charcoal-900/65 dark:text-corn-300">
+      <section class="relative max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-24 sm:pt-24 sm:pb-28 lg:pt-28 lg:pb-36">
+        <div class="grid items-center gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          
+          <!-- Left Column: Copy & Highlights -->
+          <div class="space-y-10">
+            <div class="inline-flex items-center gap-3 rounded-full border border-corn-200/80 bg-white/80 px-4.5 py-2 text-[11px] font-bold uppercase tracking-[0.28em] text-corn-700 shadow-sm backdrop-blur dark:border-corn-400/20 dark:bg-charcoal-900/65 dark:text-corn-300">
               Better snacking, built in small batches
             </div>
 
             <div class="space-y-6">
-              <h1 class="max-w-3xl font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+              <h1 class="max-w-3xl font-display text-5xl font-extrabold leading-[0.92] tracking-tight sm:text-6xl lg:text-7xl">
                 Popcorn sehat
-                <span class="block text-charcoal-500 dark:text-charcoal-300">dengan rasa yang tetap berani.</span>
+                <span class="block text-corn-600 dark:text-corn-400">dengan rasa yang tetap berani.</span>
               </h1>
               <p class="max-w-2xl text-base leading-8 text-charcoal-600 dark:text-charcoal-350 sm:text-lg">
                 Fitcorn meracik camilan premium untuk orang yang ingin makan lebih bersih tanpa mengorbankan rasa. Biji pilihan, seasoning berlapis, dan tekstur renyah yang terasa niat sejak gigitan pertama.
@@ -72,91 +74,64 @@ type FaqItem = {
             </div>
 
             <div class="grid gap-4 sm:grid-cols-3">
-              <div class="rounded-2xl border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur dark:border-white/8 dark:bg-white/5">
+              <div class="rounded-2xl border border-charcoal-150/70 bg-white/40 p-5 shadow-sm backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md dark:border-white/5 dark:bg-white/5">
                 <p class="text-3xl font-display font-extrabold text-corn-600 dark:text-corn-300">0%</p>
-                <p class="mt-2 text-sm font-semibold text-charcoal-600 dark:text-charcoal-350">tanpa minyak sawit dan tanpa pengawet buatan</p>
+                <p class="mt-2 text-xs font-semibold leading-relaxed text-charcoal-500 dark:text-charcoal-400">tanpa minyak sawit dan tanpa pengawet buatan</p>
               </div>
-              <div class="rounded-2xl border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur dark:border-white/8 dark:bg-white/5">
+              <div class="rounded-2xl border border-charcoal-150/70 bg-white/40 p-5 shadow-sm backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md dark:border-white/5 dark:bg-white/5">
                 <p class="text-3xl font-display font-extrabold text-corn-600 dark:text-corn-300">3x</p>
-                <p class="mt-2 text-sm font-semibold text-charcoal-600 dark:text-charcoal-350">lapisan rasa untuk finish yang lebih penuh</p>
+                <p class="mt-2 text-xs font-semibold leading-relaxed text-charcoal-500 dark:text-charcoal-400">lapisan rasa untuk finish yang lebih penuh</p>
               </div>
-              <div class="rounded-2xl border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur dark:border-white/8 dark:bg-white/5">
+              <div class="rounded-2xl border border-charcoal-150/70 bg-white/40 p-5 shadow-sm backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md dark:border-white/5 dark:bg-white/5">
                 <p class="text-3xl font-display font-extrabold text-corn-600 dark:text-corn-300">48j</p>
-                <p class="mt-2 text-sm font-semibold text-charcoal-600 dark:text-charcoal-350">target kirim cepat untuk batch populer</p>
+                <p class="mt-2 text-xs font-semibold leading-relaxed text-charcoal-500 dark:text-charcoal-400">target kirim cepat untuk batch populer</p>
               </div>
             </div>
           </div>
 
-          <div class="relative">
-            <div appGlassmorphism class="relative overflow-hidden rounded-[2rem] border p-6 shadow-2xl shadow-corn-950/10 dark:shadow-black/30 sm:p-8">
-              <div class="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(90deg,_rgba(252,211,77,0.18),_rgba(245,158,11,0.05),_transparent)]"></div>
+          <!-- Right Column: Interactive Popcorn Showcase Stage -->
+          <div class="relative flex items-center justify-center lg:justify-end py-10 lg:py-0">
+            <!-- Stage glow background -->
+            <div class="absolute w-72 h-72 rounded-full bg-corn-400/20 blur-3xl dark:bg-corn-500/10 pointer-events-none"></div>
 
-              <div class="relative grid gap-6">
-                <div class="rounded-[1.75rem] border border-charcoal-100/80 bg-[linear-gradient(180deg,_#2e2419_0%,_#15110c_100%)] p-6 text-white dark:border-white/8">
-                  <div class="flex items-start justify-between gap-6">
-                    <div class="space-y-3">
-                      <p class="text-[11px] font-bold uppercase tracking-[0.28em] text-corn-300">Signature Drop</p>
-                      <h2 class="max-w-xs font-display text-3xl font-extrabold leading-tight">Sweet Honey Butter</h2>
-                      <p class="max-w-sm text-sm leading-7 text-white/72">
-                        Manis yang hangat, buttery, dan tetap ringan. Dibuat untuk jadi entry point paling aman sekaligus paling sulit dilupakan.
-                      </p>
-                    </div>
-                    <div class="rounded-full border border-white/12 bg-white/8 px-4 py-2 text-right backdrop-blur">
-                      <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-corn-200">Mulai</p>
-                      <p class="font-display text-2xl font-extrabold">Rp 25K</p>
-                    </div>
-                  </div>
+            <!-- Main floating product image stage -->
+            <div class="relative w-full max-w-[340px] aspect-[4/5] animate-float flex items-center justify-center">
+              <img src="/premium_honey_butter.png" alt="Fitcorn Gourmet Honey Butter Popcorn" 
+                   class="w-full h-auto object-contain drop-shadow-[0_24px_50px_rgba(217,119,6,0.22)] dark:drop-shadow-[0_32px_64px_rgba(0,0,0,0.65)]" />
 
-                  <div class="mt-8 grid grid-cols-[1.15fr_0.85fr] gap-4">
-                    <div class="rounded-[1.5rem] bg-[radial-gradient(circle_at_30%_25%,_rgba(255,255,255,0.16),_transparent_30%),linear-gradient(180deg,_rgba(255,255,255,0.08),_rgba(255,255,255,0.02))] p-5">
-                      <div class="flex h-full flex-col justify-between">
-                        <div class="space-y-2">
-                          <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-white/50">Flavor Notes</p>
-                          <div class="flex flex-wrap gap-2">
-                            <span class="rounded-full border border-white/12 bg-white/6 px-3 py-1.5 text-xs font-semibold text-white/80">golden honey</span>
-                            <span class="rounded-full border border-white/12 bg-white/6 px-3 py-1.5 text-xs font-semibold text-white/80">brown butter</span>
-                            <span class="rounded-full border border-white/12 bg-white/6 px-3 py-1.5 text-xs font-semibold text-white/80">sea salt finish</span>
-                          </div>
-                        </div>
-                        <div class="mt-6 rounded-2xl border border-white/10 bg-black/10 px-4 py-3">
-                          <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-white/45">Texture</p>
-                          <div class="mt-3 h-2 rounded-full bg-white/10">
-                            <div class="h-2 w-[86%] rounded-full bg-[linear-gradient(90deg,_#fde68a,_#f59e0b)]"></div>
-                          </div>
-                          <p class="mt-3 text-xs font-semibold text-white/65">Crisp, light, dan tidak meninggalkan rasa berminyak.</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[radial-gradient(circle_at_center,_rgba(252,211,77,0.95)_0%,_rgba(245,158,11,0.92)_54%,_rgba(180,83,9,0.92)_100%)] p-5 text-charcoal-900">
-                      <div class="absolute inset-0 bg-[radial-gradient(circle_at_40%_30%,_rgba(255,255,255,0.55),_transparent_26%)]"></div>
-                      <div class="relative flex h-full flex-col justify-between">
-                        <div>
-                          <p class="text-[10px] font-bold uppercase tracking-[0.24em] text-charcoal-700/70">Snack Meter</p>
-                          <p class="mt-2 font-display text-5xl font-extrabold">4.9</p>
-                          <p class="mt-2 text-sm font-semibold text-charcoal-700/75">favorit untuk stok meja kerja dan movie night</p>
-                        </div>
-                        <div class="rounded-2xl bg-charcoal-900/10 px-4 py-3 backdrop-blur">
-                          <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-charcoal-700/60">Batch Weekly</p>
-                          <p class="mt-1 text-xl font-display font-extrabold">Fresh roasted every week</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <!-- Overlay Card 1: Rating (Top Left) -->
+              <div appGlassmorphism [appGlassmorphismShadow]="true"
+                   class="absolute -top-4 -left-6 px-4 py-2.5 rounded-2xl border border-white/50 flex items-center gap-2">
+                <span class="text-sm">⭐</span>
+                <div>
+                  <p class="text-xs font-extrabold text-charcoal-800 dark:text-white leading-none">4.9 Rating</p>
+                  <span class="text-[8px] font-semibold text-charcoal-400 dark:text-charcoal-500 uppercase tracking-wider block mt-0.5">2K+ Snakers</span>
                 </div>
+              </div>
 
-                <div class="grid gap-4 sm:grid-cols-3">
-                  @for (item of flavorHighlights; track item.title) {
-                    <div class="rounded-2xl border border-charcoal-100/90 bg-white/80 p-5 shadow-sm backdrop-blur dark:border-white/8 dark:bg-white/5">
-                      <p class="text-[10px] font-bold uppercase tracking-[0.24em] text-corn-600 dark:text-corn-300">{{ item.eyebrow }}</p>
-                      <h3 class="mt-3 font-display text-xl font-extrabold">{{ item.title }}</h3>
-                      <p class="mt-3 text-sm leading-7 text-charcoal-600 dark:text-charcoal-350">{{ item.description }}</p>
-                    </div>
-                  }
+              <!-- Overlay Card 2: Varian Badge (Middle Right) -->
+              <div appGlassmorphism [appGlassmorphismShadow]="true"
+                   class="absolute top-1/3 -right-8 p-4 rounded-2xl border border-white/50 max-w-[170px] space-y-1">
+                <span class="text-[8px] font-bold text-corn-600 dark:text-corn-400 uppercase tracking-widest">Signature Drop</span>
+                <p class="text-xs font-extrabold text-charcoal-800 dark:text-white leading-tight">Sweet Honey Butter</p>
+                <p class="text-[9px] font-semibold text-charcoal-500 dark:text-charcoal-400 leading-snug">Crisp, brown butter & honey glaze finish.</p>
+              </div>
+
+              <!-- Overlay Card 3: Freshness Badge (Bottom Left) -->
+              <div appGlassmorphism [appGlassmorphismShadow]="true"
+                   class="absolute -bottom-2 -left-8 px-4 py-3 rounded-2xl border border-white/50 flex items-center gap-2.5">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <div>
+                  <p class="text-xs font-extrabold text-charcoal-800 dark:text-white leading-none">Weekly Roasting</p>
+                  <span class="text-[8px] font-semibold text-charcoal-400 dark:text-charcoal-500 uppercase tracking-wider block mt-0.5">Freshly Popped</span>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </section>
 

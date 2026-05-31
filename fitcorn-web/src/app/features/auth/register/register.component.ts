@@ -42,12 +42,11 @@ import { PasswordInputComponent } from '../../../shared/ui/password-input/passwo
         <div class="bg-white dark:bg-charcoal-900 rounded-2xl shadow-lg border border-charcoal-100 dark:border-charcoal-800 p-8 space-y-6 relative">
           <div class="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-corn-300 via-corn-400 to-corn-500 rounded-full"></div>
 
-          <!-- Register Form -->
           <form (submit)="onSubmit()" class="space-y-5">
-            <div class="space-y-4">
-              <app-input [(ngModel)]="fullName" type="text" label="Nama Lengkap" placeholder="Wahyudi" [required]="true" name="fullName" (ngModelChange)="clearFullNameError()" [error]="fullNameError()"></app-input>
-              <app-input [(ngModel)]="email" type="email" label="Alamat Email" placeholder="customer@fitcorn.com" [required]="true" name="email" (ngModelChange)="clearEmailError()" [error]="emailError()"></app-input>
-              <app-password-input [(ngModel)]="password" label="Kata Sandi" placeholder="\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022" [required]="true" name="password" (ngModelChange)="clearPasswordError()" [error]="passwordError()"></app-password-input>
+            <div class="space-y-6">
+              <app-input [(ngModel)]="fullName" type="text" label="Nama Lengkap" placeholder="Wahyudi" [required]="true" name="fullName" class="block" (ngModelChange)="clearFullNameError()" [error]="fullNameError()"></app-input>
+              <app-input [(ngModel)]="email" type="email" label="Alamat Email" placeholder="customer@fitcorn.com" [required]="true" name="email" class="block" (ngModelChange)="clearEmailError()" [error]="emailError()"></app-input>
+              <app-password-input [(ngModel)]="password" label="Kata Sandi" placeholder="••••••••" [required]="true" name="password" class="block" (ngModelChange)="clearPasswordError()" [error]="passwordError()"></app-password-input>
             </div>
 
             <div class="ds-hint leading-relaxed flex items-start gap-1.5">
@@ -83,37 +82,57 @@ import { PasswordInputComponent } from '../../../shared/ui/password-input/passwo
 
           <!-- Social Register Buttons -->
           <div class="grid grid-cols-3 gap-3">
-            <button type="button" (click)="authService.socialLogin('google')"
-              class="flex min-h-[var(--control-height-md)] flex-col items-center justify-center gap-1.5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-surface-base)] px-3 py-3 text-[var(--color-text-secondary)] shadow-sm transition-all duration-200 cursor-pointer hover:-translate-y-0.5 hover:border-corn-300 hover:bg-[var(--color-surface-subtle)] hover:text-[var(--color-text-primary)] hover:shadow-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24">
-                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/>
-                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            
+            <!-- Google Register Button -->
+            <button
+              type="button"
+              (click)="authService.socialLogin('google')"
+              class="group flex flex-col items-center justify-center gap-1.5 rounded-xl border border-charcoal-200 bg-[var(--color-surface-base)] px-3.5 py-3 text-center transition-all duration-200 hover:-translate-y-0.5 hover:border-red-500/45 hover:shadow-[0_8px_20px_-6px_rgba(239,68,68,0.16)] dark:border-white/10 dark:bg-charcoal-900/60 dark:hover:border-red-500/30 cursor-pointer"
+            >
+              <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.85z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.85c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
               </svg>
-              <span class="text-[10px] font-bold uppercase tracking-wider">Google</span>
+              <p class="text-[10px] font-bold text-charcoal-800 dark:text-white uppercase tracking-wider leading-none">Google</p>
             </button>
 
-            <button type="button" (click)="authService.socialLogin('facebook')"
-              class="flex min-h-[var(--control-height-md)] flex-col items-center justify-center gap-1.5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-surface-base)] px-3 py-3 text-[var(--color-text-secondary)] shadow-sm transition-all duration-200 cursor-pointer hover:-translate-y-0.5 hover:border-corn-300 hover:bg-[var(--color-surface-subtle)] hover:text-[var(--color-text-primary)] hover:shadow-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24">
-                <path fill="#1877F2" d="M24 12.073c0-6.672-5.328-12.073-12-12.073S0 5.401 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            <!-- Facebook Register Button -->
+            <button
+              type="button"
+              (click)="authService.socialLogin('facebook')"
+              class="group flex flex-col items-center justify-center gap-1.5 rounded-xl border border-charcoal-200 bg-[var(--color-surface-base)] px-3.5 py-3 text-center transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-500/45 hover:shadow-[0_8px_20px_-6px_rgba(59,130,246,0.16)] dark:border-white/10 dark:bg-charcoal-900/60 dark:hover:border-blue-500/30 cursor-pointer"
+            >
+              <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.44 23.08 10.25 24v-8.44H7.18v-3.49h3.07V9.42c0-3.03 1.8-4.71 4.57-4.71 1.33 0 2.72.24 2.72.24v2.99h-1.53c-1.5 0-1.97.93-1.97 1.88v2.26h3.37l-.54 3.49h-2.83V24C19.56 23.08 24 18.1 24 12.07z" fill="#1877F2"/>
               </svg>
-              <span class="text-[10px] font-bold uppercase tracking-wider">Facebook</span>
+              <p class="text-[10px] font-bold text-charcoal-800 dark:text-white uppercase tracking-wider leading-none">Facebook</p>
             </button>
 
-            <button type="button" (click)="authService.socialLogin('instagram')"
-              class="flex min-h-[var(--control-height-md)] flex-col items-center justify-center gap-1.5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-surface-base)] px-3 py-3 text-[var(--color-text-secondary)] shadow-sm transition-all duration-200 cursor-pointer hover:-translate-y-0.5 hover:border-corn-300 hover:bg-[var(--color-surface-subtle)] hover:text-[var(--color-text-primary)] hover:shadow-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24">
-                <linearGradient id="ig-reg" x1="0" y1="1" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#f9ce34"/>
-                  <stop offset="50%" stop-color="#ee2a7b"/>
-                  <stop offset="100%" stop-color="#6228d7"/>
-                </linearGradient>
-                <path fill="url(#ig-reg)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            <!-- Instagram Register Button -->
+            <button
+              type="button"
+              (click)="authService.socialLogin('instagram')"
+              class="group flex flex-col items-center justify-center gap-1.5 rounded-xl border border-charcoal-200 bg-[var(--color-surface-base)] px-3.5 py-3 text-center transition-all duration-200 hover:-translate-y-0.5 hover:border-pink-500/45 hover:shadow-[0_8px_20px_-6px_rgba(236,72,153,0.16)] dark:border-white/10 dark:bg-charcoal-900/60 dark:hover:border-pink-500/30 cursor-pointer"
+            >
+              <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.37 1.05.42 2.22.06 1.27.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.42 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.17-1.05.37-2.22.42-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.42-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.17-.42-.37-1.05-.42-2.22-.06-1.27-.07-1.64-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.42-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.05-.37 2.22-.42 1.27-.06 1.64-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.92.56a5.92 5.92 0 00-2.14 1.39A5.92 5.92 0 00.6 4.16C.3 4.93.1 5.8.04 7.08.01 8.36 0 8.77 0 12s.01 3.64.07 4.92c.06 1.28.26 2.15.56 2.92a5.92 5.92 0 001.39 2.14 5.92 5.92 0 002.14 1.39c.77.3 1.64.5 2.92.56 1.28.06 1.69.07 4.92.07s3.64-.01 4.92-.07c1.28-.06 2.15-.26 2.92-.56a5.92 5.92 0 002.14-1.39 5.92 5.92 0 001.39-2.14c.3-.77.5-1.64.56-2.92.06-1.28.07-1.69.07-4.92s-.01-3.64-.07-4.92c-.06-1.28-.26-2.15-.56-2.92a5.92 5.92 0 00-1.39-2.14 5.92 5.92 0 00-2.14-1.39c-.77-.3-1.64-.5-2.92-.56C15.67.01 15.26 0 12 0z" fill="url(#ig-reg-aligned)"/>
+                <path d="M12 5.83a6.17 6.17 0 100 12.34 6.17 6.17 0 000-12.34zm0 10.18a4 4 0 110-8 4 4 0 010 8z" fill="url(#ig-reg-aligned)"/>
+                <circle cx="18.4" cy="5.6" r="1.44" fill="url(#ig-reg-aligned)"/>
+                <defs>
+                  <radialGradient id="ig-reg-aligned" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(2.7 20.4) rotate(-45) scale(25.9)">
+                    <stop offset="0" stop-color="#FEC564"/>
+                    <stop offset="0.25" stop-color="#F783AC"/>
+                    <stop offset="0.5" stop-color="#DA5EAA"/>
+                    <stop offset="0.75" stop-color="#B135B3"/>
+                    <stop offset="1" stop-color="#4F5BD5"/>
+                  </radialGradient>
+                </defs>
               </svg>
-              <span class="text-[10px] font-bold uppercase tracking-wider">Instagram</span>
+              <p class="text-[10px] font-bold text-charcoal-800 dark:text-white uppercase tracking-wider leading-none">Instagram</p>
             </button>
+
           </div>
 
           <!-- WhatsApp Divider -->
@@ -123,9 +142,8 @@ import { PasswordInputComponent } from '../../../shared/ui/password-input/passwo
             <div class="flex-1 h-px bg-charcoal-100 dark:bg-charcoal-800"></div>
           </div>
 
-          <!-- WhatsApp Register -->
           <form (submit)="onRegisterWithPhone($event)" class="space-y-4">
-            <app-input [(ngModel)]="phoneRegister" type="tel" label="Nomor WhatsApp" placeholder="082132976457" [required]="true" name="phoneRegister"></app-input>
+            <app-input [(ngModel)]="phoneRegister" type="tel" label="Nomor WhatsApp" placeholder="082132976457" [required]="true" name="phoneRegister" class="block"></app-input>
             <app-button type="submit" [disabled]="!phoneRegister || sendingOtpReg()" [loading]="sendingOtpReg()" [fullWidth]="true" variant="secondary">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -ml-1" viewBox="0 0 24 24" fill="#25D366">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
