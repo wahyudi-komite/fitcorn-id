@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { CartService } from '../../../core/services/cart.service';
-import { ThemeService } from '../../../core/services/theme.service';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
 
 @Component({
@@ -12,7 +11,7 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
   imports: [CommonModule, RouterModule],
   template: `
     <div class="max-w-md mx-auto px-6 py-32 font-sans transition-colors duration-300">
-      <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
+      <div appGlassmorphism
            class="p-8 rounded-3xl border space-y-6 shadow-premium relative overflow-hidden text-center">
         <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-corn-300 to-corn-500"></div>
 
@@ -46,7 +45,6 @@ export class OauthCallbackComponent implements OnInit {
   private router = inject(Router);
   private authService = inject(AuthService);
   private cartService = inject(CartService);
-  themeService = inject(ThemeService);
   errorMsg = '';
 
   ngOnInit() {

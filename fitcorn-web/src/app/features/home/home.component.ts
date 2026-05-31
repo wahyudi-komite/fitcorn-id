@@ -49,7 +49,7 @@ import { ProductCardComponent, ProductCardData } from '../../shared/ui/product-c
 
           <!-- Graphic Showcase -->
           <div class="relative flex justify-center lg:justify-end animate-float">
-            <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'" 
+            <div appGlassmorphism 
                  class="relative p-8 rounded-3xl w-full max-w-sm border transition-all duration-300">
               
               <!-- Popcorn Image Frame -->
@@ -84,7 +84,7 @@ import { ProductCardComponent, ProductCardData } from '../../shared/ui/product-c
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+          <div appGlassmorphism [appGlassmorphismShadow]="false"
                class="p-8 rounded-3xl border space-y-4 text-center shadow-premium">
             <span class="text-4xl block">🌱</span>
             <h3 class="font-display font-bold text-xl text-charcoal-800 dark:text-white">100% Organik & Non-Rekayasa Genetik</h3>
@@ -93,7 +93,7 @@ import { ProductCardComponent, ProductCardData } from '../../shared/ui/product-c
             </p>
           </div>
 
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+          <div appGlassmorphism [appGlassmorphismShadow]="false"
                class="p-8 rounded-3xl border space-y-4 text-center shadow-premium">
             <span class="text-4xl block">🥥</span>
             <h3 class="font-display font-bold text-xl text-charcoal-800 dark:text-white">Lemak Sehat</h3>
@@ -102,7 +102,7 @@ import { ProductCardComponent, ProductCardData } from '../../shared/ui/product-c
             </p>
           </div>
 
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+          <div appGlassmorphism [appGlassmorphismShadow]="false"
                class="p-8 rounded-3xl border space-y-4 text-center shadow-premium">
             <span class="text-4xl block">🚫</span>
             <h3 class="font-display font-bold text-xl text-charcoal-800 dark:text-white">Bebas Pengawet</h3>
@@ -148,7 +148,7 @@ import { ProductCardComponent, ProductCardData } from '../../shared/ui/product-c
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+          <div appGlassmorphism [appGlassmorphismShadow]="false"
                class="p-6 rounded-3xl border space-y-4 shadow-premium">
             <div class="flex items-center gap-1 text-corn-500">⭐⭐⭐⭐⭐</div>
             <p class="text-charcoal-500 dark:text-charcoal-400 leading-relaxed font-medium italic">
@@ -163,7 +163,7 @@ import { ProductCardComponent, ProductCardData } from '../../shared/ui/product-c
             </div>
           </div>
 
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+          <div appGlassmorphism [appGlassmorphismShadow]="false"
                class="p-6 rounded-3xl border space-y-4 shadow-premium">
             <div class="flex items-center gap-1 text-corn-500">⭐⭐⭐⭐⭐</div>
             <p class="text-charcoal-500 dark:text-charcoal-400 leading-relaxed font-medium italic">
@@ -178,7 +178,7 @@ import { ProductCardComponent, ProductCardData } from '../../shared/ui/product-c
             </div>
           </div>
 
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+          <div appGlassmorphism [appGlassmorphismShadow]="false"
                class="p-6 rounded-3xl border space-y-4 shadow-premium">
             <div class="flex items-center gap-1 text-corn-500">⭐⭐⭐⭐⭐</div>
             <p class="text-charcoal-500 dark:text-charcoal-400 leading-relaxed font-medium italic">
@@ -207,7 +207,7 @@ import { ProductCardComponent, ProductCardData } from '../../shared/ui/product-c
         </div>
 
         <div class="space-y-6">
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+          <div appGlassmorphism [appGlassmorphismShadow]="false"
                class="p-6 rounded-2xl border space-y-2">
             <h4 class="font-display font-extrabold text-base text-charcoal-800 dark:text-white">Berapa lama masa simpannya?</h4>
             <p class="text-sm text-charcoal-500 dark:text-charcoal-400 leading-relaxed font-medium">
@@ -215,7 +215,7 @@ import { ProductCardComponent, ProductCardData } from '../../shared/ui/product-c
             </p>
           </div>
 
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+          <div appGlassmorphism [appGlassmorphismShadow]="false"
                class="p-6 rounded-2xl border space-y-2">
             <h4 class="font-display font-extrabold text-base text-charcoal-800 dark:text-white">Apakah biji jagung Anda organik dan aman?</h4>
             <p class="text-sm text-charcoal-500 dark:text-charcoal-400 leading-relaxed font-medium">
@@ -223,7 +223,7 @@ import { ProductCardComponent, ProductCardData } from '../../shared/ui/product-c
             </p>
           </div>
 
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+          <div appGlassmorphism [appGlassmorphismShadow]="false"
                class="p-6 rounded-2xl border space-y-2">
             <h4 class="font-display font-extrabold text-base text-charcoal-800 dark:text-white">Apakah Anda mengirim ke seluruh Indonesia?</h4>
             <p class="text-sm text-charcoal-500 dark:text-charcoal-400 leading-relaxed font-medium">
@@ -266,7 +266,7 @@ import { ProductCardComponent, ProductCardData } from '../../shared/ui/product-c
 
       <!-- 7. Newsletter Signup -->
       <div class="max-w-5xl mx-auto px-6 py-24">
-        <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
+        <div appGlassmorphism
              class="p-12 rounded-3xl border text-center space-y-6 relative overflow-hidden">
           <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-corn-300 to-corn-500"></div>
 

@@ -1,7 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { ThemeService } from '../../../core/services/theme.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
@@ -13,7 +12,7 @@ import { InputComponent } from '../../../shared/ui/input/input.component';
   imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, InputComponent],
   template: `
     <div class="max-w-md mx-auto px-6 py-16 sm:py-24 font-sans transition-colors duration-300">
-      <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
+      <div appGlassmorphism
            class="p-8 rounded-xl border space-y-6 shadow-premium relative overflow-hidden">
 
         <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-corn-300 to-corn-500"></div>
@@ -108,7 +107,6 @@ import { InputComponent } from '../../../shared/ui/input/input.component';
   styles: []
 })
 export class RegisterComponent {
-  themeService = inject(ThemeService);
   authService = inject(AuthService);
   private router = inject(Router);
 

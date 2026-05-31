@@ -1,7 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { ThemeService } from '../../core/services/theme.service';
 import { AuthService } from '../../core/services/auth.service';
 import { CheckoutService } from '../../core/services/checkout.service';
 import { ModalService } from '../../shared/services/modal.service';
@@ -17,7 +16,7 @@ import { ButtonComponent } from '../../shared/ui';
       
       @if (!authService.isAuthenticated()) {
         <!-- Auth Guard for Private Route -->
-        <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+        <div appGlassmorphism [appGlassmorphismShadow]="false"
              class="p-12 rounded-3xl border text-center space-y-6 shadow-premium max-w-xl mx-auto">
           <span class="text-6xl block">🔒</span>
           <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Akses Ditolak</h3>
@@ -53,7 +52,7 @@ import { ButtonComponent } from '../../shared/ui';
           <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
             
             <!-- Navigation Sidebar -->
-            <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+            <div appGlassmorphism [appGlassmorphismShadow]="false"
                  class="p-6 rounded-3xl border flex flex-col gap-2 shadow-premium">
                 <app-button (onClick)="setActiveTab('overview')"
                             variant="ghost"
@@ -80,7 +79,7 @@ import { ButtonComponent } from '../../shared/ui';
               
               <!-- Tab 1: Overview -->
               @if (activeTab() === 'overview') {
-                <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+                <div appGlassmorphism [appGlassmorphismShadow]="false"
                      class="p-8 rounded-3xl border space-y-6 shadow-premium">
                   <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white border-b border-charcoal-150 dark:border-charcoal-900 pb-4">
                     Ringkasan Akun
@@ -101,7 +100,7 @@ import { ButtonComponent } from '../../shared/ui';
 
               <!-- Tab 2: Orders History -->
               @if (activeTab() === 'orders') {
-                <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+                <div appGlassmorphism [appGlassmorphismShadow]="false"
                      class="p-8 rounded-3xl border space-y-6 shadow-premium">
                   <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white border-b border-charcoal-150 dark:border-charcoal-900 pb-4">
                     Riwayat Pesanan Saya
@@ -158,7 +157,7 @@ import { ButtonComponent } from '../../shared/ui';
 
               <!-- Tab 3: Address Book -->
               @if (activeTab() === 'addresses') {
-                <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+                <div appGlassmorphism [appGlassmorphismShadow]="false"
                      class="p-8 rounded-3xl border space-y-6 shadow-premium">
                     <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white border-b border-charcoal-150 dark:border-charcoal-900 pb-4">
                       Buku Alamat
@@ -205,7 +204,6 @@ import { ButtonComponent } from '../../shared/ui';
   styles: []
 })
 export class DashboardComponent implements OnInit {
-  themeService = inject(ThemeService);
   authService = inject(AuthService);
   private modalService = inject(ModalService);
   private checkoutService = inject(CheckoutService);

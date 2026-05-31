@@ -54,7 +54,8 @@ import { ButtonComponent } from '../../shared/ui';
           
           <!-- Payment Pending Alert -->
           @if (payment() && payment().status === 'PENDING') {
-            <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark border-yellow-500/30' : 'glassmorphism-light border-yellow-400/30'"
+            <div [ngClass]="themeService.theme() === 'dark' ? 'border-yellow-500/30' : 'border-yellow-400/30'"
+            appGlassmorphism [appGlassmorphismShadow]="false"
                  class="p-8 rounded-3xl border flex flex-col md:flex-row items-center justify-between gap-6 shadow-premium relative overflow-hidden">
               <div class="absolute top-0 left-0 w-2.5 h-full bg-yellow-400"></div>
               
@@ -77,7 +78,7 @@ import { ButtonComponent } from '../../shared/ui';
           }
 
           <!-- Delivery Tracking Status Timeline -->
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+          <div appGlassmorphism [appGlassmorphismShadow]="false"
                class="p-8 rounded-3xl border space-y-8 shadow-premium">
             <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white border-b border-charcoal-150 dark:border-charcoal-900 pb-4">
               Lacak Perkembangan
@@ -125,7 +126,7 @@ import { ButtonComponent } from '../../shared/ui';
           </div>
 
           <!-- Order Summary Items details -->
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+          <div appGlassmorphism [appGlassmorphismShadow]="false"
                class="p-8 rounded-3xl border space-y-6 shadow-premium">
             
             <div class="flex items-center justify-between border-b border-charcoal-150 dark:border-charcoal-900 pb-4">

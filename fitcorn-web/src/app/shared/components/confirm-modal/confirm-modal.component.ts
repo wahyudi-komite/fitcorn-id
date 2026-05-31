@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ThemeService } from '../../../core/services/theme.service';
 import { ModalService } from '../../services/modal.service';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
 
@@ -13,7 +12,7 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
       <div class="fixed inset-0 z-[100] flex items-center justify-center p-6">
         <div class="absolute inset-0 bg-charcoal-950/60 backdrop-blur-sm" (click)="modalService.close(false)"></div>
 
-        <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
+        <div appGlassmorphism
              class="relative w-full max-w-md p-8 rounded-3xl border space-y-6 overflow-hidden">
 
           <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-corn-300 to-corn-500"></div>
@@ -40,6 +39,5 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
   styles: [],
 })
 export class ConfirmModalComponent {
-  themeService = inject(ThemeService);
   modalService = inject(ModalService);
 }

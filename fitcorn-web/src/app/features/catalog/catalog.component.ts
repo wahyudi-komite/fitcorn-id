@@ -36,8 +36,9 @@ import { ButtonComponent, ProductCardComponent, ProductCardData } from '../../sh
                         [ngClass]="activeCategory() === cat.slug 
                           ? 'bg-corn-400 text-charcoal-900 shadow-md font-bold' 
                           : (themeService.theme() === 'dark' 
-                            ? 'glassmorphism-dark text-charcoal-300 hover:text-white' 
-                            : 'glassmorphism-light text-charcoal-600 hover:text-charcoal-900')"
+                            ? 'text-charcoal-300 hover:text-white' 
+                            : 'text-charcoal-600 hover:text-charcoal-900')"
+                        appGlassmorphism [appGlassmorphismShadow]="false"
                         class="px-5 py-2.5 text-xs">
               {{ cat.name }}
             </app-button>
@@ -48,7 +49,8 @@ import { ButtonComponent, ProductCardComponent, ProductCardData } from '../../sh
         <div class="flex items-center gap-3 w-full md:w-auto justify-end">
           <span class="text-xs font-semibold text-charcoal-400 uppercase tracking-widest">Urutkan:</span>
           <select (change)="onSortChange($event)"
-                  [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark border-charcoal-800 text-white' : 'glassmorphism-light border-charcoal-200 text-charcoal-800'"
+                  [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-800 text-white' : 'border-charcoal-200 text-charcoal-800'"
+                  appGlassmorphism [appGlassmorphismShadow]="false"
                   class="px-4 py-2.5 rounded-full border text-xs font-bold uppercase tracking-wider focus:outline-none focus:border-corn-400 cursor-pointer">
             <option value="latest">Terbaru</option>
             <option value="popular">Terpopuler</option>
@@ -63,7 +65,8 @@ import { ButtonComponent, ProductCardComponent, ProductCardData } from '../../sh
       @if (loading()) {
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 animate-pulse">
           @for (i of [1, 2, 3]; track i) {
-            <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark border-charcoal-800' : 'glassmorphism-light border-charcoal-200'"
+            <div [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-800' : 'border-charcoal-200'"
+                 appGlassmorphism [appGlassmorphismShadow]="false"
                  class="rounded-3xl p-6 border h-[420px] flex flex-col justify-between">
               <div class="space-y-6">
                 <div class="aspect-square rounded-2xl bg-charcoal-200 dark:bg-charcoal-800 w-full"></div>

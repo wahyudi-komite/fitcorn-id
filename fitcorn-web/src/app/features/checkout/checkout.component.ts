@@ -25,7 +25,7 @@ Checkout Pesanan
 
         @if (!authService.isAuthenticated()) {
           <!-- Authentication Guard UI -->
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+          <div appGlassmorphism [appGlassmorphismShadow]="false"
                class="p-12 rounded-3xl border text-center space-y-6 shadow-premium max-w-xl mx-auto">
             <span class="text-6xl block">🔒</span>
             <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Diperlukan Checkout Aman</h3>
@@ -63,7 +63,7 @@ Checkout Pesanan
             <div class="lg:col-span-2 space-y-8">
               
               <!-- Address Section -->
-              <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+              <div appGlassmorphism [appGlassmorphismShadow]="false"
                    class="p-8 rounded-3xl border space-y-6 shadow-premium">
                 
                 <div class="flex items-center justify-between">
@@ -167,7 +167,7 @@ Checkout Pesanan
 
               <!-- Courier Section -->
               @if (selectedAddress()) {
-                <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+                <div appGlassmorphism [appGlassmorphismShadow]="false"
                      class="p-8 rounded-3xl border space-y-6 shadow-premium">
                   
                   <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
@@ -211,7 +211,7 @@ Checkout Pesanan
             </div>
 
             <!-- Checkout Order Summary -->
-            <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
+            <div appGlassmorphism
                  class="p-8 rounded-3xl border space-y-6 lg:sticky lg:top-28">
               <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
                 Ringkasan Pembayaran

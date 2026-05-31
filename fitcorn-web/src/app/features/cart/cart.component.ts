@@ -1,7 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ThemeService } from '../../core/services/theme.service';
 import { CartService } from '../../core/services/cart.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { ButtonComponent } from '../../shared/ui';
@@ -30,7 +29,7 @@ import { ButtonComponent } from '../../shared/ui';
 
         @if (cartService.itemsCount() === 0) {
           <!-- Empty Cart State -->
-          <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+          <div appGlassmorphism [appGlassmorphismShadow]="false"
                class="rounded-3xl border p-16 text-center space-y-6 shadow-premium">
             <div class="text-7xl">🍿</div>
             <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">Keranjang Anda kosong</h3>
@@ -49,7 +48,8 @@ import { ButtonComponent } from '../../shared/ui';
             <!-- Items Column -->
             <div class="lg:col-span-2 space-y-6 animate-pulse-gentle-disabled">
               @for (item of cartService.cart()?.items; track item.id) {
-                <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark border-charcoal-850' : 'glassmorphism-light border-charcoal-200'"
+                <div [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850' : 'border-charcoal-200'"
+             appGlassmorphism [appGlassmorphismShadow]="false"
                      class="p-6 rounded-3xl border flex flex-col sm:flex-row items-center gap-6 shadow-premium hover:shadow-md transition-all duration-300 relative group">
                   
                   <!-- Delete Button Top Right -->
@@ -122,7 +122,7 @@ import { ButtonComponent } from '../../shared/ui';
             </div>
 
             <!-- Summary Column -->
-            <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
+            <div appGlassmorphism
                  class="p-8 rounded-3xl border space-y-6 lg:sticky lg:top-28">
               <h3 class="font-display font-extrabold text-xl text-charcoal-800 dark:text-white">
                 Ringkasan Pesanan
@@ -172,7 +172,6 @@ import { ButtonComponent } from '../../shared/ui';
   styles: []
 })
 export class CartComponent implements OnInit {
-  themeService = inject(ThemeService);
   cartService = inject(CartService);
   private modalService = inject(ModalService);
 

@@ -51,7 +51,7 @@ import { ButtonComponent, ProductCardComponent, ProductCardData } from '../../sh
           
           <!-- Image Showcase -->
           <div class="relative group">
-            <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+            <div appGlassmorphism [appGlassmorphismShadow]="false"
                  class="aspect-square rounded-3xl overflow-hidden flex items-center justify-center border shadow-premium">
               @if (product().images && product().images.length > 0) {
                 <img [src]="product().images[0].url" [alt]="product().images[0].altText || product().name" 
@@ -156,13 +156,13 @@ import { ButtonComponent, ProductCardComponent, ProductCardData } from '../../sh
  
             <!-- Product details specifications grid -->
             <div class="grid grid-cols-2 gap-4 pt-4 border-t border-charcoal-200 dark:border-charcoal-800">
-              <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'" class="p-4 rounded-2xl border">
+              <div appGlassmorphism [appGlassmorphismShadow]="false" class="p-4 rounded-2xl border">
                 <span class="text-[10px] text-charcoal-400 font-semibold block mb-1 uppercase tracking-widest">Berat Bersih</span>
                 <span class="font-bold text-charcoal-800 dark:text-white">
                   {{ selectedVariant()?.weight || product().weight }} gram
                 </span>
               </div>
-              <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'" class="p-4 rounded-2xl border">
+              <div appGlassmorphism [appGlassmorphismShadow]="false" class="p-4 rounded-2xl border">
                 <span class="text-[10px] text-charcoal-400 font-semibold block mb-1 uppercase tracking-widest">Masa Simpan</span>
                 <span class="font-bold text-charcoal-800 dark:text-white">6 Bulan</span>
               </div>

@@ -103,7 +103,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
               <!-- Summary Counters Cards -->
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Revenue Card -->
-                <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+                <div appGlassmorphism [appGlassmorphismShadow]="false"
                      class="p-6 rounded-3xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
                   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-corn-400 to-yellow-500"></div>
                   <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Total Pendapatan</span>
@@ -112,7 +112,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
                   </span>
                 </div>
                 <!-- Orders Card -->
-                <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+                <div appGlassmorphism [appGlassmorphismShadow]="false"
                      class="p-6 rounded-3xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
                   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-indigo-500"></div>
                   <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Total Pesanan</span>
@@ -121,7 +121,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
                   </span>
                 </div>
                 <!-- Customers Card -->
-                <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+                <div appGlassmorphism [appGlassmorphismShadow]="false"
                      class="p-6 rounded-3xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
                   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-emerald-500"></div>
                   <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Total Pelanggan</span>
@@ -130,7 +130,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
                   </span>
                 </div>
                 <!-- Products Card -->
-                <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+                <div appGlassmorphism [appGlassmorphismShadow]="false"
                      class="p-6 rounded-3xl border shadow-premium space-y-2 relative overflow-hidden h-32 flex flex-col justify-center">
                   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-400 to-pink-500"></div>
                   <span class="text-charcoal-400 text-[10px] font-bold uppercase tracking-wider block">Total Produk</span>
@@ -141,7 +141,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
               </div>
 
               <!-- CSS Grid Bar Charts Sales Analytics -->
-              <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+              <div appGlassmorphism [appGlassmorphismShadow]="false"
                    class="p-8 rounded-3xl border shadow-premium space-y-6">
                 <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">Riwayat Penjualan Harian (30 Hari)</h3>
                 
@@ -168,7 +168,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
               <!-- Top Products & Recent Orders Grid -->
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Left: Top Selling -->
-                <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+                <div appGlassmorphism [appGlassmorphismShadow]="false"
                      class="p-6 rounded-3xl border shadow-premium space-y-6">
                   <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">5 Produk Terlaris</h3>
                   <div class="space-y-4">
@@ -188,7 +188,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
                 </div>
 
                 <!-- Right: Recent Orders -->
-                <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+                <div appGlassmorphism [appGlassmorphismShadow]="false"
                      class="p-6 rounded-3xl border shadow-premium space-y-6">
                   <h3 class="font-display font-extrabold text-lg text-charcoal-800 dark:text-white">Pesanan Terbaru</h3>
                   <div class="space-y-4">
@@ -228,7 +228,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
               </div>
 
               <!-- Product List View -->
-              <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+              <div appGlassmorphism [appGlassmorphismShadow]="false"
                    class="rounded-3xl border shadow-premium overflow-hidden">
                 <div class="overflow-x-auto">
                   <table class="w-full text-sm">
@@ -294,7 +294,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
               <!-- Categories Listing Grid -->
               <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 @for (c of categories(); track c.id) {
-                  <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+                  <div appGlassmorphism [appGlassmorphismShadow]="false"
                        class="p-6 rounded-3xl border shadow-premium flex flex-col justify-between h-48 relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-corn-400"></div>
                     <div class="space-y-2">
@@ -321,7 +321,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
               </div>
 
               <!-- Orders Cockpit Grid -->
-              <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+              <div appGlassmorphism [appGlassmorphismShadow]="false"
                    class="rounded-3xl border shadow-premium overflow-hidden">
                 <div class="overflow-x-auto">
                   <table class="w-full text-sm">
@@ -390,7 +390,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
                 <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Direktori pelanggan dan status blokir</p>
               </div>
 
-              <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+              <div appGlassmorphism [appGlassmorphismShadow]="false"
                    class="rounded-3xl border shadow-premium overflow-hidden">
                 <div class="overflow-x-auto">
                   <table class="w-full text-sm">
@@ -440,7 +440,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
                 <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Konfigurasi parameter sistem secara global</p>
               </div>
 
-              <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+              <div appGlassmorphism [appGlassmorphismShadow]="false"
                    class="p-8 rounded-3xl border shadow-premium space-y-6">
                 
                 <form (submit)="saveSettings()" class="space-y-6 text-sm font-medium">
@@ -467,7 +467,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
                 <app-button (onClick)="openBannerModal()">+ Tambah Banner Baru</app-button>
               </div>
 
-              <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+              <div appGlassmorphism [appGlassmorphismShadow]="false"
                    class="rounded-3xl border shadow-premium overflow-hidden">
                 <div class="overflow-x-auto">
                   <table class="w-full text-sm">
@@ -527,7 +527,8 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
               <!-- Instagram Cards responsive modern grid -->
               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
                 @for (post of instagramPosts(); track post.id) {
-                  <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark border-charcoal-850' : 'glassmorphism-light border-charcoal-150'"
+                  <div [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850' : 'border-charcoal-150'"
+                       appGlassmorphism [appGlassmorphismShadow]="false"
                        class="rounded-3xl border shadow-premium overflow-hidden flex flex-col justify-between h-96 relative group">
                     
                     <div class="relative overflow-hidden aspect-square h-48 bg-charcoal-100 dark:bg-charcoal-900">
@@ -578,7 +579,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
                 <app-button (onClick)="openCouponModal()">+ Tambah Kupon Baru</app-button>
               </div>
 
-              <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark' : 'glassmorphism-light'"
+              <div appGlassmorphism [appGlassmorphismShadow]="false"
                    class="rounded-3xl border shadow-premium overflow-hidden">
                 <div class="overflow-x-auto">
                   <table class="w-full text-sm">
