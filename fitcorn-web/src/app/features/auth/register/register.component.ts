@@ -4,15 +4,17 @@ import { Router, RouterModule } from '@angular/router';
 import { ThemeService } from '../../../core/services/theme.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { FormsModule } from '@angular/forms';
+import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { InputComponent } from '../../../shared/ui/input/input.component';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, ButtonComponent, InputComponent],
   template: `
     <div class="max-w-md mx-auto px-6 py-16 sm:py-24 font-sans transition-colors duration-300">
       <div [ngClass]="themeService.theme() === 'dark' ? 'glassmorphism-dark shadow-premium-dark' : 'glassmorphism-light shadow-premium'"
-           class="p-8 rounded-md border space-y-6 shadow-premium relative overflow-hidden">
+           class="p-8 rounded-xl border space-y-6 shadow-premium relative overflow-hidden">
 
         <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-corn-300 to-corn-500"></div>
 
@@ -30,41 +32,21 @@ import { FormsModule } from '@angular/forms';
 
         <form (submit)="onSubmit()" class="space-y-4 text-sm font-medium">
           <div class="space-y-4">
-            <div>
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nama Lengkap</label>
-              <input type="text" [(ngModel)]="fullName" name="fullName" placeholder="e.g. Wahyudi" required
-                     [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
-            </div>
-
-            <div>
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Alamat Email</label>
-              <input type="email" [(ngModel)]="email" name="email" placeholder="e.g. customer@fitcorn.com" required
-                     [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
-            </div>
-
+            <app-input [(ngModel)]="fullName" type="text" label="Nama Lengkap" placeholder="e.g. Wahyudi" [required]="true" name="fullName"></app-input>
+            <app-input [(ngModel)]="email" type="email" label="Alamat Email" placeholder="e.g. customer@fitcorn.com" [required]="true" name="email"></app-input>
             <div class="relative">
-              <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Kata Sandi</label>
+              <label class="block text-[10px] font-bold text-charcoal-400 dark:text-charcoal-500 uppercase tracking-widest mb-2">Kata Sandi</label>
               <input [type]="showPassword() ? 'text' : 'password'" [(ngModel)]="password" name="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" required
-                     [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 pr-12 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                     class="w-full px-4 py-3 pr-12 rounded-md border bg-transparent text-charcoal-800 dark:text-white border-charcoal-200 dark:border-charcoal-700 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 transition-all duration-200 text-sm" />
               <button type="button" (click)="togglePassword()" tabindex="-1"
-                      class="absolute right-4 top-1/2 translate-y-1 text-charcoal-400 hover:text-corn-500 cursor-pointer text-lg leading-none">
+                      class="absolute right-3 top-1/2 -translate-y-1/2 text-charcoal-400 hover:text-corn-500 cursor-pointer text-lg leading-none">
                 {{ showPassword() ? '🙈' : '👁️' }}
               </button>
             </div>
           </div>
 
           <div class="pt-4 space-y-3">
-            <button type="submit" [disabled]="loading()"
-                    class="w-full px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-md bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2">
-              @if (loading()) {
-                <span class="animate-spin text-sm">&#x231B;</span> Membuat Akun...
-              } @else {
-                <span>&#x2728;</span> Daftar Sekarang
-              }
-            </button>
+            <app-button type="submit" [loading]="loading()" [fullWidth]="true" size="lg">&#x2728; Daftar Sekarang</app-button>
 
             @if (errorMsg()) {
               <div class="p-3 text-center text-xs font-semibold text-red-500 bg-red-500/10 border border-red-500/20 rounded-md">
@@ -105,19 +87,8 @@ import { FormsModule } from '@angular/forms';
         </div>
 
         <form (submit)="onRegisterWithPhone($event)" class="space-y-3">
-          <div>
-            <input type="tel" [(ngModel)]="phoneRegister" name="phoneRegister" placeholder="e.g. 082132976457" required
-                   [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-600 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                   class="w-full px-5 py-3 rounded-md border bg-transparent dark:bg-charcoal-900/30 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 text-sm" />
-          </div>
-          <button type="submit" [disabled]="!phoneRegister || sendingOtpReg()"
-                  class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-md bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">
-            @if (sendingOtpReg()) {
-              Mengirim OTP...
-            } @else {
-              Kirim OTP via WhatsApp
-            }
-          </button>
+          <app-input [(ngModel)]="phoneRegister" type="tel" label="Nomor WhatsApp" placeholder="e.g. 082132976457" [required]="true" name="phoneRegister"></app-input>
+          <app-button type="submit" [disabled]="!phoneRegister || sendingOtpReg()" [loading]="sendingOtpReg()" [fullWidth]="true">Kirim OTP via WhatsApp</app-button>
           @if (otpMsgReg()) {
             <div class="p-2 text-center text-xs font-semibold text-emerald-500 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/20 dark:border-emerald-500/30 rounded-md">
               {{ otpMsgReg() }}
