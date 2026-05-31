@@ -18,7 +18,7 @@ export default registerAs('app', () => ({
   rajaOngkir: {
     apiKey: process.env.RAJAONGKIR_API_KEY,
     baseUrl: process.env.RAJAONGKIR_BASE_URL || 'https://api.rajaongkir.com/starter',
-    originCityId: process.env.RAJAONGKIR_ORIGIN_CITY_ID || '501',
+    originCityId: process.env.RAJAONGKIR_ORIGIN_CITY_ID || '183',
   },
 
   // Social Login — OAuth

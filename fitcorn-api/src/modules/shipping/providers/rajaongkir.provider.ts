@@ -351,6 +351,7 @@ export class RajaOngkirProvider implements IShippingProvider {
         { village_id: '101', village_name: 'Tanjungmekar', postal_code: '41316' },
         { village_id: '102', village_name: 'Tanjungpura', postal_code: '41315' },
         { village_id: '103', village_name: 'Tunggulgandrung', postal_code: '41311' },
+        { village_id: '104', village_name: 'Sirnabaya', postal_code: '41311' },
       ],
       '3': [ // Telukjambe Timur
         { village_id: '301', village_name: 'Sukaluyu', postal_code: '41361' },

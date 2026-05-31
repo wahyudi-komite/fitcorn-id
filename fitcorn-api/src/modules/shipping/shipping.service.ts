@@ -6,6 +6,8 @@ import { Courier } from './entities/courier.entity';
 import { RajaOngkirProvider } from './providers/rajaongkir.provider';
 import { User } from '../users/entities/user.entity';
 
+import { ConfigService } from '@nestjs/config';
+
 @Injectable()
 export class ShippingService {
   constructor(
@@ -16,6 +18,7 @@ export class ShippingService {
     @InjectRepository(User)
     private userRepository: Repository<User>,
     private rajaOngkirProvider: RajaOngkirProvider,
+    private configService: ConfigService,
   ) {}
 
   // ==================== RAJAONGKIR PROXY METHODEN ====================
@@ -49,7 +52,7 @@ export class ShippingService {
     const ratesPromises = activeCouriers.map(async (courier) => {
       try {
         const rates = await this.rajaOngkirProvider.calculateRates(
-          '501', // Yogyakarta (Fitcorn origin)
+          this.configService.get<string>('app.rajaOngkir.originCityId') || '183', // Karawang (Fitcorn origin)
           destinationCityId,
           totalWeightGrams,
           courier.code,
