@@ -121,7 +121,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
               <div class="flex items-center gap-6">
                 
                 <!-- Quantity Selector -->
-                <div class="flex items-center border border-charcoal-200 dark:border-charcoal-800 rounded-full overflow-hidden bg-transparent">
+                <div class="flex items-center border border-charcoal-200 dark:border-charcoal-800 rounded-md overflow-hidden bg-transparent">
                   <button (click)="decrementQty()" 
                           class="px-5 py-3 hover:bg-charcoal-100 dark:hover:bg-charcoal-900 text-charcoal-500 dark:text-charcoal-400 font-bold transition-colors cursor-pointer select-none">
                     -

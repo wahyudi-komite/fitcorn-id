@@ -314,7 +314,7 @@ import { ProductsService } from '../../core/services/products.service';
           <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
             <input type="email" placeholder="Masukkan alamat email"
                    [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                   class="flex-grow px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400 text-sm font-medium" />
+                   class="flex-grow px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400 text-sm font-medium" />
             <button class="px-8 py-3.5 font-sans font-bold text-xs uppercase tracking-widest rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-md hover:shadow-lg transition-all duration-300 shrink-0 cursor-pointer">
               Berlangganan
             </button>

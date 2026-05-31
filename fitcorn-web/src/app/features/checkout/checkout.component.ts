@@ -103,18 +103,18 @@ Checkout Pesanan
                     <div class="grid grid-cols-2 gap-4">
                       <input type="text" [(ngModel)]="newAddress.fullName" name="fullName" placeholder="Nama Lengkap Penerima" required
                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                             class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                             class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
                       
                       <input type="text" [(ngModel)]="newAddress.phone" name="phone" placeholder="Nomor Telepon" required
                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                             class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                             class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
                     </div>
 
                     <div class="grid grid-cols-2 gap-4">
                       <!-- Province -->
                       <select (change)="onProvinceChange($event)" [(ngModel)]="selectedProvinceId" name="provinceSelect" required
                               [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white bg-charcoal-950' : 'border-charcoal-200 text-charcoal-800 bg-white'"
-                              class="w-full px-5 py-3 rounded-full border focus:outline-none focus:border-corn-400 cursor-pointer">
+                              class="w-full px-5 py-3 rounded-md border focus:outline-none focus:border-corn-400 cursor-pointer">
                         <option value="">Pilih Provinsi</option>
                         @for (p of provinces(); track p.province_id) {
                           <option [value]="p.province_id">{{ p.province }}</option>
@@ -124,7 +124,7 @@ Checkout Pesanan
                       <!-- City -->
                       <select (change)="onCityChange($event)" [(ngModel)]="selectedCityId" name="citySelect" required [disabled]="!selectedProvinceId"
                               [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white bg-charcoal-950' : 'border-charcoal-200 text-charcoal-800 bg-white'"
-                              class="w-full px-5 py-3 rounded-full border focus:outline-none focus:border-corn-400 cursor-pointer disabled:opacity-50">
+                              class="w-full px-5 py-3 rounded-md border focus:outline-none focus:border-corn-400 cursor-pointer disabled:opacity-50">
                         <option value="">Pilih Kota</option>
                         @for (c of cities(); track c.city_id) {
                           <option [value]="c.city_id">{{ c.type }} {{ c.city_name }}</option>
@@ -135,18 +135,18 @@ Checkout Pesanan
                     <div class="grid grid-cols-3 gap-4">
                       <input type="text" [(ngModel)]="newAddress.district" name="district" placeholder="Kecamatan" required
                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                             class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                             class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
                       <input type="text" [(ngModel)]="newAddress.village" name="village" placeholder="Kelurahan" required
                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                             class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                             class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
                       <input type="text" [(ngModel)]="newAddress.postalCode" name="postalCode" placeholder="Kode Pos" required
                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                             class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                             class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
                     </div>
 
                     <textarea [(ngModel)]="newAddress.fullAddress" name="fullAddress" placeholder="Detail Alamat Jalan (RT/RW, Nomor Rumah)" rows="3" required
                               [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                              class="w-full px-5 py-3 rounded-2xl border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400"></textarea>
+                              class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400"></textarea>
 
                     <div class="flex items-center gap-4 justify-between pt-2">
                       @if (savedAddresses().length > 0) {
@@ -240,7 +240,7 @@ Checkout Pesanan
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block">Catatan Pengiriman</label>
                 <input type="text" [(ngModel)]="orderNotes" name="orderNotes" placeholder="cth. Titip di lobi, warna pagar"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-4 py-2.5 text-xs rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                       class="w-full px-4 py-2.5 text-xs rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
               </div>
 
               <div class="pt-4 space-y-3">

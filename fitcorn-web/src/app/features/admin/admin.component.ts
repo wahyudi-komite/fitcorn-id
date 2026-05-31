@@ -451,7 +451,7 @@ import { ModalService } from '../../shared/services/modal.service';
                       <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">{{ s.key }}</label>
                       <input type="text" [(ngModel)]="settingsPayload[s.key]" [name]="s.key" required
                              [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                             class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                             class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
                     </div>
                   }
 
@@ -655,19 +655,19 @@ import { ModalService } from '../../shared/services/modal.service';
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nama Kurir</label>
                 <input type="text" [(ngModel)]="resiData.courierName" placeholder="cth. JNE"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Layanan Kurir</label>
                 <input type="text" [(ngModel)]="resiData.courierService" placeholder="cth. REG"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">No. Resi</label>
                 <input type="text" [(ngModel)]="resiData.trackingNumber" placeholder="cth. JT123456789"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
             </div>
 
@@ -693,13 +693,13 @@ import { ModalService } from '../../shared/services/modal.service';
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nama Kategori</label>
                 <input type="text" [(ngModel)]="categoryData.name" placeholder="cth. Spicy Lava"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Deskripsi</label>
                 <textarea [(ngModel)]="categoryData.description" placeholder="Deskripsi singkat..." rows="2"
                           [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                          class="w-full px-5 py-3 rounded-2xl border bg-transparent focus:outline-none focus:border-corn-400"></textarea>
+                          class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400"></textarea>
               </div>
             </div>
 
@@ -726,13 +726,13 @@ import { ModalService } from '../../shared/services/modal.service';
                   <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nama Produk</label>
                   <input type="text" [(ngModel)]="productData.name" placeholder="cth. Honey Butter"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
                 </div>
                 <div>
                   <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Harga (Rp)</label>
                   <input type="number" [(ngModel)]="productData.price" placeholder="25000"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
                 </div>
               </div>
 
@@ -741,7 +741,7 @@ import { ModalService } from '../../shared/services/modal.service';
                   <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Jumlah Stok</label>
                   <input type="number" [(ngModel)]="productData.quantity" placeholder="100"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
                 </div>
                 <div class="flex items-center gap-4 pt-8">
                   <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer select-none">
@@ -759,7 +759,7 @@ import { ModalService } from '../../shared/services/modal.service';
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Deskripsi</label>
                 <textarea [(ngModel)]="productData.description" placeholder="Detail produk, catatan, properti bahan..." rows="3"
                           [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                          class="w-full px-5 py-3 rounded-2xl border bg-transparent focus:outline-none focus:border-corn-400"></textarea>
+                          class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400"></textarea>
               </div>
 
               <!-- Image File Upload section -->
@@ -767,7 +767,7 @@ import { ModalService } from '../../shared/services/modal.service';
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Unggah Gambar Produk</label>
                 <input type="file" (change)="onImageFileSelected($event)" accept="image/*"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400 file:mr-4 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-corn-400 file:text-charcoal-900 hover:file:bg-corn-500 cursor-pointer" />
+                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400 file:mr-4 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-corn-400 file:text-charcoal-900 hover:file:bg-corn-500 cursor-pointer" />
                 @if (imageUploadProgress()) {
                   <span class="block text-[10px] text-corn-500 font-bold mt-2 animate-pulse">⌛ Sedang mengunggah gambar...</span>
                 }
@@ -796,38 +796,38 @@ import { ModalService } from '../../shared/services/modal.service';
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Judul Banner</label>
                 <input type="text" [(ngModel)]="bannerData.title" placeholder="cth. Premium Popcorn"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Subjudul</label>
                 <input type="text" [(ngModel)]="bannerData.subtitle" placeholder="cth. Gratis ongkir dalam Jawa!"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Gambar Banner</label>
                 <input type="text" [(ngModel)]="bannerData.imageUrl" placeholder="cth. https://images.unsplash.com/..."
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Gambar Mobile (Opsional)</label>
                 <input type="text" [(ngModel)]="bannerData.mobileImageUrl" placeholder="cth. https://images.unsplash.com/..."
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Tautan</label>
                 <input type="text" [(ngModel)]="bannerData.linkUrl" placeholder="cth. /produk/honey-butter"
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div class="grid grid-cols-2 gap-4">
                 <div>
                   <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Urutan</label>
                   <input type="number" [(ngModel)]="bannerData.sortOrder" placeholder="0"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
                 </div>
                 <div class="flex items-center gap-2 pt-8 select-none">
                   <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer">
@@ -860,26 +860,26 @@ import { ModalService } from '../../shared/services/modal.service';
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Foto Instagram</label>
                 <input type="text" [(ngModel)]="instagramData.imageUrl" placeholder="cth. https://images.unsplash.com/..."
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Postingan Instagram (Redirect)</label>
                 <input type="text" [(ngModel)]="instagramData.postUrl" placeholder="cth. https://www.instagram.com/p/..."
                        [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                       class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                       class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
               </div>
               <div>
                 <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Caption Text</label>
                 <textarea [(ngModel)]="instagramData.caption" placeholder="Detail, tag merek..." rows="3"
                           [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                          class="w-full px-5 py-3 rounded-2xl border bg-transparent focus:outline-none focus:border-corn-400"></textarea>
+                          class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400"></textarea>
               </div>
               <div class="grid grid-cols-2 gap-4">
                 <div>
                   <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Urutan</label>
                   <input type="number" [(ngModel)]="instagramData.sortOrder" placeholder="0"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
                 </div>
                 <div class="flex items-center gap-2 pt-8 select-none">
                   <label class="flex items-center gap-2 text-xs font-semibold text-charcoal-800 dark:text-white cursor-pointer">
@@ -913,13 +913,13 @@ import { ModalService } from '../../shared/services/modal.service';
                   <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Kode Kupon</label>
                   <input type="text" [(ngModel)]="couponData.code" placeholder="FITCORN10"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400 font-mono uppercase" />
+                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400 font-mono uppercase" />
                 </div>
                 <div>
                   <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Tipe Diskon</label>
                   <select [(ngModel)]="couponData.type"
                           [ngClass]="themeService.theme() === 'dark' ? 'bg-charcoal-950 border-charcoal-850 text-white' : 'bg-white border-charcoal-200 text-charcoal-800'"
-                          class="w-full px-5 py-3 rounded-full border focus:outline-none focus:border-corn-400 cursor-pointer">
+                          class="w-full px-5 py-3 rounded-md border focus:outline-none focus:border-corn-400 cursor-pointer">
                     <option value="percentage">Persentase (%)</option>
                     <option value="fixed">Nominal Tetap (Rp)</option>
                   </select>
@@ -931,13 +931,13 @@ import { ModalService } from '../../shared/services/modal.service';
                   <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nilai Diskon</label>
                   <input type="number" [(ngModel)]="couponData.value" placeholder="10"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
                 </div>
                 <div>
                   <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Min. Pembelian (Rp)</label>
                   <input type="number" [(ngModel)]="couponData.minPurchase" placeholder="0"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
                 </div>
               </div>
 
@@ -946,13 +946,13 @@ import { ModalService } from '../../shared/services/modal.service';
                   <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Maks. Diskon (Rp)</label>
                   <input type="number" [(ngModel)]="couponData.maxDiscount" placeholder="Batas opsional"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
                 </div>
                 <div>
                   <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Batas Penggunaan</label>
                   <input type="number" [(ngModel)]="couponData.usageLimit" placeholder="Maks. penebusan opsional"
                          [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                         class="w-full px-5 py-3 rounded-full border bg-transparent focus:outline-none focus:border-corn-400" />
+                         class="w-full px-5 py-3 rounded-md border bg-transparent focus:outline-none focus:border-corn-400" />
                 </div>
               </div>
 

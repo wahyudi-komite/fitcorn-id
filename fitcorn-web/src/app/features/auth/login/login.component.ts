@@ -35,14 +35,14 @@ import { FormsModule } from '@angular/forms';
               <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Alamat Email</label>
               <input type="email" [(ngModel)]="email" name="email" placeholder="e.g. customer@fitcorn.com" required
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                     class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
             </div>
 
             <div class="relative">
               <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Kata Sandi</label>
               <input [type]="showPassword() ? 'text' : 'password'" [(ngModel)]="password" name="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" required
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 pr-12 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                     class="w-full px-5 py-3 pr-12 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
               <button type="button" (click)="togglePassword()" tabindex="-1"
                       class="absolute right-4 top-1/2 translate-y-1 text-charcoal-400 hover:text-corn-500 cursor-pointer text-lg leading-none">
                 {{ showPassword() ? '🙈' : '👁️' }}
@@ -103,7 +103,7 @@ import { FormsModule } from '@angular/forms';
             <div>
               <input type="tel" [(ngModel)]="phone" name="phone" placeholder="e.g. 082132976457" required
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-600 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-full border bg-transparent dark:bg-charcoal-900/30 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 text-sm" />
+                     class="w-full px-5 py-3 rounded-md border bg-transparent dark:bg-charcoal-900/30 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 text-sm" />
             </div>
             <button type="submit" [disabled]="!phone || sendingOtp()"
                     class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">
@@ -124,7 +124,7 @@ import { FormsModule } from '@angular/forms';
             <div>
               <input type="text" [(ngModel)]="otp" name="otp" placeholder="Masukkan 6 digit OTP" required maxlength="6"
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-600 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-full border bg-transparent dark:bg-charcoal-900/30 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 text-sm text-center tracking-[8px]" />
+                     class="w-full px-5 py-3 rounded-md border bg-transparent dark:bg-charcoal-900/30 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 text-sm text-center tracking-[8px]" />
             </div>
             <button type="submit" [disabled]="!otp || otp.length < 6 || verifyingOtp()"
                     class="w-full px-8 py-3 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 disabled:bg-corn-400/50 disabled:cursor-not-allowed text-charcoal-900 transition-all duration-300 cursor-pointer">

@@ -45,63 +45,63 @@ import { ProductsService } from '../../core/services/products.service';
               <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Nama *</label>
               <input type="text" [(ngModel)]="form.name" name="name" required
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                     class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
             </div>
 
             <div>
               <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Slug</label>
               <input type="text" [(ngModel)]="form.slug" name="slug"
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                     class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
             </div>
 
             <div>
               <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">SKU</label>
               <input type="text" [(ngModel)]="form.sku" name="sku"
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                     class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
             </div>
 
             <div class="md:col-span-2">
               <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Deskripsi *</label>
               <textarea [(ngModel)]="form.description" name="description" required rows="4"
                         [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                        class="w-full px-5 py-3 rounded-2xl border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400"></textarea>
+                        class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400"></textarea>
             </div>
 
             <div class="md:col-span-2">
               <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Deskripsi Singkat</label>
               <textarea [(ngModel)]="form.shortDescription" name="shortDescription" rows="2"
                         [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                        class="w-full px-5 py-3 rounded-2xl border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400"></textarea>
+                        class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400"></textarea>
             </div>
 
             <div>
               <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Harga *</label>
               <input type="number" [(ngModel)]="form.price" name="price" required min="0"
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                     class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
             </div>
 
             <div>
               <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Harga Diskon</label>
               <input type="number" [(ngModel)]="form.salePrice" name="salePrice" min="0"
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                     class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
             </div>
 
             <div>
               <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">Weight (g) *</label>
               <input type="number" [(ngModel)]="form.weight" name="weight" required min="0"
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                     class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
             </div>
 
             <div>
               <label class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest block mb-2">URL Gambar</label>
               <input type="url" [(ngModel)]="form.imageUrl" name="imageUrl"
                      [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                     class="w-full px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
+                     class="w-full px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400" />
             </div>
 
             <div class="flex items-center gap-6">

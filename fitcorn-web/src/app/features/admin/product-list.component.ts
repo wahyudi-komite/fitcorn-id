@@ -31,7 +31,7 @@ import { ModalService } from '../../shared/services/modal.service';
         <div class="flex gap-3">
           <input type="text" [(ngModel)]="search" (input)="onSearch()" placeholder="Cari produk..."
                  [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
-                 class="flex-1 px-5 py-3 rounded-full border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400 text-sm" />
+                 class="flex-1 px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400 text-sm" />
         </div>
 
         @if (loading()) {

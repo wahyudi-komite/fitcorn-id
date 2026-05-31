@@ -94,7 +94,7 @@ import { ModalService } from '../../shared/services/modal.service';
 
                     <!-- Quantity Control -->
                     <div class="flex items-center justify-center sm:justify-start gap-4 mt-4 pt-4 border-t border-charcoal-100 dark:border-charcoal-900/50">
-                      <div class="flex items-center border border-charcoal-200 dark:border-charcoal-800 rounded-full overflow-hidden shrink-0 bg-transparent">
+                      <div class="flex items-center border border-charcoal-200 dark:border-charcoal-800 rounded-md overflow-hidden shrink-0 bg-transparent">
                         <button (click)="updateQuantity(item.id, item.quantity - 1)" 
                                 [disabled]="actionLoading() || item.quantity <= 1"
                                 class="px-3.5 py-1.5 hover:bg-charcoal-100 dark:hover:bg-charcoal-900 text-charcoal-500 dark:text-charcoal-400 font-bold transition-colors cursor-pointer select-none">
