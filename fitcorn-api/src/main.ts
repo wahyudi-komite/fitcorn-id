@@ -21,7 +21,7 @@ async function bootstrap() {
     origin: frontendUrl,
     credentials: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    allowedHeaders: 'Content-Type, Accept, Authorization',
+    allowedHeaders: 'Content-Type, Accept, Authorization, X-Session-Id',
   });
 
   // Global prefix for API
