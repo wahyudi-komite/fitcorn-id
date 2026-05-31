@@ -61,7 +61,7 @@ export class ButtonComponent {
   };
 
   private variantMap: Record<ButtonVariant, string> = {
-    primary: 'bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-lg hover:shadow-xl active:scale-[0.98]',
+    primary: 'bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.98]',
     secondary: 'bg-charcoal-100 dark:bg-charcoal-800 hover:bg-charcoal-200 dark:hover:bg-charcoal-700 text-charcoal-700 dark:text-charcoal-200',
     outline: 'border border-charcoal-200 dark:border-charcoal-700 text-charcoal-700 dark:text-charcoal-300 hover:bg-charcoal-100 dark:hover:bg-charcoal-800',
     ghost: 'text-charcoal-600 dark:text-charcoal-400 hover:text-charcoal-900 dark:hover:text-white hover:bg-charcoal-100 dark:hover:bg-charcoal-800',

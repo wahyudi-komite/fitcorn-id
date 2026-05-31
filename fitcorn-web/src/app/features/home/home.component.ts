@@ -39,10 +39,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
             <!-- CTA Actions -->
             <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
               <app-button routerLink="/produk" size="lg">Lihat Rasa</app-button>
-              <a href="#why-fitcorn" 
-                 class="px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full border border-charcoal-200 dark:border-charcoal-800 text-charcoal-700 dark:text-charcoal-300 hover:bg-charcoal-100 dark:hover:bg-charcoal-850 transition-all duration-300 cursor-pointer">
-                Pelajari Lebih Lanjut
-              </a>
+              <app-button variant="outline" size="lg" (onClick)="scrollToWhy()">Pelajari Lebih Lanjut</app-button>
             </div>
 
           </div>
@@ -315,6 +312,11 @@ export class HomeComponent implements OnInit {
       soldCount: p.soldCount,
       stock: p.stock,
     };
+  }
+
+  protected scrollToWhy() {
+    const el = document.getElementById('why-fitcorn');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   }
 
   loadFeaturedProducts() {
