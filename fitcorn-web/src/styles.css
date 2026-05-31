@@ -50,6 +50,73 @@
   /* Custom Transitions & Shadow */
   --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 1px 1px 0 rgba(0, 0, 0, 0.02);
   --shadow-premium-dark: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 1px 1px 0 rgba(255, 255, 255, 0.02);
+
+  /* Semantic Surface Tokens */
+  --color-surface-base: #ffffff;
+  --color-surface-subtle: #f6f6f7;
+  --color-surface-muted: #ececed;
+  --color-surface-elevated: #ffffff;
+  --color-surface-inverse: #1c1c1e;
+
+  /* Semantic Text Tokens */
+  --color-text-primary: #1c1c1e;
+  --color-text-secondary: #6b6b72;
+  --color-text-muted: #8c8c93;
+  --color-text-inverse: #ffffff;
+
+  /* Semantic Border Tokens */
+  --color-border-default: #d0d0d3;
+  --color-border-muted: #dedee0;
+  --color-border-strong: #b1b1b6;
+  --color-border-inverse: rgba(255, 255, 255, 0.1);
+
+  /* Semantic Feedback Tokens */
+  --color-focus-ring: rgba(245, 158, 11, 0.18);
+  --color-danger: #ef4444;
+  --color-danger-soft: rgba(239, 68, 68, 0.12);
+
+  /* Control Tokens */
+  --control-height-sm: 2.5rem;
+  --control-height-md: 3rem;
+  --control-height-lg: 3.5rem;
+  --control-padding-x: 1rem;
+  --control-gap: 0.5rem;
+
+  /* Layout Tokens */
+  --container-max-width: 80rem;
+  --section-space-md: 4rem;
+  --section-space-lg: 6rem;
+
+  /* Extra Shadows */
+  --shadow-focus-ring: 0 0 0 4px rgba(245, 158, 11, 0.18);
+  --shadow-inset-soft: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+  --color-surface-base: #161618;
+  --color-surface-subtle: #121214;
+  --color-surface-muted: #1c1c1e;
+  --color-surface-elevated: #1c1c1e;
+  --color-surface-inverse: #ffffff;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #b1b1b6;
+  --color-text-muted: #8c8c93;
+  --color-text-inverse: #1c1c1e;
+
+  --color-border-default: #2d2d32;
+  --color-border-muted: rgba(255, 255, 255, 0.08);
+  --color-border-strong: #4a4a50;
+  --color-border-inverse: rgba(255, 255, 255, 0.18);
+
+  --color-focus-ring: rgba(251, 191, 36, 0.22);
+  --shadow-focus-ring: 0 0 0 4px rgba(251, 191, 36, 0.2);
+  --shadow-inset-soft: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 /* Custom Micro-Animations */
@@ -69,6 +136,82 @@
 
 .animate-pulse-gentle {
   animation: pulse-gentle 3s ease-in-out infinite;
+}
+
+.ds-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.ds-hint {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.ds-error {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-danger);
+}
+
+.ds-control {
+  width: 100%;
+  min-height: var(--control-height-md);
+  padding: 0.75rem var(--control-padding-x);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-default);
+  background: var(--color-surface-base);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-inset-soft);
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    background-color var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.ds-control::placeholder {
+  color: var(--color-text-muted);
+}
+
+.ds-control:hover:not(:disabled) {
+  border-color: var(--color-border-strong);
+}
+
+.ds-control:focus-visible {
+  outline: none;
+  border-color: var(--color-corn-500);
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.ds-control:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  background: var(--color-surface-subtle);
+}
+
+.ds-control.is-invalid {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 4px var(--color-danger-soft);
+}
+
+.ds-card {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border-muted);
+  background: var(--color-surface-elevated);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-premium);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base),
+    background-color var(--transition-base);
 }
 
 /* Glassmorphism Classes */

@@ -17,18 +17,18 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormsModule } from '@angular/f
           (change)="onSelect()"
           class="peer sr-only"
         />
-        <div class="w-5 h-5 rounded-full border-2 transition-all duration-200 flex items-center justify-center
+        <div class="flex h-5 w-5 items-center justify-center rounded-full border-2 border-[var(--color-border-strong)] bg-[var(--color-surface-base)] transition-all duration-200
           peer-checked:border-corn-400
-          peer-disabled:opacity-50 peer-disabled:cursor-not-allowed
-          border-charcoal-300 dark:border-charcoal-600
-          group-hover:border-corn-400 dark:group-hover:border-corn-400">
+          peer-focus-visible:ring-4 peer-focus-visible:ring-[var(--color-focus-ring)]
+          peer-disabled:cursor-not-allowed peer-disabled:opacity-50
+          group-hover:border-corn-400">
           @if (selected() === value()) {
             <div class="w-2.5 h-2.5 rounded-full bg-corn-400"></div>
           }
         </div>
       </div>
       @if (label()) {
-        <span class="text-sm font-medium text-charcoal-700 dark:text-charcoal-200 select-none">{{ label() }}</span>
+        <span class="select-none text-sm font-medium text-[var(--color-text-primary)]">{{ label() }}</span>
       }
     </label>
   `,

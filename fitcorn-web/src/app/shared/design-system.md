@@ -2,128 +2,164 @@
 
 ## Overview
 
-A lightweight, modern design system for Fitcorn e-commerce built with Angular 20 Standalone + Tailwind CSS v4.
+A lightweight, modern design system for Fitcorn e-commerce built with Angular Standalone components and Tailwind CSS v4.
 
-### Core Principles
+## Core Principles
 
-- **Clean** — Minimal visual noise, purposeful whitespace
-- **Modern** — Glassmorphism, subtle shadows, smooth transitions
-- **Premium** — Attention to detail, refined color palette
-- **Mobile First** — Responsive by default
-- **Dark Mode** — Full support via Tailwind `dark:` prefix
-- **Performant** — No heavy UI libraries, pure Tailwind
+- Clean: minimal visual noise, clear hierarchy, and purposeful whitespace
+- Premium: refined surfaces, deliberate typography, and strong product framing
+- Systematic: reusable tokens first, component decisions second
+- Mobile first: every primitive should feel stable on small screens before scaling up
+- Accessible: visible focus states, readable contrast, and sensible motion defaults
+- Performant: no heavy UI library dependency for core interface primitives
 
-### Color Palette
+## Brand Tokens
 
-#### Primary Brand — "Corn" (Amber/Yellow)
-
-| Token | Hex | Usage |
-|---|---|---|
-| `corn-50`  | `#fffbeb` | Light bg |
-| `corn-100` | `#fef3c7` | Badge bg |
-| `corn-200` | `#fde68a` | Hover states |
-| `corn-300` | `#fcd34d` | Accent hover |
-| `corn-400` | `#fbbf24` | **Primary accent** (CTAs, buttons, highlights) |
-| `corn-500` | `#f59e0b` | Interactive hover |
-| `corn-600` | `#d97706` | Active states |
-| `corn-700` | `#b45309` | Text/dark bg |
-| `corn-800` | `#92400e` | — |
-| `corn-900` | `#78350f` | — |
-| `corn-950` | `#451a03` | — |
-
-#### Neutral — "Charcoal" (Premium Dark)
+### Primary Brand: Corn
 
 | Token | Hex | Usage |
 |---|---|---|
-| `charcoal-50`  | `#f6f6f7`  | Lightest bg |
-| `charcoal-100` | `#ececed`  | Card bg light |
-| `charcoal-150` | `#dedee0`  | Border light |
-| `charcoal-200` | `#d0d0d3`  | Borders |
-| `charcoal-300` | `#b1b1b6`  | Disabled text |
-| `charcoal-350` | `#9e9ea5`  | Muted text |
-| `charcoal-400` | `#8c8c93`  | Secondary text |
-| `charcoal-455` | `#7a7a82`  | Body text |
-| `charcoal-500` | `#6b6b72`  | Body text |
-| `charcoal-600` | `#4a4a50`  | Strong text |
-| `charcoal-700` | `#2d2d32`  | Dark text |
-| `charcoal-800` | `#1c1c1e`  | **Dark BG Primary** |
-| `charcoal-850` | `#161618`  | Dark surface |
-| `charcoal-900` | `#121214`  | **Dark BG Secondary** |
-| `charcoal-950` | `#0a0a0b`  | Darkest bg |
+| `corn-50` | `#fffbeb` | soft tint background |
+| `corn-100` | `#fef3c7` | subtle highlight surface |
+| `corn-200` | `#fde68a` | hover tint |
+| `corn-300` | `#fcd34d` | accent hover |
+| `corn-400` | `#fbbf24` | primary action |
+| `corn-500` | `#f59e0b` | active accent |
+| `corn-600` | `#d97706` | strong accent text |
+| `corn-700` | `#b45309` | dark accent text |
+| `corn-800` | `#92400e` | deep accent |
+| `corn-900` | `#78350f` | deeper accent |
+| `corn-950` | `#451a03` | darkest accent |
 
-### Typography
+### Neutral Brand: Charcoal
 
-| Token | Font | Weight | Usage |
-|---|---|---|---|
-| `font-sans` | Plus Jakarta Sans | 300-800 | Body, UI elements |
-| `font-display` | Outfit | 300-800 | Headings, display text |
-
-#### Text Size Map
-
-- `text-[10px]` — Labels, badges (uppercase tracking-widest)
-- `text-xs` — Captions, meta info
-- `text-sm` — Body text, descriptions
-- `text-base` — Regular text
-- `text-lg` — Card titles
-- `text-xl` — Section headings
-- `text-2xl` — Page headings
-- `text-3xl` — Hero headings
-- `text-4xl` — Large hero
-- `text-5xl` — Display
-
-### Spacing
-
-Standard Tailwind spacing scale. Common patterns:
-
-- `p-4` — Card inner padding (compact)
-- `p-5` — Card inner padding (default)
-- `p-6` — Modal/dialog padding
-- `p-8` — Large container padding
-- `gap-2` — Tight element spacing
-- `gap-3` — Default element spacing
-- `gap-4` — Section spacing
-- `gap-6` — Card grid spacing
-- `gap-12` — Section spacing
-
-### Border Radius
-
-| Token | Size | Usage |
+| Token | Hex | Usage |
 |---|---|---|
-| `rounded-md` | 6px | **Buttons, inputs, selects, interactive elements** |
-| `rounded-lg` | 8px | Cards (mobile nav items) |
-| `rounded-xl` | 12px | Cards, dialogs, containers |
-| `rounded-2xl` | 16px | Large containers, modals (glassmorphism) |
-| `rounded-full` | 9999px | Avatars, floating buttons, icons only |
+| `charcoal-50` | `#f6f6f7` | light page background |
+| `charcoal-100` | `#ececed` | subtle surface |
+| `charcoal-150` | `#dedee0` | soft border |
+| `charcoal-200` | `#d0d0d3` | default border |
+| `charcoal-300` | `#b1b1b6` | disabled text |
+| `charcoal-350` | `#9e9ea5` | muted body text |
+| `charcoal-400` | `#8c8c93` | secondary text |
+| `charcoal-455` | `#7a7a82` | strong muted text |
+| `charcoal-500` | `#6b6b72` | body text |
+| `charcoal-600` | `#4a4a50` | strong text |
+| `charcoal-700` | `#2d2d32` | dark text |
+| `charcoal-800` | `#1c1c1e` | dark primary surface |
+| `charcoal-850` | `#161618` | dark elevated surface |
+| `charcoal-900` | `#121214` | dark page background |
+| `charcoal-950` | `#0a0a0b` | darkest background |
 
-### Shadows
+## Semantic Tokens
 
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `shadow-sm` | Standard | Standard | Subtle elevation |
-| `shadow` | Standard | Standard | Default elevation |
-| `shadow-lg` | Standard | Standard | Cards, dropdowns |
-| `shadow-xl` | Standard | Standard | Modals, dialogs |
-| `shadow-premium` | Custom light | — | Premium cards (light mode) |
-| `shadow-premium-dark` | — | Custom dark | Premium cards (dark mode) |
+These tokens should drive component styling before raw palette tokens are used.
 
-### Glassmorphism
+### Surfaces
 
-Two CSS classes for frosted-glass effect:
+- `--color-surface-base`: default field and card background
+- `--color-surface-subtle`: muted background
+- `--color-surface-muted`: secondary surface
+- `--color-surface-elevated`: elevated container background
+- `--color-surface-inverse`: inverse surface for dark-on-light swaps
 
-- `.glassmorphism-light` — `rgba(255,255,255,0.65)` backdrop-blur
-- `.glassmorphism-dark` — `rgba(28,28,30,0.65)` backdrop-blur
+### Text
 
-Usage: apply programmatically via `[appGlassmorphism]` directive or manual `[ngClass]`.
+- `--color-text-primary`: primary content color
+- `--color-text-secondary`: secondary supporting color
+- `--color-text-muted`: helper, metadata, and placeholder color
+- `--color-text-inverse`: inverse text color
 
-### Component Architecture
+### Borders and Feedback
 
-All components in `shared/ui/` are:
-- Angular Standalone
-- SSR compatible
-- Dark mode via Tailwind `dark:` prefix
-- Signal-based inputs
-- No external style files (inline templates)
+- `--color-border-default`: default border color
+- `--color-border-muted`: softer divider color
+- `--color-border-strong`: hover or stronger edge color
+- `--color-focus-ring`: focus halo color
+- `--color-danger`: destructive/error accent
+- `--color-danger-soft`: error focus or background halo
 
-### Exports
+## Typography
 
-The barrel file is at `shared/ui/index.ts` — import from `@fitcorn/ui` convention or direct path.
+| Token | Font | Usage |
+|---|---|---|
+| `font-sans` | Plus Jakarta Sans | body copy, controls, utility labels |
+| `font-display` | Outfit | headings, pricing, large emphasis |
+
+### Type Guidance
+
+- `text-[10px]`: labels and overlines
+- `text-xs`: metadata and helper copy
+- `text-sm`: default body size for forms and cards
+- `text-base`: longer body text
+- `text-lg` and up: titles, section headers, and pricing accents
+
+Use `font-display` sparingly for emphasis. Most UI chrome should stay on `font-sans`.
+
+## Spacing and Radius
+
+### Common Spacing
+
+- `p-4`: compact card or control grouping
+- `p-5`: default card padding
+- `p-6`: modal and section card padding
+- `p-8`: large feature sections
+- `gap-2` to `gap-4`: dense to normal control spacing
+- `gap-6` to `gap-12`: layout spacing
+
+### Radius
+
+| Token | Value | Usage |
+|---|---|---|
+| `rounded-md` | 6px | controls and buttons |
+| `rounded-lg` | 8px | compact containers |
+| `rounded-xl` | 12px | cards and content sections |
+| `rounded-2xl` | 16px | premium feature blocks |
+| `rounded-full` | pill UI, avatars, badges only |
+
+## Control Foundation
+
+Use shared utility classes before custom local styling:
+
+- `.ds-label`: standard field label
+- `.ds-hint`: standard hint text
+- `.ds-error`: standard error text
+- `.ds-control`: base field surface, border, hover, and focus behavior
+- `.ds-card`: base card surface and elevation behavior
+
+### Control Rules
+
+- All interactive controls should expose a visible focus state
+- Error state should use `.is-invalid` on top of `.ds-control`
+- Control height should come from `--control-height-sm|md|lg`
+- Placeholder color should be treated as muted content, not disabled content
+
+## Component Status
+
+### Stable Foundations
+
+- `Button`
+- `Input`
+- `PasswordInput`
+- `Select`
+- `Textarea`
+- `Card`
+
+### Needs Further Unification
+
+- `Checkbox`
+- `Radio`
+- advanced feedback and overlay primitives
+
+## Accessibility Rules
+
+- Never remove focus indication without replacing it
+- Prefer `focus-visible` behavior over `focus`-only decoration
+- Avoid low-contrast muted text on tinted surfaces
+- Motion should support reduced-intensity interpretation and never carry critical meaning alone
+
+## Usage Notes
+
+- Prefer semantic tokens and shared utility classes over raw hex or repeated utility chains
+- Use local one-off styling only when a component has a real visual exception
+- If a component introduces a new visual pattern repeatedly, promote it into the system

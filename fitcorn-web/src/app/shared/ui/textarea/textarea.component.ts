@@ -1,4 +1,4 @@
-import { Component, forwardRef, input, signal } from '@angular/core';
+import { Component, computed, forwardRef, input, signal } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 
@@ -9,7 +9,7 @@ import { NgClass } from '@angular/common';
   template: `
     <div class="space-y-1.5">
       @if (label()) {
-        <label class="block text-[10px] font-bold text-charcoal-400 dark:text-charcoal-500 uppercase tracking-widest">
+        <label class="ds-label">
           {{ label() }}
           @if (required()) { <span class="text-red-400">*</span> }
         </label>
@@ -19,14 +19,14 @@ import { NgClass } from '@angular/common';
         [disabled]="disabled()"
         [required]="required()"
         [rows]="rows()"
-        [ngClass]="textareaClasses"
+        [ngClass]="textareaClasses()"
         [value]="value()"
         (input)="onInput($event)"
         (blur)="onBlur()"
-        class="w-full px-4 py-3 rounded-md border bg-transparent placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 transition-all duration-200 text-sm resize-y min-h-[100px]"
+        class="ds-control min-h-[120px] resize-y text-sm"
       ></textarea>
       @if (error()) {
-        <p class="text-[11px] font-semibold text-red-500 dark:text-red-400">{{ error() }}</p>
+        <p class="ds-error">{{ error() }}</p>
       }
     </div>
   `,
@@ -49,27 +49,7 @@ export class TextareaComponent implements ControlValueAccessor {
   value = signal<string>('');
   touched = signal(false);
 
-  protected textareaClasses = [
-    'w-full',
-    'px-4',
-    'py-3',
-    'rounded-md',
-    'border',
-    'bg-transparent',
-    'placeholder-charcoal-400',
-    'dark:placeholder-charcoal-500',
-    'focus:outline-none',
-    'focus:border-corn-400',
-    'transition-all',
-    'duration-200',
-    'text-sm',
-    'resize-y',
-    'min-h-[100px]',
-    'text-charcoal-800',
-    'dark:text-white',
-    'dark:border-charcoal-700',
-    'border-charcoal-200',
-  ].join(' ');
+  protected textareaClasses = computed(() => this.error() ? 'is-invalid' : '');
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};

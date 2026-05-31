@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 export type CardVariant = 'default' | 'glass' | 'interactive' | 'bordered';
@@ -30,14 +30,15 @@ export class CardComponent {
   clickable = input(false);
   title = input<string>('');
   subtitle = input<string>('');
+  onClick = output<void>();
 
-  protected classes = () => {
-    const base = 'rounded-xl border';
+  protected classes = computed(() => {
+    const base = 'ds-card';
     const padding = this.paddingMap[this.padding()];
     const variant = this.variantMap[this.variant()];
-    const interactive = this.clickable() ? 'hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.99]' : '';
+    const interactive = this.clickable() ? 'hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.99] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--color-focus-ring)]' : '';
     return [base, padding, variant, interactive].filter(Boolean).join(' ');
-  };
+  });
 
   private paddingMap = {
     none: '',
@@ -47,15 +48,15 @@ export class CardComponent {
   };
 
   private variantMap = {
-    default: 'bg-white dark:bg-charcoal-900 border-charcoal-100 dark:border-charcoal-800 shadow-sm',
+    default: 'bg-[var(--color-surface-elevated)] border-[var(--color-border-muted)] shadow-sm',
     glass: 'glassmorphism-light dark:glassmorphism-dark',
-    interactive: 'bg-white dark:bg-charcoal-900 border-charcoal-100 dark:border-charcoal-800 shadow-sm hover:shadow-md',
-    bordered: 'bg-transparent border-charcoal-200 dark:border-charcoal-700',
+    interactive: 'bg-[var(--color-surface-elevated)] border-[var(--color-border-muted)] shadow-sm hover:shadow-md',
+    bordered: 'bg-transparent border-[var(--color-border-default)] shadow-none',
   };
 
   protected onCardClick() {
     if (this.clickable()) {
-      // emit event or handle via host
+      this.onClick.emit();
     }
   }
 }
