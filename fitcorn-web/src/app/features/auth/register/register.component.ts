@@ -106,7 +106,7 @@ import { FormsModule } from '@angular/forms';
 
         <form (submit)="onRegisterWithPhone($event)" class="space-y-3">
           <div>
-            <input type="tel" [(ngModel)]="phoneRegister" name="phoneRegister" placeholder="e.g. 081234567890" required
+            <input type="tel" [(ngModel)]="phoneRegister" name="phoneRegister" placeholder="e.g. 082132976457" required
                    [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-600 text-white' : 'border-charcoal-200 text-charcoal-800'"
                    class="w-full px-5 py-3 rounded-full border bg-transparent dark:bg-charcoal-900/30 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:border-corn-400 text-sm" />
           </div>
