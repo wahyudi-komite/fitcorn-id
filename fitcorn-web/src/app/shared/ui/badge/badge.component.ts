@@ -22,17 +22,17 @@ export class BadgeComponent {
 
   protected classes = () => {
     const base = 'inline-flex items-center font-bold uppercase tracking-wider rounded-md';
-    const size = this.size === 'sm' ? 'px-2 py-0.5 text-[10px]' : 'px-2.5 py-1 text-xs';
+    const size = this.size() === 'sm' ? 'px-2 py-0.5 text-[10px]' : 'px-2.5 py-1 text-xs';
     const variant = this.variantMap[this.variant()];
     return [base, size, variant].join(' ');
   };
 
   protected dotClasses = () => {
-    return this.variant === 'success' ? 'bg-emerald-500' :
-      this.variant === 'warning' ? 'bg-amber-500' :
-      this.variant === 'danger' ? 'bg-red-500' :
-      this.variant === 'info' ? 'bg-blue-500' :
-      this.variant === 'premium' ? 'bg-corn-500' : 'bg-charcoal-400';
+    return this.variant() === 'success' ? 'bg-emerald-500' :
+      this.variant() === 'warning' ? 'bg-amber-500' :
+      this.variant() === 'danger' ? 'bg-red-500' :
+      this.variant() === 'info' ? 'bg-blue-500' :
+      this.variant() === 'premium' ? 'bg-corn-500' : 'bg-charcoal-400';
   };
 
   private variantMap = {

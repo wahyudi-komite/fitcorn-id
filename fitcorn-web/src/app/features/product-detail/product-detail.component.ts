@@ -5,7 +5,7 @@ import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
 import { CartService } from '../../core/services/cart.service';
 import { AnalyticsService } from '../../core/services/analytics.service';
-import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { ButtonComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-product-detail',

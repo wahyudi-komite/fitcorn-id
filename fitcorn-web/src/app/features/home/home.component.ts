@@ -37,10 +37,7 @@ import { ButtonComponent } from '../../shared/ui/button/button.component';
 
             <!-- CTA Actions -->
             <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-              <a routerLink="/produk" 
-                 class="px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer">
-                Lihat Rasa
-              </a>
+              <app-button routerLink="/produk" size="lg">Lihat Rasa</app-button>
               <a href="#why-fitcorn" 
                  class="px-8 py-4 font-sans font-bold text-xs tracking-widest uppercase rounded-full border border-charcoal-200 dark:border-charcoal-800 text-charcoal-700 dark:text-charcoal-300 hover:bg-charcoal-100 dark:hover:bg-charcoal-850 transition-all duration-300 cursor-pointer">
                 Pelajari Lebih Lanjut
@@ -127,10 +124,7 @@ import { ButtonComponent } from '../../shared/ui/button/button.component';
                 Coba rasa yang sedang digemari di seluruh Indonesia. Dipopcorn dengan sempurna.
               </p>
             </div>
-            <a routerLink="/produk" 
-               class="inline-flex items-center gap-2 px-6 py-3 font-sans font-bold text-xs uppercase tracking-wider rounded-full bg-corn-400 hover:bg-corn-500 text-charcoal-900 transition-colors shadow-md shrink-0">
-              Lihat Katalog
-            </a>
+            <app-button routerLink="/produk" customClass="shrink-0">Lihat Katalog</app-button>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
@@ -158,10 +152,7 @@ import { ButtonComponent } from '../../shared/ui/button/button.component';
                   <span class="text-sm font-display font-extrabold text-corn-500">
                     Rp {{ item.price.toLocaleString('id-ID') }}
                   </span>
-                  <a [routerLink]="['/produk', item.slug]"
-                     class="px-3 py-1.5 text-[10px] font-bold bg-charcoal-100 dark:bg-charcoal-900 text-charcoal-700 dark:text-charcoal-300 rounded-full hover:bg-corn-400 hover:text-charcoal-900 transition-colors">
-                    Pesan
-                  </a>
+                  <app-button [routerLink]="['/produk', item.slug]" size="sm" variant="secondary">Pesan</app-button>
                 </div>
               </div>
             }
@@ -316,9 +307,7 @@ import { ButtonComponent } from '../../shared/ui/button/button.component';
             <input type="email" placeholder="Masukkan alamat email"
                    [ngClass]="themeService.theme() === 'dark' ? 'border-charcoal-850 text-white' : 'border-charcoal-200 text-charcoal-800'"
                    class="flex-grow px-5 py-3 rounded-md border bg-transparent placeholder-charcoal-400 focus:outline-none focus:border-corn-400 text-sm font-medium" />
-            <button class="px-8 py-3.5 font-sans font-bold text-xs uppercase tracking-widest rounded-md bg-corn-400 hover:bg-corn-500 text-charcoal-900 shadow-md hover:shadow-lg transition-all duration-300 shrink-0 cursor-pointer">
-              Berlangganan
-            </button>
+            <app-button customClass="shrink-0">Berlangganan</app-button>
           </div>
         </div>
       </div>

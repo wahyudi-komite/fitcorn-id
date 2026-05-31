@@ -445,7 +445,7 @@ import { TextareaComponent } from '../../shared/ui/textarea/textarea.component';
                 
                 <form (submit)="saveSettings()" class="space-y-6 text-sm font-medium">
                   @for (s of settings(); track s.id) {
-                    <app-input [label]="s.key" type="text" [(ngModel)]="settingsPayload[s.key]" [name]="s.key" required />
+                    <app-input [label]="s.key" type="text" [(ngModel)]="settingsPayload[s.key]" [name]="s.key" [required]="true" />
                   }
 
                   <div class="pt-4 flex justify-end">

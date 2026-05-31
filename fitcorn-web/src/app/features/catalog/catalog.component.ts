@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
-import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { ButtonComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-catalog',

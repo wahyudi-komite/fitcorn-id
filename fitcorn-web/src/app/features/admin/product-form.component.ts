@@ -4,7 +4,7 @@ import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
-import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { ButtonComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-admin-product-form',

@@ -1,5 +1,6 @@
 import { Component, computed, input, output } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
 export type ButtonSize = 'sm' | 'md' | 'lg';
@@ -7,18 +8,30 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, RouterLink],
   template: `
-    <button [disabled]="disabled() || loading()" [type]="type()" [ngClass]="classes()" (click)="handleClick()"
-      class="inline-flex items-center justify-center font-sans font-bold tracking-widest uppercase transition-all duration-200 cursor-pointer select-none disabled:cursor-not-allowed disabled:opacity-50">
-      @if (loading()) {
-        <svg class="animate-spin -ml-1 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-      }
-      <ng-content/>
-    </button>
+    @if (routerLink(); as link) {
+      <a [routerLink]="link" [ngClass]="classes()" class="inline-flex items-center justify-center font-sans font-bold tracking-widest uppercase transition-all duration-200 cursor-pointer select-none no-underline">
+        @if (loading()) {
+          <svg class="animate-spin -ml-1 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        }
+        <ng-content/>
+      </a>
+    } @else {
+      <button [disabled]="disabled() || loading()" [type]="type()" [ngClass]="classes()" (click)="handleClick()"
+        class="inline-flex items-center justify-center font-sans font-bold tracking-widest uppercase transition-all duration-200 cursor-pointer select-none disabled:cursor-not-allowed disabled:opacity-50">
+        @if (loading()) {
+          <svg class="animate-spin -ml-1 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        }
+        <ng-content/>
+      </button>
+    }
   `,
 })
 export class ButtonComponent {
@@ -28,6 +41,8 @@ export class ButtonComponent {
   disabled = input(false);
   fullWidth = input(false);
   type = input<'button' | 'submit' | 'reset'>('button');
+  routerLink = input<string | any[] | null | undefined>(undefined);
+  customClass = input<string>('');
   onClick = output<void>();
 
   protected classes = computed(() => {
@@ -35,7 +50,8 @@ export class ButtonComponent {
     const size = this.sizeMap[this.size()];
     const variant = this.variantMap[this.variant()];
     const width = this.fullWidth() ? 'w-full' : '';
-    return [base, size, variant, width].filter(Boolean).join(' ');
+    const custom = this.customClass();
+    return [base, size, variant, width, custom].filter(Boolean).join(' ');
   });
 
   private sizeMap: Record<ButtonSize, string> = {
@@ -52,7 +68,7 @@ export class ButtonComponent {
     danger: 'bg-red-500 hover:bg-red-600 text-white shadow-lg',
   };
 
-  private handleClick() {
+  protected handleClick() {
     if (!this.disabled() && !this.loading()) {
       this.onClick.emit();
     }

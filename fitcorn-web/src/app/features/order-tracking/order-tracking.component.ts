@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { CheckoutService } from '../../core/services/checkout.service';
-import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { ButtonComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-order-tracking',

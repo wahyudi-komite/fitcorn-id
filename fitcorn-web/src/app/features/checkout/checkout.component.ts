@@ -8,7 +8,7 @@ import { CheckoutService } from '../../core/services/checkout.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { FormsModule } from '@angular/forms';
 import { AnalyticsService } from '../../core/services/analytics.service';
-import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { ButtonComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-checkout',

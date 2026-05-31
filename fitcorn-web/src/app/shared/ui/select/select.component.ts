@@ -18,7 +18,7 @@ import { NgClass } from '@angular/common';
         <select
           [disabled]="disabled()"
           [required]="required()"
-          [ngClass]="selectClasses()"
+          [ngClass]="selectClasses"
           [value]="value()"
           (change)="onChange($event)"
           (blur)="onBlur()"

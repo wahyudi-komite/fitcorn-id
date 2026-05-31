@@ -14,7 +14,7 @@ import { Component, computed, input, output } from '@angular/core';
         @if (page === '...') {
           <span class="px-3 py-2 text-xs text-charcoal-400">...</span>
         } @else {
-          <button (click)="goTo(page as number)"
+          <button (click)="goTo(page)"
             [class.bg-corn-400]="page === currentPage()"
             [class.text-charcoal-900]="page === currentPage()"
             [class.text-charcoal-600]="page !== currentPage()"
@@ -54,9 +54,10 @@ export class PaginationComponent {
     return result;
   });
 
-  protected goTo(page: number) {
-    if (page >= 1 && page <= this.totalPages() && page !== this.currentPage()) {
-      this.onPageChange.emit(page);
+  protected goTo(page: number | string) {
+    const pageNum = typeof page === 'string' ? parseInt(page, 10) : page;
+    if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= this.totalPages() && pageNum !== this.currentPage()) {
+      this.onPageChange.emit(pageNum);
     }
   }
 }

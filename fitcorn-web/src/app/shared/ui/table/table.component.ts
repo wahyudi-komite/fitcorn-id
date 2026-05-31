@@ -33,7 +33,7 @@ export interface TableColumn {
           </tr>
         </thead>
         <tbody class="divide-y divide-charcoal-100 dark:divide-charcoal-800">
-          @for (row of data(); track trackBy ? trackBy(row) : $index) {
+          @for (row of data(); track trackRow(row, $index)) {
             <tr class="hover:bg-charcoal-50 dark:hover:bg-charcoal-900/50 transition-colors">
               @for (col of columns(); track col.key) {
                 <td [class.text-right]="col.align === 'right'" [class.text-center]="col.align === 'center'"
@@ -63,6 +63,11 @@ export class TableComponent {
   trackBy = input<((row: any) => any) | undefined>();
   onSort = output<string>();
   onRowClick = output<any>();
+
+  protected trackRow(row: any, index: number) {
+    const fn = this.trackBy();
+    return fn ? fn(row) : (row.id ?? index);
+  }
 
   protected sort(key: string) {
     this.onSort.emit(key);

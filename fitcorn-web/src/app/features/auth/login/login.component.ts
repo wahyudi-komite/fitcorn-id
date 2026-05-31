@@ -63,21 +63,18 @@ import { InputComponent } from '../../../shared/ui/input/input.component';
         </div>
 
         <div class="grid grid-cols-3 gap-3">
-          <button (click)="authService.socialLogin('google')" type="button"
-                  class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-charcoal-200 dark:border-charcoal-600 bg-transparent dark:bg-charcoal-900/40 hover:bg-charcoal-100 dark:hover:bg-charcoal-800/60 transition-colors cursor-pointer text-sm font-medium text-charcoal-700 dark:text-charcoal-200">
+          <app-button variant="outline" customClass="flex-1" (onClick)="authService.socialLogin('google')">
             <span class="text-lg">G</span>
             <span class="hidden sm:inline text-xs">Google</span>
-          </button>
-          <button (click)="authService.socialLogin('facebook')" type="button"
-                  class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-charcoal-200 dark:border-charcoal-600 bg-transparent dark:bg-charcoal-900/40 hover:bg-charcoal-100 dark:hover:bg-charcoal-800/60 transition-colors cursor-pointer text-sm font-medium text-charcoal-700 dark:text-charcoal-200">
+          </app-button>
+          <app-button variant="outline" customClass="flex-1" (onClick)="authService.socialLogin('facebook')">
             <span class="text-lg">f</span>
             <span class="hidden sm:inline text-xs">Facebook</span>
-          </button>
-          <button (click)="authService.socialLogin('instagram')" type="button"
-                  class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-charcoal-200 dark:border-charcoal-600 bg-transparent dark:bg-charcoal-900/40 hover:bg-charcoal-100 dark:hover:bg-charcoal-800/60 transition-colors cursor-pointer text-sm font-medium text-charcoal-700 dark:text-charcoal-200">
+          </app-button>
+          <app-button variant="outline" customClass="flex-1" (onClick)="authService.socialLogin('instagram')">
             <span class="text-lg">IG</span>
             <span class="hidden sm:inline text-xs">Instagram</span>
-          </button>
+          </app-button>
         </div>
 
         <div class="relative flex items-center gap-3 py-1">

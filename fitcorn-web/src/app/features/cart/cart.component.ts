@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { CartService } from '../../core/services/cart.service';
 import { ModalService } from '../../shared/services/modal.service';
-import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { ButtonComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-cart',

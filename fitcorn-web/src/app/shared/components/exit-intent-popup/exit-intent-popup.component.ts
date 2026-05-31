@@ -2,11 +2,12 @@ import { Component, signal, HostListener, Inject, PLATFORM_ID, inject } from '@a
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../../core/services/theme.service';
+import { ButtonComponent } from '../../../shared/ui/button/button.component';
 
 @Component({
   selector: 'app-exit-intent-popup',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ButtonComponent],
   templateUrl: './exit-intent-popup.component.html',
   styleUrls: []
 })

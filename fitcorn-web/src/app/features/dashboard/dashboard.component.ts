@@ -6,7 +6,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { CheckoutService } from '../../core/services/checkout.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { FormsModule } from '@angular/forms';
-import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { ButtonComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-dashboard',

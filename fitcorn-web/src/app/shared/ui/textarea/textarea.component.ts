@@ -19,7 +19,7 @@ import { NgClass } from '@angular/common';
         [disabled]="disabled()"
         [required]="required()"
         [rows]="rows()"
-        [ngClass]="textareaClasses()"
+        [ngClass]="textareaClasses"
         [value]="value()"
         (input)="onInput($event)"
         (blur)="onBlur()"

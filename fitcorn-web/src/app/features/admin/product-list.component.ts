@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ThemeService } from '../../core/services/theme.service';
 import { ProductsService } from '../../core/services/products.service';
 import { ModalService } from '../../shared/services/modal.service';
-import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { ButtonComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-admin-product-list',
