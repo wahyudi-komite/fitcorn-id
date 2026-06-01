@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -605,6 +605,44 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
             </div>
           }
 
+          <!-- TAB 10: WHATSAPP -->
+          @if (activeTab() === 'whatsapp') {
+            <div class="space-y-6 animate-fade-in max-w-2xl">
+              <div>
+                <h3 class="font-display font-extrabold text-2xl text-charcoal-800 dark:text-white">WhatsApp Gateway</h3>
+                <p class="text-xs text-charcoal-400 font-semibold uppercase tracking-wider mt-0.5">Status koneksi perangkat WhatsApp untuk notifikasi otomatis</p>
+              </div>
+
+              <div appGlassmorphism [appGlassmorphismShadow]="false"
+                   class="p-8 rounded-xl border shadow-premium space-y-6 text-center">
+                @if (waConnected()) {
+                  <div class="flex flex-col items-center gap-4 py-10">
+                    <span class="text-6xl">✅</span>
+                    <h4 class="text-lg font-display font-extrabold text-green-600 dark:text-green-400">Tersambung</h4>
+                    <p class="text-sm text-charcoal-400">Perangkat WhatsApp aktif dan siap mengirim notifikasi.</p>
+                    <app-button variant="danger" (onClick)="disconnectWhatsApp()">Putuskan Koneksi</app-button>
+                  </div>
+                } @else if (waQrCode()) {
+                  <div class="flex flex-col items-center gap-4 py-6">
+                    <span class="text-4xl">📱</span>
+                    <h4 class="text-lg font-display font-extrabold text-charcoal-800 dark:text-white">Scan QR Code</h4>
+                    <p class="text-sm text-charcoal-400">Buka WhatsApp &gt; Titik Tiga &gt; Perangkat Tertaut &gt; Perangkat Baru</p>
+                    <img [src]="'data:image/png;base64,' + waQrCode()" alt="WhatsApp QR"
+                         class="w-64 h-64 rounded-xl border shadow-premium bg-white p-2" />
+                    <p class="text-xs text-charcoal-400 animate-pulse">Menunggu scan... QR diperbarui otomatis</p>
+                    <app-button variant="outline" (onClick)="disconnectWhatsApp()">Batalkan</app-button>
+                  </div>
+                } @else {
+                  <div class="flex flex-col items-center gap-4 py-10">
+                    <span class="text-6xl">⏳</span>
+                    <h4 class="text-lg font-display font-extrabold text-charcoal-800 dark:text-white">Menunggu QR Code...</h4>
+                    <p class="text-sm text-charcoal-400">Memeriksa status koneksi, harap tunggu.</p>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+
           <!-- TAB 9: COUPONS -->
           @if (activeTab() === 'coupons') {
             <div class="space-y-6 animate-fade-in">
@@ -820,7 +858,7 @@ import { GlassmorphismDirective } from '../../shared/directives/glassmorphism.di
   `,
   styles: []
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, OnDestroy {
   themeService = inject(ThemeService);
   authService = inject(AuthService);
   private adminService = inject(AdminService);
@@ -840,6 +878,11 @@ export class AdminComponent implements OnInit {
   banners = signal<any[]>([]);
   instagramPosts = signal<any[]>([]);
   coupons = signal<any[]>([]);
+
+  // WhatsApp State
+  waConnected = signal<boolean>(false);
+  waQrCode = signal<string | null>(null);
+  waPollInterval: any = null;
 
   // Modals States
   resiModalVisible = signal(false);
@@ -914,6 +957,10 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.loadActiveTabDataset();
+  }
+
+  ngOnDestroy() {
+    this.stopQrPolling();
   }
 
   setTab(tab: 'dashboard' | 'products' | 'categories' | 'orders' | 'customers' | 'settings' | 'banners' | 'instagram' | 'coupons' | 'whatsapp') {
@@ -1002,7 +1049,69 @@ export class AdminComponent implements OnInit {
         },
         error: () => this.loading.set(false)
       });
+    } else if (tab === 'whatsapp') {
+      this.loadWhatsAppData();
     }
+  }
+
+  private loadWhatsAppData() {
+    this.adminService.getWhatsAppStatus().subscribe({
+      next: (res) => {
+        this.waConnected.set(res.connected);
+        if (!res.connected) {
+          this.pollQrCode();
+        } else {
+          this.waQrCode.set(null);
+          this.stopQrPolling();
+        }
+        this.loading.set(false);
+      },
+      error: () => {
+        this.waConnected.set(false);
+        this.loading.set(false);
+      }
+    });
+  }
+
+  private pollQrCode() {
+    this.adminService.getWhatsAppQr().subscribe({
+      next: (res) => {
+        if (res.qr) this.waQrCode.set(res.qr);
+      }
+    });
+    this.waPollInterval = setInterval(() => {
+      this.adminService.getWhatsAppQr().subscribe({
+        next: (res) => {
+          if (res.qr) this.waQrCode.set(res.qr);
+          this.adminService.getWhatsAppStatus().subscribe({
+            next: (s) => {
+              if (s.connected) {
+                this.waConnected.set(true);
+                this.waQrCode.set(null);
+                this.stopQrPolling();
+              }
+            }
+          });
+        }
+      });
+    }, 3000);
+  }
+
+  private stopQrPolling() {
+    if (this.waPollInterval) {
+      clearInterval(this.waPollInterval);
+      this.waPollInterval = null;
+    }
+  }
+
+  disconnectWhatsApp() {
+    this.adminService.disconnectWhatsApp().subscribe({
+      next: () => {
+        this.waConnected.set(false);
+        this.waQrCode.set(null);
+        this.pollQrCode();
+      }
+    });
   }
 
   formatIdr(value: any): string {

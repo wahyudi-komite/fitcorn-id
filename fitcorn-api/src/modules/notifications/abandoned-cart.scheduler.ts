@@ -11,7 +11,8 @@ import Redis from 'ioredis';
 @Injectable()
 export class AbandonedCartScheduler {
   private readonly logger = new Logger(AbandonedCartScheduler.name);
-  private redis: Redis;
+  private redis: Redis | null = null;
+  private redisAvailable = false;
 
   constructor(
     @InjectRepository(Cart)
@@ -21,12 +22,78 @@ export class AbandonedCartScheduler {
     private readonly notificationsService: NotificationsService,
     private readonly configService: ConfigService,
   ) {
-    // Setup Redis client for deduplication cache
-    this.redis = new Redis({
+    // Setup Redis client for deduplication cache, but allow the app to keep
+    // running in local dev when Redis is not available.
+    const redis = new Redis({
       host: this.configService.get<string>('REDIS_HOST') || 'localhost',
       port: this.configService.get<number>('REDIS_PORT') || 6379,
       password: this.configService.get<string>('REDIS_PASSWORD') || undefined,
+      lazyConnect: true,
+      enableOfflineQueue: false,
+      maxRetriesPerRequest: 1,
+      retryStrategy: (times) => {
+        if (times > 3) {
+          this.logger.warn('Redis unavailable after 3 retries. Abandoned-cart dedup cache will be skipped.');
+          return null;
+        }
+        return Math.min(times * 500, 2000);
+      },
     });
+
+    redis.on('connect', () => {
+      this.logger.log('Redis connection established for abandoned-cart dedup cache.');
+    });
+
+    redis.on('ready', () => {
+      this.redisAvailable = true;
+    });
+
+    redis.on('close', () => {
+      this.redisAvailable = false;
+    });
+
+    redis.on('end', () => {
+      this.redisAvailable = false;
+    });
+
+    redis.on('error', (error) => {
+      this.redisAvailable = false;
+      this.logger.warn(`Redis unavailable for abandoned-cart dedup cache: ${error.message}`);
+    });
+
+    redis.connect().catch((error: Error) => {
+      this.redisAvailable = false;
+      this.logger.warn(`Skipping Redis dedup cache during startup: ${error.message}`);
+    });
+
+    this.redis = redis;
+  }
+
+  private async getDedupFlag(key: string): Promise<string | null> {
+    if (!this.redis || !this.redisAvailable) {
+      return null;
+    }
+
+    try {
+      return await this.redis.get(key);
+    } catch (error) {
+      this.redisAvailable = false;
+      this.logger.warn(`Failed reading Redis dedup key "${key}": ${(error as Error).message}`);
+      return null;
+    }
+  }
+
+  private async setDedupFlag(key: string): Promise<void> {
+    if (!this.redis || !this.redisAvailable) {
+      return;
+    }
+
+    try {
+      await this.redis.set(key, 'true', 'EX', 86400);
+    } catch (error) {
+      this.redisAvailable = false;
+      this.logger.warn(`Failed writing Redis dedup key "${key}": ${(error as Error).message}`);
+    }
   }
 
   /**
@@ -87,7 +154,7 @@ export class AbandonedCartScheduler {
         // 2. Check in Redis if we've already sent a reminder for this specific cart state
         // Key includes cartId and the timestamp of the last update to ensure if they update their cart again, they can get a new reminder
         const redisKey = `cart:abandoned_reminder_sent:${cartId}:${lastUpdatedTime}`;
-        const alreadySent = await this.redis.get(redisKey);
+        const alreadySent = await this.getDedupFlag(redisKey);
 
         if (alreadySent) {
           this.logger.debug(`Reminder already sent for cart ${cartId} at state ${lastUpdatedTime}. Skipping.`);
@@ -143,7 +210,7 @@ export class AbandonedCartScheduler {
         }
 
         // 4. Mark as sent in Redis with 24 hours (86400 seconds) expiration
-        await this.redis.set(redisKey, 'true', 'EX', 86400);
+        await this.setDedupFlag(redisKey);
         remindersSent++;
       }
 

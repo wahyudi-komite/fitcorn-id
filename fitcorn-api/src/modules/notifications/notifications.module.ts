@@ -18,6 +18,6 @@ import { WhatsAppService } from '../whatsapp/whatsapp.service';
     }),
   ],
   providers: [NotificationsService, NotificationsProcessor, AbandonedCartScheduler, WhatsAppService],
-  exports: [NotificationsService],
+  exports: [NotificationsService, WhatsAppService],
 })
 export class NotificationsModule {}

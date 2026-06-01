@@ -41,7 +41,7 @@ export class AuthService implements OnModuleInit {
 
     // 2. Seed/Upsert Admin Password
     const adminSalt = randomBytes(32).toString('hex');
-    const hashedPassword = await bcrypt.hash('12345679' + adminSalt, 10);
+    const hashedPassword = await bcrypt.hash('12345678' + adminSalt, 10);
 
     const adminUser = await this.userRepository.findOne({
       where: { email: 'admin@fitcorn.com' },
@@ -62,13 +62,13 @@ export class AuthService implements OnModuleInit {
       });
 
       await this.userRepository.save(newAdmin);
-      console.log('Admin created: admin@fitcorn.com / 12345679');
+      console.log('Admin created: admin@fitcorn.com / 12345678');
     } else {
       await this.userRepository.update(adminUser.id, {
         password: hashedPassword,
         salt: adminSalt,
       });
-      console.log('Admin password updated: admin@fitcorn.com / 12345679');
+      console.log('Admin password updated: admin@fitcorn.com / 12345678');
     }
   }
 

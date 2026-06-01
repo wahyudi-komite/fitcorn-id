@@ -32,7 +32,11 @@ export class WhatsAppService implements OnModuleInit {
       this.sock.ev.on('creds.update', saveCreds);
 
       this.sock.ev.on('connection.update', (update) => {
-        const { connection, lastDisconnect } = update;
+        const { connection, lastDisconnect, qr } = update;
+        // QR code may come via connection.update (reliable in Baileys v7)
+        if (qr) {
+          this.handleQr(qr);
+        }
         if (connection === 'close') {
           this.connected = false;
           const shouldReconnect =
@@ -47,18 +51,9 @@ export class WhatsAppService implements OnModuleInit {
         }
       });
 
-      // Capture QR and turn it into a base64 PNG for UI consumption
+      // Also listen on the dedicated 'qr' event as fallback
 // @ts-ignore
-      this.sock.ev.on('qr', async (qr) => {
-        try {
-          const dataUrl = await QRCode.toDataURL(qr);
-          this.qrCodeBase64 = dataUrl.split(',')[1]; // strip prefix
-        } catch (e) {
-          this.logger.error('Failed to generate QR PNG', e);
-        }
-        // Also keep printing to terminal for dev convenience
-        qrcode.generate(qr, { small: true });
-      });
+      this.sock.ev.on('qr', (qr) => this.handleQr(qr));
 
       this.logger.log('✅ Baileys socket initialized (QR may appear in terminal)');
     } catch (err) {
@@ -75,6 +70,20 @@ export class WhatsAppService implements OnModuleInit {
     const content: AnyMessageContent = { text: message };
     await this.sock.sendMessage(jid, content);
     this.logger.log(`WhatsApp message sent to ${to}`);
+  }
+
+  private handleQr(qr: string): void {
+    QRCode.toDataURL(qr)
+      .then((dataUrl) => {
+        this.qrCodeBase64 = dataUrl.split(',')[1];
+      })
+      .catch((e) => this.logger.error('Failed to generate QR PNG', e));
+
+    qrcode.generate(qr, { small: true });
+    console.log('\n--- Scan QR di atas dengan WhatsApp ---');
+    console.log('Raw QR string (copy ke https://goqr.me jika QR tidak muncul):');
+    console.log(qr);
+    console.log('----------------------------------------');
   }
 
   /** Returns true if the socket is currently open */

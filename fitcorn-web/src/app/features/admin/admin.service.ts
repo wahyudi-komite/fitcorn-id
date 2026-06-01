@@ -115,6 +115,10 @@ export class AdminService {
   getWhatsAppStatus(): Observable<{ connected: boolean }> {
     return this.http.get<{ connected: boolean }>(`${this.apiUrl}/admin/whatsapp/status`, { withCredentials: true });
   }
+  /** Get QR code as base64 PNG */
+  getWhatsAppQr(): Observable<{ qr: string | null }> {
+    return this.http.get<{ qr: string | null }>(`${this.apiUrl}/admin/whatsapp/qr`, { withCredentials: true });
+  }
   /** Trigger a manual disconnect of the WhatsApp socket */
   disconnectWhatsApp(): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/admin/whatsapp/disconnect`, {}, { withCredentials: true });
