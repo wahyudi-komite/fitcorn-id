@@ -18,11 +18,13 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
 
           script: |
-            cd /home/ubuntu
-
+          script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            
+            cd /home/ubuntu/fitcorn-id
             git pull origin master
-
-            cd fitcorn-id/fitcorn-api
+            cd fitcorn-api
 
             npm install
 
