@@ -1,207 +1,842 @@
 {
-  "D:\\Apps\\Nest\\2026\\fitcorn\\ecosystem.config.js": 1780159157.7682426,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\eslint.config.mjs": 1780131948.0772147,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\app.controller.spec.ts": 1780131948.081968,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\app.controller.ts": 1780131948.0772147,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\app.module.ts": 1780158401.472106,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\app.service.ts": 1780131948.081968,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\main.ts": 1780206110.4980829,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\common\\decorators\\current-user.decorator.ts": 1780132228.6949296,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\common\\decorators\\public.decorator.ts": 1780132216.4706297,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\common\\decorators\\roles.decorator.ts": 1780156749.130939,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\common\\guards\\jwt-auth.guard.ts": 1780132220.398635,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\common\\guards\\jwt-refresh.guard.ts": 1780132224.8794734,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\common\\guards\\roles.guard.ts": 1780156750.453244,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\config\\app.config.ts": 1780159149.9646943,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\config\\database.config.ts": 1780132380.4802566,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\config\\jwt.config.ts": 1780131946.1424212,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\database\\all-entities.ts": 1780132427.5391705,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\database\\data-source.ts": 1780135200.8769648,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\database\\migrations\\1780135230216-InitialSchema.ts": 1780205619.2154927,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\database\\migrations\\20260531000000-AddSaltColumn.ts": 1780205623.866321,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\admin\\admin-dashboard.controller.ts": 1780158413.3362665,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\admin\\admin.module.ts": 1780158333.8187618,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\admin\\entities\\audit-log.entity.ts": 1780132187.09582,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\auth\\auth.controller.ts": 1780132386.5169587,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\auth\\auth.module.ts": 1780159229.6298566,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\auth\\auth.service.ts": 1780205840.8650038,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\auth\\social-auth.controller.ts": 1780159223.238182,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\auth\\social-auth.service.ts": 1780205610.8239906,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\auth\\dto\\login.dto.ts": 1780132204.213445,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\auth\\dto\\register.dto.ts": 1780132199.5983872,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\auth\\strategies\\facebook.strategy.ts": 1780159576.927332,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\auth\\strategies\\google.strategy.ts": 1780159569.375878,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\auth\\strategies\\instagram.strategy.ts": 1780159336.8894775,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\auth\\strategies\\jwt-refresh.strategy.ts": 1780132402.6524382,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\auth\\strategies\\jwt.strategy.ts": 1780132288.8273294,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\banners\\admin-banners.controller.ts": 1780157936.7537897,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\banners\\banners.controller.ts": 1780157943.5373244,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\banners\\banners.module.ts": 1780157962.1063704,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\banners\\banners.service.ts": 1780133885.8605995,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\banners\\entities\\banner.entity.ts": 1780132168.7141294,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\banners\\entities\\instagram-gallery.entity.ts": 1780132172.868842,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\cart\\cart.controller.ts": 1780132312.6554084,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\cart\\cart.module.ts": 1780132316.3619022,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\cart\\cart.service.ts": 1780132416.1009007,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\cart\\entities\\cart-item.entity.ts": 1780132342.4548984,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\cart\\entities\\cart.entity.ts": 1780132137.007872,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\coupons\\admin-coupons.controller.ts": 1780157924.841897,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\coupons\\coupons.controller.ts": 1780157949.7201667,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\coupons\\coupons.module.ts": 1780157966.5385244,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\coupons\\coupons.service.ts": 1780133896.8626614,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\coupons\\entities\\coupon.entity.ts": 1780132175.6692755,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\notifications\\abandoned-cart.scheduler.ts": 1780158107.457177,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\notifications\\notifications.module.ts": 1780158056.1151507,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\notifications\\notifications.processor.ts": 1780158115.3324153,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\notifications\\notifications.service.ts": 1780158121.046814,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\notifications\\entities\\notification.entity.ts": 1780132182.6233735,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\orders\\admin-orders.controller.ts": 1780157926.7305615,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\orders\\orders.controller.ts": 1780157957.2876656,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\orders\\orders.module.ts": 1780157972.6605725,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\orders\\orders.service.ts": 1780132606.7308216,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\orders\\entities\\order-item.entity.ts": 1780132149.6838272,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\orders\\entities\\order.entity.ts": 1780132146.4615169,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\payments\\payments.controller.ts": 1780132643.4368544,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\payments\\payments.module.ts": 1780132648.1055133,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\payments\\payments.service.ts": 1780132681.2692995,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\payments\\entities\\payment.entity.ts": 1780132693.448793,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\payments\\providers\\midtrans.provider.ts": 1780132634.0962813,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\payments\\providers\\payment-provider.interface.ts": 1780132627.537156,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\products\\admin-categories.controller.ts": 1780158363.5406048,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\products\\admin-products.controller.ts": 1780158355.978406,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\products\\products.controller.ts": 1780132265.330028,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\products\\products.module.ts": 1780158369.7941885,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\products\\products.service.ts": 1780158345.8837464,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\products\\dto\\create-product.dto.ts": 1780156752.8248975,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\products\\dto\\update-product.dto.ts": 1780156758.8499513,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\products\\entities\\inventory.entity.ts": 1780132132.9278948,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\products\\entities\\product-category.entity.ts": 1780132122.0708337,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\products\\entities\\product-image.entity.ts": 1780132125.9685597,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\products\\entities\\product-variant.entity.ts": 1780132129.8072922,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\products\\entities\\product.entity.ts": 1780132079.7375004,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\settings\\admin-settings.controller.ts": 1780158382.6865246,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\settings\\settings.module.ts": 1780158388.073038,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\settings\\entities\\setting.entity.ts": 1780132178.9224699,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\shipping\\shipping.controller.ts": 1780132580.2199163,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\shipping\\shipping.module.ts": 1780132584.5867016,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\shipping\\shipping.service.ts": 1780132574.827481,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\shipping\\entities\\courier.entity.ts": 1780132161.9584908,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\shipping\\entities\\shipping-address.entity.ts": 1780132350.4878974,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\shipping\\entities\\shipping-rate.entity.ts": 1780132164.6580513,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\shipping\\providers\\rajaongkir.provider.ts": 1780132568.1670623,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\shipping\\providers\\shipping-provider.interface.ts": 1780132484.7426226,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\users\\admin-users.controller.ts": 1780158418.4436548,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\users\\users.module.ts": 1780158377.5632322,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\users\\entities\\permission.entity.ts": 1780132067.3046708,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\users\\entities\\role.entity.ts": 1780131993.2408745,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\users\\entities\\user.entity.ts": 1780205578.377622,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\wishlist\\wishlist.controller.ts": 1780133878.9362257,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\wishlist\\wishlist.module.ts": 1780133874.7423651,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\wishlist\\wishlist.service.ts": 1780133877.3733735,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\src\\modules\\wishlist\\entities\\wishlist.entity.ts": 1780132143.0760407,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\test\\app.e2e-spec.ts": 1780131948.0839832,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\main.server.ts": 1780132753.362114,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\main.ts": 1780132753.3600948,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\server.ts": 1780132753.362114,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\app.component.ts": 1780233675.3343742,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\app.config.server.ts": 1780132753.362114,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\app.config.ts": 1780159608.9506536,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\app.routes.server.ts": 1780159258.8173106,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\app.routes.ts": 1780206749.2317233,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\guards\\admin.guard.ts": 1780134026.8207614,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\guards\\auth.guard.ts": 1780206794.718506,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\interceptors\\auth.interceptor.ts": 1780132831.3239365,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\interceptors\\error.interceptor.ts": 1780132836.662334,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\models\\cart.model.ts": 1780134022.606663,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\models\\order.model.ts": 1780134021.7239246,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\models\\product.model.ts": 1780134019.7840233,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\models\\user.model.ts": 1780134018.2300801,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\services\\analytics.service.ts": 1780233404.8448906,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\services\\auth.service.ts": 1780159247.8783002,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\services\\cart.service.ts": 1780132826.3870096,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\services\\checkout.service.ts": 1780133225.066605,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\services\\products.service.ts": 1780156804.3713346,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\services\\seo.service.ts": 1780134030.8282888,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\core\\services\\theme.service.ts": 1780132813.6221929,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\features\\admin\\admin.component.ts": 1780233870.7867136,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\features\\admin\\admin.service.ts": 1780158920.9442432,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\features\\admin\\product-form.component.ts": 1780233061.0762274,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\features\\admin\\product-list.component.ts": 1780233071.3490045,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\features\\auth\\callback\\oauth-callback.component.ts": 1780217136.781816,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\features\\auth\\login\\login.component.ts": 1780233583.7718742,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\features\\auth\\register\\register.component.ts": 1780233621.1221964,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\features\\cart\\cart.component.ts": 1780233189.9321654,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\features\\catalog\\catalog.component.ts": 1780233203.454098,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\features\\checkout\\checkout.component.ts": 1780233099.5810428,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\features\\dashboard\\dashboard.component.ts": 1780233108.5101242,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\features\\home\\home.component.ts": 1780233989.4040656,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\features\\order-tracking\\order-tracking.component.ts": 1780233126.5038066,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\features\\product-detail\\product-detail.component.ts": 1780233166.661306,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\components\\confirm-modal\\confirm-modal.component.ts": 1780216977.7250638,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\components\\exit-intent-popup\\exit-intent-popup.component.ts": 1780216655.730525,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\components\\floating-buttons\\floating-buttons.component.ts": 1780132885.6457243,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\components\\footer\\footer.component.ts": 1780216654.3046987,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\components\\navbar\\navbar.component.ts": 1780216650.583737,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\components\\promo-banner\\promo-banner.component.ts": 1780216699.8830068,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\directives\\glassmorphism.directive.ts": 1780233199.6501813,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\pipes\\currency-idr.pipe.ts": 1780134016.7186067,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\pipes\\truncate.pipe.ts": 1780134017.7253115,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\services\\modal.service.ts": 1780157494.7453468,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\services\\toast.service.ts": 1780233645.2477176,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\index.ts": 1780233639.9610908,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\avatar\\avatar.component.ts": 1780215647.1474223,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\badge\\badge.component.ts": 1780216534.5470352,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\breadcrumb\\breadcrumb.component.ts": 1780215728.2335012,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\button\\button.component.ts": 1780234190.2743902,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\card\\card.component.ts": 1780215631.3886096,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\checkbox\\checkbox.component.ts": 1780215699.1930225,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\chip\\chip.component.ts": 1780215642.4530866,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\dialog\\dialog.component.ts": 1780215693.5462017,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\drawer\\drawer.component.ts": 1780233356.5317926,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\dropdown\\dropdown.component.ts": 1780233350.011647,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\empty-state\\empty-state.component.ts": 1780215682.4268818,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\input\\input.component.ts": 1780215612.7005055,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\loading-state\\loading-state.component.ts": 1780215686.7978778,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\pagination\\pagination.component.ts": 1780216544.4984303,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\price-tag\\price-tag.component.ts": 1780215663.609821,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\product-card\\product-card.component.ts": 1780233337.3016746,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\quantity-selector\\quantity-selector.component.ts": 1780215668.7621818,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\radio\\radio.component.ts": 1780215705.6373658,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\select\\select.component.ts": 1780216548.9034452,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\skeleton\\skeleton.component.ts": 1780215658.9450963,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\switch\\switch.component.ts": 1780215711.1782155,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\table\\table.component.ts": 1780233343.934048,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\tabs\\tabs.component.ts": 1780215723.623841,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\textarea\\textarea.component.ts": 1780216558.4417915,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\toast\\toast.component.ts": 1780215718.2529862,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\toast-container\\toast-container.component.ts": 1780233666.997046,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\ui\\tooltip\\tooltip.component.ts": 1780215732.7495046,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\environments\\environment.prod.ts": 1780134032.0382535,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\environments\\environment.ts": 1780134031.4721634,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\AGENTS.md": 1780205122.5586674,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\DeploymentGuide.md": 1780159153.1330032,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\implementation_plan.md": 1780158745.2449472,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\README.md": 1780159443.0454981,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\task.md": 1780159164.7863266,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\walkthrough.md": 1780158559.8466208,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-api\\README.md": 1780131948.0772147,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\README.md": 1780132753.343767,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\public\\robots.txt": 1780159126.5638292,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\index.html": 1780206497.3155181,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\app.component.html": 1780233679.7864301,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\design-system.md": 1780215772.1340077,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\components\\exit-intent-popup\\exit-intent-popup.component.html": 1780233170.8697717,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\components\\floating-buttons\\floating-buttons.component.html": 1780206581.1366014,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\components\\footer\\footer.component.html": 1780216693.996335,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\src\\app\\shared\\components\\navbar\\navbar.component.html": 1780216690.2904334,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\public\\logo.png": 1775494639.724659,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\public\\icons\\icon-128x128.png": 1780206412.6771235,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\public\\icons\\icon-144x144.png": 1780206412.6849842,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\public\\icons\\icon-152x152.png": 1780206412.7014582,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\public\\icons\\icon-192x192.png": 1780206412.7135339,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\public\\icons\\icon-32x32.png": 1780206502.1979454,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\public\\icons\\icon-384x384.png": 1780206412.7319443,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\public\\icons\\icon-512x512.png": 1780206412.7512312,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\public\\icons\\icon-72x72.png": 1780206412.6534421,
-  "D:\\Apps\\Nest\\2026\\fitcorn\\fitcorn-web\\public\\icons\\icon-96x96.png": 1780206412.6534421
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\ecosystem.config.js": {
+    "mtime": 1780276061.3945158,
+    "hash": "1bb0c196e773abdd03b03557a1e120b8"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\eslint.config.mjs": {
+    "mtime": 1780276061.3945158,
+    "hash": "069d66f3fd2af0b03d917cf51a1f4c42"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\app.controller.spec.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "e91fed2ee35431d60d1adbf1d5739b83"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\app.controller.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "ae15d1c5a85e6ebfad68b7193766dfb5"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\app.module.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "e0d5090d414478fd142d245a94fcece5"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\app.service.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "08e985e831bca61f6be89c5c2ecef2fa"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\main.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "a0f44c5c2d2e4f926c791e0893416e00"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\common\\decorators\\current-user.decorator.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "c01d10705715c95942ecf5c66a3c6361"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\common\\decorators\\public.decorator.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "82c29e3a7a0a8de27073960842a01c53"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\common\\decorators\\roles.decorator.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "6ecfd73c2d7490b4a9b3192a8d31d310"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\common\\guards\\jwt-auth.guard.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "0fbfbd5d311dc44c9eebeb36ab526bb5"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\common\\guards\\jwt-refresh.guard.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "fb3843261342d9c51baa4e921cbd9809"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\common\\guards\\roles.guard.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "a0ae3821846551701613aad2cc676067"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\config\\app.config.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "fdc2828408cd6b0ee24121c7551c8855"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\config\\database.config.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "aff3ffeac6648bfaf0cd851a5d1438c3"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\config\\jwt.config.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "03c4ec6cc6bff6ff2e3f20f30e69004b"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\database\\all-entities.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "752feaf73f49ab64fa2974d2431207df"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\database\\data-source.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "0f7ce0dfd850f3507fbbea00c70df52d"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\database\\migrations\\1780135230216-InitialSchema.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "b6c0f2fa4daf8718ca0757df8cc15c3d"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\database\\migrations\\20260531000000-AddSaltColumn.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "883d4af688d6771c6f34c1d6f39b1fde"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\admin\\admin-dashboard.controller.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "889f81a880c53f56decf3588f8830b56"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\admin\\admin.module.ts": {
+    "mtime": 1780278026.7343593,
+    "hash": "6bae9dd4eabdee5e91004802ddbe5041"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\admin\\entities\\audit-log.entity.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "ce909fd9377cb3e4041280bee2c10121"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\auth\\auth.controller.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "7ab5ca1888c2033f9b37fb25e9778017"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\auth\\auth.module.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "ca43bc5a65a5b665449a36bfe10afd84"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\auth\\auth.service.ts": {
+    "mtime": 1780277914.600656,
+    "hash": "17a2bb4db4efa0888b796611549e49fe"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\auth\\social-auth.controller.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "974f7d58e67ef21b48c8f04e5f530a4f"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\auth\\social-auth.service.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "5e91970d5a4b5b2079c7722f7844da43"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\auth\\dto\\login.dto.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "49f235378a027081ad484e5422ff6547"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\auth\\dto\\register.dto.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "a2798b39e82b63f7407ba45d2c1391ec"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\auth\\strategies\\facebook.strategy.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "e14ce71a590c308686d817725de90a3b"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\auth\\strategies\\google.strategy.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "45a1ed1054687eedb658efafb9864e93"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\auth\\strategies\\instagram.strategy.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "6930ad17438d3df26f90557083cfba63"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\auth\\strategies\\jwt-refresh.strategy.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "fbcab194d047b68e2dbc4d6d72f75de9"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\auth\\strategies\\jwt.strategy.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "d1e2d1cb65092296cc69f5681668d883"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\banners\\admin-banners.controller.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "849e2e3e9b57f939183380fa3c46028d"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\banners\\banners.controller.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "fc8cf47e2d051f27a603e49585852e8c"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\banners\\banners.module.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "4c4b4bdfe791d9512471f77ee09d2fed"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\banners\\banners.service.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "5c84ada076b91afc52517c720aa26f2f"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\banners\\entities\\banner.entity.ts": {
+    "mtime": 1780276061.4113972,
+    "hash": "a2d541e7a596a866de537ccc76d1f32d"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\banners\\entities\\instagram-gallery.entity.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "e54d676828824ca520adedc079a8c847"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\cart\\cart.controller.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "eebb3484e4c98a5f50a7f38d6bfa872a"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\cart\\cart.module.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "b76a56eaa23296d576ab0971dee59070"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\cart\\cart.service.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "3157c7551412612e23b93828584b11b8"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\cart\\entities\\cart-item.entity.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "5f221e82e7e376d8775182ce495a930d"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\cart\\entities\\cart.entity.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "c77598dbf4c847462147f8d18718397d"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\coupons\\admin-coupons.controller.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "d8cb16de4dcb3589c670f98268c94044"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\coupons\\coupons.controller.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "ca1b4034c3d80c4e67f4d86e7502a561"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\coupons\\coupons.module.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "d3c80b348a1b88ab6eb8b342e8b0a330"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\coupons\\coupons.service.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "e11819b25e674d5b78a85289997c89df"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\coupons\\entities\\coupon.entity.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "2019c8085ee63b2f6b2383def9af6c05"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\notifications\\abandoned-cart.scheduler.ts": {
+    "mtime": 1780277276.958001,
+    "hash": "67c961274e2aae3d49c84a01f7a6a3aa"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\notifications\\notifications.module.ts": {
+    "mtime": 1780278025.0183313,
+    "hash": "d78a5eabc581b1974a945cad37ecca4f"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\notifications\\notifications.processor.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "3ce9c8aee9f4d63edefbbe9fd21c1922"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\notifications\\notifications.service.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "f064c57b419bd77f7a76053dbc617376"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\notifications\\entities\\notification.entity.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "285f6b822b7998474b2f993b9f1e62e7"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\orders\\admin-orders.controller.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "4153f11fbe7c73cfb8f62b001e9391b4"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\orders\\orders.controller.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "86bf0cb6e10a92c797b77fe54263ed88"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\orders\\orders.module.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "7c589214e5872efb074011de85a82bdd"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\orders\\orders.service.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "86ee95d77eac3765864e2d27dd2d7852"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\orders\\entities\\order-item.entity.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "9b81a6d1e932e0edfab4844d66aa0682"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\orders\\entities\\order.entity.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "510bc482c95da197316f42176253b146"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\payments\\payments.controller.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "b2c9bb3626364fad78ddfd489f26caf5"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\payments\\payments.module.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "271c2bfed4e03438d4a0fb88de742d2e"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\payments\\payments.service.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "5294fa53d8b57f672fb606707a479837"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\payments\\entities\\payment.entity.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "ee022517c01888bb63570db1cd220198"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\payments\\providers\\midtrans.provider.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "7a5ac7973cf05769bd29bc139529924e"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\payments\\providers\\payment-provider.interface.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "3801115938305eba1d3bf9837b8878e9"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\products\\admin-categories.controller.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "72a4ba7c252e3821a94d4c058244e05e"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\products\\admin-products.controller.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "4149982cffa3b0f733ac9e07fef43830"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\products\\products.controller.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "f56a379e06d23d0854290ca7e891eaf7"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\products\\products.module.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "0d1212d4c6d942c032052f205e4779ca"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\products\\products.service.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "aef91f878632dafdf42dfc0225c6fc91"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\products\\dto\\create-product.dto.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "c2cf2875e825c62933f6b15b3ba291a5"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\products\\dto\\update-product.dto.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "b26dc34a50d9b62848dbbc314a405119"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\products\\entities\\inventory.entity.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "875735d765817995618f1eae09f8b7ea"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\products\\entities\\product-category.entity.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "c87c922eaa769ec4e9c6f3a5f7c7769b"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\products\\entities\\product-image.entity.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "b53b4135bd5670b3ca6eeed5cd7e453c"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\products\\entities\\product-variant.entity.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "b7cee31c0b404f9c00a4a735875ca3e0"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\products\\entities\\product.entity.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "6deaeb54d83a463402f6ed9c267aa8ea"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\settings\\admin-settings.controller.ts": {
+    "mtime": 1780276061.4262261,
+    "hash": "1e1a0cecb7a6c6d08f7e4da9cb0671c7"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\settings\\settings.module.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "93fe633f54b514c7453e34e6237f8655"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\settings\\entities\\setting.entity.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "870fbe88440d45950e07102b140c394e"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\shipping\\shipping.controller.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "8048dd22c3976834418eb3ff6762740b"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\shipping\\shipping.module.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "4736ff70abe4b19f1b0785cdde1a7725"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\shipping\\shipping.service.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "06a571d8c349a70371b869670c3f6bfe"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\shipping\\entities\\courier.entity.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "778b3fc4b53233fcb5e14d138e7bbe37"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\shipping\\entities\\shipping-address.entity.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "90503ccae28f98166743a5439b2a8977"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\shipping\\entities\\shipping-rate.entity.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "91564c7812243c2e47185adca55f37cf"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\shipping\\providers\\rajaongkir.provider.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "6518aec7d50974cb0ed9ffd4bc616239"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\shipping\\providers\\shipping-provider.interface.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "eaa392bffea17918187f0767cfb06f91"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\users\\admin-users.controller.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "6e23fbe004f98f4cf1be83f459a6c119"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\users\\users.module.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "55939733a5e086fef02051d3b0f9f832"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\users\\entities\\permission.entity.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "09818cf8a0e788042b11444f111cbfbd"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\users\\entities\\role.entity.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "979ccbf7b05fafe4454594d6f2c9eb72"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\users\\entities\\user.entity.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "f62a06b5333676268522b342789fdea0"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\whatsapp\\whatsapp.controller.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "006570749a90d524a5dff87da38d308a"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\whatsapp\\whatsapp.service.ts": {
+    "mtime": 1780277658.3850186,
+    "hash": "32f8a51a4ed2a5331194f179a6e2a96f"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\wishlist\\wishlist.controller.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "10a9478b708df381b6c8f41d47ae4a58"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\wishlist\\wishlist.module.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "b6c87e5c2151e01f06a428f84b768010"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\wishlist\\wishlist.service.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "b79523b0b0403d93d970788a9dd13aa2"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\src\\modules\\wishlist\\entities\\wishlist.entity.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "6b07f43a9f1c9f0a3ce29f1dfa64b762"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\test\\app.e2e-spec.ts": {
+    "mtime": 1780276061.4422598,
+    "hash": "668094bf268e0395763312620e5638e8"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\main.server.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "746214080b58a9ce5b8f1e470862e82d"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\main.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "e547fe434a68df2993beae1bc62cd391"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\server.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "fa889eb66db5f87778d773923c760b95"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\app.component.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "ef76c7b050783efac1b2d3436b19bf06"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\app.config.server.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "f7b5c12b0dacd6692ee6042eb44f788b"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\app.config.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "07974cd2c0b1ad767a1dc4759d516e0c"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\app.routes.server.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "5932c6e906bd09c64fca13440a2a3fda"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\app.routes.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "31bafb9e5097b82afd4f3aa6d11f4756"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\guards\\admin.guard.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "1ed0433032d6178bcb2fdfcf789e8199"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\guards\\auth.guard.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "8837cb85b18ea018137130d5e0320331"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\interceptors\\auth.interceptor.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "939100557c725a4e86eb10b84bb2ee0c"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\interceptors\\error.interceptor.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "3709209234994f336b778586fdff8f6e"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\models\\cart.model.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "8f3f188b4123057dc4270839c57ed34f"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\models\\order.model.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "682b53378d8e0b4cfd23db00b9df804f"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\models\\product.model.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "1af4361b2a6a25964eacfafbb35cdb19"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\models\\user.model.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "05f8d3798f12d85d6c4dcc298f4a0184"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\services\\analytics.service.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "83eb3d787e55a2b0aabaa72ed7446bcc"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\services\\auth.service.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "392c79127ed216b9277776147178b0ae"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\services\\cart.service.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "8d46be31b303a32a0116e7c11fb23723"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\services\\checkout.service.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "b395a6c8f62e23de01406751fd6d7373"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\services\\products.service.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "289c59b5e336edd75f2cfbc9a7d9d729"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\services\\seo.service.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "7574e99ecb75f95791d2dad90bb343fe"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\core\\services\\theme.service.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "1914178f105b64f3ec8404b99981d4a9"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\admin\\admin.component.ts": {
+    "mtime": 1780278095.7180514,
+    "hash": "1624a598510c2da697b7518d87f51ff6"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\admin\\admin.service.ts": {
+    "mtime": 1780278036.2795818,
+    "hash": "4d3f1fac724f4c143b0d64551440768c"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\admin\\product-form.component.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "dccd31cc8d589266b42a3e931cd4a88c"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\admin\\product-list.component.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "2c3ee6ecdc1ca5bdcfb5e627f122435f"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\auth\\callback\\oauth-callback.component.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "8a9e3465e382bba24a416d79dabc5280"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\auth\\login\\login.component.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "c551e7ba8c196686bd8d7c48d9022526"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\auth\\register\\register.component.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "66276ea8bb3fae5532d3c72deb46684a"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\cart\\cart.component.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "e130b9d986a8e8d5af2909171d73a03e"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\catalog\\catalog.component.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "365e9e6079ac7fc049fe6c4a193c204a"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\checkout\\checkout.component.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "d092df3e71311419c217a8b0fbbce330"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\dashboard\\dashboard.component.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "7ef1d8d82ce0dcba12bc4b47c42dd22d"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\design-system\\design-system-showcase.component.ts": {
+    "mtime": 1780276061.4741616,
+    "hash": "26f59071bc3b5f641a031d93c59bbeef"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\home\\home.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "ed1aec8b3585276a263ced95f553854e"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\order-tracking\\order-tracking.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "542673e371677d08396e7c1342d12078"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\features\\product-detail\\product-detail.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "005809da5e842e9109204b9a2ccfe0fe"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\components\\confirm-modal\\confirm-modal.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "eaf953b4b3166af0b798a5187f7a372f"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\components\\exit-intent-popup\\exit-intent-popup.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "2aef636157b388bb1020a7c99db50db7"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\components\\floating-buttons\\floating-buttons.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "c9e1b66612286e7f524e82cf640e95cc"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\components\\footer\\footer.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "edcec5b89cf2bf4260b2a2fe21edb31a"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\components\\navbar\\navbar.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "6e3f52bff739dcb0ed2348a64c25667d"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\components\\promo-banner\\promo-banner.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "6abf8363770c4b03cfbff9edbe59bee8"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\directives\\glassmorphism.directive.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "e26028f03b3f25d8b0d59e8bc44dc7cf"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\pipes\\currency-idr.pipe.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "db9f0bb653bb4e3727fa5d10f13eeaf5"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\pipes\\truncate.pipe.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "4f8633be357f0592acfcf391efa3fcc8"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\services\\modal.service.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "3f834903b35c8f6fa7e8af74d1c102e4"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\services\\toast.service.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "c9812a1de955b8545abf3d3c3b2a3254"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\index.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "5d33514818ba0d96f023045a2c78b4d1"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\avatar\\avatar.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "54b6524e691735269f4f91357de50be9"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\badge\\badge.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "8d7eb0c43892976d79c652fb52655310"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\breadcrumb\\breadcrumb.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "f4f6af039f50ad6c5fa61c9d23fe9128"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\button\\button.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "9224d17c7b95384e872b936cd3c863f0"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\card\\card.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "24464b4b9fe94eaec2ad4e813e267a20"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\checkbox\\checkbox.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "ef7d01d13bc2c9533a5285c547bcedc9"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\chip\\chip.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "1642d3fea0ad5694de4384bb2a8c39a1"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\dialog\\dialog.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "46c7b050a24e8e4702a67eb90c51c19d"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\drawer\\drawer.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "8b202ba41b74092026f2dc82314a7205"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\dropdown\\dropdown.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "b47ad9f210907de101bfd4fc521c942a"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\empty-state\\empty-state.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "ad8ade9bedc27c1158fd51766c68ff33"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\input\\input.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "fdfda036762856338eb5a1303c71d1e2"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\loading-state\\loading-state.component.ts": {
+    "mtime": 1780276061.4902828,
+    "hash": "5993e58be2f85d977956b2aaa1dcf456"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\pagination\\pagination.component.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "56bda61db6f39904abfbaa43d6ae317b"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\price-tag\\price-tag.component.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "252ccd8fda747264235d59909cbef7a2"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\product-card\\product-card.component.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "9af25230d4e26b1abfc41acd98e06cf8"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\quantity-selector\\quantity-selector.component.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "373ea44e678766687898db2ad0a6abca"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\radio\\radio.component.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "26afcf9e2770e0af04b918078659aaaf"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\select\\select.component.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "42cb2e603862123a5a9b23218618dc41"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\skeleton\\skeleton.component.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "55aaa6da8987576419e8ee4d4b2cf128"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\switch\\switch.component.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "10bebc972d246683ddd9dfb92a56d35f"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\table\\table.component.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "d17c30cc4529831d2dea353a69ee9283"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\tabs\\tabs.component.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "11545e275c8e08c60166274f429f2dbd"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\textarea\\textarea.component.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "3911474d1a2b926230e287f9ac4f529a"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\toast\\toast.component.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "70edaecd916faf4a31bf9fa361d545dd"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\toast-container\\toast-container.component.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "5ef29eb169c1e04020dcf518b6b07932"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\ui\\tooltip\\tooltip.component.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "208366cffd3cf65961a3e275099159dd"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\environments\\environment.prod.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "63c297f3ec0f2e013715fa85150ab8c7"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\environments\\environment.ts": {
+    "mtime": 1780276061.5060108,
+    "hash": "67af403964abc7a3b9b853c46109fc12"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\tools\\graphify-pre-commit.ps1": {
+    "mtime": 1780276844.185913,
+    "hash": "8ea0bac62bbcd80f78a1f96b9e243419"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\tools\\graphify-run.ps1": {
+    "mtime": 1780276061.5220144,
+    "hash": "efaf4b75227affcdb72441ac18a3431e"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\tools\\graphify_run.py": {
+    "mtime": 1780276061.5220144,
+    "hash": "a3494042c0272d8f279338c306444eba"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\AGENTS.md": {
+    "mtime": 1780276061.3945158,
+    "hash": "4b52a80f5bb54c2080e95be28a71e2e3"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\DeploymentGuide.md": {
+    "mtime": 1780276061.3945158,
+    "hash": "715e8e57f42769e124c63328d20f8e39"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\README.md": {
+    "mtime": 1780276061.3945158,
+    "hash": "3ebced7a13f8c0029b9eefea239365f4"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\walkthrough.md": {
+    "mtime": 1780276061.5220144,
+    "hash": "731129f21104b6238678e45c047d4744"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-api\\README.md": {
+    "mtime": 1780276061.3945158,
+    "hash": "ad12c0560e2e514d356da443998e8208"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\README.md": {
+    "mtime": 1780276061.4422598,
+    "hash": "69883f859a43d19c225bc196cd8adbf5"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\public\\robots.txt": {
+    "mtime": 1780276061.4715543,
+    "hash": "fcf177bbc991c13531d076e57d64772c"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\index.html": {
+    "mtime": 1780276061.5060108,
+    "hash": "ec51a6369774827ced32301f8fd2f473"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\app.component.html": {
+    "mtime": 1780276061.4715543,
+    "hash": "f4d626579bcefeeb6164971df604796b"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\design-system.md": {
+    "mtime": 1780276061.4902828,
+    "hash": "e9b8f8990bb355d98bcd76d27d8358ee"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\components\\exit-intent-popup\\exit-intent-popup.component.html": {
+    "mtime": 1780276061.4902828,
+    "hash": "c0cb993aba3c0953eebc705e51f1eb8d"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\components\\floating-buttons\\floating-buttons.component.html": {
+    "mtime": 1780276061.4902828,
+    "hash": "9214245d37d028958f5a88372b31c34e"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\components\\footer\\footer.component.html": {
+    "mtime": 1780276061.4902828,
+    "hash": "ba8d3d3f821fa13ab7b9df3fca3b7ed0"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\src\\app\\shared\\components\\navbar\\navbar.component.html": {
+    "mtime": 1780276061.4902828,
+    "hash": "dae340c04015d6bda054347201263695"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\public\\logo.png": {
+    "mtime": 1780276061.4675157,
+    "hash": "bbb75f0bdcc1bf15c56bc04b49f96efe"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\public\\premium_honey_butter.png": {
+    "mtime": 1780276061.4715543,
+    "hash": "831e08f1d0b09a3ae34fe5d610fbb6ea"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\public\\icons\\icon-128x128.png": {
+    "mtime": 1780276061.4553964,
+    "hash": "93c04489a27728571bef020ec493ccff"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\public\\icons\\icon-144x144.png": {
+    "mtime": 1780276061.4553964,
+    "hash": "cbc74261b59d931dc0280da63fdeb51f"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\public\\icons\\icon-152x152.png": {
+    "mtime": 1780276061.4582806,
+    "hash": "81d8065ee26cd1243dd89ea62de3f8f3"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\public\\icons\\icon-192x192.png": {
+    "mtime": 1780276061.4582806,
+    "hash": "823efe8431d00c73c6a2ead7fdfe69ad"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\public\\icons\\icon-32x32.png": {
+    "mtime": 1780276061.4582806,
+    "hash": "b0441448906d252ada6f06db243c796f"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\public\\icons\\icon-384x384.png": {
+    "mtime": 1780276061.4582806,
+    "hash": "dc21d84cb3cf21ee423cb31f215c3ac3"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\public\\icons\\icon-512x512.png": {
+    "mtime": 1780276061.4582806,
+    "hash": "46bda9320dc5823abd4b07acd9ef51ab"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\public\\icons\\icon-72x72.png": {
+    "mtime": 1780276061.4582806,
+    "hash": "4af73239f3302ce8e21f7191b80674d1"
+  },
+  "E:\\Nest\\2026\\05. Mei 2026\\fitcorn-id\\fitcorn-web\\public\\icons\\icon-96x96.png": {
+    "mtime": 1780276061.4582806,
+    "hash": "abf8426e35d9dc643ce53186705e29c1"
+  }
 }
