@@ -94,10 +94,22 @@
       "design_system_design_system_showcase_component_colorswatch",
       "design_system_design_system_showcase_component_designsystemshowcasecomponent",
       "design_system_design_system_showcase_component_designsystemshowcasecomponent_emailerror",
+      "dialog_dialog_component",
+      "dialog_dialog_component_dialogcomponent",
+      "dialog_dialog_component_dialogcomponent_handlebackdropclick",
+      "dialog_dialog_component_dialogcomponent_handleclose",
+      "dialog_dialog_component_dialogcomponent_handleescape",
+      "dialog_dialog_component_dialogcomponent_panelclasses",
+      "dialog_dialog_component_dialogsize",
       "drawer_drawer_component",
       "drawer_drawer_component_drawercomponent",
       "drawer_drawer_component_drawercomponent_close",
       "drawer_drawer_component_drawerside",
+      "dropdown_dropdown_component",
+      "dropdown_dropdown_component_dropdowncomponent",
+      "dropdown_dropdown_component_dropdowncomponent_close",
+      "dropdown_dropdown_component_dropdowncomponent_handleclickoutside",
+      "dropdown_dropdown_component_dropdowncomponent_toggleopen",
       "empty_state_empty_state_component",
       "loading_state_loading_state_component",
       "pagination_pagination_component",
@@ -502,75 +514,6 @@
       "fitcorn_web_package_version"
     ],
     "11": [
-      "admin_admin_component",
-      "callback_oauth_callback_component",
-      "callback_oauth_callback_component_oauthcallbackcomponent",
-      "callback_oauth_callback_component_oauthcallbackcomponent_ngoninit",
-      "checkout_checkout_component",
-      "dashboard_dashboard_component",
-      "guards_auth_guard",
-      "input_input_component",
-      "input_input_component_inputcomponent",
-      "input_input_component_inputcomponent_focus",
-      "input_input_component_inputcomponent_onblur",
-      "input_input_component_inputcomponent_registeronchange",
-      "input_input_component_inputcomponent_registerontouched",
-      "input_input_component_inputcomponent_setdisabledstate",
-      "input_input_component_inputcomponent_writevalue",
-      "loading_state_loading_state_component_loadingstatecomponent",
-      "login_login_component",
-      "login_login_component_socialprovider",
-      "login_login_component_trustpoint",
-      "register_register_component",
-      "services_auth_service",
-      "services_auth_service_authservice",
-      "services_auth_service_authservice_constructor",
-      "services_auth_service_authservice_fetchprofile",
-      "services_auth_service_authservice_refreshsession",
-      "services_auth_service_authservice_restoresession",
-      "services_auth_service_authservice_setsession",
-      "services_auth_service_authservice_sociallogin",
-      "services_cart_service",
-      "services_checkout_service",
-      "services_modal_service",
-      "services_modal_service_confirmmodalconfig",
-      "services_modal_service_modalservice",
-      "services_modal_service_modalservice_close"
-    ],
-    "12": [
-      "checkbox_checkbox_component",
-      "checkbox_checkbox_component_checkboxcomponent",
-      "checkbox_checkbox_component_checkboxcomponent_ontoggle",
-      "checkbox_checkbox_component_checkboxcomponent_registeronchange",
-      "checkbox_checkbox_component_checkboxcomponent_registerontouched",
-      "checkbox_checkbox_component_checkboxcomponent_setdisabledstate",
-      "checkbox_checkbox_component_checkboxcomponent_writevalue",
-      "input_input_component_inputcomponent_oninput",
-      "radio_radio_component",
-      "radio_radio_component_radiocomponent",
-      "radio_radio_component_radiocomponent_onselect",
-      "radio_radio_component_radiocomponent_registeronchange",
-      "radio_radio_component_radiocomponent_registerontouched",
-      "radio_radio_component_radiocomponent_setdisabledstate",
-      "radio_radio_component_radiocomponent_writevalue",
-      "select_select_component",
-      "select_select_component_selectcomponent",
-      "select_select_component_selectcomponent_onblur",
-      "select_select_component_selectcomponent_onchange",
-      "select_select_component_selectcomponent_registeronchange",
-      "select_select_component_selectcomponent_registerontouched",
-      "select_select_component_selectcomponent_setdisabledstate",
-      "select_select_component_selectcomponent_writevalue",
-      "switch_switch_component",
-      "switch_switch_component_switchcomponent",
-      "switch_switch_component_switchcomponent_ontoggle",
-      "switch_switch_component_switchcomponent_registeronchange",
-      "switch_switch_component_switchcomponent_registerontouched",
-      "switch_switch_component_switchcomponent_setdisabledstate",
-      "switch_switch_component_switchcomponent_writevalue",
-      "textarea_textarea_component_textareacomponent_oninput"
-    ],
-    "13": [
       "admin_product_form_component",
       "admin_product_list_component",
       "cart_cart_component",
@@ -602,7 +545,7 @@
       "services_theme_service_themeservice_toggletheme",
       "skeleton_skeleton_component_skeletoncomponent"
     ],
-    "14": [
+    "12": [
       "fitcorn_web_angular_architect_build",
       "fitcorn_web_angular_architect_serve",
       "fitcorn_web_angular_build_builder",
@@ -634,7 +577,7 @@
       "fitcorn_web_angular_serve_defaultconfiguration",
       "fitcorn_web_angular_ssr_entry"
     ],
-    "15": [
+    "13": [
       "admin_admin_dashboard_controller_admindashboardcontroller",
       "admin_admin_dashboard_controller_admindashboardcontroller_constructor",
       "admin_admin_module",
@@ -664,7 +607,7 @@
       "test_app_e2e_spec",
       "users_users_module_usersmodule"
     ],
-    "16": [
+    "14": [
       "fitcorn_api_package_devdependencies",
       "fitcorn_api_package_devdependencies_eslint",
       "fitcorn_api_package_devdependencies_eslint_config_prettier",
@@ -692,7 +635,7 @@
       "fitcorn_api_package_devdependencies_typescript",
       "fitcorn_api_package_devdependencies_typescript_eslint"
     ],
-    "17": [
+    "15": [
       "auth_auth_controller",
       "auth_auth_controller_authcontroller",
       "auth_auth_controller_authcontroller_constructor",
@@ -719,7 +662,7 @@
       "guards_jwt_refresh_guard",
       "guards_jwt_refresh_guard_jwtrefreshguard"
     ],
-    "18": [
+    "16": [
       "auth_auth_module",
       "auth_social_auth_service",
       "auth_social_auth_service_oauthprofile",
@@ -746,7 +689,7 @@
       "strategies_jwt_strategy_jwtstrategy_validate",
       "users_users_module"
     ],
-    "19": [
+    "17": [
       "auth_social_auth_controller",
       "auth_social_auth_controller_socialauthcontroller",
       "auth_social_auth_controller_socialauthcontroller_constructor",
@@ -773,7 +716,7 @@
       "strategies_instagram_strategy_instagramstrategy_getauthorizeurl",
       "strategies_instagram_strategy_instagramstrategy_validate"
     ],
-    "20": [
+    "18": [
       "cart_cart_module",
       "cart_cart_module_cartmodule",
       "cart_cart_service",
@@ -798,6 +741,57 @@
       "products_products_module",
       "products_products_service",
       "products_products_service_productsservice_constructor"
+    ],
+    "19": [
+      "checkbox_checkbox_component",
+      "checkbox_checkbox_component_checkboxcomponent",
+      "checkbox_checkbox_component_checkboxcomponent_ontoggle",
+      "checkbox_checkbox_component_checkboxcomponent_registeronchange",
+      "checkbox_checkbox_component_checkboxcomponent_registerontouched",
+      "checkbox_checkbox_component_checkboxcomponent_setdisabledstate",
+      "checkbox_checkbox_component_checkboxcomponent_writevalue",
+      "input_input_component_inputcomponent_oninput",
+      "radio_radio_component",
+      "radio_radio_component_radiocomponent",
+      "radio_radio_component_radiocomponent_onselect",
+      "radio_radio_component_radiocomponent_registeronchange",
+      "radio_radio_component_radiocomponent_registerontouched",
+      "radio_radio_component_radiocomponent_setdisabledstate",
+      "radio_radio_component_radiocomponent_writevalue",
+      "select_select_component_selectcomponent_onchange",
+      "switch_switch_component",
+      "switch_switch_component_switchcomponent",
+      "switch_switch_component_switchcomponent_ontoggle",
+      "switch_switch_component_switchcomponent_registeronchange",
+      "switch_switch_component_switchcomponent_registerontouched",
+      "switch_switch_component_switchcomponent_setdisabledstate",
+      "switch_switch_component_switchcomponent_writevalue",
+      "textarea_textarea_component_textareacomponent_oninput"
+    ],
+    "20": [
+      "app_app_component",
+      "button_button_component",
+      "button_button_component_buttoncomponent",
+      "button_button_component_buttoncomponent_handleclick",
+      "button_button_component_buttonsize",
+      "button_button_component_buttonvariant",
+      "confirm_modal_confirm_modal_component",
+      "confirm_modal_confirm_modal_component_confirmmodalcomponent",
+      "exit_intent_popup_exit_intent_popup_component",
+      "exit_intent_popup_exit_intent_popup_component_exitintentpopupcomponent",
+      "exit_intent_popup_exit_intent_popup_component_exitintentpopupcomponent_closepopup",
+      "exit_intent_popup_exit_intent_popup_component_exitintentpopupcomponent_constructor",
+      "exit_intent_popup_exit_intent_popup_component_exitintentpopupcomponent_onmouseleave",
+      "floating_buttons_floating_buttons_component",
+      "floating_buttons_floating_buttons_component_floatingbuttonscomponent",
+      "floating_buttons_floating_buttons_component_floatingbuttonscomponent_constructor",
+      "floating_buttons_floating_buttons_component_floatingbuttonscomponent_onwindowscroll",
+      "floating_buttons_floating_buttons_component_floatingbuttonscomponent_scrolltotop",
+      "footer_footer_component",
+      "footer_footer_component_footercomponent",
+      "navbar_navbar_component",
+      "promo_banner_promo_banner_component",
+      "register_register_component"
     ],
     "21": [
       "fitcorn_api_tsconfig",
@@ -825,6 +819,30 @@
       "fitcorn_api_tsconfig_compileroptions_target"
     ],
     "22": [
+      "admin_admin_component",
+      "callback_oauth_callback_component",
+      "callback_oauth_callback_component_oauthcallbackcomponent",
+      "callback_oauth_callback_component_oauthcallbackcomponent_ngoninit",
+      "checkout_checkout_component",
+      "dashboard_dashboard_component",
+      "guards_auth_guard",
+      "loading_state_loading_state_component_loadingstatecomponent",
+      "services_auth_service",
+      "services_auth_service_authservice",
+      "services_auth_service_authservice_constructor",
+      "services_auth_service_authservice_fetchprofile",
+      "services_auth_service_authservice_refreshsession",
+      "services_auth_service_authservice_restoresession",
+      "services_auth_service_authservice_setsession",
+      "services_auth_service_authservice_sociallogin",
+      "services_cart_service",
+      "services_checkout_service",
+      "services_modal_service",
+      "services_modal_service_confirmmodalconfig",
+      "services_modal_service_modalservice",
+      "services_modal_service_modalservice_close"
+    ],
+    "23": [
       "admin_admin_component_admincomponent",
       "admin_admin_component_admincomponent_closebannermodal",
       "admin_admin_component_admincomponent_closecategorymodal",
@@ -847,30 +865,6 @@
       "admin_admin_component_admincomponent_settab",
       "admin_admin_component_admincomponent_stopqrpolling",
       "admin_admin_component_admincomponent_updateorderstatus"
-    ],
-    "23": [
-      "app_app_component",
-      "button_button_component",
-      "button_button_component_buttoncomponent",
-      "button_button_component_buttoncomponent_handleclick",
-      "button_button_component_buttonsize",
-      "button_button_component_buttonvariant",
-      "confirm_modal_confirm_modal_component",
-      "confirm_modal_confirm_modal_component_confirmmodalcomponent",
-      "exit_intent_popup_exit_intent_popup_component",
-      "exit_intent_popup_exit_intent_popup_component_exitintentpopupcomponent",
-      "exit_intent_popup_exit_intent_popup_component_exitintentpopupcomponent_closepopup",
-      "exit_intent_popup_exit_intent_popup_component_exitintentpopupcomponent_constructor",
-      "exit_intent_popup_exit_intent_popup_component_exitintentpopupcomponent_onmouseleave",
-      "floating_buttons_floating_buttons_component",
-      "floating_buttons_floating_buttons_component_floatingbuttonscomponent",
-      "floating_buttons_floating_buttons_component_floatingbuttonscomponent_constructor",
-      "floating_buttons_floating_buttons_component_floatingbuttonscomponent_onwindowscroll",
-      "floating_buttons_floating_buttons_component_floatingbuttonscomponent_scrolltotop",
-      "footer_footer_component",
-      "footer_footer_component_footercomponent",
-      "navbar_navbar_component",
-      "promo_banner_promo_banner_component"
     ],
     "24": [
       "app_app_component_app",
@@ -1063,6 +1057,19 @@
       "products_products_service_productsservice_create"
     ],
     "35": [
+      "input_input_component",
+      "input_input_component_inputcomponent",
+      "input_input_component_inputcomponent_focus",
+      "input_input_component_inputcomponent_onblur",
+      "input_input_component_inputcomponent_registeronchange",
+      "input_input_component_inputcomponent_registerontouched",
+      "input_input_component_inputcomponent_setdisabledstate",
+      "input_input_component_inputcomponent_writevalue",
+      "login_login_component",
+      "login_login_component_socialprovider",
+      "login_login_component_trustpoint"
+    ],
+    "36": [
       "admin_admin_component_admincomponent_saveproduct",
       "admin_product_form_component_adminproductformcomponent",
       "admin_product_form_component_adminproductformcomponent_loadproduct",
@@ -1073,7 +1080,7 @@
       "services_products_service_productsservice_getadminproductbyid",
       "services_products_service_productsservice_updateproduct"
     ],
-    "36": [
+    "37": [
       "cart_cart_controller",
       "decorators_current_user_decorator",
       "decorators_current_user_decorator_currentuser",
@@ -1084,7 +1091,7 @@
       "shipping_shipping_controller",
       "wishlist_wishlist_controller"
     ],
-    "37": [
+    "38": [
       "dashboard_dashboard_component_dashboardcomponent",
       "dashboard_dashboard_component_dashboardcomponent_gotocatalog",
       "dashboard_dashboard_component_dashboardcomponent_gotocheckout",
@@ -1095,7 +1102,7 @@
       "services_checkout_service_checkoutservice_getmyorders",
       "whatsapp_whatsapp_service_whatsappservice_disconnect"
     ],
-    "38": [
+    "39": [
       "environments_environment",
       "environments_environment_environment",
       "services_analytics_service",
@@ -1106,7 +1113,7 @@
       "services_analytics_service_analyticsservice_trackpageview",
       "services_analytics_service_analyticsservice_trackpurchase"
     ],
-    "39": [
+    "40": [
       "fitcorn_api_package_jest",
       "fitcorn_api_package_jest_collectcoveragefrom",
       "fitcorn_api_package_jest_coveragedirectory",
@@ -1117,7 +1124,7 @@
       "fitcorn_api_package_jest_transform",
       "fitcorn_api_package_transform_t_j_s"
     ],
-    "40": [
+    "41": [
       "catalog_catalog_component_catalogcomponent",
       "catalog_catalog_component_catalogcomponent_loadproducts",
       "catalog_catalog_component_catalogcomponent_mapproduct",
@@ -1127,7 +1134,7 @@
       "catalog_catalog_component_catalogcomponent_selectcategory",
       "services_products_service_productsservice_getproducts"
     ],
-    "41": [
+    "42": [
       "order_tracking_order_tracking_component_ordertrackingcomponent",
       "order_tracking_order_tracking_component_ordertrackingcomponent_checkpaymentstatussilent",
       "order_tracking_order_tracking_component_ordertrackingcomponent_loadordertracking",
@@ -1137,7 +1144,7 @@
       "services_checkout_service_checkoutservice_getordertracking",
       "services_checkout_service_checkoutservice_getpaymentstatus"
     ],
-    "42": [
+    "43": [
       "src_app_controller",
       "src_app_controller_appcontroller",
       "src_app_controller_appcontroller_constructor",
@@ -1147,7 +1154,7 @@
       "src_app_service_appservice",
       "src_app_service_appservice_gethello"
     ],
-    "43": [
+    "44": [
       "admin_admin_component_admincomponent_deletebanner",
       "admin_admin_component_admincomponent_deletecategory",
       "admin_admin_component_admincomponent_deletecoupon",
@@ -1156,7 +1163,7 @@
       "admin_product_list_component_adminproductlistcomponent_confirmdelete",
       "services_modal_service_modalservice_confirm"
     ],
-    "44": [
+    "45": [
       "admin_product_list_component_adminproductlistcomponent",
       "admin_product_list_component_adminproductlistcomponent_gotopage",
       "admin_product_list_component_adminproductlistcomponent_loadproducts",
@@ -1164,15 +1171,6 @@
       "admin_product_list_component_adminproductlistcomponent_onsearch",
       "admin_product_list_component_adminproductlistcomponent_pages",
       "services_products_service_productsservice_getadminproducts"
-    ],
-    "45": [
-      "dialog_dialog_component",
-      "dialog_dialog_component_dialogcomponent",
-      "dialog_dialog_component_dialogcomponent_handlebackdropclick",
-      "dialog_dialog_component_dialogcomponent_handleclose",
-      "dialog_dialog_component_dialogcomponent_handleescape",
-      "dialog_dialog_component_dialogcomponent_panelclasses",
-      "dialog_dialog_component_dialogsize"
     ],
     "46": [
       "fitcorn_api_package",
@@ -1193,6 +1191,15 @@
       "models_order_model_shippingaddress"
     ],
     "48": [
+      "select_select_component",
+      "select_select_component_selectcomponent",
+      "select_select_component_selectcomponent_onblur",
+      "select_select_component_selectcomponent_registeronchange",
+      "select_select_component_selectcomponent_registerontouched",
+      "select_select_component_selectcomponent_setdisabledstate",
+      "select_select_component_selectcomponent_writevalue"
+    ],
+    "49": [
       "test_jest_e2e",
       "test_jest_e2e_modulefileextensions",
       "test_jest_e2e_rootdir",
@@ -1201,7 +1208,7 @@
       "test_jest_e2e_transform",
       "test_jest_e2e_transform_t_j_s"
     ],
-    "49": [
+    "50": [
       "textarea_textarea_component",
       "textarea_textarea_component_textareacomponent",
       "textarea_textarea_component_textareacomponent_onblur",
@@ -1210,7 +1217,7 @@
       "textarea_textarea_component_textareacomponent_setdisabledstate",
       "textarea_textarea_component_textareacomponent_writevalue"
     ],
-    "50": [
+    "51": [
       "admin_admin_service_adminservice_deletebanner",
       "admin_admin_service_adminservice_deletecategory",
       "admin_admin_service_adminservice_deletecoupon",
@@ -1218,7 +1225,7 @@
       "products_products_service_productsservice_delete",
       "services_products_service_productsservice_deleteproduct"
     ],
-    "51": [
+    "52": [
       "cart_cart_component_cartcomponent",
       "cart_cart_component_cartcomponent_clearcart",
       "cart_cart_component_cartcomponent_ngoninit",
@@ -1226,7 +1233,7 @@
       "cart_cart_component_cartcomponent_updatequantity",
       "services_auth_service_authservice_logout"
     ],
-    "52": [
+    "53": [
       "fitcorn_api_nest_cli",
       "fitcorn_api_nest_cli_collection",
       "fitcorn_api_nest_cli_compileroptions",
@@ -1234,20 +1241,13 @@
       "fitcorn_api_nest_cli_schema",
       "fitcorn_api_nest_cli_sourceroot"
     ],
-    "53": [
+    "54": [
       "pipes_currency_idr_pipe",
       "pipes_currency_idr_pipe_currencyidrpipe",
       "pipes_currency_idr_pipe_currencyidrpipe_transform",
       "price_tag_price_tag_component",
       "price_tag_price_tag_component_pricetagcomponent",
       "product_card_product_card_component"
-    ],
-    "54": [
-      "dropdown_dropdown_component",
-      "dropdown_dropdown_component_dropdowncomponent",
-      "dropdown_dropdown_component_dropdowncomponent_close",
-      "dropdown_dropdown_component_dropdowncomponent_handleclickoutside",
-      "dropdown_dropdown_component_dropdowncomponent_toggleopen"
     ],
     "55": [
       "home_home_component_homecomponent",
@@ -1368,7 +1368,7 @@
   },
   "cohesion": {
     "0": 0.050724637681159424,
-    "1": 0.06823529411764706,
+    "1": 0.05325140809011777,
     "2": 0.05550416281221091,
     "3": 0.09292929292929293,
     "4": 0.047619047619047616,
@@ -1378,19 +1378,19 @@
     "8": 0.09009009009009009,
     "9": 0.09523809523809523,
     "10": 0.05555555555555555,
-    "11": 0.10695187165775401,
-    "12": 0.06451612903225806,
-    "13": 0.1632183908045977,
-    "14": 0.07126436781609195,
-    "15": 0.0873015873015873,
-    "16": 0.07692307692307693,
-    "17": 0.14666666666666667,
-    "18": 0.15,
-    "19": 0.12666666666666668,
-    "20": 0.4384057971014493,
+    "11": 0.1632183908045977,
+    "12": 0.07126436781609195,
+    "13": 0.0873015873015873,
+    "14": 0.07692307692307693,
+    "15": 0.14666666666666667,
+    "16": 0.15,
+    "17": 0.12666666666666668,
+    "18": 0.4384057971014493,
+    "19": 0.08333333333333333,
+    "20": 0.1422924901185771,
     "21": 0.08695652173913043,
-    "22": 0.09523809523809523,
-    "23": 0.1471861471861472,
+    "22": 0.17316017316017315,
+    "23": 0.09523809523809523,
     "24": 0.1380952380952381,
     "25": 0.17142857142857143,
     "26": 0.11764705882352941,
@@ -1402,26 +1402,26 @@
     "32": 0.22727272727272727,
     "33": 0.3484848484848485,
     "34": 0.43636363636363634,
-    "35": 0.25,
-    "36": 0.5,
-    "37": 0.25,
+    "35": 0.2,
+    "36": 0.25,
+    "37": 0.5,
     "38": 0.25,
-    "39": 0.2222222222222222,
-    "40": 0.39285714285714285,
-    "41": 0.25,
-    "42": 0.42857142857142855,
-    "43": 0.3333333333333333,
-    "44": 0.42857142857142855,
-    "45": 0.38095238095238093,
+    "39": 0.25,
+    "40": 0.2222222222222222,
+    "41": 0.39285714285714285,
+    "42": 0.25,
+    "43": 0.42857142857142855,
+    "44": 0.3333333333333333,
+    "45": 0.42857142857142855,
     "46": 0.2857142857142857,
     "47": 0.2857142857142857,
     "48": 0.2857142857142857,
     "49": 0.2857142857142857,
-    "50": 0.3333333333333333,
+    "50": 0.2857142857142857,
     "51": 0.3333333333333333,
     "52": 0.3333333333333333,
-    "53": 0.4666666666666667,
-    "54": 0.4,
+    "53": 0.3333333333333333,
+    "54": 0.4666666666666667,
     "55": 0.5,
     "56": 0.4,
     "57": 0.5,
@@ -1644,17 +1644,17 @@
   "suggested_questions": [
     {
       "type": "bridge_node",
-      "question": "Why does `User` connect `Community 8` to `Community 0`, `Community 34`, `Community 3`, `Community 36`, `Community 6`, `Community 7`, `Community 15`, `Community 17`, `Community 18`, `Community 19`, `Community 20`, `Community 25`, `Community 30`?",
+      "question": "Why does `User` connect `Community 8` to `Community 0`, `Community 34`, `Community 3`, `Community 37`, `Community 6`, `Community 7`, `Community 13`, `Community 15`, `Community 16`, `Community 17`, `Community 18`, `Community 25`, `Community 30`?",
       "why": "High betweenness centrality (0.086) - this node is a cross-community bridge."
     },
     {
       "type": "bridge_node",
-      "question": "Why does `Product` connect `Community 20` to `Community 0`, `Community 34`, `Community 2`, `Community 8`, `Community 15`?",
+      "question": "Why does `Product` connect `Community 18` to `Community 0`, `Community 34`, `Community 2`, `Community 8`, `Community 13`?",
       "why": "High betweenness centrality (0.071) - this node is a cross-community bridge."
     },
     {
       "type": "bridge_node",
-      "question": "Why does `ProductsService` connect `Community 2` to `Community 0`, `Community 34`, `Community 36`, `Community 50`, `Community 20`?",
+      "question": "Why does `ProductsService` connect `Community 2` to `Community 0`, `Community 34`, `Community 37`, `Community 18`, `Community 51`?",
       "why": "High betweenness centrality (0.049) - this node is a cross-community bridge."
     },
     {
@@ -1670,7 +1670,7 @@
     {
       "type": "low_cohesion",
       "question": "Should `Community 1` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.06823529411764706 - nodes in this community are weakly interconnected."
+      "why": "Cohesion score 0.05325140809011777 - nodes in this community are weakly interconnected."
     },
     {
       "type": "low_cohesion",
