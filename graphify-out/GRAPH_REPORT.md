@@ -1,16 +1,16 @@
-# Graph Report - fitcorn-id  (2026-06-01)
+# Graph Report - fitcorn-id  (2026-06-08)
 
 ## Corpus Check
 - 185 files · ~166,173 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 880 nodes · 960 edges · 152 communities (52 shown, 100 thin omitted)
-- Extraction: 83% EXTRACTED · 17% INFERRED · 0% AMBIGUOUS · INFERRED: 160 edges (avg confidence: 0.8)
+- 1388 nodes · 2574 edges · 119 communities (88 shown, 31 thin omitted)
+- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 160 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a482218a`
+- Built from commit: `46276d13`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -64,149 +64,264 @@
 - [[_COMMUNITY_Community 46|Community 46]]
 - [[_COMMUNITY_Community 47|Community 47]]
 - [[_COMMUNITY_Community 48|Community 48]]
+- [[_COMMUNITY_Community 49|Community 49]]
+- [[_COMMUNITY_Community 50|Community 50]]
+- [[_COMMUNITY_Community 51|Community 51]]
+- [[_COMMUNITY_Community 52|Community 52]]
 - [[_COMMUNITY_Community 53|Community 53]]
 - [[_COMMUNITY_Community 54|Community 54]]
 - [[_COMMUNITY_Community 55|Community 55]]
 - [[_COMMUNITY_Community 56|Community 56]]
 - [[_COMMUNITY_Community 57|Community 57]]
-- [[_COMMUNITY_Community 58|Community 58]]
 - [[_COMMUNITY_Community 59|Community 59]]
 - [[_COMMUNITY_Community 60|Community 60]]
 - [[_COMMUNITY_Community 61|Community 61]]
 - [[_COMMUNITY_Community 62|Community 62]]
-- [[_COMMUNITY_Community 63|Community 63]]
 - [[_COMMUNITY_Community 64|Community 64]]
 - [[_COMMUNITY_Community 65|Community 65]]
 - [[_COMMUNITY_Community 66|Community 66]]
+- [[_COMMUNITY_Community 67|Community 67]]
+- [[_COMMUNITY_Community 68|Community 68]]
 - [[_COMMUNITY_Community 69|Community 69]]
 - [[_COMMUNITY_Community 70|Community 70]]
 - [[_COMMUNITY_Community 71|Community 71]]
 - [[_COMMUNITY_Community 72|Community 72]]
-- [[_COMMUNITY_Community 73|Community 73]]
-- [[_COMMUNITY_Community 74|Community 74]]
-- [[_COMMUNITY_Community 75|Community 75]]
 - [[_COMMUNITY_Community 76|Community 76]]
 - [[_COMMUNITY_Community 77|Community 77]]
 - [[_COMMUNITY_Community 78|Community 78]]
 - [[_COMMUNITY_Community 79|Community 79]]
-- [[_COMMUNITY_Community 80|Community 80]]
-- [[_COMMUNITY_Community 81|Community 81]]
-- [[_COMMUNITY_Community 82|Community 82]]
-- [[_COMMUNITY_Community 83|Community 83]]
-- [[_COMMUNITY_Community 84|Community 84]]
 - [[_COMMUNITY_Community 85|Community 85]]
 - [[_COMMUNITY_Community 86|Community 86]]
-- [[_COMMUNITY_Community 87|Community 87]]
-- [[_COMMUNITY_Community 88|Community 88]]
-- [[_COMMUNITY_Community 89|Community 89]]
-- [[_COMMUNITY_Community 90|Community 90]]
-- [[_COMMUNITY_Community 91|Community 91]]
-- [[_COMMUNITY_Community 92|Community 92]]
-- [[_COMMUNITY_Community 93|Community 93]]
-- [[_COMMUNITY_Community 94|Community 94]]
-- [[_COMMUNITY_Community 95|Community 95]]
-- [[_COMMUNITY_Community 96|Community 96]]
-- [[_COMMUNITY_Community 97|Community 97]]
-- [[_COMMUNITY_Community 98|Community 98]]
-- [[_COMMUNITY_Community 99|Community 99]]
-- [[_COMMUNITY_Community 100|Community 100]]
-- [[_COMMUNITY_Community 101|Community 101]]
-- [[_COMMUNITY_Community 102|Community 102]]
-- [[_COMMUNITY_Community 103|Community 103]]
-- [[_COMMUNITY_Community 104|Community 104]]
-- [[_COMMUNITY_Community 105|Community 105]]
-- [[_COMMUNITY_Community 114|Community 114]]
-- [[_COMMUNITY_Community 115|Community 115]]
-- [[_COMMUNITY_Community 116|Community 116]]
-- [[_COMMUNITY_Community 117|Community 117]]
-- [[_COMMUNITY_Community 118|Community 118]]
-- [[_COMMUNITY_Community 119|Community 119]]
-- [[_COMMUNITY_Community 120|Community 120]]
-- [[_COMMUNITY_Community 121|Community 121]]
-- [[_COMMUNITY_Community 122|Community 122]]
-- [[_COMMUNITY_Community 123|Community 123]]
-- [[_COMMUNITY_Community 124|Community 124]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `AdminComponent` - 39 edges
-2. `AdminService` - 29 edges
-3. `ProductsService` - 15 edges
-4. `AuthService` - 15 edges
-5. `CheckoutService` - 14 edges
-6. `CheckoutComponent` - 14 edges
-7. `BannersService` - 13 edges
-8. `CartController` - 13 edges
-9. `SocialAuthController` - 12 edges
-10. `ShippingController` - 12 edges
+1. `User` - 89 edges
+2. `dependencies` - 42 edges
+3. `AdminComponent` - 41 edges
+4. `Product` - 38 edges
+5. `Order` - 33 edges
+6. `AdminService` - 31 edges
+7. `AuthService` - 29 edges
+8. `devDependencies` - 26 edges
+9. `ButtonComponent` - 23 edges
+10. `compilerOptions` - 22 edges
 
 ## Surprising Connections (you probably didn't know these)
-- None detected - all connections are within the same source files.
+- `AuditLog` --references--> `User`  [EXTRACTED]
+  fitcorn-api/src/modules/admin/entities/audit-log.entity.ts → fitcorn-api/src/modules/users/entities/user.entity.ts
+- `Cart` --references--> `CartItem`  [EXTRACTED]
+  fitcorn-api/src/modules/cart/entities/cart.entity.ts → fitcorn-api/src/modules/cart/entities/cart-item.entity.ts
+- `Notification` --references--> `User`  [EXTRACTED]
+  fitcorn-api/src/modules/notifications/entities/notification.entity.ts → fitcorn-api/src/modules/users/entities/user.entity.ts
+- `OrderItem` --references--> `Product`  [EXTRACTED]
+  fitcorn-api/src/modules/orders/entities/order-item.entity.ts → fitcorn-api/src/modules/products/entities/product.entity.ts
+- `Order` --references--> `User`  [EXTRACTED]
+  fitcorn-api/src/modules/orders/entities/order.entity.ts → fitcorn-api/src/modules/users/entities/user.entity.ts
 
-## Communities (152 total, 100 thin omitted)
+## Communities (119 total, 31 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.05
-Nodes (7): CartComponent, adminGuard(), authGuard(), LoginComponent, RegisterComponent, AuthService, CartService
+Nodes (9): SocialAuthController, SocialAuthService, AdminCouponsController, CouponsController, CouponsModule, CouponsService, Public(), Coupon (+1 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.05
-Nodes (5): CheckoutComponent, DashboardComponent, Order, OrderTrackingComponent, CheckoutService
+Cohesion: 0.06
+Nodes (12): Roles(), CreateProductDto, CreateVariantDto, UpdateProductDto, UpdateVariantDto, Setting, RolesGuard, AdminOrdersController (+4 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.05
-Nodes (6): AdminProductFormComponent, CatalogComponent, Product, HomeComponent, ProductDetailComponent, ProductsService
+Nodes (20): AvatarComponent, AvatarSize, BadgeComponent, BadgeSize, BadgeVariant, ButtonSize, ButtonVariant, CardComponent (+12 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.04
-Nodes (6): CheckboxComponent, InputComponent, RadioComponent, SelectComponent, SwitchComponent, TextareaComponent
+Cohesion: 0.06
+Nodes (4): CheckoutComponent, DashboardComponent, OrderTrackingComponent, CheckoutService
 
 ### Community 4 - "Community 4"
 Cohesion: 0.06
-Nodes (6): SocialAuthService, CartService, OrdersService, AdminSettingsController, bootstrap(), WishlistService
+Nodes (15): AdminModule, AuthModule, ALL_ENTITIES, AppDataSource, JwtAuthGuard, OrdersModule, PaymentsModule, ProductsModule (+7 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.06
-Nodes (5): AuthService, NavbarComponent, PromoBannerComponent, ToastService, ShippingService
+Cohesion: 0.05
+Nodes (42): dependencies, axios, bcryptjs, bull, cache-manager, class-transformer, class-validator, cookie-parser (+34 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.07
-Nodes (6): AdminDashboardController, NotificationsProcessor, RajaOngkirProvider, TableComponent, AdminWhatsAppController, WhatsAppService
+Cohesion: 0.08
+Nodes (6): AdminBannersController, BannersController, BannersModule, BannersService, Banner, InstagramGallery
 
 ### Community 7 - "Community 7"
-Cohesion: 0.08
-Nodes (4): SocialAuthController, CouponsService, QuantitySelectorComponent, InstagramStrategy
+Cohesion: 0.14
+Nodes (8): ButtonComponent, GlassmorphismDirective, EmptyStateComponent, LoadingStateComponent, ConfirmModalConfig, ModalService, ProductsService, ThemeService
 
 ### Community 8 - "Community 8"
-Cohesion: 0.09
-Nodes (3): AdminProductsController, ProductsController, ProductsService
+Cohesion: 0.05
+Nodes (5): CheckboxComponent, RadioComponent, SelectComponent, SwitchComponent, TextareaComponent
+
+### Community 9 - "Community 9"
+Cohesion: 0.12
+Nodes (10): CartModule, Order, OrderStatus, OrderItem, Payment, PaymentStatus, ShippingAddress, OrdersService (+2 more)
 
 ### Community 10 - "Community 10"
-Cohesion: 0.14
-Nodes (3): PaymentsController, PaymentsService, MidtransProvider
+Cohesion: 0.06
+Nodes (35): dependencies, @angular/common, @angular/compiler, @angular/core, @angular/forms, @angular/platform-browser, @angular/platform-server, @angular/router (+27 more)
+
+### Community 11 - "Community 11"
+Cohesion: 0.11
+Nodes (6): CartService, Cart, User, OrdersController, WishlistController, WishlistService
+
+### Community 12 - "Community 12"
+Cohesion: 0.24
+Nodes (7): CartItem, Inventory, ProductCategory, Product, ProductImage, ProductVariant, Wishlist
+
+### Community 13 - "Community 13"
+Cohesion: 0.11
+Nodes (5): OauthCallbackComponent, InputComponent, SocialProvider, TrustPoint, AuthService
+
+### Community 14 - "Community 14"
+Cohesion: 0.11
+Nodes (5): AuthController, AuthService, LoginDto, RegisterDto, JwtRefreshGuard
+
+### Community 15 - "Community 15"
+Cohesion: 0.09
+Nodes (6): ConfirmModalComponent, environment, ExitIntentPopupComponent, FloatingButtonsComponent, FooterComponent, AnalyticsService
+
+### Community 16 - "Community 16"
+Cohesion: 0.1
+Nodes (10): App, appConfig, config, serverConfig, routes, serverRoutes, adminGuard(), authInterceptor() (+2 more)
+
+### Community 17 - "Community 17"
+Cohesion: 0.08
+Nodes (26): devDependencies, eslint, eslint-config-prettier, @eslint/eslintrc, @eslint/js, eslint-plugin-prettier, globals, jest (+18 more)
 
 ### Community 18 - "Community 18"
-Cohesion: 0.38
-Nodes (9): collect_code_files(), find_semantic_payload(), load_json_any(), main(), merge_payloads(), merge_unique_nodes(), parse_args(), relativize_source_files() (+1 more)
+Cohesion: 0.16
+Nodes (5): OAuthProfile, Permission, Role, JwtRefreshStrategy, JwtStrategy
+
+### Community 20 - "Community 20"
+Cohesion: 0.11
+Nodes (9): BreadcrumbComponent, BreadcrumbItem, ColorSwatch, DesignSystemShowcaseComponent, QuantitySelectorComponent, TableColumn, TableComponent, TabItem (+1 more)
+
+### Community 21 - "Community 21"
+Cohesion: 0.09
+Nodes (22): compilerOptions, allowSyntheticDefaultImports, baseUrl, declaration, emitDecoratorMetadata, esModuleInterop, experimentalDecorators, forceConsistentCasingInFileNames (+14 more)
+
+### Community 22 - "Community 22"
+Cohesion: 0.15
+Nodes (4): PaymentsController, PaymentsService, MidtransProvider, CreatePaymentResult
+
+### Community 25 - "Community 25"
+Cohesion: 0.22
+Nodes (3): Notification, AbandonedCartScheduler, NotificationsService
+
+### Community 26 - "Community 26"
+Cohesion: 0.18
+Nodes (8): Cart, CartItem, Inventory, Product, ProductCategory, ProductImage, ProductVariant, SeoService
+
+### Community 27 - "Community 27"
+Cohesion: 0.14
+Nodes (9): BrandPillar, FaqItem, FlavorHighlight, JourneyStep, Testimonial, CurrencyIdrPipe, PriceTagComponent, ProductCardComponent (+1 more)
+
+### Community 28 - "Community 28"
+Cohesion: 0.36
+Nodes (15): Any, bool, int, Namespace, Path, str, collect_code_files(), find_semantic_payload() (+7 more)
+
+### Community 31 - "Community 31"
+Cohesion: 0.12
+Nodes (16): scripts, build, format, lint, migration:generate, migration:revert, migration:run, start (+8 more)
+
+### Community 33 - "Community 33"
+Cohesion: 0.13
+Nodes (15): schematics, skipTests, skipTests, typeSeparator, typeSeparator, skipTests, typeSeparator, addTypeToClassName (+7 more)
+
+### Community 36 - "Community 36"
+Cohesion: 0.15
+Nodes (14): build, serve, builder, configurations, defaultConfiguration, development, buildTarget, extractLicenses (+6 more)
+
+### Community 37 - "Community 37"
+Cohesion: 0.21
+Nodes (3): ToastConfig, ToastService, ToastContainerComponent
+
+### Community 41 - "Community 41"
+Cohesion: 0.17
+Nodes (11): cli, packageManager, prefix, projectType, root, sourceRoot, newProjectRoot, projects (+3 more)
+
+### Community 42 - "Community 42"
+Cohesion: 0.36
+Nodes (3): CurrentUser, Courier, ShippingRate
+
+### Community 43 - "Community 43"
+Cohesion: 0.18
+Nodes (11): options, assets, browser, outputMode, security, server, ssr, styles (+3 more)
+
+### Community 46 - "Community 46"
+Cohesion: 0.25
+Nodes (3): AdminDashboardController, AuditLog, NotificationsModule
+
+### Community 49 - "Community 49"
+Cohesion: 0.22
+Nodes (9): jest, collectCoverageFrom, coverageDirectory, moduleFileExtensions, rootDir, testEnvironment, testRegex, transform (+1 more)
+
+### Community 54 - "Community 54"
+Cohesion: 0.29
+Nodes (6): author, description, license, name, private, version
+
+### Community 55 - "Community 55"
+Cohesion: 0.29
+Nodes (6): moduleFileExtensions, rootDir, testEnvironment, testRegex, transform, ^.+\\.(t|j)s$
+
+### Community 56 - "Community 56"
+Cohesion: 0.29
+Nodes (6): Order, OrderItem, OrderStatus, Payment, PaymentStatus, ShippingAddress
+
+### Community 59 - "Community 59"
+Cohesion: 0.33
+Nodes (5): collection, compilerOptions, deleteOutDir, $schema, sourceRoot
+
+### Community 66 - "Community 66"
+Cohesion: 0.4
+Nodes (5): production, budgets, buildTarget, outputHashing, serviceWorker
+
+### Community 67 - "Community 67"
+Cohesion: 0.4
+Nodes (4): angularApp, app, browserDistFolder, reqHandler
+
+### Community 70 - "Community 70"
+Cohesion: 0.5
+Nodes (4): addTypeToClassName, skipTests, type, @schematics/angular:component
+
+### Community 71 - "Community 71"
+Cohesion: 0.5
+Nodes (4): addTypeToClassName, skipTests, type, @schematics/angular:directive
+
+### Community 72 - "Community 72"
+Cohesion: 0.5
+Nodes (3): assetGroups, index, $schema
+
+### Community 78 - "Community 78"
+Cohesion: 0.67
+Nodes (3): skipTests, typeSeparator, @schematics/angular:resolver
+
+### Community 79 - "Community 79"
+Cohesion: 0.67
+Nodes (3): skipTests, typeSeparator, @schematics/angular:interceptor
 
 ## Knowledge Gaps
-- **53 isolated node(s):** `AppModule`, `JwtRefreshGuard`, `AdminModule`, `AuditLog`, `AuthModule` (+48 more)
+- **241 isolated node(s):** `$schema`, `collection`, `sourceRoot`, `deleteOutDir`, `name` (+236 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **100 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **31 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `AdminService` connect `Community 11` to `Community 109`, `Community 110`, `Community 111`, `Community 112`, `Community 113`, `Community 50`, `Community 49`, `Community 52`, `Community 51`?**
-  _High betweenness centrality (0.043) - this node is a cross-community bridge._
-- **What connects `AppModule`, `JwtRefreshGuard`, `AdminModule` to the rest of the system?**
-  _53 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `User` connect `Community 11` to `Community 0`, `Community 1`, `Community 34`, `Community 35`, `Community 40`, `Community 9`, `Community 42`, `Community 12`, `Community 46`, `Community 14`, `Community 47`, `Community 18`, `Community 25`, `Community 63`?**
+  _High betweenness centrality (0.090) - this node is a cross-community bridge._
+- **Why does `Product` connect `Community 12` to `Community 38`, `Community 9`, `Community 11`, `Community 46`, `Community 29`, `Community 63`?**
+  _High betweenness centrality (0.086) - this node is a cross-community bridge._
+- **Why does `ProductDetailComponent` connect `Community 38` to `Community 7`?**
+  _High betweenness centrality (0.061) - this node is a cross-community bridge._
+- **What connects `$schema`, `collection`, `sourceRoot` to the rest of the system?**
+  _241 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.05 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
-- **Should `Community 3` be split into smaller, more focused modules?**
-  _Cohesion score 0.04 - nodes in this community are weakly interconnected._
-- **Should `Community 4` be split into smaller, more focused modules?**
-  _Cohesion score 0.06 - nodes in this community are weakly interconnected._

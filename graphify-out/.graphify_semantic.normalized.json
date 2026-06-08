@@ -1,0 +1,1613 @@
+{
+  "nodes": [],
+  "edges": [
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/main.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "src_main_bootstrap",
+      "target": "products_products_service_productsservice_create"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/admin/admin-dashboard.controller.ts",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "admin_admin_dashboard_controller_admindashboardcontroller_getstats",
+      "target": "table_table_component_tablecomponent_sort"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/auth.service.ts",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "auth_auth_service_authservice_seedadmin",
+      "target": "products_products_service_productsservice_create"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/auth.service.ts",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "auth_auth_service_authservice_seedadmin",
+      "target": "products_products_service_productsservice_update"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/auth.service.ts",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "auth_auth_service_authservice_register",
+      "target": "products_products_service_productsservice_create"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/auth.service.ts",
+      "source_location": "L156",
+      "weight": 1.0,
+      "source": "auth_auth_service_authservice_logout",
+      "target": "products_products_service_productsservice_update"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/auth.service.ts",
+      "source_location": "L177",
+      "weight": 1.0,
+      "source": "auth_auth_service_authservice_updaterefreshtoken",
+      "target": "products_products_service_productsservice_update"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/social-auth.controller.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "auth_social_auth_controller_socialauthcontroller_instagramauth",
+      "target": "strategies_instagram_strategy_instagramstrategy_getauthorizeurl"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/social-auth.controller.ts",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "auth_social_auth_controller_socialauthcontroller_instagramcallback",
+      "target": "coupons_coupons_service_couponsservice_validate"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/social-auth.controller.ts",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "auth_social_auth_controller_socialauthcontroller_instagramcallback",
+      "target": "auth_social_auth_service_socialauthservice_validateoauthuser"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/social-auth.controller.ts",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "auth_social_auth_controller_socialauthcontroller_instagramcallback",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/social-auth.controller.ts",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "auth_social_auth_controller_socialauthcontroller_handleoauthcallback",
+      "target": "auth_social_auth_service_socialauthservice_validateoauthuser"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/social-auth.controller.ts",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "auth_social_auth_controller_socialauthcontroller_handleoauthcallback",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/social-auth.service.ts",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "auth_social_auth_service_socialauthservice_validateoauthuser",
+      "target": "products_products_service_productsservice_create"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/social-auth.service.ts",
+      "source_location": "L120",
+      "weight": 1.0,
+      "source": "auth_social_auth_service_socialauthservice_verifyotp",
+      "target": "products_products_service_productsservice_delete"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/social-auth.service.ts",
+      "source_location": "L138",
+      "weight": 1.0,
+      "source": "auth_social_auth_service_socialauthservice_verifyotp",
+      "target": "products_products_service_productsservice_create"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/auth/social-auth.service.ts",
+      "source_location": "L200",
+      "weight": 1.0,
+      "source": "auth_social_auth_service_socialauthservice_updaterefreshtoken",
+      "target": "products_products_service_productsservice_update"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/banners/banners.service.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "banners_banners_service_bannersservice_createbanner",
+      "target": "products_products_service_productsservice_create"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/banners/banners.service.ts",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "banners_banners_service_bannersservice_createinstagrampost",
+      "target": "products_products_service_productsservice_create"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/cart/cart.service.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "cart_cart_service_cartservice_getcart",
+      "target": "products_products_service_productsservice_create"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/orders/orders.service.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "cart_cart_service_cartservice_getcart",
+      "target": "orders_orders_service_ordersservice_createorder"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/cart/cart.service.ts",
+      "source_location": "L129",
+      "weight": 1.0,
+      "source": "cart_cart_service_cartservice_additem",
+      "target": "products_products_service_productsservice_create"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/cart/cart.service.ts",
+      "source_location": "L242",
+      "weight": 1.0,
+      "source": "cart_cart_service_cartservice_mergecarts",
+      "target": "products_products_service_productsservice_create"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/coupons/coupons.service.ts",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "coupons_coupons_service_couponsservice_validate",
+      "target": "quantity_selector_quantity_selector_component_quantityselectorcomponent_increment"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/notifications/abandoned-cart.scheduler.ts",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "notifications_abandoned_cart_scheduler_abandonedcartscheduler_checkabandonedcarts",
+      "target": "notifications_notifications_service_notificationsservice_sendwhatsapp"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/notifications/abandoned-cart.scheduler.ts",
+      "source_location": "L142",
+      "weight": 1.0,
+      "source": "notifications_abandoned_cart_scheduler_abandonedcartscheduler_checkabandonedcarts",
+      "target": "notifications_notifications_service_notificationsservice_sendemail"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/notifications/abandoned-cart.scheduler.ts",
+      "source_location": "L152",
+      "weight": 1.0,
+      "source": "notifications_abandoned_cart_scheduler_abandonedcartscheduler_checkabandonedcarts",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/notifications/notifications.processor.ts",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "notifications_notifications_processor_notificationsprocessor_handleemail",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/notifications/notifications.processor.ts",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "notifications_notifications_processor_notificationsprocessor_handlewhatsapp",
+      "target": "whatsapp_whatsapp_service_whatsappservice_sendmessage"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/notifications/notifications.processor.ts",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "notifications_notifications_processor_notificationsprocessor_handlewhatsapp",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/notifications/notifications.service.ts",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "notifications_notifications_service_notificationsservice_createnotification",
+      "target": "products_products_service_productsservice_create"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/orders/orders.service.ts",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "orders_orders_service_ordersservice_createorder",
+      "target": "products_products_service_productsservice_create"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/orders/orders.service.ts",
+      "source_location": "L160",
+      "weight": 1.0,
+      "source": "orders_orders_service_ordersservice_createorder",
+      "target": "products_products_service_productsservice_delete"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/order-tracking/order-tracking.component.ts",
+      "source_location": "L244",
+      "weight": 1.0,
+      "source": "entities_order_entity_order",
+      "target": "order_tracking_order_tracking_component_ordertrackingcomponent_checkpaymentstatussilent"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/payments/payments.controller.ts",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "payments_payments_controller_paymentscontroller_handlemidtranswebhook",
+      "target": "payments_payments_service_paymentsservice_handlewebhook"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/payments/payments.controller.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "payments_payments_controller_paymentscontroller_getpaymentstatus",
+      "target": "payments_payments_service_paymentsservice_checkpaymentstatus"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/payments/payments.service.ts",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "payments_payments_service_paymentsservice_createpayment",
+      "target": "products_products_service_productsservice_create"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/payments/payments.service.ts",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "payments_payments_service_paymentsservice_handlewebhook",
+      "target": "providers_midtrans_provider_midtransprovider_verifywebhook"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/payments/payments.service.ts",
+      "source_location": "L139",
+      "weight": 1.0,
+      "source": "payments_payments_service_paymentsservice_handlewebhook",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/payments/payments.service.ts",
+      "source_location": "L157",
+      "weight": 1.0,
+      "source": "payments_payments_service_paymentsservice_checkpaymentstatus",
+      "target": "providers_midtrans_provider_midtransprovider_checkstatus"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/payments/providers/midtrans.provider.ts",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "providers_midtrans_provider_midtransprovider_createpayment",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/payments/providers/midtrans.provider.ts",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "providers_midtrans_provider_midtransprovider_verifywebhook",
+      "target": "products_products_service_productsservice_update"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/payments/providers/midtrans.provider.ts",
+      "source_location": "L189",
+      "weight": 1.0,
+      "source": "providers_midtrans_provider_midtransprovider_checkstatus",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/products/admin-products.controller.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "products_admin_products_controller_adminproductscontroller_getall",
+      "target": "products_products_service_productsservice_findalladmin"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/products/admin-products.controller.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "products_admin_products_controller_adminproductscontroller_getbyid",
+      "target": "products_products_service_productsservice_findonebyid"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/products/admin-products.controller.ts",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "products_admin_products_controller_adminproductscontroller_uploadimage",
+      "target": "products_products_service_productsservice_addimage"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/products/products.controller.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "products_products_controller_productscontroller_getall",
+      "target": "products_products_service_productsservice_findall"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/products/products.controller.ts",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "products_products_controller_productscontroller_getbyslug",
+      "target": "products_products_service_productsservice_findonebyslug"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/settings/admin-settings.controller.ts",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_create",
+      "target": "settings_admin_settings_controller_adminsettingscontroller_updatebulk"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/shipping/shipping.service.ts",
+      "source_location": "L102",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_create",
+      "target": "shipping_shipping_service_shippingservice_createaddress"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/wishlist/wishlist.service.ts",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_create",
+      "target": "wishlist_wishlist_service_wishlistservice_additem"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/shipping/shipping.service.ts",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_update",
+      "target": "shipping_shipping_service_shippingservice_createaddress"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/shipping/shipping.service.ts",
+      "source_location": "L125",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_update",
+      "target": "shipping_shipping_service_shippingservice_updateaddress"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/shipping/shipping.service.ts",
+      "source_location": "L167",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_update",
+      "target": "shipping_shipping_service_shippingservice_setdefaultaddress"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/product-detail/product-detail.component.ts",
+      "source_location": "L261",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_update",
+      "target": "product_detail_product_detail_component_productdetailcomponent_incrementqty"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/product-detail/product-detail.component.ts",
+      "source_location": "L265",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_update",
+      "target": "product_detail_product_detail_component_productdetailcomponent_decrementqty"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/shared/components/navbar/navbar.component.ts",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_update",
+      "target": "navbar_navbar_component_navbarcomponent_togglemobilemenu"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/shared/components/promo-banner/promo-banner.component.ts",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_update",
+      "target": "promo_banner_promo_banner_component_promobannercomponent_nextpromo"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/shared/services/toast.service.ts",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_update",
+      "target": "services_toast_service_toastservice_show"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/shared/services/toast.service.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_update",
+      "target": "services_toast_service_toastservice_dismiss"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/core/services/cart.service.ts",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_delete",
+      "target": "services_cart_service_cartservice_removeitem"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/core/services/cart.service.ts",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_delete",
+      "target": "services_cart_service_cartservice_clearcart"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/core/services/products.service.ts",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_delete",
+      "target": "services_products_service_productsservice_deleteproduct"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.service.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_delete",
+      "target": "admin_admin_service_adminservice_deletecategory"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.service.ts",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_delete",
+      "target": "admin_admin_service_adminservice_deletebanner"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.service.ts",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_delete",
+      "target": "admin_admin_service_adminservice_deleteinstagrampost"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.service.ts",
+      "source_location": "L126",
+      "weight": 1.0,
+      "source": "products_products_service_productsservice_delete",
+      "target": "admin_admin_service_adminservice_deletecoupon"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/product-detail/product-detail.component.ts",
+      "source_location": "L269",
+      "weight": 1.0,
+      "source": "entities_product_entity_product",
+      "target": "product_detail_product_detail_component_productdetailcomponent_addtocart"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/shipping/providers/rajaongkir.provider.ts",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "providers_rajaongkir_provider_rajaongkirprovider_calculaterates",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/shipping/providers/rajaongkir.provider.ts",
+      "source_location": "L183",
+      "weight": 1.0,
+      "source": "providers_rajaongkir_provider_rajaongkirprovider_getprovinces",
+      "target": "table_table_component_tablecomponent_sort"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/shipping/providers/rajaongkir.provider.ts",
+      "source_location": "L180",
+      "weight": 1.0,
+      "source": "providers_rajaongkir_provider_rajaongkirprovider_getprovinces",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/shipping/providers/rajaongkir.provider.ts",
+      "source_location": "L220",
+      "weight": 1.0,
+      "source": "providers_rajaongkir_provider_rajaongkirprovider_getcities",
+      "target": "table_table_component_tablecomponent_sort"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/shipping/providers/rajaongkir.provider.ts",
+      "source_location": "L196",
+      "weight": 1.0,
+      "source": "providers_rajaongkir_provider_rajaongkirprovider_getcities",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/shipping/providers/rajaongkir.provider.ts",
+      "source_location": "L265",
+      "weight": 1.0,
+      "source": "providers_rajaongkir_provider_rajaongkirprovider_getdistricts",
+      "target": "table_table_component_tablecomponent_sort"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/shipping/providers/rajaongkir.provider.ts",
+      "source_location": "L296",
+      "weight": 1.0,
+      "source": "providers_rajaongkir_provider_rajaongkirprovider_getdistricts",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/shipping/providers/rajaongkir.provider.ts",
+      "source_location": "L318",
+      "weight": 1.0,
+      "source": "providers_rajaongkir_provider_rajaongkirprovider_getvillages",
+      "target": "table_table_component_tablecomponent_sort"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/shipping/providers/rajaongkir.provider.ts",
+      "source_location": "L343",
+      "weight": 1.0,
+      "source": "providers_rajaongkir_provider_rajaongkirprovider_getvillages",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/whatsapp/whatsapp.controller.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "whatsapp_whatsapp_controller_adminwhatsappcontroller_getstatus",
+      "target": "whatsapp_whatsapp_service_whatsappservice_isconnected"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/whatsapp/whatsapp.controller.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "whatsapp_whatsapp_controller_adminwhatsappcontroller_getqr",
+      "target": "whatsapp_whatsapp_service_whatsappservice_getqrcode"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/whatsapp/whatsapp.service.ts",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "whatsapp_whatsapp_service_whatsappservice_onmoduleinit",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/whatsapp/whatsapp.service.ts",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "whatsapp_whatsapp_service_whatsappservice_sendmessage",
+      "target": "services_toast_service_toastservice_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-api/src/modules/whatsapp/whatsapp.service.ts",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "whatsapp_whatsapp_service_whatsappservice_disconnect",
+      "target": "dashboard_dashboard_component_dashboardcomponent_logout"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/core/guards/admin.guard.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "guards_admin_guard_adminguard",
+      "target": "services_auth_service_authservice_isadmin"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/core/guards/auth.guard.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "guards_auth_guard_authguard",
+      "target": "services_auth_service_authservice_isauthenticated"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/auth/register/register.component.ts",
+      "source_location": "L219",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_register",
+      "target": "register_register_component_registercomponent_onsubmit"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/auth/login/login.component.ts",
+      "source_location": "L366",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_login",
+      "target": "login_login_component_logincomponent_onsubmit"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/auth/login/login.component.ts",
+      "source_location": "L395",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_sendotp",
+      "target": "login_login_component_logincomponent_onsendotp"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/auth/register/register.component.ts",
+      "source_location": "L264",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_sendotp",
+      "target": "register_register_component_registercomponent_onregisterwithphone"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/auth/login/login.component.ts",
+      "source_location": "L415",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_verifyotp",
+      "target": "login_login_component_logincomponent_onverifyotp"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/core/services/auth.service.ts",
+      "source_location": "L123",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_logout",
+      "target": "cart_cart_component_cartcomponent_removeitem"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/core/services/cart.service.ts",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_isauthenticated",
+      "target": "services_cart_service_cartservice_getrequestheaders"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/core/services/cart.service.ts",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_isauthenticated",
+      "target": "services_cart_service_cartservice_loadcart"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/core/services/cart.service.ts",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_isauthenticated",
+      "target": "services_cart_service_cartservice_additem"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/core/services/cart.service.ts",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_isauthenticated",
+      "target": "services_cart_service_cartservice_updatequantity"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/core/services/cart.service.ts",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_isauthenticated",
+      "target": "services_cart_service_cartservice_removeitem"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/core/services/cart.service.ts",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_isauthenticated",
+      "target": "services_cart_service_cartservice_clearcart"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/checkout/checkout.component.ts",
+      "source_location": "L313",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_isauthenticated",
+      "target": "checkout_checkout_component_checkoutcomponent_ngoninit"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/dashboard/dashboard.component.ts",
+      "source_location": "L208",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_isauthenticated",
+      "target": "dashboard_dashboard_component_dashboardcomponent_ngoninit"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/core/services/cart.service.ts",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_getguestsessionid",
+      "target": "services_cart_service_cartservice_getrequestheaders"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/core/services/cart.service.ts",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "services_auth_service_authservice_getguestsessionid",
+      "target": "services_cart_service_cartservice_mergecartonlogin"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/cart/cart.component.ts",
+      "source_location": "L184",
+      "weight": 1.0,
+      "source": "services_cart_service_cartservice_loadcart",
+      "target": "cart_cart_component_cartcomponent_ngoninit"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/product-detail/product-detail.component.ts",
+      "source_location": "L277",
+      "weight": 1.0,
+      "source": "services_cart_service_cartservice_additem",
+      "target": "product_detail_product_detail_component_productdetailcomponent_addtocart"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/checkout/checkout.component.ts",
+      "source_location": "L336",
+      "weight": 1.0,
+      "source": "services_checkout_service_checkoutservice_getprovinces",
+      "target": "checkout_checkout_component_checkoutcomponent_loadprovinces"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/checkout/checkout.component.ts",
+      "source_location": "L353",
+      "weight": 1.0,
+      "source": "services_checkout_service_checkoutservice_getcities",
+      "target": "checkout_checkout_component_checkoutcomponent_onprovincechange"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/checkout/checkout.component.ts",
+      "source_location": "L387",
+      "weight": 1.0,
+      "source": "services_checkout_service_checkoutservice_getdistricts",
+      "target": "checkout_checkout_component_checkoutcomponent_oncitychange"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/checkout/checkout.component.ts",
+      "source_location": "L404",
+      "weight": 1.0,
+      "source": "services_checkout_service_checkoutservice_getvillages",
+      "target": "checkout_checkout_component_checkoutcomponent_ondistrictchange"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/checkout/checkout.component.ts",
+      "source_location": "L415",
+      "weight": 1.0,
+      "source": "services_checkout_service_checkoutservice_calculaterates",
+      "target": "checkout_checkout_component_checkoutcomponent_calculateshipping"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/checkout/checkout.component.ts",
+      "source_location": "L320",
+      "weight": 1.0,
+      "source": "services_checkout_service_checkoutservice_getsavedaddresses",
+      "target": "checkout_checkout_component_checkoutcomponent_loadaddresses"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/dashboard/dashboard.component.ts",
+      "source_location": "L227",
+      "weight": 1.0,
+      "source": "services_checkout_service_checkoutservice_getsavedaddresses",
+      "target": "dashboard_dashboard_component_dashboardcomponent_loaddashboarddata"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/checkout/checkout.component.ts",
+      "source_location": "L450",
+      "weight": 1.0,
+      "source": "services_checkout_service_checkoutservice_createorder",
+      "target": "checkout_checkout_component_checkoutcomponent_placeorder"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/order-tracking/order-tracking.component.ts",
+      "source_location": "L218",
+      "weight": 1.0,
+      "source": "services_checkout_service_checkoutservice_getordertracking",
+      "target": "order_tracking_order_tracking_component_ordertrackingcomponent_loadordertracking"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/dashboard/dashboard.component.ts",
+      "source_location": "L215",
+      "weight": 1.0,
+      "source": "services_checkout_service_checkoutservice_getmyorders",
+      "target": "dashboard_dashboard_component_dashboardcomponent_loaddashboarddata"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/order-tracking/order-tracking.component.ts",
+      "source_location": "L248",
+      "weight": 1.0,
+      "source": "services_checkout_service_checkoutservice_getpaymentstatus",
+      "target": "order_tracking_order_tracking_component_ordertrackingcomponent_checkpaymentstatussilent"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/catalog/catalog.component.ts",
+      "source_location": "L138",
+      "weight": 1.0,
+      "source": "services_products_service_productsservice_getproducts",
+      "target": "catalog_catalog_component_catalogcomponent_loadproducts"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/home/home.component.ts",
+      "source_location": "L512",
+      "weight": 1.0,
+      "source": "services_products_service_productsservice_getfeatured",
+      "target": "home_home_component_homecomponent_loadfeaturedproducts"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/product-detail/product-detail.component.ts",
+      "source_location": "L211",
+      "weight": 1.0,
+      "source": "services_products_service_productsservice_getproductbyslug",
+      "target": "product_detail_product_detail_component_productdetailcomponent_loadproductdetails"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/product-detail/product-detail.component.ts",
+      "source_location": "L231",
+      "weight": 1.0,
+      "source": "services_products_service_productsservice_getrelatedproducts",
+      "target": "product_detail_product_detail_component_productdetailcomponent_loadrelatedproducts"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L929",
+      "weight": 1.0,
+      "source": "services_products_service_productsservice_getadminproducts",
+      "target": "admin_admin_component_admincomponent_loadactivetabdataset"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/product-list.component.ts",
+      "source_location": "L140",
+      "weight": 1.0,
+      "source": "services_products_service_productsservice_getadminproducts",
+      "target": "admin_product_list_component_adminproductlistcomponent_loadproducts"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/product-form.component.ts",
+      "source_location": "L198",
+      "weight": 1.0,
+      "source": "services_products_service_productsservice_getadminproductbyid",
+      "target": "admin_product_form_component_adminproductformcomponent_loadproduct"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1164",
+      "weight": 1.0,
+      "source": "services_products_service_productsservice_createproduct",
+      "target": "admin_admin_component_admincomponent_saveproduct"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/product-form.component.ts",
+      "source_location": "L241",
+      "weight": 1.0,
+      "source": "services_products_service_productsservice_createproduct",
+      "target": "admin_product_form_component_adminproductformcomponent_onsubmit"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1152",
+      "weight": 1.0,
+      "source": "services_products_service_productsservice_updateproduct",
+      "target": "admin_admin_component_admincomponent_saveproduct"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/product-form.component.ts",
+      "source_location": "L240",
+      "weight": 1.0,
+      "source": "services_products_service_productsservice_updateproduct",
+      "target": "admin_product_form_component_adminproductformcomponent_onsubmit"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L921",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_loadactivetabdataset",
+      "target": "admin_admin_service_adminservice_getdashboardstats"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L937",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_loadactivetabdataset",
+      "target": "admin_admin_service_adminservice_getcategories"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L945",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_loadactivetabdataset",
+      "target": "admin_admin_service_adminservice_getorders"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L953",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_loadactivetabdataset",
+      "target": "admin_admin_service_adminservice_getcustomers"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L961",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_loadactivetabdataset",
+      "target": "admin_admin_service_adminservice_getsettings"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L974",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_loadactivetabdataset",
+      "target": "admin_admin_service_adminservice_getbanners"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L982",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_loadactivetabdataset",
+      "target": "admin_admin_service_adminservice_getinstagramposts"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L990",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_loadactivetabdataset",
+      "target": "admin_admin_service_adminservice_getcoupons"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1058",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_loadwhatsappdata",
+      "target": "admin_admin_service_adminservice_getwhatsappstatus"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1077",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_pollqrcode",
+      "target": "admin_admin_service_adminservice_getwhatsappqr"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1033",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_saveresi",
+      "target": "admin_admin_service_adminservice_inputtrackingnumber"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1067",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_savecategory",
+      "target": "admin_admin_service_adminservice_updatecategory"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1074",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_savecategory",
+      "target": "admin_admin_service_adminservice_createcategory"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1084",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_deletecategory",
+      "target": "services_modal_service_modalservice_confirm"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1093",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_togglecustomerstatus",
+      "target": "admin_admin_service_adminservice_updatecustomerstatus"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1101",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_savesettings",
+      "target": "admin_admin_service_adminservice_updatesettings"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1181",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_uploadimage",
+      "target": "admin_admin_service_adminservice_uploadproductimage"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1197",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_deleteproduct",
+      "target": "services_modal_service_modalservice_confirm"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/product-list.component.ts",
+      "source_location": "L169",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_deleteproduct",
+      "target": "admin_product_list_component_adminproductlistcomponent_confirmdelete"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1248",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_savebanner",
+      "target": "admin_admin_service_adminservice_updatebanner"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1256",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_savebanner",
+      "target": "admin_admin_service_adminservice_createbanner"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1267",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_deletebanner",
+      "target": "services_modal_service_modalservice_confirm"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1314",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_saveinstagrampost",
+      "target": "admin_admin_service_adminservice_updateinstagrampost"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1322",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_saveinstagrampost",
+      "target": "admin_admin_service_adminservice_createinstagrampost"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1333",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_deleteinstagrampost",
+      "target": "services_modal_service_modalservice_confirm"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1384",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_savecoupon",
+      "target": "admin_admin_service_adminservice_updatecoupon"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1392",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_savecoupon",
+      "target": "admin_admin_service_adminservice_createcoupon"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/admin.component.ts",
+      "source_location": "L1403",
+      "weight": 1.0,
+      "source": "admin_admin_component_admincomponent_deletecoupon",
+      "target": "services_modal_service_modalservice_confirm"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/admin/product-list.component.ts",
+      "source_location": "L162",
+      "weight": 1.0,
+      "source": "admin_product_list_component_adminproductlistcomponent_confirmdelete",
+      "target": "services_modal_service_modalservice_confirm"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/cart/cart.component.ts",
+      "source_location": "L205",
+      "weight": 1.0,
+      "source": "cart_cart_component_cartcomponent_clearcart",
+      "target": "services_modal_service_modalservice_confirm"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/features/dashboard/dashboard.component.ts",
+      "source_location": "L244",
+      "weight": 1.0,
+      "source": "dashboard_dashboard_component_dashboardcomponent_logout",
+      "target": "services_modal_service_modalservice_confirm"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/shared/ui/checkbox/checkbox.component.ts",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "checkbox_checkbox_component_checkboxcomponent_ontoggle",
+      "target": "select_select_component_selectcomponent_onchange"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/shared/ui/input/input.component.ts",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "input_input_component_inputcomponent_oninput",
+      "target": "select_select_component_selectcomponent_onchange"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/shared/ui/radio/radio.component.ts",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "radio_radio_component_radiocomponent_onselect",
+      "target": "select_select_component_selectcomponent_onchange"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/shared/ui/switch/switch.component.ts",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "select_select_component_selectcomponent_onchange",
+      "target": "switch_switch_component_switchcomponent_ontoggle"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "fitcorn-web/src/app/shared/ui/textarea/textarea.component.ts",
+      "source_location": "L87",
+      "weight": 1.0,
+      "source": "select_select_component_selectcomponent_onchange",
+      "target": "textarea_textarea_component_textareacomponent_oninput"
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
